@@ -108,10 +108,14 @@
                                             </span>
                                                     </p>
 
-                                                      <p>
-                                
-                                  djfdfndfndfj
-                            </p>
+                                                     
+                            @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
+                                <p>                                    
+                                      وصف المناسبه <br>
+
+                                      {{$reservationDetails -> occasion_description}}
+                                </p>
+                            @endif
 
                             
                                                 </div><!-- .media-body -->

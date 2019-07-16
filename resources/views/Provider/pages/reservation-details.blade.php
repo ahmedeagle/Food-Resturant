@@ -25,11 +25,13 @@
         </span>
     </span>
     </p>
+                            @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
+                                <p>                                    
+                                      وصف المناسبه <br>
 
-      <p>
-                                
-                                  djfdfndfndfj
-                            </p>
+                                      {{$reservationDetails -> occasion_description}}
+                                </p>
+                            @endif
 
     <div class="reservation-confirm mt-1 text-center text-sm-right">
         <button class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 ml-0 mt-2 ml-sm-2"
