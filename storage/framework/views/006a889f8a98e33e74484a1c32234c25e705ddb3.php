@@ -1,31 +1,31 @@
-@extends('admin_panel.blank')
-@section('title')
-    - {{ $title }}
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?>
+    - <?php echo e($title); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="page-header card">
    <div class="card-block">
-      <h5 class="m-b-10">{{ $title }}</h5>
+      <h5 class="m-b-10"><?php echo e($title); ?></h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item" style="line-height: 2.5">
-            <a href="{{ url('admin/dashboard') }}">الرئيسية</a>
+            <a href="<?php echo e(url('admin/dashboard')); ?>">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="{{ url('admin/mealCategories') }}" style="line-height: 2.5">{{ $title }}</a>
+         <li class="breadcrumb-item"><a href="<?php echo e(url('admin/mealCategories')); ?>" style="line-height: 2.5"><?php echo e($title); ?></a>
          </li>
-         <a style="float: left; color: white" href="{{ url('admin/mealCategories/add') }}" class="btn btn-grd-primary">اضافة تصنيف قائمة طعام جديد</a>
+         <a style="float: left; color: white" href="<?php echo e(url('admin/mealCategories/add')); ?>" class="btn btn-grd-primary">اضافة تصنيف قائمة طعام جديد</a>
       </ul>
    </div>
 </div>
 <div class="page-body">
-    @if(Session::has('error'))
-        <div class="alert alert-danger"> {{ Session::get('error') }}</div>
-    @endif
-    @if(Session::has('success'))
-        <div class="alert alert-success"> {{ Session::get('success') }}</div>
-    @endif
+    <?php if(Session::has('error')): ?>
+        <div class="alert alert-danger"> <?php echo e(Session::get('error')); ?></div>
+    <?php endif; ?>
+    <?php if(Session::has('success')): ?>
+        <div class="alert alert-success"> <?php echo e(Session::get('success')); ?></div>
+    <?php endif; ?>
    <div class="card">
       <div class="card-header">
-         <h5>{{ $title }}</h5>
+         <h5><?php echo e($title); ?></h5>
       </div>
       <div class="card-block">
          <div class="dt-responsive table-responsive">
@@ -41,19 +41,19 @@
                   </tr>
                </thead>
                <tbody>
-                  @foreach($categories as $key => $category)
+                  <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td>{{ $category->ar_name }}</td>
-                        <td>{{ $category->en_name }}</td>
-                        <td><a href="{{url('admin/providers/view/'.$category -> provider_id)}}">{{ $category->provider_name}}</a></td>
-                        <td>{{ $category->created_at }}</td>
+                        <td><?php echo e($key + 1); ?></td>
+                        <td><?php echo e($category->ar_name); ?></td>
+                        <td><?php echo e($category->en_name); ?></td>
+                        <td><a href="<?php echo e(url('admin/providers/view/'.$category -> provider_id)); ?>"><?php echo e($category->provider_name); ?></a></td>
+                        <td><?php echo e($category->created_at); ?></td>
                         <td>
-                            <a href="{{ url('admin/mealCategories/edit/'.$category->id) }}" class="btn btn-warning ">تعديل</a>
-                            {{--<button value="{{ $category->id }}" type="button" class="btn btn-danger waves-effect" data-toggle="modal" data-target="#default-Modal" onclick="deletefn(this.value)">حذف</button>--}}
+                            <a href="<?php echo e(url('admin/mealCategories/edit/'.$category->id)); ?>" class="btn btn-warning ">تعديل</a>
+                            
                         </td>
                     </tr>
-                  @endforeach
+                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </table>
          </div>
       </div>
@@ -81,8 +81,9 @@
 <script>
         function deletefn(val){
         var a = document.getElementById('yes');
-        a.href = "{{ url('admin/mealCategories/delete') }}"+ "/" +val;
+        a.href = "<?php echo e(url('admin/mealCategories/delete')); ?>"+ "/" +val;
 
         }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin_panel.blank', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

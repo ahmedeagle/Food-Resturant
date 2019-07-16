@@ -14,7 +14,13 @@ class MealCategories extends Controller {
     public function index()
     {
         $data['title'] = 'تصنيفات قائمة الطعام';
-        $data['categories'] = DB::table("mealcategories")->join('providers','mealcategories.provider_id','providers.id') -> get();
+       $data['categories'] = DB::table("mealcategories")
+                                  ->join('providers','mealcategories.provider_id','providers.id') 
+                                  ->
+                                  ->select('mealcategories.*','providers.ar_name as provider_name')
+                                  ->get();
+
+
         return view("admin_panel.categories.MealCategories.list",$data);
     }
     public function get_add(){

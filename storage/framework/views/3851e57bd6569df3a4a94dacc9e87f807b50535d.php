@@ -1,14 +1,14 @@
-@extends("Provider.layouts.master")
+<?php $__env->startSection('title'); ?>
+    <?php echo e($title); ?>
 
-@section('title')
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('class')
-    {{ $class }}
-@endsection
+<?php $__env->startSection('class'); ?>
+    <?php echo e($class); ?>
 
-@section("content")
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection("content"); ?>
 
 
 
@@ -17,7 +17,7 @@
         <header class="page-header mt-4 text-center">
             <h1 class="page-title h2 font-body-bold">تغيير الموقع</h1>
             <p class="description text-gray font-body-md mt-3">يرجى تحديد الموقع عبر الخريطة</p>
-            {{--<p id="register-map-address" class="description text-gray font-body-md mt-3"></p>--}}
+            
         </header>
         <div class="container">
             <div class="row">
@@ -25,15 +25,16 @@
                 <div class="col-lg-8 col-sm-10 col-12 mx-auto font-body-bold mb-5 text-center">
                     <div class="embed-responsive embed-responsive-16by9 my-4 shadow-bottom">
 
-                        <form id="form" action="{{ url("/restaurant/profile/change-map-address") }}" method="POST">
-                            {{ csrf_field() }}
-                            <input id="branch-lat" type="hidden" value="{{ auth("provider")->user()->latitude }}" />
-                            <input id="branch-lng" type="hidden" value="{{ auth("provider")->user()->longitude }}" />
-                            <input id="branch-latlng" type="hidden" value="({{auth("provider")->user()->latitude }},{{auth("provider")->user()->longitude }})" />
+                        <form id="form" action="<?php echo e(url("/restaurant/profile/change-map-address")); ?>" method="POST">
+                            <?php echo e(csrf_field()); ?>
+
+                            <input id="branch-lat" type="hidden" value="<?php echo e(auth("provider")->user()->latitude); ?>" />
+                            <input id="branch-lng" type="hidden" value="<?php echo e(auth("provider")->user()->longitude); ?>" />
+                            <input id="branch-latlng" type="hidden" value="(<?php echo e(auth("provider")->user()->latitude); ?>,<?php echo e(auth("provider")->user()->longitude); ?>)" />
                             
 
-                            <input type="hidden" name="new-lat" id="new-lat" value="{{ auth("provider")->user()->latitude }}" />
-                            <input type="hidden" name="new-lng" id="new-lng" value="{{ auth("provider")->user()->longitude }}" />
+                            <input type="hidden" name="new-lat" id="new-lat" value="<?php echo e(auth("provider")->user()->latitude); ?>" />
+                            <input type="hidden" name="new-lng" id="new-lng" value="<?php echo e(auth("provider")->user()->longitude); ?>" />
 
                         </form>
 
@@ -42,16 +43,17 @@
 
                     </div>
 
-                    @if($errors->has("new-lat") || $errors->has("new-lng"))
+                    <?php if($errors->has("new-lat") || $errors->has("new-lng")): ?>
 
                         <div class="alert alert-danger">
-                            {{ $errors->first("new-lat") }}
+                            <?php echo e($errors->first("new-lat")); ?>
+
                         </div>
 
-                    @endif
+                    <?php endif; ?>
 
                     <Button type="submit" form="form" class="btn btn-primary px-5 no-decoration">تأكيد</Button>
-                    <a href="{{ url("/restaurant/profile") }}">
+                    <a href="<?php echo e(url("/restaurant/profile")); ?>">
                         <button  class="btn btn-default px-5 no-decoration">رجوع</button>
                     </a>
                 </div><!-- .col-* -->
@@ -59,8 +61,8 @@
         </div><!-- .container -->
     </main><!-- .page-content -->
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&callback=initMap">
@@ -106,7 +108,7 @@
           
           
                       infoWindow.setPosition({lat: parseFloat(prevlat), lng: parseFloat(prevLng)});
-                     infoWindow.setContent('{{$branch -> ar_name}}');
+                     infoWindow.setContent('<?php echo e($branch -> ar_name); ?>');
                       infoWindow.open(map);
                    
 
@@ -202,7 +204,7 @@
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng( parseInt($("#branch-lat").val()),parseInt($("#branch-lng").val())),
                 map: map,
-                title: '{{$branch -> ar_name}}'
+                title: '<?php echo e($branch -> ar_name); ?>'
             });
             
 
@@ -287,4 +289,5 @@
     </script>
     
    
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("Provider.layouts.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
