@@ -65,12 +65,14 @@
                                     </span>
                             </p>
 
-                            
+
                             @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
                                 <p>                                    
                                       وصف المناسبه <br>
 
+                                     <span class="reservation-person">  
                                       {{$reservationDetails -> occasion_description}}
+                                  </span>
                                 </p>
                             @endif
 

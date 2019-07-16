@@ -70,7 +70,9 @@
                                 <p>                                    
                                       وصف المناسبه <br>
 
+                                       <span class="reservation-person">  
                                       {{$reservationDetails -> occasion_description}}
+                                  </span>
                                 </p>
                             @endif
 
