@@ -96,7 +96,7 @@ class HomeController extends Controller
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
                 )
-                ->orderBy("branches.id" , "DESC")
+                ->orderBy("offers.order_level" , "DESC")
                 ->take(17)
                 ->get();
         $offers = $this->filter_offers_branches($request , $name , $offers);
