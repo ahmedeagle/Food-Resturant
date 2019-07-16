@@ -100,6 +100,7 @@
         });
         
         
+
           infoWindow = new google.maps.InfoWindow;
           geocoder = new google.maps.Geocoder();
           
@@ -139,9 +140,7 @@
                         });
                          
                          
-                         
-                           
-                  
+                        
                         
                         
                         

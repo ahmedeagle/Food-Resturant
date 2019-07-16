@@ -1,17 +1,18 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+    
 
-RewriteCond %{REQUEST_FILENAME} !-f 
-RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteEngine On
 
-RewriteRule ^(.*)$ /index.php?url=$1 [L,QSA]
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-RewriteCond %{HTTP:Authorization} ^(.+)$
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
 
-<FilesMatch "\.(ttf|otf|eot|woff|jpg|png|jpeg|gif|js|json|html|css)$">
- <IfModule mod_headers.c>
-   Header set Access-Control-Allow-Origin "*"
- </IfModule>
-</FilesMatch>
-
-
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+</IfModule>

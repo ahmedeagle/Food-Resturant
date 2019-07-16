@@ -230,10 +230,12 @@ class ProfileController extends Controller
                             )->get();
 
 
+
+
         foreach($data['cats'] as $cat){
-
+           
+           if(isset($provivderFood) && $provivderFood -> count() > 0){
             foreach($provivderFood as $food){
-
                 if($food->id == $cat->id){
                     $cat->selected = "1";
                     break;
@@ -241,6 +243,9 @@ class ProfileController extends Controller
                     $cat->selected = "0";
                 }
             }
+          }else{
+              $cat->selected = "0";
+          }
 
         }
 
@@ -253,11 +258,11 @@ public function change_resturant_categories(){
         $data['class']  = "page-template password change";
                   
           $data['cats'] = DB::table("subcategories")
-        ->select(
-            "id",
-            "ar_name AS name"
-        )
-        ->get();
+                                    ->select(
+                                        "id",
+                                        "ar_name AS name"
+                                    )
+                                    ->get();
         
         
         $providerCats =  DB::table("provider_subcategories") -> where('provider_id',auth("provider")->id()) -> select('provider_subcategories.Subcategory_id AS id') -> get();
