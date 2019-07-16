@@ -24,7 +24,7 @@ class OfferController extends Controller
                         DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                         "providers.accept_order"
                     )
-                    ->orderBy("offers.id" , "DESC")
+                    ->orderBy("offers.order_level" , "DESC")
                     ->paginate(10);
       $offers = (new HomeController)->filter_offers_branches($request,$name,$offers);
         return response()->json([
