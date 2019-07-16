@@ -109,11 +109,11 @@
                                                     </p>
 
                                                      
-                            @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
+                           @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
                                 <p>                                    
                                       وصف المناسبه <br>
 
-                                      
+                                     
                                 </p>
 
                                  <span class="text-gray font-body-md mb-0">  

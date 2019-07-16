@@ -29,10 +29,12 @@
                                 <p>                                    
                                       وصف المناسبه <br>
 
-                                      <span class="text-gray font-body-md mb-0">  
+                                     
+                                </p>
+
+                                 <span class="text-gray font-body-md mb-0">  
                                       {{$reservationDetails -> occasion_description}}
                                   </span>
-                                </p>
                             @endif
 
     <div class="reservation-confirm mt-1 text-center text-sm-right">
