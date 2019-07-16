@@ -15,8 +15,8 @@ class MealCategories extends Controller {
     {
         $data['title'] = 'تصنيفات قائمة الطعام';
        $data['categories'] = DB::table("mealcategories")
+                                  -> where('deleted','0')
                                   ->join('providers','mealcategories.provider_id','providers.id') 
-                                  ->
                                   ->select('mealcategories.*','providers.ar_name as provider_name')
                                   ->get();
 
