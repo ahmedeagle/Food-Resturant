@@ -1,0 +1,20 @@
+@mixin btn-bg($bg, $color: null) {
+  background-color: $bg;
+  color: $color;
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  &:focus {
+    background-color: darken($bg, 3%);
+    color: $color;
+  }
+}
+
+@mixin btn-3d($bg, $box: null, $box-after: null, $x: null, $y: null) {
+  background-color: $bg;
+  box-shadow: $box;
+  transition: all 0.1s ease-in-out;
+  &:active {
+    transform: translate($x, $y);
+    box-shadow: $box-after;
+  }
+}

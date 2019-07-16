@@ -1,0 +1,12 @@
+%bg-cover {
+    @include background();
+    &:after {
+        @include background-gradient();
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 30%;
+        left: 0;
+    }
+}

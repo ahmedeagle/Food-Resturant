@@ -1,0 +1,648 @@
+/* line 1, ../sass/site/primary/_globals.scss */
+body {
+  direction: rtl;
+  font-family: "Din Next Regular", sans-serif;
+  text-align: right;
+}
+
+/* line 6, ../sass/site/primary/_globals.scss */
+.ltr {
+  direction: ltr;
+}
+
+/* line 9, ../sass/site/primary/_globals.scss */
+::-webkit-input-placeholder {
+  color: #969696 !important;
+}
+:-ms-input-placeholder {
+  color: #969696 !important;
+}
+::-ms-input-placeholder {
+  color: #969696 !important;
+}
+::placeholder {
+  color: #969696 !important;
+}
+
+/* line 12, ../sass/site/primary/_globals.scss */
+.bg-none {
+  background-color: transparent;
+}
+
+/* line 15, ../sass/site/primary/_globals.scss */
+.shadow-bottom {
+  -webkit-box-shadow: 0px 3px 0.5rem 0.25rem rgba(225, 225, 225, 0.7);
+  box-shadow: 0px 3px 0.5rem 0.25rem rgba(225, 225, 225, 0.7);
+}
+
+/* line 18, ../sass/site/primary/_globals.scss */
+.shadow-around {
+  -webkit-box-shadow: 0 0 0.5rem 0.25rem rgba(225, 225, 225, 0.7);
+  box-shadow: 0 0 0.5rem 0.25rem rgba(225, 225, 225, 0.7);
+}
+
+/* line 21, ../sass/site/primary/_globals.scss */
+.shadow-around-lg {
+  -webkit-box-shadow: 0 0 1rem 0.25rem rgba(225, 225, 225, 0.7);
+  box-shadow: 0 0 1rem 0.25rem rgba(225, 225, 225, 0.7);
+}
+
+
+/* line 24, ../sass/site/primary/_globals.scss */
+.no-decoration {
+  text-decoration: none !important;
+}
+
+/* line 27, ../sass/site/primary/_globals.scss */
+.rounded-lg {
+  border-radius: 10px;
+}
+
+/* line 30, ../sass/site/primary/_globals.scss */
+.rounded-top-lg {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+/* line 34, ../sass/site/primary/_globals.scss */
+.rounded-bottom-lg {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* line 38, ../sass/site/primary/_globals.scss */
+.rounded-curved {
+  border-radius: 1.5rem;
+}
+
+/* line 41, ../sass/site/primary/_globals.scss */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* line 44, ../sass/site/primary/_globals.scss */
+.cursor {
+  cursor: pointer;
+}
+
+/* line 1, ../sass/site/primary/_typography.scss */
+html,
+body {
+  font-size: 20px;
+}
+
+/* line 5, ../sass/site/primary/_typography.scss */
+.font-size-base {
+  font-size: 20px;
+}
+
+/* line 8, ../sass/site/primary/_typography.scss */
+h1,
+.h1 {
+  font-size: 1.7rem;
+}
+
+/* line 12, ../sass/site/primary/_typography.scss */
+h2,
+.h2 {
+  font-size: 1.5rem;
+}
+
+/* line 16, ../sass/site/primary/_typography.scss */
+h3,
+.h3 {
+  font-size: 1.3rem;
+}
+
+/* line 20, ../sass/site/primary/_typography.scss */
+h4,
+.h4 {
+  font-size: 1.1rem;
+}
+
+/* line 24, ../sass/site/primary/_typography.scss */
+h5,
+.h5 {
+  font-size: 0.9rem;
+}
+
+/* line 28, ../sass/site/primary/_typography.scss */
+h6,
+.h6 {
+  font-size: 0.8rem;
+}
+
+/* line 32, ../sass/site/primary/_typography.scss */
+.text-sm {
+  font-size: 0.7rem;
+}
+
+/* line 35, ../sass/site/primary/_typography.scss */
+.font-body {
+  font-family: "Din Next Regular", sans-serif;
+}
+
+/* line 38, ../sass/site/primary/_typography.scss */
+.font-body-ultra-lt {
+  font-family: "Din Next UltraLight", sans-serif;
+}
+
+/* line 41, ../sass/site/primary/_typography.scss */
+.font-body-lt {
+  font-family: "Din Next Light", sans-serif;
+}
+
+/* line 44, ../sass/site/primary/_typography.scss */
+.font-body-md {
+  font-family: "Din Next Medium", sans-serif;
+}
+
+/* line 47, ../sass/site/primary/_typography.scss */
+.font-body-bold {
+  font-family: "Din Next Bold", sans-serif;
+}
+
+/* line 50, ../sass/site/primary/_typography.scss */
+.font-body-black {
+  font-family: "Din Next Black", sans-serif;
+}
+
+/* line 53, ../sass/site/primary/_typography.scss */
+.font-body-heavy {
+  font-family: "Din Next Heavy", sans-serif;
+}
+
+/* line 56, ../sass/site/primary/_typography.scss */
+.font-body,
+.font-body-ultra-lt,
+.font-body-lt,
+.font-body-md,
+.font-body-bold,
+.font-body-black,
+.font-body-heavy {
+  font-weight: normal;
+}
+
+/* line 3, ../sass/site/primary/_front-page.scss */
+.front-page .search .search-bg {
+  background-color: #fff;
+  background-image: url("../img/search-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.13;
+}
+@media all and (max-width: 768px) {
+  /* line 7, ../sass/site/primary/_front-page.scss */
+  .front-page .search .search-label {
+    font-size: 1.25rem;
+  }
+}
+/* line 12, ../sass/site/primary/_front-page.scss */
+.front-page .search .form-control {
+  border-radius: 0;
+}
+/* line 18, ../sass/site/primary/_front-page.scss */
+.front-page .offers-slider .carousel-indicators li {
+  background-color: #E1E1E1;
+  height: 10px;
+  width: 10px;
+}
+/* line 22, ../sass/site/primary/_front-page.scss */
+.front-page .offers-slider .carousel-indicators li.active {
+  background-color: #97246B;
+}
+/* line 29, ../sass/site/primary/_front-page.scss */
+.front-page .categories .overlay {
+  background-color: rgba(68, 65, 76, 0.25);
+}
+/* line 32, ../sass/site/primary/_front-page.scss */
+.front-page .categories .cat-figcaption {
+  bottom: 2.5rem;
+}
+/* line 34, ../sass/site/primary/_front-page.scss */
+.front-page .categories .cat-figcaption:after {
+  background-color: #97246B;
+  content: "";
+  height: 3px;
+  position: absolute;
+  top: calc(100% + 10px);
+  width: 50px;
+}
+
+/* line 2, ../sass/site/secondary/_page.scss */
+.table-responsive .modal {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* line 8, ../sass/site/secondary/_page.scss */
+.nav-tabs .nav-link {
+  border: none;
+  color: #44414C;
+}
+/* line 11, ../sass/site/secondary/_page.scss */
+.nav-tabs .nav-link.active {
+  border-bottom: 4px solid #97246B;
+  color: #97246B;
+}
+
+/* line 18, ../sass/site/secondary/_page.scss */
+.dropdown-toggle:after {
+  margin-left: auto;
+  margin-right: 0.255em;
+}
+
+/* line 1, ../sass/site/secondary/_forms.scss */
+.custom-select {
+  background-position: left 0.75rem center;
+  padding: 0.375rem 0.75rem 0.375rem 1.75rem;
+}
+
+/* line 5, ../sass/site/secondary/_forms.scss */
+.custom-control-label::before,
+.custom-control-label::after {
+  left: auto;
+  right: -1.5rem;
+}
+
+/* line 13, ../sass/site/secondary/_forms.scss */
+.multi-forms .custom-file label > span {
+  border-style: dashed !important;
+}
+/* line 18, ../sass/site/secondary/_forms.scss */
+.multi-forms .selectize-input > input,
+.multi-forms .selectize-dropdown.multi {
+  font-size: 20px;
+}
+/* line 21, ../sass/site/secondary/_forms.scss */
+.multi-forms .selectize-input > input .create,
+.multi-forms .selectize-dropdown.multi .create {
+  padding: 0.5rem;
+  background-color: #FFFFFF;
+}
+/* line 26, ../sass/site/secondary/_forms.scss */
+.multi-forms .selectize-dropdown.multi {
+  border-color: #969696;
+}
+/* line 31, ../sass/site/secondary/_forms.scss */
+.multi-forms .selectize-control.multi .selectize-input {
+  border-color: #969696;
+  border-radius: 4px;
+  line-height: 1.5;
+  font-size: 20px;
+  padding: 0.375rem 0.75rem;
+}
+/* line 37, ../sass/site/secondary/_forms.scss */
+.multi-forms .selectize-control.multi .selectize-input > div {
+  background-color: #97246B;
+  border-radius: 1rem;
+  color: #FDFDFD;
+  font-size: 20px;
+  font-family: "Din Next Medium", sans-serif;
+  padding: 0.125rem 1rem;
+}
+
+
+
+/* Start user Code */
+
+a, a:hover {
+  text-decoration: none;
+  color: inherit
+}
+
+textarea {
+  resize: none;
+}
+
+.user-bg {
+  background-color: #f2f2f2;
+}
+
+
+/* padding top to input search*/
+@media(max-width:991px) {
+  .navbar-collapse .input-group{
+    margin-top: 40px;
+    overflow: hidden;
+  }
+}
+
+/* custom border radius to input search*/
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.input-group > .form-control:not(:last-child), .input-group > .custom-select:not(:last-child) {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* navigaton */
+.navigation {
+  position: relative;
+}
+
+.navigation span {
+  position: absolute;
+  border-radius: 0.5rem;
+  color: #FFF;
+  left: 10px;
+  top: -3px;
+}
+
+.navigation .badge {
+  padding: 0.20em 0.4em;
+}
+
+
+
+/* Custom chackbox and radio button */
+.custom-control-label::before {
+  position: absolute;
+  top: 0.25rem;
+  left: -1.5rem;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  pointer-events: none;
+  content: "";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background: transparent !important;
+  border: 1px solid #969696;
+}
+
+.custom-radio .custom-control-label::after {
+  position: absolute;
+  top: 8px;
+  right: -27px;
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+  border-radius: 50%;
+}
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #97246B;
+  background-image: none;
+}
+
+.custom-checkbox .custom-control-label::after {
+  position: absolute;
+  top: 8px;
+  right: -27px;
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+  border-radius: 0.25rem;
+}
+
+.custom-checkbox  .custom-control-input:checked ~ .custom-control-label::after {
+  background-color: #97246B;
+  background-image: none;
+}
+
+.custom-control .custom-control-label {
+  line-height: 1.1;
+}
+
+
+/* delate padding table */
+.table td {
+  padding-bottom: 0;
+}
+
+
+/*Custom Count Button */
+.count-buttom {
+  display: inline-block;
+  border: 2px solid #BEBCCC;
+  padding: 5px 0;
+  border-radius: 5px;
+  /* margin-right: 20px; */
+}
+
+.count-buttom span{
+  color: #BEBCCC;
+  text-decoration: none;
+}
+
+.count-buttom button {
+  background: none;
+  border: none;
+  color: #BEBCCC;
+  outline: 0;
+  cursor: pointer
+}
+
+
+
+input#number {
+  text-align: center;
+  border: none;
+  background:transparent;
+}
+
+
+/* Social Media Button */
+.facebook {
+  background-color: #3b5998;
+  color: #FFF;
+  border: none;
+}
+.facebook:hover {
+  background-color: #3b5998;
+
+}
+
+.twitter {
+  background: #55acee;
+  color: #FFF;
+  border: none;
+}
+
+.twitter:hover {
+  background: #55acee;
+}
+
+.circle-custom {
+  border: 3px solid #969696;
+  border-radius: 50%;
+}
+
+.circle-custom span {
+  font-size: 25px;
+}
+
+
+/* love Button */
+.love {
+  line-height: 2.8;
+  background-color: #b6b4c3
+}
+
+@media(max-width:576px)
+{
+  .love {
+    position: relative;
+    padding: 0 20px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 576px){
+  .love {
+    margin-top: 30px !important;
+    height: 60px;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width:991px){
+  .res-column-two {
+    line-height: 1.8
+  }
+}
+
+@media (max-width:576px){
+
+  .res-column-one {
+    line-height: 2.5
+  }
+}
+
+
+/* user mealpage - Table - */
+@media(max-width:445px) {
+  .tebel-meal td {
+    padding-right: 0
+  }
+
+}
+
+
+@media(max-width:460px) {
+  .small-price {
+    font-size: 16px;
+  }
+}
+
+.cancel-btn{
+  border-width: 2px !important
+}
+
+.label-hedding {
+  visibility: hidden;
+}
+
+@media (min-width: 768px) and (max-width:991px){
+  .credit-form{
+    font-size: 18px
+  }
+}
+
+@media (max-width:514px){
+  .credit-form{
+    font-size: 18px
+  }
+
+}
+
+.open-ticket {
+  padding-top: 47px !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* user Register favorite food */
+.f-food {
+  border-radius: 0.5rem;
+  color: #969696 ;
+  border-color: #969696 ;
+  background-color: #FFF;
+}
+
+.f-food input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active
+{
+  color: #FFFFFF !important;
+  background-color: #97246B !important;
+  border-color: #97246B;
+}
+
+/* @media(max-width:450px) {
+  .reg-f-food .form-check {
+    padding-left: 1rem !important;
+  }
+
+} */
+
+
+/* credit Card page  */
+@media(max-width:480px) {
+  .pass-num {
+    font-size: 13px !important;
+    margin-top: 15px !important;
+  }
+}
+
+
+
+/* user favorites page*/
+.fav-box {
+  position: relative;
+}
+
+.delete-x {
+  text-align: end !important;
+  position: absolute;
+  top: 2px;
+  left: 16px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+/* balance */
+
+.balance {
+  font-size: 55px;
+  color: #66bf6b
+}
+
+.balance span {
+  font-size: 35px;
+}
+
+.wallet {
+  width: 71px;
+}
+
+header a.text-gray:hover, a.text-gray:focus
+{
+  color: #93919f !important
+}
+
+header a.text-gray{
+  color: #93919f !important
+}
+
+
+
+/*# sourceMappingURL=style.css.map */
