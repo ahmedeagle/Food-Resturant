@@ -98,6 +98,8 @@ class ReservationController extends Controller
                                             "reservations.reservation_code",
                                             "reservations.date AS reservation_date",
                                             "reservations.time AS reservation_time",
+                                            "special_reservation",
+                                            "occasion_description",
                                             "reservations.seats_number",
                                             "users.name AS username",
                                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),

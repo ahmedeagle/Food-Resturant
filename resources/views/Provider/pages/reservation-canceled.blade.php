@@ -65,6 +65,11 @@
                                     </span>
                             </p>
 
+                            <p>
+                                
+                                  djfdfndfndfj
+                            </p>
+
                         </div><!-- .media-body -->
                         <span class="py-2 bg-danger text-white mt-3 mt-lg-0 text-white font-body-md px-3 rounded-curved">
                                 {{ $reservationDetails->status_name }}

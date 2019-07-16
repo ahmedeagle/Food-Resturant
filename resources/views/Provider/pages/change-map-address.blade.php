@@ -95,7 +95,7 @@
   function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: parseInt(prevlat), lng: parseInt(prevLng)},
-            zoom: 15
+            zoom: 8
             
         });
         
@@ -139,9 +139,22 @@
                             title: 'موقعك الحالي'
                         });
                          
-                         
+
                         
-                        
+                        markers.push(marker);
+
+
+                      marker.addListener('click', function() {
+                           
+                                 
+                                geocodeLatLng(geocoder, map, infoWindow,marker);
+                                
+                                
+                        });
+        
+  
+                        // to get current position address on load 
+                        google.maps.event.trigger(marker, 'click');
                         
                         
                 }, function() {
