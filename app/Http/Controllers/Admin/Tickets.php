@@ -15,17 +15,24 @@ class Tickets extends Controller {
         if($type == 0){
            $data['title'] = 'تذاكر المطاعم';
            $actorType = "provider";
+           $column    = "ar_name";
+           $table     = "providers";
         }else{
            $data['title'] = 'تذاكر العملاء';
            $actorType = "user";
+           $column    = "name";
+           $table     = "users";
         }
+
         $data['type'] = $type;
-        $data['tickets'] = DB::table("tickets")
+          $data['tickets'] = DB::table("tickets")
                                 ->join("ticket_types" , "ticket_types.id" , "tickets.type_id")
                                 ->where("actor_type" , $actorType)
                                 ->select(
                                     "tickets.*",
-                                    "ticket_types.ar_name AS type_name"
+                                    "ticket_types.ar_name AS type_name",
+                                    "actor_id",
+                                    DB::raw("(SELECT({$column}) FROM  {$table} WHERE {$table}.id = tickets.actor_id) AS name ")
                                 )
                                 ->get();
         //$data['tickets'] = get_table('tickets',['type'=>$type, 'status_id'=>$status_id],['id','DESC']);

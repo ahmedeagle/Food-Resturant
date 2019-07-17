@@ -33,7 +33,8 @@
                <thead>
                   <tr>
                      <th>مسلسل</th>  
-                     <th>نوع التذكرة</th>
+                     <th>صاحب التذكره</th>
+                      <th>نوع التذكرة</th>
                      <th>محتوى التذكرة</th>
                      <th>تاريخ الانشاء</th>
                      <th>العمليات</th>
@@ -43,6 +44,7 @@
                   @foreach($tickets as $key => $ticket)
                     <tr>
                         <td>{{ $key + 1 }}</td>
+                        <td>{{$ticket-> name}}</td>
                         <td>{{ $ticket->type_name }}</td>
                         <td>{{ str_limit($ticket->title, $limit = 30, $end = "....") }}</td>
                         <td>{{ $ticket->created_at }}</td>
