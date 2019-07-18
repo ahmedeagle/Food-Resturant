@@ -150,7 +150,7 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <?php if(auth('admin')->user()->permissions->credit == "1"): ?>
+                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('credit')): ?>
                             <li>
                                 <a> الرصيد: <?php echo e((new \App\Http\Controllers\Admin\Settings())->get_app_balance()); ?> ريال </a>
                             </li>
@@ -162,16 +162,18 @@
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
-                                    <?php if(auth('admin')->user()->permissions->settings == "1"): ?>
+                                    
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('settings')): ?>
                                     <li>
                                         <a href="<?php echo e(url("admin/settings")); ?>">
                                             <i class="ti-settings"></i>اعدادات عامة
                                         </a>
                                     </li>
                                     <?php endif; ?>
-                                    <?php if(auth('admin')->user()->permissions->profile == "1"): ?>
+                                    
+                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('profile')): ?>
                                     <li>
-                                        <a href="<?php echo e(url("/admin/admins/edit/" . Auth::guard("admin")->user()->id)); ?>">
+                                        <a href="<?php echo e(url("/admin/admins/edit/" . Auth::guard("admin")->user()->id)); ?>">s
                                             <i class="ti-user"></i> حسابي
                                         </a>
                                     </li>
@@ -195,6 +197,8 @@
                             <div class="pcoded-navigation-label"></div>
                             <ul class="pcoded-item pcoded-left-item">
 
+                             
+                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'dashboard' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url('/admin/dashboard')); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-area-chart"></i><b></b></span>
@@ -202,8 +206,10 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                              <?php endif; ?>  
 
-                                <?php if(auth('admin')->user()->permissions->countries == "1"): ?>
+                                
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('countries')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'countries' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url('/admin/countries')); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-globe"></i><b></b></span>
@@ -212,7 +218,8 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->cities == "1"): ?>
+                                
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('cities')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'cities' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/cities")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-map-signs"></i><b></b></span>
@@ -221,7 +228,8 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->pages == "1"): ?>
+                                
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('pages')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'pages' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url('/admin/pages')); ?>">
                                         <span class="pcoded-micon"><i class="icofont icofont-page"></i><b></b></span>
@@ -231,7 +239,8 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->categories == "1"): ?>
+                               
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('categories')): ?>
                                 <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'mainCategories' || Request::segment(2) == 'subCategories' || Request::segment(2) == 'mealCategories' || Request::segment(2) == 'foodCategories') ? ' pcoded-trigger active' : ''); ?>">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-google-wallet"></i><b></b></span>
@@ -271,7 +280,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->ticket_types == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('ticket_types')): ?>
 
                                 <li class="<?php echo e(( Request::segment(2) == 'ticketTypes' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/ticketTypes")); ?>">
@@ -281,7 +290,7 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->order_status == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('order_status')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'orderstatus' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/orderstatus")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-reorder"></i><b></b></span>
@@ -290,7 +299,7 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->booking_status == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('booking_status')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'bookingstatus' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/bookingstatus")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-tag"></i><b></b></span>
@@ -300,7 +309,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->crowd == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('crowd')): ?>
 
                                 <li class="<?php echo e(( Request::segment(2) == 'crowd' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/crowd")); ?>">
@@ -311,7 +320,7 @@
                                 </li>
                                 <?php endif; ?>
 
-                                <?php if(auth('admin')->user()->permissions->meals == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('meals')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'meals' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/meals")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-spoon"></i><b></b></span>
@@ -321,7 +330,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->offers == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('offers')): ?>
 
 
                                 <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'offers') ? ' pcoded-trigger active' : ''); ?>">
@@ -356,7 +365,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->orders == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('orders')): ?>
 
                                 <li class="<?php echo e(( Request::segment(2) == 'orders' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/orders")); ?>">
@@ -367,7 +376,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->reservations == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('reservations')): ?>
 
                                 <li class="<?php echo e(( Request::segment(2) == 'reservations' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("admin/reservations")); ?>">
@@ -378,7 +387,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->tickets == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('tickets')): ?>
 
                                 <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'tickets') ? ' pcoded-trigger active' : ''); ?>">
                                     <a href="javascript:void(0)">
@@ -406,7 +415,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->notifications == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('notifications')): ?>
 
                                 <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'notifications') ? ' pcoded-trigger active' : ''); ?>">
                                     <a href="javascript:void(0)">
@@ -434,7 +443,7 @@
                                 </li>
 
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->comments == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('comments')): ?>
 
                                 <li class="<?php echo e(( Request::segment(2) == 'comments' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("admin/comments/list")); ?>">
@@ -446,7 +455,19 @@
 
                                 <?php endif; ?>
 
-                                <?php if(auth('admin')->user()->permissions->providers == "1" || auth('admin')->user()->permissions->users == "1"): ?>
+                                
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('roles')): ?>
+                                  <li class="<?php echo e(( Request::segment(2) == 'roles' ) ? 'active' : ''); ?>">
+                                    <a href="<?php echo e(route('admin.roles.index')); ?>">
+                                        <span class="pcoded-micon"><i class="fa fa-user-secret"></i><b></b></span>
+                                        <span class="pcoded-mtext">الصلاحيات </span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                <?php endif; ?>
+ 
+
+                                 <?php if(Gate::check('providers') || Gate::check('users')): ?>
                                 <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'customers' || Request::segment(2) == 'providers') ? ' pcoded-trigger active' : ''); ?>">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-users"></i><b></b></span>
@@ -454,7 +475,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                       <?php if(auth('admin')->user()->permissions->users == "1"): ?>
+                                       <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('users')): ?>
                                        <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'customers') ? ' pcoded-trigger' : ''); ?>">
                                             <a href="javascript:void(0)">
                                                 <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
@@ -486,7 +507,7 @@
                                             </ul>
                                         </li>
                                         <?php endif; ?>
-                                        <?php if(auth('admin')->user()->permissions->providers == "1"): ?>
+                                        <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('providers')): ?>
                                         <li class="pcoded-hasmenu <?php echo e((Request::segment(2) == 'providers') ? ' pcoded-trigger' : ''); ?>">
                                             <a href="javascript:void(0)">
                                                 <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
@@ -523,7 +544,7 @@
                                 </li>
                                 <?php endif; ?>
 
-                                <?php if(auth('admin')->user()->permissions->withdraws == "1"): ?>
+                               <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('withdraws')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'withdraws' ) ? 'active' : ''); ?>">
                                         <a href="<?php echo e(url("admin/withdraws")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-money"></i><b></b></span>
@@ -533,9 +554,12 @@
                                 </li>
                                 <?php endif; ?>
                             </ul>
-                            <div class="pcoded-navigation-label">الاعدادات</div>
+
+                             <?php if(Gate::check('settings') || Gate::check('users')): ?>
+                               <div class="pcoded-navigation-label">الاعدادات</div>
+                              <?php endif; ?>
                             <ul class="pcoded-item pcoded-left-item">
-                                <?php if(auth('admin')->user()->permissions->settings == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('settings')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'settings' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/settings")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-cogs"></i><b></b></span>
@@ -544,7 +568,7 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
-                                <?php if(auth('admin')->user()->permissions->admins == "1"): ?>
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admins')): ?>
                                 <li class="<?php echo e(( Request::segment(2) == 'admins' ) ? 'active' : ''); ?>">
                                     <a href="<?php echo e(url("/admin/admins")); ?>">
                                         <span class="pcoded-micon"><i class="fa fa-user-secret"></i><b></b></span>
@@ -553,7 +577,13 @@
                                     </a>
                                 </li>
                                 <?php endif; ?>
+
+
+
                             </ul>
+
+                            
+
                         </div>
                     </nav>
                     <div class="pcoded-content">

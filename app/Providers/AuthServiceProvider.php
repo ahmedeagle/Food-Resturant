@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Auth;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -23,5 +24,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+            Auth::shouldUse('admin');   // if you use different guard from different tables 
+
+          foreach (config('global.permissions') as $ability => $value) {
+            Gate::define($ability, function ($auth) use ($ability){
+                return $auth->hasAbility($ability);
+            });
+        }
+        
     }
 }

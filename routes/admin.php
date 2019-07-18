@@ -19,9 +19,11 @@
         
         
 Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
-    Route::get('/dashboard', "Admin\Dashboard@index");
+
+
+    Route::get('/dashboard', "Admin\Dashboard@index") -> middleware('can:dashboard');
     
-    Route::prefix('/countries')->group(function(){
+ Route::group(['prefix' => 'countries', 'middleware' => 'can:countries'], function () {
         Route::get('/', "Admin\Countries@index");
         Route::get('/add', "Admin\Countries@get_add");
         Route::post('/store', "Admin\Countries@post_add");
@@ -30,16 +32,21 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Countries@delete");  
     });
 
-    Route::prefix('/admins')->group(function(){
+    Route::group(['prefix' => 'admins', 'middleware' => 'can:admins'], function () {
         Route::get('/', "Admin\Users@index");
         Route::get('/add', "Admin\Users@get_add");
         Route::post('/store', "Admin\Users@post_add");
-        Route::get('/edit/{id}', "Admin\Users@get_edit");
-        Route::post('/update/{id}', "Admin\Users@post_edit");
+        
         Route::get('/delete/{id}', "Admin\Users@delete");
     });
 
-    Route::prefix('/cities')->group(function(){
+
+  Route::group(['prefix' => 'admins', 'middleware' => 'can:profile'], function () {
+       Route::get('/edit/{id}', "Admin\Users@get_edit");
+       Route::post('/update/{id}', "Admin\Users@post_edit");
+    });
+
+     Route::group(['prefix' => 'cities', 'middleware' => 'can:cities'], function () {    
         Route::get('/', "Admin\Cities@index");
         Route::get('/add', "Admin\Cities@get_add");
         Route::post('/store', "Admin\Cities@post_add");
@@ -48,7 +55,18 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Cities@delete");
     });
 
-    Route::prefix('/pages')->group(function(){
+
+     Route::group(['prefix' => 'roles', 'middleware' => 'can:roles'], function () {        
+            Route::get('/', 'Admin\RolesController@getIndex')->name('admin.roles.index');
+            Route::get('add', 'Admin\RolesController@create') -> name('admin.roles.add');
+            Route::post('add', 'Admin\RolesController@save') -> name('admin.roles.save');
+            Route::get('/edit/{id}', 'Admin\RolesController@edit') ->name('admin.roles.edit');
+            Route::post('/update/{id}', 'Admin\RolesController@update') ->name('admin.roles.update');
+            Route::get('/delete/{id}', 'Admin\RolesController@postDelete')->name('admin.roles.delete');
+        });
+
+
+     Route::group(['prefix' => 'pages', 'middleware' => 'can:pages'], function () {            
         Route::get('/', "Admin\Pages@index");
         Route::get('/add', "Admin\Pages@get_add");
         Route::post('/store', "Admin\Pages@post_add");
@@ -57,7 +75,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Pages@delete");
     });
 
-    Route::prefix('/ticketTypes')->group(function(){
+    Route::group(['prefix' => 'ticketTypes', 'middleware' => 'can:ticket_types'], function () {                 
         Route::get('/', "Admin\Tickets_types@index");
         Route::get('/add', "Admin\Tickets_types@get_add");
         Route::post('/store', "Admin\Tickets_types@post_add");
@@ -66,7 +84,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Tickets_types@delete");
     });
 
-    Route::prefix('/bookingstatus')->group(function(){
+     Route::group(['prefix' => 'bookingstatus', 'middleware' => 'can:booking_status'], function () {     
         Route::get('/', "Admin\bookingstatus@index");
         Route::get('/add', "Admin\bookingstatus@get_add");
         Route::post('/store', "Admin\bookingstatus@post_add");
@@ -75,7 +93,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\bookingstatus@delete");
     });
 
-    Route::prefix('/orderstatus')->group(function(){
+     Route::group(['prefix' => 'orderstatus', 'middleware' => 'can:order_status'], function () {         
         Route::get('/', "Admin\orderstatus@index");
         Route::get('/add', "Admin\orderstatus@get_add");
         Route::post('/store', "Admin\orderstatus@post_add");
@@ -84,7 +102,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\orderstatus@delete");
     });
 
-    Route::prefix('/mainCategories')->group(function(){
+    Route::group(['prefix' => 'mainCategories', 'middleware' => 'can:categories'], function () {              
         Route::get('/', "Admin\Categories@index");
         Route::get('/add', "Admin\Categories@get_add");
         Route::post('/store', "Admin\Categories@post_add");
@@ -93,7 +111,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Categories@delete");
     });
 
-    Route::prefix('/subCategories')->group(function(){
+    Route::group(['prefix' => 'subCategories'], function () {     
         Route::get('/', "Admin\SubCategories@index");
         Route::get('/add', "Admin\SubCategories@get_add");
         Route::post('/store', "Admin\SubCategories@post_add");
@@ -102,7 +120,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\SubCategories@delete");
     });
 
-    Route::prefix('/crowd')->group(function(){
+     Route::group(['prefix' => 'crowd', 'middleware' => 'can:crowd'], function () {    
         Route::get('/', "Admin\crowd@index");
         Route::get('/add', "Admin\crowd@get_add");
         Route::post('/store', "Admin\crowd@post_add");
@@ -111,7 +129,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\crowd@delete");
     });
 
-    Route::prefix('/mealCategories')->group(function(){
+    Route::group(['prefix' => 'mealCategories'], function () {           
         Route::get('/', "Admin\MealCategories@index");
         Route::get('/add', "Admin\MealCategories@get_add");
         Route::post('/store', "Admin\MealCategories@post_add");
@@ -129,7 +147,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\FoodCategories@delete");
     });
 
-    Route::prefix('/meals')->group(function(){
+    Route::group(['prefix' => 'meals', 'middleware' => 'can:meals'], function () {        
         Route::get('/', "Admin\Meals@index");
         Route::get('/add', "Admin\Meals@get_add");
         Route::post('/store', "Admin\Meals@post_add");
@@ -142,7 +160,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/publish/{id}', "Admin\Meals@publish");
     });
 
-    Route::prefix('/offers')->group(function(){
+   Route::group(['prefix' => 'offers', 'middleware' => 'can:offers'], function () {             
         Route::get('/list/{status}', "Admin\Offers@index");
         Route::get('/add', "Admin\Offers@get_add");
         Route::post('/store', "Admin\Offers@post_add");
@@ -152,7 +170,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/view/{id}', "Admin\Offers@view");
     });
 
-    Route::prefix('/orders')->group(function(){
+   Route::group(['prefix' => 'orders', 'middleware' => 'can:orders'], function () {                  
         Route::get('/', "Admin\Orders@index");
         Route::get('/add', "Admin\Orders@get_add");
         Route::post('/store', "Admin\Orders@post_add");
@@ -164,7 +182,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
     });
 
     Route::prefix('/customers')->group(function(){
-        Route::get('/{status}', "Admin\Customers@index");
+         Route::get('/{status}', "Admin\Customers@index");
         Route::get('/view/{id}', "Admin\Customers@view");
         Route::get('/edit/{id}', "Admin\Customers@get_edit");
         Route::post('/update/{id}', "Admin\Customers@post_edit");
@@ -180,7 +198,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         
     });
 
-    Route::prefix('/providers')->group(function(){
+      Route::group(['prefix' => 'providers', 'middleware' => 'can:providers'], function () {                
         Route::get('/{status}', "Admin\Providers@index");
         Route::get('/add', "Admin\Providers@get_add");
         Route::post('/store', "Admin\Providers@post_add");
@@ -199,7 +217,7 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
 
     });
 
-    Route::prefix('/reservations')->group(function(){
+      Route::group(['prefix' => 'reservations', 'middleware' => 'can:reservations'], function () {
         Route::get('/', "Admin\booking@index");
     });
 
@@ -209,37 +227,37 @@ Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
         Route::get('/comments/play/{id}', "Admin\Branch@play_comment");
     });
 
-    Route::prefix('/withdraws')->group(function(){
+    Route::group(['prefix' => 'withdraws', 'middleware' => 'can:withdraws'], function () {     
         Route::get('/', "Admin\Withdraw_balance@index");
         Route::get('/accept/{id}', "Admin\Withdraw_balance@accept");
     });
 
-    Route::prefix('/settings')->group(function(){
+   Route::group(['prefix' => 'settings', 'middleware' => 'can:settings'], function () {          
         Route::get('/', "Admin\Settings@index");
         Route::post('/store', "Admin\Settings@post_add");
     });
 
-    Route::prefix('/tickets')->group(function(){
+    Route::group(['prefix' => 'tickets', 'middleware' => 'can:tickets'], function () {               
         Route::get('/{type}', "Admin\Tickets@index");
         Route::get('/reply/{id}', "Admin\Tickets@get_reply");
         Route::post('/reply', "Admin\Tickets@post_reply");
     });
 
-    Route::prefix('/notifications')->group(function(){
+  Route::group(['prefix' => 'notifications', 'middleware' => 'can:notifications'], function () {                     
         Route::get('/list/{type}', "Admin\Notifications@index");
         Route::get("/add/{type}" , "Admin\Notifications@get_add");
         Route::post("/store" , "Admin\Notifications@post_add");
         Route::get('/delete/{id}', "Admin\Notifications@delete");
     });
 
-    Route::prefix('/comments')->group(function(){
+    Route::group(['prefix' => 'comments', 'middleware' => 'can:comments'], function () {     
         Route::get('/list', "Admin\Comments@index");
     });
 
 });
 
 Route::middleware([])->prefix('admin')->group(function(){
-    Route::get("/login" , "Admin\Login@get_login");
+    Route::get("/login" , "Admin\Login@get_login") -> name('admin.login');
     Route::post("/login" , "Admin\Login@post_login");
     Route::get("/logout" , "Admin\Login@logout");
 });

@@ -92,39 +92,21 @@
                   </div>
                </div>
                <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">الصلاحيات</label>
-                  <div class="col-sm-10">
-                     <fieldset class="group">
-                        <ul class="checkbox">
-                           <li><input type="checkbox" name="all" id="all" /><label for="cb1">كل الصلاحيات</label></li><br /><hr />
-                           <li><input type="checkbox" name="credit" /><label for="cb1">الرصيد</label></li>
-                           <li><input type="checkbox" name="profile" /><label for="cb2">تعديل الملف الشخصى</label></li>
-                           <li><input type="checkbox" name="settings" /><label for="cb3">الاعدادات</label></li>
-                           <li><input type="checkbox" name="dashboard" /><label for="cb3">الاحصائيات</label></li>
-                           <li><input type="checkbox" name="countries" /><label for="cb3">الدول</label></li>
-                           <li><input type="checkbox" name="cities" /><label for="cb3">المدن</label></li>
-                           <li><input type="checkbox" name="pages" /><label for="cb3">الصفحات</label></li>
-                           <li><input type="checkbox" name="categories" /><label for="cb3">التصنيفات</label></li>
-                           <li><input type="checkbox" name="ticket_types" /><label for="cb3">انواع التذاكر</label></li>
-                           <li><input type="checkbox" name="order_status" /><label for="cb3">حالات الطلب</label></li>
-                           <li><input type="checkbox" name="booking_status" /><label for="cb3">حالات الحجز</label></li>
-                           <li><input type="checkbox" name="crowd" /><label for="cb3">حالات الازدحام</label></li>
-                           <li><input type="checkbox" name="meals" /><label for="cb3">الوجبات</label></li>
-                           <li><input type="checkbox" name="offers" /><label for="cb3">العروض</label></li>
-                           <li><input type="checkbox" name="orders" /><label for="cb3">الطلبات</label></li>
-                           <li><input type="checkbox" name="reservations" /><label for="cb3">الحجوزات</label></li>
-                           <li><input type="checkbox" name="tickets" /><label for="cb3">التذاكر</label></li>
-                           <li><input type="checkbox" name="notifications" /><label for="cb3">الاشعارات</label></li>
-                           <li><input type="checkbox" name="comments" /><label for="cb3">التعليقات</label></li>
-                           <li><input type="checkbox" name="providers" /><label for="cb3">المطاعم</label></li>
-                           <li><input type="checkbox" name="users" /><label for="cb3">المستخدمين</label></li>
-                           <li><input type="checkbox" name="withdraws" /><label for="cb3">طلبات سحب الرصيد</label></li>
-                           <li><input type="checkbox" name="admins" /><label for="cb3">التحكم بأعضاء لوحة التحكم</label></li>
-                        </ul>
-                     </fieldset>
-                  </div>
+                <label class="col-sm-2 col-form-label"> الصلاحيات</label>
+                   <div class="col-sm-10">
+                                 <select class="city-ajax-request custom-select text-gray font-body-md border-gray form-control " id="city" name="role_id" required="">                                         
+                                         <option value="" selected=""> اختر صلاحيه </option>
+                                       @if(isset($roles) && $roles -> count() > 0)
+                                        @foreach($roles as $role)
+                                              <option value="{{$role -> id }}"> {{$role -> name }}</option>                                          
+                                        @endforeach
+                                       @endif       
+                                  
+                                </select>
+                   </div>
                </div>
-               <button type="submit" class="btn btn-md btn-success"><i class="icofont icofont-check"></i>  اضافة </button>    <a href="{{ url("/admin/admins") }}" class="btn btn-md btn-danger"><i class="icofont icofont-close"></i>  رجوع </a>
+               <button type="submit" class="btn btn-md btn-success">
+                <i class="icofont icofont-check"></i>  اضافة </button>    
             </form>
          </div>
       </div>

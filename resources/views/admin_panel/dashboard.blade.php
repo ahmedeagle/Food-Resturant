@@ -5,9 +5,10 @@
 @section('content')
 <div class="page-body">
 
-    @if(auth('admin')->user()->permissions->dashboard == "1")
     <div class="row">
 
+
+@can('users')
         <div class="col-md-6 col-xl-3">
             <a href="{{ url("/admin/customers/all") }}">
             <div class="card bg-c-pink order-card">
@@ -20,8 +21,9 @@
             </div>
             </a>
         </div>
+@endcan        
 
-
+@can('providers')        
         <div class="col-md-6 col-xl-3">
             <a href="{{ url("/admin/providers/all") }}">
                 <div class="card bg-c-green order-card">
@@ -34,7 +36,9 @@
                 </div>
             </a>
         </div>
+  @endcan      
 
+@can('offers')        
         <div class="col-md-6 col-xl-3">
             <a href="{{ url("/admin/offers/list/all") }}">
                 <div class="card bg-c-yellow order-card">
@@ -47,6 +51,9 @@
                 </div>
             </a>
         </div>
+
+@endcan
+@can('orders')        
         <div class="col-md-6 col-xl-3">
             <a href="{{ url("/admin/orders") }}">
                 <div class="card bg-c-blue order-card">
@@ -60,13 +67,8 @@
             </a>
         </div>
     </div>
+  @endcan  
 
-    @else
-        <div class="row">
-            <div class="col-md-12 col-xl-12">
-              <p>أهلا وسهلا بك فى لوحة التحكم</p>
-            </div>
-        </div>
-    @endif
+ 
 </div> 
 @endsection

@@ -150,11 +150,11 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            @if(auth('admin')->user()->permissions->credit == "1")
+                             @can('credit')
                             <li>
                                 <a> الرصيد: {{ (new \App\Http\Controllers\Admin\Settings())->get_app_balance() }} ريال </a>
                             </li>
-                            @endif
+                            @endcan
                             <li class="user-profile header-notification">
                                 <a>
                                     <img src="{{ url("/storage/app/public/admins/arab.png") }}" class="img-radius" alt="User-Profile-Image">
@@ -162,20 +162,22 @@
                                     <i class="ti-angle-down"></i>
                                 </a>
                                 <ul class="show-notification profile-notification">
-                                    @if(auth('admin')->user()->permissions->settings == "1")
+                                    
+                                    @can('settings')
                                     <li>
                                         <a href="{{ url("admin/settings") }}">
                                             <i class="ti-settings"></i>اعدادات عامة
                                         </a>
                                     </li>
-                                    @endif
-                                    @if(auth('admin')->user()->permissions->profile == "1")
+                                    @endcan
+                                    
+                                    @can('profile')
                                     <li>
-                                        <a href="{{ url("/admin/admins/edit/" . Auth::guard("admin")->user()->id) }}">
+                                        <a href="{{ url("/admin/admins/edit/" . Auth::guard("admin")->user()->id) }}">s
                                             <i class="ti-user"></i> حسابي
                                         </a>
                                     </li>
-                                    @endif
+                                    @endcan
                                     <li>
                                         <a href="{{ url("/admin/logout") }}">
                                         <i class="ti-layout-sidebar-left"></i> تسجيل الخروج
@@ -195,6 +197,8 @@
                             <div class="pcoded-navigation-label"></div>
                             <ul class="pcoded-item pcoded-left-item">
 
+                             
+                             @can('dashboard')
                                 <li class="{{ ( Request::segment(2) == 'dashboard' ) ? 'active' : ''}}">
                                     <a href="{{ url('/admin/dashboard') }}">
                                         <span class="pcoded-micon"><i class="fa fa-area-chart"></i><b></b></span>
@@ -202,8 +206,10 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
+                              @endcan  
 
-                                @if(auth('admin')->user()->permissions->countries == "1")
+                                
+                                @can('countries')
                                 <li class="{{ ( Request::segment(2) == 'countries' ) ? 'active' : ''}}">
                                     <a href="{{ url('/admin/countries') }}">
                                         <span class="pcoded-micon"><i class="fa fa-globe"></i><b></b></span>
@@ -211,8 +217,9 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
-                                @if(auth('admin')->user()->permissions->cities == "1")
+                                @endcan
+                                
+                                @can('cities')
                                 <li class="{{ ( Request::segment(2) == 'cities' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/cities") }}">
                                         <span class="pcoded-micon"><i class="fa fa-map-signs"></i><b></b></span>
@@ -220,8 +227,9 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
-                                @if(auth('admin')->user()->permissions->pages == "1")
+                                @endcan
+                                
+                                @can('pages')
                                 <li class="{{ ( Request::segment(2) == 'pages' ) ? 'active' : ''}}">
                                     <a href="{{ url('/admin/pages') }}">
                                         <span class="pcoded-micon"><i class="icofont icofont-page"></i><b></b></span>
@@ -231,7 +239,8 @@
                                 </li>
 
                                 @endif
-                                @if(auth('admin')->user()->permissions->categories == "1")
+                               
+                                @can('categories')
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'mainCategories' || Request::segment(2) == 'subCategories' || Request::segment(2) == 'mealCategories' || Request::segment(2) == 'foodCategories') ? ' pcoded-trigger active' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-google-wallet"></i><b></b></span>
@@ -270,8 +279,8 @@
                                     </ul>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->ticket_types == "1")
+                                @endcan
+                                @can('ticket_types')
 
                                 <li class="{{ ( Request::segment(2) == 'ticketTypes' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/ticketTypes") }}">
@@ -280,8 +289,8 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
-                                @if(auth('admin')->user()->permissions->order_status == "1")
+                                @endcan
+                                @can('order_status')
                                 <li class="{{ ( Request::segment(2) == 'orderstatus' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/orderstatus") }}">
                                         <span class="pcoded-micon"><i class="fa fa-reorder"></i><b></b></span>
@@ -290,7 +299,7 @@
                                     </a>
                                 </li>
                                 @endif
-                                @if(auth('admin')->user()->permissions->booking_status == "1")
+                                @can('booking_status')
                                 <li class="{{ ( Request::segment(2) == 'bookingstatus' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/bookingstatus") }}">
                                         <span class="pcoded-micon"><i class="fa fa-tag"></i><b></b></span>
@@ -299,8 +308,8 @@
                                     </a>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->crowd == "1")
+                                @endcan
+                                @can('crowd')
 
                                 <li class="{{ ( Request::segment(2) == 'crowd' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/crowd") }}">
@@ -309,9 +318,9 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
+                                @endcan
 
-                                @if(auth('admin')->user()->permissions->meals == "1")
+                                @can('meals')
                                 <li class="{{ ( Request::segment(2) == 'meals' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/meals") }}">
                                         <span class="pcoded-micon"><i class="fa fa-spoon"></i><b></b></span>
@@ -320,8 +329,8 @@
                                     </a>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->offers == "1")
+                                @endcan
+                                @can('offers')
 
 
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'offers') ? ' pcoded-trigger active' : '' }}">
@@ -355,8 +364,8 @@
                                     </ul>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->orders == "1")
+                                @endcan
+                                @can('orders')
 
                                 <li class="{{ ( Request::segment(2) == 'orders' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/orders") }}">
@@ -366,8 +375,8 @@
                                     </a>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->reservations == "1")
+                                @endcan
+                                @can('reservations')
 
                                 <li class="{{ ( Request::segment(2) == 'reservations' ) ? 'active' : ''}}">
                                     <a href="{{ url("admin/reservations") }}">
@@ -377,8 +386,8 @@
                                     </a>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->tickets == "1")
+                                @endcan
+                                @can('tickets')
 
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'tickets') ? ' pcoded-trigger active' : '' }}">
                                     <a href="javascript:void(0)">
@@ -405,8 +414,8 @@
                                     </ul>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->notifications == "1")
+                                @endcan
+                                @can('notifications')
 
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'notifications') ? ' pcoded-trigger active' : '' }}">
                                     <a href="javascript:void(0)">
@@ -433,8 +442,8 @@
                                     </ul>
                                 </li>
 
-                                @endif
-                                @if(auth('admin')->user()->permissions->comments == "1")
+                                @endcan
+                                @can('comments')
 
                                 <li class="{{ ( Request::segment(2) == 'comments' ) ? 'active' : ''}}">
                                     <a href="{{ url("admin/comments/list") }}">
@@ -444,9 +453,21 @@
                                     </a>
                                 </li>
 
-                                @endif
+                                @endcan
 
-                                @if(auth('admin')->user()->permissions->providers == "1" || auth('admin')->user()->permissions->users == "1")
+                                
+                                @can('roles')
+                                  <li class="{{ ( Request::segment(2) == 'roles' ) ? 'active' : ''}}">
+                                    <a href="{{ route('admin.roles.index')}}">
+                                        <span class="pcoded-micon"><i class="fa fa-user-secret"></i><b></b></span>
+                                        <span class="pcoded-mtext">الصلاحيات </span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                </li>
+                                @endcan
+ 
+
+                                 @if(Gate::check('providers') || Gate::check('users'))
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'customers' || Request::segment(2) == 'providers') ? ' pcoded-trigger active' : '' }}">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="fa fa-users"></i><b></b></span>
@@ -454,7 +475,7 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
-                                       @if(auth('admin')->user()->permissions->users == "1")
+                                       @can('users')
                                        <li class="pcoded-hasmenu {{ (Request::segment(2) == 'customers') ? ' pcoded-trigger' : '' }}">
                                             <a href="javascript:void(0)">
                                                 <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
@@ -485,8 +506,8 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        @endif
-                                        @if(auth('admin')->user()->permissions->providers == "1")
+                                        @endcan
+                                        @can('providers')
                                         <li class="pcoded-hasmenu {{ (Request::segment(2) == 'providers') ? ' pcoded-trigger' : '' }}">
                                             <a href="javascript:void(0)">
                                                 <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
@@ -517,13 +538,13 @@
                                                 </li>
                                             </ul>
                                         </li>
-                                        @endif
+                                        @endcan
 
                                     </ul>
                                 </li>
                                 @endif
 
-                                @if(auth('admin')->user()->permissions->withdraws == "1")
+                               @can('withdraws')
                                 <li class="{{ ( Request::segment(2) == 'withdraws' ) ? 'active' : ''}}">
                                         <a href="{{ url("admin/withdraws") }}">
                                         <span class="pcoded-micon"><i class="fa fa-money"></i><b></b></span>
@@ -531,11 +552,14 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
+                                @endcan
                             </ul>
-                            <div class="pcoded-navigation-label">الاعدادات</div>
+
+                             @if(Gate::check('settings') || Gate::check('users'))
+                               <div class="pcoded-navigation-label">الاعدادات</div>
+                              @endif
                             <ul class="pcoded-item pcoded-left-item">
-                                @if(auth('admin')->user()->permissions->settings == "1")
+                                @can('settings')
                                 <li class="{{ ( Request::segment(2) == 'settings' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/settings") }}">
                                         <span class="pcoded-micon"><i class="fa fa-cogs"></i><b></b></span>
@@ -543,8 +567,8 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
-                                @if(auth('admin')->user()->permissions->admins == "1")
+                                @endcan
+                                @can('admins')
                                 <li class="{{ ( Request::segment(2) == 'admins' ) ? 'active' : ''}}">
                                     <a href="{{ url("/admin/admins") }}">
                                         <span class="pcoded-micon"><i class="fa fa-user-secret"></i><b></b></span>
@@ -552,8 +576,14 @@
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
-                                @endif
+                                @endcan
+
+
+
                             </ul>
+
+                            
+
                         </div>
                     </nav>
                     <div class="pcoded-content">

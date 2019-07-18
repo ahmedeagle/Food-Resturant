@@ -85,6 +85,9 @@ class Notifications extends Controller {
         return view("admin_panel.notifications.add",$data);
     }
     public function post_add(Request $request){
+
+
+        return $request;
         $title    = $request->input("title");
         $content  = $request->input("content");
         $option   = $request->input("option_type");

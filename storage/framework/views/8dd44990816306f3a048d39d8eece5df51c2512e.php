@@ -5,9 +5,10 @@
 <?php $__env->startSection('content'); ?>
 <div class="page-body">
 
-    <?php if(auth('admin')->user()->permissions->dashboard == "1"): ?>
     <div class="row">
 
+
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('users')): ?>
         <div class="col-md-6 col-xl-3">
             <a href="<?php echo e(url("/admin/customers/all")); ?>">
             <div class="card bg-c-pink order-card">
@@ -20,8 +21,9 @@
             </div>
             </a>
         </div>
+<?php endif; ?>        
 
-
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('providers')): ?>        
         <div class="col-md-6 col-xl-3">
             <a href="<?php echo e(url("/admin/providers/all")); ?>">
                 <div class="card bg-c-green order-card">
@@ -34,7 +36,9 @@
                 </div>
             </a>
         </div>
+  <?php endif; ?>      
 
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('offers')): ?>        
         <div class="col-md-6 col-xl-3">
             <a href="<?php echo e(url("/admin/offers/list/all")); ?>">
                 <div class="card bg-c-yellow order-card">
@@ -47,6 +51,9 @@
                 </div>
             </a>
         </div>
+
+<?php endif; ?>
+<?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('orders')): ?>        
         <div class="col-md-6 col-xl-3">
             <a href="<?php echo e(url("/admin/orders")); ?>">
                 <div class="card bg-c-blue order-card">
@@ -60,14 +67,9 @@
             </a>
         </div>
     </div>
+  <?php endif; ?>  
 
-    <?php else: ?>
-        <div class="row">
-            <div class="col-md-12 col-xl-12">
-              <p>أهلا وسهلا بك فى لوحة التحكم</p>
-            </div>
-        </div>
-    <?php endif; ?>
+ 
 </div> 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin_panel.blank', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
