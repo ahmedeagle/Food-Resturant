@@ -3,7 +3,10 @@
 @section('title')
     {{ $title }}
 @endsection
- 
+
+@section('class')
+    {{ $class }}
+@endsection
 
 @section("content")
     <main class="page-content py-5">
@@ -31,7 +34,7 @@
                         </div>
                     @endif
 
-                    @if(isset($notifications) && $notifications -> count() > 0)
+                    @if(count($meals) > 0)
 
                     <div class="rounded-lg shadow-around mt-4 overflow-hidden">
 
@@ -39,33 +42,46 @@
                             <table class="table">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col">الموضوع </th>
-                                     <th scope="col"> المحتوي </th>
-                                    <th scope="col"> التاريخ </th>
-                                    <th scope="col">الحالة </th>
+                                    <th scope="col">إسم الوجبه</th>
+                                     <th scope="col">الفرع</th>
+                                    <th scope="col">التصنيف</th>
+                                    <th scope="col">التحكم</th>
                                 </tr>
                                 </thead>
 
                                 <tbody class="font-body-md text-gray border-bottom bg-white">
-                                    @foreach($notifications as $notification)
+                                    @foreach($meals as $meal)
                                         <tr>
-                                            
-                                            <td class="text-nowrap">{{ $notification -> title }}</td>
+                                            <th scope="row" class="font-body-md text-nowrap">{{ $meal->meal_name }}</th>
+                                             <th scope="row" class="font-body-md text-nowrap">{{ $meal->branch_name }}</th>
+                                            <td class="text-nowrap">{{ $meal->cat_name }}</td>
                                             <td class="text-nowrap">
 
-                                                 {{ $notification -> content }}
+                                                @if($meal->published == "1")
+                                                    <a href="{{ url("/restaurant/food-menu/stop/". $meal->meal_id) }}">
+                                                        <i class="fa fa-pause fa-fw text-primary cursor"
+                                                           aria-hidden="true"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ url("/restaurant/food-menu/activate/". $meal->meal_id) }}">
+                                                        <i class="fa fa-play fa-fw text-primary cursor"
+                                                           aria-hidden="true"></i>
+                                                    </a>
+                                                @endif
 
-                                            </td>
+                                                <a href="{{ url("/restaurant/food-menu/edit/" . $meal->meal_id) }}">
+                                                <i class="fa fa-pencil-alt fa-fw text-primary cursor"
+                                                   aria-hidden="true"></i>
+                                                </a>
 
-                                            <td class="text-nowrap">
 
-                                                 {{ $notification -> created_at }}
+                                                <i class="fa fa-trash-alt fa-fw text-primary cursor"
+                                                   data-toggle="modal"
+                                                   data-target="#confirm-delete"
+                                                   id = "{{ $meal->meal_id }}"
+                                                   onclick="deletefn(this.id)"
+                                                   aria-hidden="true"></i>
 
-                                            </td>
-
-                                            <td class="text-nowrap">
-
-                                                 {{ $notification -> seen ==  '1' ? 'مقرؤه ': 'جديدخه ' }}
 
                                             </td>
                                         </tr>
@@ -73,15 +89,40 @@
                                 </tbody>
                             </table>
 
-                         
+                            <div class="modal fade"
+                                 id="confirm-delete"
+                                 tabindex="-1"
+                                 role="dialog"
+                                 aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content py-3">
+                                        <p class="modal-body h4 font-weight-bold text-center mb-auto">
+                                                هل تريد تأكيد عملية الحذف
+                                        </p>
+                                        <div class="modal-footer d-flex justify-content-center pt-0">
+                                            <button type="button"
+                                                    class="btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
+                                                    data-dismiss="modal">إلغاء</button>
+                                            <a type="submit"
+                                                    id="yes"
+                                                    class="btn btn-primary px-4 px-sm-5 font-weight-bold">نعم</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
 
                     </div>
 
-                    
+                    @else
+                        <div class="mt-4">
+                            {{ trans("provider.empty-meals") }}
+                        </div>
                     @endif
 
+                    {{ $meals->links("Pagination.pagination") }}
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
@@ -90,4 +131,14 @@
     </main><!-- .page-content -->
 @endsection
 
- 
+@section("script")
+    <script>
+
+        function deletefn(val){
+            var a = document.getElementById('yes');
+            a.href = "{{ url('restaurant/food-menu/delete') }}" + "/" +val;
+
+        }
+
+    </script>
+@endsection
