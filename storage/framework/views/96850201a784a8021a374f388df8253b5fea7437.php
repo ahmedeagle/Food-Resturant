@@ -51,6 +51,7 @@
             body.loading .modall {
                 display: block;
             }
+ 
 
 
         <?php echo $__env->yieldContent('main-style'); ?>    

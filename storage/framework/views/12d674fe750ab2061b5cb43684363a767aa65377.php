@@ -9,6 +9,15 @@
             </a><!-- .site-logo -->
             <?php if(auth("provider")->check()): ?>
                 <div class="d-flex flex-wrap align-items-center">
+
+ 
+                    <a style="color: red;" href="<?php echo e(url("/restaurant/balance")); ?>" class="d-flex flex-wrap ml-3 justify-content-sm-center mt-sm-0 mt-3">
+                        <i class="fa fa-bell"></i>
+                          <h2 style="color: #000;" class="font-size-base font-body-md ml-2 mb-1"><?php echo e(\App\Http\Controllers\Provider\HelperController::get_provider_notifications(auth("provider")->id(),'count','providers')); ?></h2>
+
+                    </a>
+
+
                     <a href="<?php echo e(url("/restaurant/balance")); ?>" class="d-flex flex-wrap ml-3 justify-content-sm-center mt-sm-0 mt-3">
                         <img src="<?php echo e(url("/assets/site/img/-e-wallet-icon.svg")); ?>" class="ml-2" width="25"
                              height="25">

@@ -51,6 +51,7 @@
             body.loading .modall {
                 display: block;
             }
+ 
 
 
         @yield('main-style')    

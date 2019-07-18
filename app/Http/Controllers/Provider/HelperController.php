@@ -67,4 +67,40 @@ class HelperController extends Controller
             return 0;
         }
     }
+
+    public static function get_provider_notifications($provider_id,$type,$actor){
+
+         if($type == 'count')
+         {
+              
+              $count = DB::table('admin_notifications') 
+              -> where('type',$actor)
+              -> join('admin_notifications_receivers','admin_notifications.id','=','admin_notifications_receivers.notification_id')
+              -> where('admin_notifications_receivers.actor_id',$provider_id)
+              -> where('admin_notifications_receivers.seen','0')
+              ->count();
+
+              return $count;
+
+         }elseif ($type == 'list') {
+            
+
+              $notifications = DB::table('admin_notifications') 
+              -> where('type',$actor)
+              -> join('admin_notifications_receivers','admin_notifications.id','=','admin_notifications_receivers.notification_id')
+              -> where('admin_notifications_receivers.actor_id',$provider_id)
+               ->get();
+
+              return $notifications;
+         } else{
+
+            
+
+            return '';
+
+         }
+
+       
+    }
+
 }
