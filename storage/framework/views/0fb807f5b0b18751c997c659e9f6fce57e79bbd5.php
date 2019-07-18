@@ -711,8 +711,7 @@
 
     <!--<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>-->
     <!--<script>-->
-        // Initialize Firebase
-    <!--    var config = {-->
+     <!--    var config = {-->
     <!--        apiKey: "AIzaSyAjZMZO0NND0J5jwZUR9Y6RcgOIBH-3hlM",-->
     <!--        authDomain: "mjrb-22164.firebaseapp.com",-->
     <!--        databaseURL: "https://mjrb-22164.firebaseio.com",-->

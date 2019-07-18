@@ -87,8 +87,7 @@ class Notifications extends Controller {
     public function post_add(Request $request){
 
 
-        return $request;
-        $title    = $request->input("title");
+         $title    = $request->input("title");
         $content  = $request->input("content");
         $option   = $request->input("option_type");
         $type     = $request->input("type");
