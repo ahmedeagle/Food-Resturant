@@ -65,7 +65,7 @@
 
                                             <td class="text-nowrap">
 
-                                                 {{ $notification -> seen ==  '1' ? 'مقرؤه ': 'جديدخه ' }}
+                                                 {{ $notification -> seen ==  '1' ? ' مقرؤه ': 'جديده  ' }}
 
                                             </td>
                                         </tr>
@@ -81,7 +81,7 @@
                     
                      @else
                         <div class="mt-4">
-                            {{ trans("provider.empty-meals") }}
+                            لايوجد اشعارات 
                         </div>
                     @endif
 
