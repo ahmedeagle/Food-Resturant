@@ -16,7 +16,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold">كل الوجبات</h4>
+                        <h4 class="page-title font-body-bold"> اشعارات الاداره </h4>
                     </div>
 
                     @if(Session::has("success"))
