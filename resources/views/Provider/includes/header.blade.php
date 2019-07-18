@@ -11,7 +11,7 @@
                 <div class="d-flex flex-wrap align-items-center">
 
  
-                    <a style="color: red;" href="{{ url("/restaurant/balance") }}" class="d-flex flex-wrap ml-3 justify-content-sm-center mt-sm-0 mt-3">
+                    <a style="color: red;" href="{{ route('provider.notifications') }}" class="d-flex flex-wrap ml-3 justify-content-sm-center mt-sm-0 mt-3">
                         <i class="fa fa-bell"></i>
                           <h2 style="color: #000;" class="font-size-base font-body-md ml-2 mb-1">{{ \App\Http\Controllers\Provider\HelperController::get_provider_notifications(auth("provider")->id(),'count','providers') }}</h2>
 

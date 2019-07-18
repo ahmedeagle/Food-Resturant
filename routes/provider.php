@@ -87,6 +87,9 @@ Route::prefix('restaurant')->group(function(){
         
         Route::post('/storebrowsertoken',"Provider\ProfileController@storebrowsertoken");
 
+         Route::get("/notifications_list" , "Provider\ProfileController@get_notifications") -> name('provider.notifications');
+
+
     });
     
     //,'provider_phone_active'

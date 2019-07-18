@@ -443,6 +443,15 @@ public function post_change_meal_type(Request $request){
         
          
     }
+
+
+    public function get_notifications(){
+  
+     $notifications = \App\Http\Controllers\Provider\HelperController::get_provider_notifications(auth("provider")->id(),'list','providers')
+
+         return view("Provider.pages.notifications", $notifications);
+
+    }
     
     
 }
