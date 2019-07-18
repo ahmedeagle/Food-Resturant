@@ -82,6 +82,7 @@
                     
                     @endif
 
+                       {{ $notification->links("Pagination.pagination") }}
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
