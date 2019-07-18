@@ -25,13 +25,13 @@
             <h5>اضافة اشعار جديد </h5>
          </div>
          <div class="card-block">
-            <form id="notificatins-form" base_url = {{ url("/") }} action="{{ url('admin/notifications/store') }}" method="POST" enctype="multipart/form-data">
+            <form id="notificatins-form" base_url ="{{ url('/') }}" action="{{ url('admin/notifications/store') }}" method="POST" enctype="multipart/form-data">
                {{ csrf_field() }}
                <input type="hidden" id="rec_type" name="type" value="{{ $type }}" />
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">عنوان الاشعار</label>
                   <div class="col-sm-10">
-                     <input type="text" class="title form-control" name="title" value="{{ old("title") }}" placeholder="من فضلك ادخل عنوان الاشعار">
+                     <input type="text" class="title form-control" name="title" value="{{ old('title') }}" placeholder="من فضلك ادخل عنوان الاشعار">
                      <span style="display: none" class="title-error"></span>
                   </div>
                </div>

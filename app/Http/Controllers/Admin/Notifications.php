@@ -128,7 +128,17 @@ class Notifications extends Controller {
                     "type" => $type
                 ]);
 
+        }elseif ($type == "providers") {
+
+            $notify_id = DB::table("admin_notifications")
+                ->insertGetId([
+                    "title" => $title,
+                    "content" => $content,
+                    "type" => $type
+                ]);
         }
+
+
 
         foreach($users as $user){
             if($type == "users"){
@@ -153,8 +163,30 @@ class Notifications extends Controller {
                     
                 }
 
-            }else{
+            }elseif ($type =="providers"){
                 // send notification to provider.
+
+
+                DB::table("admin_notifications_receivers")
+                    ->insert([
+                        "notification_id" => $notify_id,
+                        "actor_id"        => $user->id
+                    ]);
+                // push notification
+
+                $notif_data = array();
+                $notif_data['title']                 = $title;
+                $notif_data['body']                   = $content;
+                $notif_data['id']                     = $notify_id;
+                $notif_data['notification_type']      = 4;
+
+
+                if($user->device_reg_id != null){
+                    $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
+                    
+                }
+
+
             }
         }
         return response()->json(["status" => true]);

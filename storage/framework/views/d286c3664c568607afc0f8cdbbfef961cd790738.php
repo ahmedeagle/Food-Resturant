@@ -25,14 +25,14 @@
             <h5>اضافة اشعار جديد </h5>
          </div>
          <div class="card-block">
-            <form id="notificatins-form" base_url = <?php echo e(url("/")); ?> action="<?php echo e(url('admin/notifications/store')); ?>" method="POST" enctype="multipart/form-data">
+            <form id="notificatins-form" base_url ="<?php echo e(url('/')); ?>" action="<?php echo e(url('admin/notifications/store')); ?>" method="POST" enctype="multipart/form-data">
                <?php echo e(csrf_field()); ?>
 
                <input type="hidden" id="rec_type" name="type" value="<?php echo e($type); ?>" />
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">عنوان الاشعار</label>
                   <div class="col-sm-10">
-                     <input type="text" class="title form-control" name="title" value="<?php echo e(old("title")); ?>" placeholder="من فضلك ادخل عنوان الاشعار">
+                     <input type="text" class="title form-control" name="title" value="<?php echo e(old('title')); ?>" placeholder="من فضلك ادخل عنوان الاشعار">
                      <span style="display: none" class="title-error"></span>
                   </div>
                </div>
