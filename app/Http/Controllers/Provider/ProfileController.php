@@ -451,6 +451,13 @@ public function post_change_meal_type(Request $request){
 
      $data['title']         = "اشعارات الاداره ";
 
+         DB::table('admin_notifications') 
+              -> where('type','providers')
+              -> join('admin_notifications_receivers','admin_notifications.id','=','admin_notifications_receivers.notification_id')
+              -> where('admin_notifications_receivers.actor_id',auth("provider")->id())
+              -> where('admin_notifications_receivers.seen','0')
+              ->update(['seen' => 1]);
+
          return view("Provider.pages.notifications", $data);
 
     }
