@@ -72,14 +72,17 @@
                                     @endforeach
                                 </tbody>
                             </table>
-
-                         
+ 
 
                         </div>
 
                     </div>
 
                     
+                     @else
+                        <div class="mt-4">
+                            {{ trans("provider.empty-meals") }}
+                        </div>
                     @endif
 
                        {{ $notification->links("Pagination.pagination") }}

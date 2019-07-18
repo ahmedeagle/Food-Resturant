@@ -89,7 +89,7 @@ class HelperController extends Controller
               -> where('type',$actor)
               -> join('admin_notifications_receivers','admin_notifications.id','=','admin_notifications_receivers.notification_id')
               -> where('admin_notifications_receivers.actor_id',$provider_id)
-               ->paginate(2);
+               ->paginate(5);
 
               return $notifications;
          } else{
