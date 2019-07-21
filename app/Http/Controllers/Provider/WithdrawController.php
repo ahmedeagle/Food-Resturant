@@ -9,7 +9,7 @@ class WithdrawController extends Controller
 {
     public function __construct()
     {
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
     }
 
     public function withdraw_balance(){

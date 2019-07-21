@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function get_orders(){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $data['title'] = ' - الطلبات';
         $data['class'] = 'page-template orders';
 
@@ -145,7 +145,7 @@ class OrderController extends Controller
 
     public function decline_order($id){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
             ->first();

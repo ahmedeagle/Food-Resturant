@@ -12,7 +12,7 @@ class IndexController extends Controller
         
          date_default_timezone_set('Asia/Riyadh');
          
-         App()->setLocale("ar");
+        // App()->setLocale("ar");
         $data['title'] = " - الرئيسية - لوحة التحكم ";
         $data['class'] = "page-template dashboard";
 

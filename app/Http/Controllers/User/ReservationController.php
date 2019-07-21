@@ -14,7 +14,7 @@ class ReservationController extends Controller
 {
     public function get_reservations(){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         // get list of reservations
         $data['currentReservations'] = $this->select_reservation(true);
         $data['previousReservations'] = $this->select_reservation(false);
@@ -75,7 +75,7 @@ class ReservationController extends Controller
 
     public function get_reservation($id){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $reservation = \App\Reservation::find($id);
         if(!$reservation){
             return redirect("/user/dashboard");
@@ -174,7 +174,7 @@ class ReservationController extends Controller
         // 0 individuals
         // 1 families
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $rules      = [
             "id"           => "required|exists:branches,id",
             "status"       => "required|in:0,1",
@@ -330,7 +330,7 @@ class ReservationController extends Controller
 
     public function decline_reservation($id){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $check = DB::table("reservations")->where("id", $id)->first();
 
         if(!$check){

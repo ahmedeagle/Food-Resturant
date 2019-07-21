@@ -11,7 +11,7 @@ class BranchController extends Controller
 {
     public function get_branches(){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $data['branches'] = DB::table("branches")
                             ->where("branches.provider_id", auth("provider")->id())
                             ->where("branches.deleted", "0")
@@ -73,7 +73,7 @@ class BranchController extends Controller
     public function post_add_branch(Request $request){
         
         
-         App()->setLocale("ar");
+         //App()->setLocale("ar");
 
 
 
@@ -367,7 +367,7 @@ return              $error = $validator->errors();
         
          
  
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
         $rules = [
             "ar_name"            => "required",
@@ -576,7 +576,7 @@ return              $error = $validator->errors();
     }
 
     public function stop_branch($id){
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $check = $this->check_branch_id($id);
         if(!$check){
             return redirect("/restaurant/dashboard");
@@ -593,7 +593,7 @@ return              $error = $validator->errors();
     }
 
     public function activate_branch($id){
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $check = $this->check_branch_id($id);
         if(!$check){
             return redirect("/restaurant/dashboard");
@@ -609,7 +609,7 @@ return              $error = $validator->errors();
     }
 
     public function delete_branch($id){
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $check = $this->check_branch_id($id);
         if(!$check){
             return redirect("/restaurant/dashboard");

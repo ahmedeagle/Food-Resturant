@@ -10,7 +10,7 @@ class ContactController extends Controller
 {
     public function contact_us(Request $request){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
         $rules = [
 

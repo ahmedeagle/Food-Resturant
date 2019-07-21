@@ -11,7 +11,7 @@ class MealController extends Controller
 {
     public function get_meal_page($id){
 
-        app()->setLocale("ar") ;
+      //  app()->setLocale("ar") ;
         
         $meal = DB::table("meals")
                         ->join("branches", "branches.id", "meals.branch_id")

@@ -17,7 +17,7 @@ class SocialLoginController extends Controller
 
     public function handleFacebookProviderCallback(){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
 
         $user = Socialite::driver('facebook')->user();
 
@@ -38,7 +38,7 @@ class SocialLoginController extends Controller
 
     public function handleTwitterProviderCallback(){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
 
         $user = Socialite::driver('twitter')->user();
 

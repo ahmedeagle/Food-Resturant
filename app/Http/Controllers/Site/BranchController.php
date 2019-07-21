@@ -11,7 +11,7 @@ class BranchController extends Controller
 {
     public function get_restaurant_page($id){
 
-        app()->setLocale("ar") ;
+       // app()->setLocale("ar") ;
         $restaurant = DB::table("branches")
                         ->where("id", $id)
                         ->first();

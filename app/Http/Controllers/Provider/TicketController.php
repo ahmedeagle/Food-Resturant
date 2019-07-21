@@ -12,7 +12,7 @@ class TicketController extends Controller
 {
     public function __construct()
     {
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
     }
 
     public function get_contact_page(){
@@ -36,7 +36,7 @@ class TicketController extends Controller
     }
 
     public function post_new_ticket(Request $request){
-        app()->setLocale("ar");
+        //app()->setLocale("ar");
         $rules = [
 
             "type"        => "required|exists:ticket_types,id",

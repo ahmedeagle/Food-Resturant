@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function register(Request $request){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $rules = [
 
             "user-name"               => "required",

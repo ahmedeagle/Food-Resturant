@@ -81,9 +81,9 @@
                                 
                                 
                               <tr class="">
-                                <th scope="col" class="border-top-0 font-body-md">درجة حراره الصنف  </th>
+                                <th scope="col" class="border-top-0 font-body-md">{{trans('site.spicy_deg')}} </th>
                                 <th scope="col" class="border-top-0 font-body-md"></th>
-                                <th scope="col" class="border-top-0   font-body-md">  خواص </th>
+                                <th scope="col" class="border-top-0   font-body-md"> {{trans('site.property')}}</th>
                  
                               </tr>
 
@@ -151,11 +151,11 @@
                                  <td class="text-primary font-body-md small-price">
                                      
                                 @if($meal->vegetable == "1")
-                                   <span class="" title="الوجبة نباتية"><img src="{{url('/')}}/storage/app/public/icons/vegetarian-meals-icon.png"/></span>
+                                   <span class="" title="{{trans('site.vegetarian')}}"><img src="{{url('/')}}/storage/app/public/icons/vegetarian-meals-icon.png"/></span>
                                 @endif
                                 
                                 @if($meal->calories)
-                                   <span class="" title="{{ $meal->calories }} سعره حرارية"><img src="{{url('/')}}/storage/app/public/icons/no-gluten-icon.png"/></span>
+                                   <span class="" title="{{ $meal->calories }} {{trans('site.Calories')}}"><img src="{{url('/')}}/storage/app/public/icons/no-gluten-icon.png"/></span>
                                 @endif   
                                 </td>
                                 
@@ -177,15 +177,15 @@
                         <table class="table mb-0 tebel-meal">
                             <thead>
                               <tr class="">
-                                <th scope="col" class="border-top-0 font-body-md">السعرات الحرارية</th>
-                                <th scope="col" class="border-top-0 text-primary font-body-md">{{ $meal->calories }} سعره حرارية</th>
-                                <th scope="col" class="border-top-0 text-gray font-body-md">السعرات الكلية للطلب متوسط الحجم</th>
+                                <th scope="col" class="border-top-0 font-body-md">{{trans('site.Calories')}}</th>
+                                <th scope="col" class="border-top-0 text-primary font-body-md">{{ $meal->calories }}   {{trans('site.Calory')}}</th>
+                                <th scope="col" class="border-top-0 text-gray font-body-md">{{trans('site.avg_colaries')}}</th>
                 
                               </tr>
 
                               <tr>
-                                  <th scope="col" class="border-top-0 font-body-md">ينصح بها من قبل المطعم</th>
-                                  <th scope="col" class="border-top-0 text-primary font-body-md">{{ ( $meal->recommend == "1") ? 'نعم' : 'لا' }}</th>
+                                  <th scope="col" class="border-top-0 font-body-md">{{trans('site.recommanded_restaurant')}}</th>
+                                  <th scope="col" class="border-top-0 text-primary font-body-md">{{ ( $meal->recommend == "1") ? trans('site.yes')  :  trans('site.no')  }}</th>
                                   <th></th>
                               </tr>
 
@@ -193,7 +193,7 @@
 
                                 @if(count($meal->sizes) == 0)
                                     <tr>
-                                        <th scope="col" class="border-top-0 font-body-md">السعر</th>
+                                        <th scope="col" class="border-top-0 font-body-md">{{trans('site.price')}}</th>
                                         <th scope="col" class="border-top-0 text-primary font-body-md">{{ $meal->price }}</th>
                                         <th></th>
                                     </tr>
@@ -204,7 +204,7 @@
 
                             <tbody>
                               <tr>
-                                <th scope="row" class="font-body-md">الحجم</th>
+                                <th scope="row" class="font-body-md">{{trans('site.size')}}</th>
                                 @if(count($meal->sizes) > 0)
                                 <td>
                                     <div class="mr-4">
@@ -227,19 +227,19 @@
                                 <td class="text-primary font-body-md small-price">
                                     @foreach($meal->sizes as $size)
                                         <div class="mb-2">
-                                            {{ $size->price }} ر.س
+                                            {{ $size->price }} {{trans('site.riyal')}}
                                         </div>
                                     @endforeach
                                 </td>
                                 @else
             
-                                    <td>لا توجد احجام لهذة الوجبة</td>         
+                                    <td>{{trans('site.no_sizes_meal')}}</td>         
                                     <td></td>
             
                                 @endif
                               </tr>
                               <tr>
-                                <th scope="row" class="font-body-md">الإضافات</th>
+                                <th scope="row" class="font-body-md">{{trans('site.options')}}</th>
                                 @if(count($meal->adds) > 0)
                                 <td>
                                     <div class="mr-4">
@@ -263,19 +263,19 @@
                                     
                                     @foreach($meal->adds as $add)
                                         <div class="mb-2">
-                                            {{ $add->added_price }} ر.س
+                                            {{ $add->added_price }}  {{trans('site.riyal')}}
                                         </div> 
                                     @endforeach
                                 </td>
                                 @else
-                                    <td>لا توجد اضافات لهذة الوجبة</td>
+                                    <td>{{trans('site.no_options_meal')}}</td>
                                     <td></td>
                                 @endif
                                 
                               </tr>
                               
                               <tr>
-                              <th scope="row" class="font-body-md">التفضيلات</th>
+                              <th scope="row" class="font-body-md">{{trans('site.adds')}}</th>
                                 @if(count($meal->options) > 0)
                                 <td>
                                     <div class="mr-4">
@@ -299,12 +299,12 @@
                                     
                                     @foreach($meal->options as $options)
                                         <div class="mb-2">
-                                            {{ $options->added_price }} ر.س
+                                            {{ $options->added_price }} {{trans('site.riyal')}}
                                         </div> 
                                     @endforeach
                                 </td>
                                 @else
-                                    <td>لا يوجد تفضيلات لهذة الوجبة</td>
+                                    <td>{{trans('site.no_adds_meal')}}</td>
                                     <td></td>
                                 @endif
                                 
@@ -324,19 +324,19 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content py-3">
                                 <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                    برجاء العلم ان جميع الوجبات بالسلة سوف يتم حذفها, حيث ان جميع الوجبات بالسلة يجب ان تكون تابعة لنفس المطعم
+                                    {{trans('site.cart_note')}}
                                 </p>
                                 <div class="modal-footer d-flex justify-content-center pt-0">
                                     <button type="button"
                                             class="btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                            data-dismiss="modal">إلغاء</button>
+                                            data-dismiss="modal">{{trans('site.cancel')}}</button>
                                     <a type="submit"
                                        onclick="decreaseValue()"
-                                       class="btn btn-primary px-4 px-sm-5 font-weight-bold">حذف محتويات السلة</a>
+                                       class="btn btn-primary px-4 px-sm-5 font-weight-bold">{{trans('site.delete_cart_content')}}</a>
 
                                     <a type="submit"
-                                       onclick="{{ url("/user/cart") }}"
-                                       class="btn btn-default px-4 px-sm-5 font-weight-bold">تصفح السلة</a>
+                                       onclick="{{ url('/user/cart') }}"
+                                       class="btn btn-default px-4 px-sm-5 font-weight-bold">{{trans('site.view_cart')}}</a>
                                 </div>
                             </div>
                         </div>
@@ -344,7 +344,7 @@
 
                     @if(auth()->user() && $meal->accept_order == "1")
                     <div class="p-3 rounded-lg shadow-around mt-4 d-flex bg-white justify-content-center flex-column flex-sm-row">
-                        <label class="col-lg-6 co-md-4 col-xl-7 font-body-md">الكمية</label>
+                        <label class="col-lg-6 co-md-4 col-xl-7 font-body-md">{{trans('site.amount')}}</label>
                         <span class="count-buttom d-inline-flex px-0">
                             <button onclick="decreaseValue()"  class="col min d-flex flex-column align-items-start"> - </button>
                             <span id="number" class="col counter d-flex flex-column align-items-center">
@@ -356,28 +356,29 @@
                         <input type="hidden" value="{{ $meal->id }}" id="meal_id" />
                         <input type="hidden" value="{{ $clearing_cart_content_warning }}" id="clear_cart_alert" />
                         <input type="hidden" value="@if(count($meal->sizes) > 0) 1 @else 0 @endif" id="meal_has_sizes" />
-                        <input type="hidden" value="{{ url("/user/cart/check-cart-content") }}" id="check_cart_content_url" />
-                        <input type="hidden" value="{{ url("/user/cart/add") }}" id="add_cart_meal" />
+                        <input type="hidden" value="{{ url('/user/cart/check-cart-content') }}" id="check_cart_content_url" />
+                        <input type="hidden" value="{{ url('/user/cart/add') }}" id="add_cart_meal" />
                         <!-- <button type="submit" class="btn btn-primary font-body-bold px-lg-3 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto">
                                 شراء (15 ر.س)
                         </button> -->
 
                         
                         <!--For test-->
-                        <a href="{{ url("/user/cart") }}" class="btn btn-primary font-body-bold px-lg-3 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto">
-                            شراء
+                        <a href="{{ url('/user/cart') }}" class="btn btn-primary font-body-bold px-lg-3 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto">
+                             {{trans('site.buy')}}
                             (<span class="total_price_span">
                                 {{--@if(count($cartData) >0) {{ $cartData['price'] }} @else 0 @endif --}}
                                 0
                             </span>
-                            ر.س)
+                              ({{trans('site.riyal')}})
                         </a><!--For test-->
                     </div>
                     @if($clearing_cart_content_warning == 1)
 
                         <div class="alert alert-warning">
-                            برجاء العلم انة فى حالة وضع هذة الوجبة فى السلة فسوف يتم حذف جميع محتويات السلة حيث ان جميع وجبات السلة يجب ان تكون تابعة لنفس المطعم
-                            <a style="color: blue;text-decoration: underline" href="{{ url("/user/cart") }}">تصفح محتويات السلة</a>
+                            
+                            {{trans('site.cart_not2')}}
+                            <a style="color: blue;text-decoration: underline" href="{{ url('/user/cart') }}">{{trans('site.view_cart')}}</a>
                         </div>
 
                     @endif

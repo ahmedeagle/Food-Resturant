@@ -19,7 +19,7 @@ class ForgetPasswordController extends Controller
     }
 
     public function post_forget_password(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         
          $phone = $request->input('phone');
           
@@ -140,7 +140,7 @@ class ForgetPasswordController extends Controller
 
     public function post_password_recovery(Request $request){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $rules = [
 
             "code"    =>  "required"
@@ -212,7 +212,7 @@ class ForgetPasswordController extends Controller
     }
 
     public function post_change_password(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $rules = [
 
             "password"    =>  "required|min:6|confirmed"

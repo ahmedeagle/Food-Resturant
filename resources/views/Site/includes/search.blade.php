@@ -8,7 +8,7 @@
                 <div class="form-group py-3 py-md-4 py-lg-5">
                     <label for="search-field"
                            class="search-label h1 font-body-heavy d-block mb-4 text-center position-relative">
-                        قم بالبحث عن المطعم الذي تريد تجربته
+                         {{trans('site.search_for_resturant_to_try')}}
                     </label>
                     <div class="row">
                         <div class="col-xl-7 col-lg-9 col-md-11 col-sm-12 col-12 mx-auto">
@@ -16,8 +16,8 @@
                                 <input type="search"
                                        id="search-field"
                                        class="form-control py-2 py-sm-3 border-left-0 rounded-right border-medium"
-                                       placeholder="إبحث عن مطعم..."
-                                       aria-label="إبحث عن مطعم..."
+                                       placeholder="{{trans('site.search_for_resturant')}}"
+                                       aria-label="{{trans('site.search_for_resturant')}}"
                                        name = "query"
                                        aria-describedby="search-addon">
 

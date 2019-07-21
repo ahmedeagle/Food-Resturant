@@ -9,7 +9,7 @@
     <main class="page-content py-5">
 
         <header class="page-header mt-4 text-center">
-            <h1 class="page-title h2 font-body-bold">تسجيل الدخول</h1>
+            <h1 class="page-title h2 font-body-bold">  {{trans('site.login')}}</h1>
         </header>
         <div class="container">
             <div class="row">
@@ -21,26 +21,26 @@
                             role="tablist">
 
                             <li class="nav-item">
-                                <a class="nav-link pb-3 h3 mb-0 pt-3 font-body-bold @if(!$errors->has("provider-phone-number")  && !Session::has("provider-login-error") && !Session::has("provider-login-success")) active @endif"
+                                <a class="nav-link pb-3 h3 mb-0 pt-3 font-body-bold @if(!$errors->has('provider-phone-number')  && !Session::has('provider-login-error') && !Session::has('provider-login-success')) active @endif"
                                    id="user-tab"
                                    data-toggle="tab"
                                    href="#user"
                                    role="tab"
                                    aria-controls="user"
                                    aria-selected="true">
-                                    كمستخدم
+                                     {{trans('site.as_user')}}
                                 </a>
                             </li><!-- .nav-item -->
 
                             <li class="nav-item">
-                                <a class="nav-link pb-3 h3 mb-0 pt-3 font-body-bold @if($errors->has("provider-phone-number") || $errors->has("provider-password") || Session::has("provider-login-error") || Session::has("provider-login-success")) active @endif"
+                                <a class="nav-link pb-3 h3 mb-0 pt-3 font-body-bold @if($errors->has('provider-phone-number') || $errors->has('provider-password') || Session::has('provider-login-error') || Session::has('provider-login-success')) active @endif"
                                    id="restaurant-tab"
                                    data-toggle="tab"
                                    href="#restaurant"
                                    role="tab"
                                    aria-controls="restaurant"
                                    aria-selected="false">
-                                    كمقدم خدمة
+                                    {{trans('site.as_provider')}}
                                 </a>
                             </li><!-- .nav-item -->
                         </ul><!-- .nav-tabs -->
@@ -48,12 +48,12 @@
 
 
                     <div class="tab-content">
-                        <div class="tab-pane fade @if(!$errors->has("provider-phone-number") && !$errors->has("provider-password") && !Session::has("provider-login-error") && !Session::has("provider-login-success")) active show @endif"
+                        <div class="tab-pane fade @if(!$errors->has('provider-phone-number') && !$errors->has('provider-password') && !Session::has('provider-login-error') && !Session::has('provider-login-success')) active show @endif"
                              id="user"
                              role="tabpanel"
                              aria-describedby="user-tab">
 
-                            <form action="{{ url("/user/login") }}" method="POST" class="login-form mt-5">
+                            <form action="{{ url('/user/login') }}" method="POST" class="login-form mt-5">
                                 {{ csrf_field() }}
 
                                 @if(Session::has("user-error"))
@@ -71,7 +71,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="phone-number">البريد الإلكتروني أو رقم الهاتف</label>
+                                    <label for="phone-number">{{trans('site.emailorphone')}}</label>
                                     <input type="text" class="form-control border-gray font-body-md" id="phone-number" value="{{ old('user-data') }}" name="user-data" placeholder="usermail@gmail.com">
                                     @if($errors->has("user-data"))
                                         <div class="alert alert-danger top-margin">
@@ -81,7 +81,7 @@
 
                                 </div><!-- .form-group -->
                                 <div class="form-group">
-                                    <label for="password">كلمة المرور</label>
+                                    <label for="password">{{trans('site.password')}}</label>
                                     <input type="password" class="form-control border-gray" id="password" name="user-password" placeholder="********">
 
                                     @if($errors->has("user-password"))
@@ -91,18 +91,19 @@
                                     @endif
 
                                 </div><!-- .form-group -->
-                                <button type="submit" class="btn btn-primary btn-block py-2 px-4">تسجيل الدخول</button>
-                                <p class="text-center text-gray my-3 font-body-md">أو يمكنك الدخول عبر</p>
+                                <button type="submit" class="btn btn-primary btn-block py-2 px-4"> {{trans('site.login')}}</button>
+                                <p class="text-center text-gray my-3 font-body-md">{{trans('site.login_via')}}</p>
                                 <div class="container">
 
                                     <div class="row">
 
                                         <div class="form-group col-md-6 col-12">
 
-                                            <a href="{{ url("/login/facebook") }}" type="submit" class="btn col btn-primary py-2 px-4 facebook">
+                                            <a href="{{ url('/login/facebook') }}" type="submit" class="btn col btn-primary py-2 px-4 facebook">
 
                                             <i class="fab fa-facebook-f ml-1"></i>
-                                            فيس بوك
+                                                     
+                                                     {{trans('site.facebook')}}
 
                                             </a>
 
@@ -110,11 +111,10 @@
 
                                         <div class="form-group col-md-6 col-12">
 
-                                            <a href="{{ url("/login/twitter") }}" type="submit" class="btn col btn-primary py-2 px-4 twitter">
+                                            <a href="{{ url('/login/twitter') }}" type="submit" class="btn col btn-primary py-2 px-4 twitter">
 
                                             <i class="fab fa-twitter ml-1"></i>
-                                            تويتر
-
+                                            {{trans('site.twitter')}}
                                             </a>
 
                                         </div>
@@ -125,24 +125,24 @@
                                 </div>
                             </form><!-- .login-form -->
                             <div class="lost-data">
-                                <a href="{{ url("/user/forget-password") }}"
+                                <a href="{{ url('/user/forget-password') }}"
                                    class="no-decoration mt-3 d-inline-block text-primary">
-                                    هل نسيت كلمة السر؟
+                                    {{trans('site.forget_password')}}
                                 </a>
-                                <p>ليس لدي حساب!
-                                    <a href="{{ url("/register") }}" class="no-decoration text-primary d-inline-block mt-2">
-                                        حساب جديد
+                                <p>{{trans('site.not_have_account')}}
+                                    <a href="{{ url('/register') }}" class="no-decoration text-primary d-inline-block mt-2">
+                                        {{trans('site.new_account')}}
                                     </a>
                                 </p>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade @if($errors->has("provider-phone-number") || $errors->has("provider-password") || Session::has("provider-login-error") || Session::has("provider-login-success")) active show @endif"
+                        <div class="tab-pane fade @if($errors->has('provider-phone-number') || $errors->has('provider-password') || Session::has('provider-login-error') || Session::has('provider-login-success')) active show @endif"
                              id="restaurant"
                              role="tabpanel"
                              aria-labelledby="restaurant-tab">
 
-                            <form action="{{ url("/restaurant/login") }}" method="POST" class="login-form mt-5">
+                            <form action="{{ url('/restaurant/login') }}" method="POST" class="login-form mt-5">
                                 {{ csrf_field() }}
 
                                 @if(Session::has("provider-login-error"))
@@ -167,7 +167,7 @@
                                                 <div class="form-check">
                                                     <label class="btn btn-primary f-food ">
                                                         <input data-id="1" name="guard" value="1" class="form-check-input0" type="radio">
-                                                         حساب فرع  
+                                                         {{trans('site.branch_account')}}
                                                     </label>
                                                 </div>
                                            
@@ -176,7 +176,7 @@
                                                 <div class="form-check">
                                                     <label class="btn btn-primary f-food ">
                                                         <input data-id="1"  name="guard" value="2" class="form-check-input0" type="radio" checked="">
-                                                         حساب رئيسي
+                                                         {{trans('site.main_account')}}
                                                     </label>
                                                 </div>
                                  </div>
@@ -184,8 +184,8 @@
                                                 
 
                                 <div class="form-group">
-                                    <label for="phone-number">رقم الهاتف</label>
-                                    <input type="text" name="provider-phone-number" value="{{ old("provider-phone-number") }}" class="form-control border-gray" id="phone-number">
+                                    <label for="phone-number"> {{trans('site.phone')}} </label>
+                                    <input type="text" name="provider-phone-number" value="{{ old('provider-phone-number') }}" class="form-control border-gray" id="phone-number">
 
                                     @if($errors->has("provider-phone-number"))
                                         <div class="top-margin alert alert-danger">
@@ -194,7 +194,7 @@
                                     @endif
                                 </div><!-- .form-group -->
                                 <div class="form-group">
-                                    <label for="password">كلمة المرور</label>
+                                    <label for="password">{{trans('site.password')}} </label>
                                     <input type="password" name="provider-password" class="form-control border-gray" id="password">
 
                                     @if($errors->has("provider-password"))
@@ -204,16 +204,16 @@
                                     @endif
 
                                 </div><!-- .form-group -->
-                                <button type="submit" class="btn btn-primary py-2 px-4">تسجيل الدخول</button>
+                                <button type="submit" class="btn btn-primary py-2 px-4"> {{trans('site.login')}} </button>
                             </form><!-- .login-form -->
                             <div class="lost-data">
-                                <a href="{{ url("/restaurant/forget-password") }}"
+                                <a href="{{ url('/restaurant/forget-password') }}"
                                    class="no-decoration mt-3 d-inline-block">
-                                    هل نسيت كلمة السر؟
+                                     {{trans('site.forget_password')}}
                                 </a>
-                                <p>ليس لدي حساب!
-                                    <a href="{{ url("/register") }}" class="no-decoration text-primary d-inline-block mt-2">
-                                        حساب جديد
+                                <p>{{trans('site.not_have_account')}}
+                                    <a href="{{ url('/register') }}" class="no-decoration text-primary d-inline-block mt-2">
+                                        {{trans('site.new_account')}}
                                     </a>
                                 </p>
                             </div>

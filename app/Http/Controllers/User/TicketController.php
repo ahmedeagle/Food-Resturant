@@ -32,7 +32,7 @@ class TicketController extends Controller
     }
 
     public function post_new_ticket(Request $request){
-        app()->setLocale("ar");
+      //  app()->setLocale("ar");
         $rules = [
 
             "type"        => "required|exists:ticket_types,id",
@@ -89,7 +89,7 @@ class TicketController extends Controller
     }
 
     public function get_ticket_details($id){
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $ticketTest = Ticket::find($id);
 
 
@@ -129,7 +129,7 @@ class TicketController extends Controller
 
     public function add_ticket_reply(Request $request){
 
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $rules   = [
             "reply"     => "required",
             "ticket_id" => "required|exists:tickets,id",

@@ -13,15 +13,15 @@
     <main class="page-content py-5 mt-4">
 
         <header class="page-header mt-5 text-center">
-            <h1 class="page-title h2 font-body-bold">تأكيد رقم الهاتف</h1>
+            <h1 class="page-title h2 font-body-bold">{{trans('site.confirm_phone')}}</h1>
         </header>
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-sm-10 col-12 mx-auto font-body-bold mb-5 pb-5">
-                    <form action="{{ url("/user/activate-phone") }}" method="POST" class="login-form mt-5">
+                    <form action="{{ url('/user/activate-phone') }}" method="POST" class="login-form mt-5">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="phone-number">قم بإدخال رقم التأكيد الذي وصلك على رقم الهاتف</label>
+                            <label for="phone-number">{{trans('site.enter_confirm_code')}}</label>
                             <input type="text" name="code" class="form-control border-gray" id="phone-number">
 
                             @if(Session::has("error"))
@@ -45,9 +45,9 @@
                             @endif
 
                         </div><!-- .form-group -->
-                        <button type="submit" class="btn btn-primary px-5">تفعيل</button>
+                        <button type="submit" class="btn btn-primary px-5">{{trans('site.activate')}}</button>
                         <br />
-                        <a href="{{ url("/user/resend-activation-code") }}" class="top-margin btn btn-info px-5">إعادة ارسال رقم التأكيد</a>
+                        <a href="{{ url('/user/resend-activation-code') }}" class="top-margin btn btn-info px-5">{{trans('site.resend_code')}}</a>
                     </form><!-- .login-form -->
                 </div><!-- .col-* -->
             </div><!-- .row -->

@@ -10,7 +10,7 @@ class CommentController extends Controller
 {
     public function add_comment(Request $request){
 
-        App()->setLocale("ar");
+     //   App()->setLocale("ar");
         $rules      = [
             "id"          => "required|exists:branches,id",
             "service"     => "required|in:0,1,2,3,4,5",

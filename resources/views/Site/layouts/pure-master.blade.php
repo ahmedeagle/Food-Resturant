@@ -16,13 +16,27 @@
     <title>مجرِّب @yield('main-title')</title>
 
 
-
+@if(LaravelLocalization::getCurrentLocale() =='ar')
+   
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/site/css/bootstrap/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site/fonts/dinnext/dinnext.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site/css/notifIt.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/site/css/custom.css') }}">
+
+   
+@else
+
+ <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="{{ asset('assets/site/css/bootstrap/bootstrap_en.css') }}">
+
+     <link rel="stylesheet" href="{{ asset('assets/site/fonts/dinnext/dinnext.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/site/css/style_en.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/site/css/notifIt.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/site/css/custom_en.css') }}">
+
+@endif
 
     <style>
     

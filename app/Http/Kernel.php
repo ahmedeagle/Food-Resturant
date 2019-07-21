@@ -51,16 +51,19 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'api_auth'  => \App\Http\Middleware\api_auth::class,
-        'api_token'  => \App\Http\Middleware\api_token::class,
-        'user_phone_active'  => \App\Http\Middleware\user_phone_active::class,
-        'provider_phone_active'  => \App\Http\Middleware\provider_phone_active::class,
-        'providerorbranch'       => \App\Http\Middleware\providerorbranch::class,
+        'auth'                    => \App\Http\Middleware\Authenticate::class,
+        'auth.basic'              => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'                => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'                     => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'                   => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'                => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'api_auth'                => \App\Http\Middleware\api_auth::class,
+        'api_token'               => \App\Http\Middleware\api_token::class,
+        'user_phone_active'       => \App\Http\Middleware\user_phone_active::class,
+        'provider_phone_active'   => \App\Http\Middleware\provider_phone_active::class,
+        'providerorbranch'        => \App\Http\Middleware\providerorbranch::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
     ];
 }

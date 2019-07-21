@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function __construct()
     {
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         if(!(auth("provider")->check() || auth("branch")->check())){
             return redirect("/login");
         }

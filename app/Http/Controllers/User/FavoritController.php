@@ -60,7 +60,7 @@ class FavoritController extends Controller
 
     public function remove($id){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $check = DB::table("branches")
                     ->where("branches.id", $id)
                     ->select(
@@ -83,7 +83,7 @@ class FavoritController extends Controller
     public function add($id){
 
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $check = DB::table("branches")
                     ->join("providers", "providers.id", "branches.provider_id")
                     ->where("branches.id", $id)

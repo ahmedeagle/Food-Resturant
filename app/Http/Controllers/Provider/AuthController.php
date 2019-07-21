@@ -48,7 +48,7 @@ class AuthController extends Controller
 
     public function post_activate_phone(Request $request){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $rules = [
 
             "code"    => "required",

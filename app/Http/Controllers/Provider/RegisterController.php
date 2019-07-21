@@ -12,7 +12,7 @@ class RegisterController extends Controller
 {
     public function post_register(Request $request){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
 
         $rules = [

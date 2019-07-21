@@ -13,7 +13,7 @@ class LoginController extends Controller
 
 
         // validation
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         $rules = [
 
             "user-data"        => "required",
@@ -55,12 +55,17 @@ class LoginController extends Controller
                 ->where("phone" , $credential)
                  ->orwhere("phone" , '0'.$credential)
                 ->first();
+
+
             if($user == null){
                 return redirect()->back()->with("user-error", trans("messages.no.record.found"));
             }
         }else{
             return redirect()->back()->with("user-error", trans("messages.invalid.email.phone"));
         }
+
+
+
         if (Auth::attempt([$data => $credential, 'password' => $password]) || Auth::attempt([$data => '0'.$credential, 'password' => $password])) {
             // login user
             $user = \App\User::where($data , $credential)->orwhere($data ,'0'.$credential)->first();

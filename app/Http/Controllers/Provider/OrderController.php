@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         
         
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         if(!(auth("provider")->check() || auth("branch")->check())){
             return redirect("/login");
         }
@@ -202,7 +202,7 @@ class OrderController extends Controller
 
     public function accept_order($id){
 
-        App()->setLocale("ar");
+//        App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
             ->first();
@@ -256,7 +256,7 @@ class OrderController extends Controller
     }
     public function decline_order($id){
 
-        App()->setLocale("ar");
+//        App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
             ->first();
@@ -345,7 +345,7 @@ class OrderController extends Controller
     }
 
     public function processed_order($id){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $order = DB::table("orders")
                     ->where("id", $id)
                     ->first();
@@ -401,7 +401,7 @@ class OrderController extends Controller
 
     public function finish_order($id){
 
-        App()->setLocale("ar");
+//        App()->setLocale("ar");
         $order = DB::table("orders")
                     ->where("id", $id)
                     ->first();

@@ -43,7 +43,7 @@ class ProfileController extends Controller
 
     public function post_profile_page(Request $request){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $user = \App\User::find(auth()->id());
 
@@ -123,7 +123,7 @@ class ProfileController extends Controller
 
     public function change_password(Request $request){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
         $rules = [
             "old-password"    => "required",
@@ -159,7 +159,7 @@ class ProfileController extends Controller
     }
 
     public function edit_logo(Request $request){
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
         $rules = [
             "image"      => "required"

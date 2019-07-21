@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function post_login(Request $request){
          
         
-        App()->setLocale("ar");
+      //  App()->setLocale("ar");
         
         
         $rules = [

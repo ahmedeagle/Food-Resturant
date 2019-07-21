@@ -59,7 +59,7 @@ class HomeController extends Controller
     }
 
     public function post_food_select(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $food = explode(",", $request->input('food'));
 
         foreach($food as $f){
@@ -83,7 +83,7 @@ class HomeController extends Controller
 
     public function post_map_page(Request $request){
         
-         App()->setLocale("ar");
+        // App()->setLocale("ar");
         $rules = [
             "lat" => "required",
             "lng" => "required"
@@ -122,7 +122,7 @@ class HomeController extends Controller
     }
 
     public function post_cat_select(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $food = explode(",", $request->input('food'));
 
         foreach($food as $f){

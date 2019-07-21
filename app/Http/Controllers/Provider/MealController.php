@@ -18,7 +18,7 @@ class MealController extends Controller
 
     public function get_add_meal(){
 
-        App()->setLocale("ar");
+   //     App()->setLocale("ar");
         $data['title'] = " - صنف جديد";
         $data['class'] = "page-template food-menu";
         $data['cats']  = DB::table("mealcategories")
@@ -50,7 +50,7 @@ class MealController extends Controller
     }
 
     public function post_add_meal(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $rules = [
             "ar_name"           => "required",
@@ -312,7 +312,7 @@ class MealController extends Controller
 
     public function get_meals(){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $data['title'] = " - كل الأصناف";
         $data['class'] = "page-template food-menu all-kinds";
@@ -427,7 +427,7 @@ class MealController extends Controller
     }
 
     public function post_edit_meal(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $rules = [
             "ar_name"           => "required",
@@ -640,8 +640,8 @@ class MealController extends Controller
     }
 
     public function stop_meal($id){
-        App()->setLocale('ar');
-        App()->setLocale('ar');
+       // App()->setLocale('ar');
+        //App()->setLocale('ar');
         if(!$this->check_id($id)){
             return redirect("/restaurant/dashboard");
         }
@@ -657,7 +657,7 @@ class MealController extends Controller
     }
 
     public function activate_meal($id){
-        App()->setLocale('ar');
+       // App()->setLocale('ar');
 
         if(!$this->check_id($id)){
             return redirect("/restaurant/dashboard");
@@ -673,7 +673,7 @@ class MealController extends Controller
     }
 
     public function delete_meal($id){
-        App()->setLocale('ar');
+       // App()->setLocale('ar');
 
         if(!$this->check_id($id)){
             return redirect("/restaurant/dashboard");
@@ -716,7 +716,7 @@ class MealController extends Controller
 
     public function get_meal_categories(){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $data['title'] = " - التصنيفات";
         $data['class'] = "page-template food-menu category";
 
@@ -757,7 +757,7 @@ class MealController extends Controller
     }
 
     public function post_edit_meal_cat(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $rules = [
 
             "ar_name"   => "required",
@@ -786,7 +786,7 @@ class MealController extends Controller
     }
 
     public function post_new_cat(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $rules = [
 
             "ar_name"   => "required",
@@ -817,7 +817,7 @@ class MealController extends Controller
     }
 
     public function get_stop_meal_cat($id){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $cat = $this->check_cat($id);
         if($cat == false){
             return redirect("/restaurant/dashboard");
@@ -832,7 +832,7 @@ class MealController extends Controller
     }
 
     public function get_activate_meal_cat($id){
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         $cat = $this->check_cat($id);
         if($cat == false){
             return redirect("/restaurant/dashboard");
@@ -846,7 +846,7 @@ class MealController extends Controller
         return redirect("/restaurant/food-menu/categories")->with("success", trans("messages.success"));
     }
     public function get_delete_meal_cat($id){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $cat = $this->check_cat($id);
         if($cat == false){
             return redirect("/restaurant/dashboard");

@@ -10,7 +10,7 @@ class BalanceController extends Controller
 {
     public function __construct()
     {
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
     }
 
     public function get_balance_page(){

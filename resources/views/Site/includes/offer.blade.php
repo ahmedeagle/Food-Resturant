@@ -1,6 +1,6 @@
 <section id="offers" class="offers py-5">
     <header class="section-header">
-        <h2 class="section-title text-center font-body-heavy">العروض</h2>
+        <h2 class="section-title text-center font-body-heavy">{{trans('site.offers')}}</h2>
     </header><!-- .section-header -->
     <div class="section-content mt-5">
 
@@ -62,7 +62,7 @@
                     </ol>
                 @else
                     <div class="position-relative mt-4 pr-0">
-                        <p>قائمة العروض فارغة</p>
+                        <p>{{trans('site.empty_offer_list')}}</p>
                     <div>
                 @endif
             </div><!-- .offers-slider -->

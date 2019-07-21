@@ -200,7 +200,7 @@ class CartController extends Controller
 
     public function remove_cart_meal($key){
 
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
         if(!Session::has("basket.{$key}")){
             return redirect("/user/dashboard");
         }
@@ -466,7 +466,7 @@ class CartController extends Controller
     public function post_complete_order(Request $request){
         date_default_timezone_set('Asia/Riyadh');
           
-        App()->setLocale("ar");
+        //App()->setLocale("ar");
 
         if(!Session::has("basket")){
             return redirect("/user/dashboard");

@@ -65,7 +65,7 @@ class ProfileController extends Controller
     public function post_profile(Request $request){
 
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $provider = Provider::find(auth("provider")->id());
         $rules = [
@@ -131,7 +131,7 @@ class ProfileController extends Controller
     }
 
     public function edit_logo(Request $request){
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $rules = [
             "image"                     => "required"
@@ -177,7 +177,7 @@ class ProfileController extends Controller
 
     public function change_password(Request $request){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $rules = [
             "old-password"    => "required",
@@ -314,7 +314,7 @@ public function change_resturant_categories(){
 
 public function post_change_meal_type(Request $request){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         $food = explode(",", $request->input('food'));
 
         DB::table("provider_mealsubcategories")
@@ -337,7 +337,7 @@ public function post_change_meal_type(Request $request){
   public function post_change_resturant_categories(Request $request){
         
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
         //$cats = explode(",", $request->input('cats'));
         
          
@@ -380,7 +380,7 @@ public function post_change_meal_type(Request $request){
 
     public function post_change_map_address(Request $request){
 
-         App()->setLocale("ar");
+       //  App()->setLocale("ar");
         $rules = [
 
             "new-lat"   => "required",

@@ -16,17 +16,17 @@
                     <ul class="navbar-nav pr-0 flex-column flex-md-row justify-content-md-between font-body-bold">
                         <li class="nav-item text-center">
                             <a href="@if(auth('provider')->check()) {{ url("/restaurant/page/2") }} @elseif(auth()->check()) {{ url("/user/page/2") }} @else {{ url("/page/2") }} @endif" class="nav-link text-white">
-                                سياسة الخصوصية
+                                {{trans('site.privacy')}}
                             </a>
                         </li>
                         <li class="nav-item text-center">
                             <a href="@if(auth('provider')->check()) {{ url("/restaurant/page/1") }} @elseif(auth()->check()) {{ url("/user/page/1") }} @else {{ url("/page/1") }} @endif" class="nav-link text-white">
-                                إتفاقية الإستخدام
+                                 {{trans('site.usage')}}
                             </a>
                         </li>
                         <li class="nav-item text-center">
                             <a href="@if(auth('provider')->check()) {{ url("/restaurant/contact-us/open-new-ticket") }} @elseif(auth()->check()) {{ url("/user/tickets") }} @else {{ url("/#contact") }} @endif" class="nav-link text-white ml-md-0 pl-md-0">
-                                إتصل بنا
+                                {{trans('site.contact_us')}}
                             </a>
                         </li>
                     </ul>
@@ -39,9 +39,9 @@
         <div class="container">
             <div class="d-flex flex-sm-row flex-column justify-content-sm-between justify-content-center">
 
-                <p class="copyright d-sm-block d-flex justify-content-center">جميع الحقوق محفوظة 2018 ©</p>
+                <p class="copyright d-sm-block d-flex justify-content-center">{{trans('site.copyright')}} 2018 ©</p>
 
-                <p class="copyright d-sm-block d-flex justify-content-center">تصميم بواسطة WISYST</p>
+                <p class="copyright d-sm-block d-flex justify-content-center"> {{trans('site.developedBy')}} WISYST</p>
 
             </div><!-- .d-flex -->
         </div><!-- .container -->
