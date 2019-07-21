@@ -111,7 +111,16 @@ return [
     "change"                            => "Change",
     "enter_your_phone"                  => "Please Enter Your Phone Number",
     "male"                              => "Male", 
-    "female"                            => "Female "
+    "female"                            => "Female ",
+    "hello_mjrb"                        => "Welcome To Mjrb ",
+    "profile"                           => "Profile",
+    "reservations"                      => "Reservations ",
+    "orders"                            => "Orders ",
+    "favourite"                         => "Favourites",
+    "logout"                            => "Logout",
+    "from"                              => "From",
+    "to"                                => "To",
+    "closed"                            => "Closed ",
     
 
 

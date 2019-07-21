@@ -110,7 +110,17 @@ return [
     "change"                            => "تغيير",
     "enter_your_phone"                  => "من فضلك ادخل رقم الهاتف الخاص بكم ",
     "male"                              => "ذكر ", 
-    "female"                            => "أنثي "
+    "female"                            => "أنثي ",
+    "hello_mjrb"                        => "مرحبا بك لفي مجرب ",
+    "profile"                           => "الملف الشخصي",
+    "reservations"                      => "ألحجوزات ",
+    "orders"                            => "الطلبات ",
+    "favourite"                         => "المفض ة ",
+    "logout"                            => "الخروج ",
+    "from"                              => "من",
+    "to"                                => "إلي",
+    "closed"                            => "مغلق ",
+
 
 
 
