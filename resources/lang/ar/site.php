@@ -1,4 +1,5 @@
 <?php
+
 return [
     "service-provider-exists"           => "نوع مقدم الخدمة غير صحيح",
     "automatic-list-in"                 => "اختيار القائمة الالكترونية غير صحيح",
