@@ -49,6 +49,8 @@ class Login extends Controller {
              return redirect()->back()->with("error" , 'كلمة المرور خاطئة');//
         
     }
+
+    //
     public function logout(){
         Auth::guard("admin")->logout();
         return redirect("/admin/login");
