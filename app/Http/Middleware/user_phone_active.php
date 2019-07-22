@@ -16,7 +16,7 @@ class user_phone_active
     public function handle($request, Closure $next)
     {
         
-        if(auth()->user()->phoneactivated == "0" && auth()->user()->is_social == "0"){
+        if(auth()->guard('web')->user()->phoneactivated == "0" && auth()->guard('web')->user()->is_social == "0"){
             return redirect("/user/activate-phone");
         }
         return $next($request);
