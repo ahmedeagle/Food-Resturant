@@ -65,7 +65,7 @@ class LoginController extends Controller
         }
 
 
-            return auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password]);
+            dd(auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password]));
 
 
         if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password])) {
