@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
          
 
-            //Auth::shouldUse('admin');   // if you use different guard from different tables 
+            //Auth::shouldUse('admin');    if you use different guard from different tables 
             //here gate will applayed to all gaurds 
             
              if(auth()->guard('admin')->check()){
