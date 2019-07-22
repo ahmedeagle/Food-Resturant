@@ -35,17 +35,7 @@ class AuthServiceProvider extends ServiceProvider
             });*/
 
              
-
-            //apply only on  current gaurd
-
-            foreach (config('global.permissions') as $ability => $value) {
-            Gate::define($ability, function ($user) use ($ability){
-                return $user->hasAbility($ability);
-            });
-
-
- 
-
+           
         }
         
     }
