@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use DB;
+use guard;
 use Validator;
 class LoginController extends Controller
 {
@@ -65,13 +66,10 @@ class LoginController extends Controller
         }
 
 
-            dd(auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password]));
-
-
         if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password])) {
             // login user
             $user = \App\User::where($data , $credential)->orwhere($data ,'0'.$credential)->first();
-            auth()->login($user);
+            auth()->guard('web')->login($user);
             return redirect("/user/dashboard");
         }else{
             return redirect()->back()->with("user-error", trans("messages.invalid.credential"));
