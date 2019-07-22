@@ -55,7 +55,7 @@ class TicketController extends Controller
             ->insertGetId([
                 "title" => $title,
                 "type_id" => $type,
-                "actor_id" => auth()->id(),
+                "actor_id" => auth('web')->id(),
                 "actor_type" => "user"
             ]);
 
@@ -72,7 +72,7 @@ class TicketController extends Controller
 
     public function get_tickets(){
         $data['tickets'] = DB::table("tickets")
-                                ->where("actor_id", auth()->id())
+                                ->where("actor_id", auth('web')->id())
                                 ->where("actor_type", "user")
                                 ->select(
                                     "tickets.id",
@@ -97,7 +97,7 @@ class TicketController extends Controller
             return redirect("/user/dashboard");
         }
 
-        if($ticketTest->actor_id != auth()->id()){
+        if($ticketTest->actor_id != auth('web')->id()){
             return redirect("/user/dashboard");
         }
 

@@ -10,7 +10,7 @@ class BalanceController extends Controller
     public static function get_balance(){
         $balance = DB::table("balances")
                         ->where("actor_type", "user")
-                        ->where("actor_id", auth()->id())
+                        ->where("actor_id", auth('web')->user()->id)
                         ->first();
 
         if($balance){

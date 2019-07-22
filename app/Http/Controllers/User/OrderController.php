@@ -39,7 +39,7 @@ class OrderController extends Controller
                     ->join("order_statuses", "order_statuses.id", "orders.order_status_id")
                     ->join("payment_methods", "payment_methods.id", "orders.payment_id")
                     ->whereIn("orders.order_status_id", $filter)
-                    ->where("orders.user_id", auth()->id())
+                    ->where("orders.user_id", auth('web')->id())
                     ->orderBy("orders.id", "DESC")
                     ->select(
                         "orders.id AS order_id",
@@ -72,9 +72,9 @@ class OrderController extends Controller
             return redirect("/user/dashboard");
         }
 
-        if(auth()->check()){
+        if(auth('web')->check()){
             $user_id = (new \App\Http\Controllers\Provider\GeneralController())->get_order_provider_id($order->id, true);
-            if($user_id != auth()->id()){
+            if($user_id != auth('web')->id()){
                 return redirect("user/dashboard");
             }
         }

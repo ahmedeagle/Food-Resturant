@@ -115,9 +115,9 @@ class BranchController extends Controller
 
         $branch->image_logo_url = $logo->logo_image;
         
-        if(auth()->user()){
+        if(auth('web')->user()){
             $userData = DB::table("users")
-                            ->where("id" , auth()->id())
+                            ->where("id" , auth('web')->id())
                             ->first();
             if(!$userData){
                 return rdirect()->back()->with("error", trans("messages.error"));
@@ -125,7 +125,7 @@ class BranchController extends Controller
             
             $user  = DB::table("provider_favorits")
                         ->where("provider_id" , $branch-> id)
-                        ->where("user_id" , auth()->id())
+                        ->where("user_id" , auth('web')->id())
                         ->select("*")
                         ->first();
             if($user){
@@ -244,13 +244,13 @@ class BranchController extends Controller
 
 
 
-        if(auth()->user()){
-            $user = \App\User::where("id" , auth()->id())->first();
+        if(auth('web')->user()){
+            $user = \App\User::where("id" , auth('web')->id())->first();
             if($user == null){
                 return redirect()->back()->with("error", trans("messages.error"));
             }
             $userRates = DB::table("rates")
-                ->where("user_id" , auth()->id())
+                ->where("user_id" , auth('web')->id())
                 ->where("branch_id" , $id)
                 ->select(
                     DB::raw("SUM(service) AS service_sum"),
@@ -269,7 +269,7 @@ class BranchController extends Controller
                 $branch->is_user_rate_branch    = true;
 
                 // check if the user can make rate
-                $user_id = auth()->id();
+                $user_id = auth('web')->id();
                 $branch->is_user_can_rate  = ( new \App\Http\Controllers\Apis\User\BranchController() )->check_user_can_rate($user_id, $id);
 
                 $s = $userRates->service_sum / $userRates->count;

@@ -23,7 +23,7 @@ class NotificationController extends Controller
         // update seen notification
         DB::table("admin_notifications_receivers")
                     ->join("admin_notifications", "admin_notifications.id", "admin_notifications_receivers.notification_id")
-                    ->where("admin_notifications_receivers.actor_id", auth()->id())
+                    ->where("admin_notifications_receivers.actor_id", auth('web')->id())
                     ->where("admin_notifications.type", "users")
                     ->update([
 
@@ -32,7 +32,7 @@ class NotificationController extends Controller
                     ]);
 
         DB::table("notifications")
-                    ->where("actor_id", auth()->id())
+                    ->where("actor_id", auth('web')->id())
                     ->where("actor_type", "user")
                     ->update([
 
@@ -48,7 +48,7 @@ class NotificationController extends Controller
 
         $adminNotification = DB::table("admin_notifications_receivers")
                                 ->join("admin_notifications", "admin_notifications.id", "admin_notifications_receivers.notification_id")
-                                ->where("admin_notifications_receivers.actor_id", auth()->id())
+                                ->where("admin_notifications_receivers.actor_id", auth('web')->id())
                                 ->where("admin_notifications.type", "users")
                                 ->select(
                                     "admin_notifications.title AS notification_title",
@@ -60,7 +60,7 @@ class NotificationController extends Controller
 
 
         $notifications = DB::table("notifications")
-                            ->where("actor_id", auth()->id())
+                            ->where("actor_id", auth('web')->id())
                             ->where("actor_type", "user")
                             ->select(
                                 "notifications.ar_title AS notification_title",

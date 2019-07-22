@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Session;
+use guard;
 
 class AuthController extends Controller
 {
@@ -17,7 +18,7 @@ class AuthController extends Controller
 
     public function get_activate_phone(){
 
-        if(auth()->user()->phoneactivated == "1"){
+        if(auth()->guard('web')->user()->phoneactivated == "1"){
 
             return redirect("/user/dashboard");
 
@@ -48,7 +49,7 @@ class AuthController extends Controller
         $code = $request->input("code");
 
 
-        $hash = json_decode(auth()->user()->activate_phone_hash);
+        $hash = json_decode(auth('web')->user() -> activate_phone_hash);
         //if (\Carbon\Carbon::now()->gt(Carbon::createFromTimestamp($hash->expiry))) {
         //    return redirect()->back()->with("error", trans("messages.register.active.expire"));
         //}
@@ -58,7 +59,7 @@ class AuthController extends Controller
         }
 
         DB::table("users")
-                ->where("id", auth()->id())
+                ->where("id", auth('web')->user()->id)
                 ->update([
                     "phoneactivated" => "1",
                     "activate_phone_hash" => ""
@@ -89,13 +90,13 @@ class AuthController extends Controller
         ]);
 
         $user = DB::table("users")
-                ->where("id", auth()->id())
+                ->where("id", auth('web')->user()->id)
                 ->update([
                     "activate_phone_hash" => $hash
                 ]);
 
         $message = "رقم الدخول الخاص بك هو :- " .$code ;
-        $res = (new \App\Http\Controllers\Apis\User\SmsController())->send($message , auth()->user()->phone);
+        $res = (new \App\Http\Controllers\Apis\User\SmsController())->send($message , auth('web')->user()->phone);
         return redirect("/user/activate-phone")->with("success", "تم ارسال رقم تفعيل جديد على رقم الهاتف");
     }
 

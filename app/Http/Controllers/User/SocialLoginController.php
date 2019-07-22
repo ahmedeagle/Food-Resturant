@@ -72,7 +72,7 @@ class SocialLoginController extends Controller
         if($userData){
 
             $user = \App\User::find($userData->id);
-            auth()->login($user);
+            auth('web')->login($user);
             return true;
 
         }else{
@@ -111,7 +111,7 @@ class SocialLoginController extends Controller
 
             $user = User::create($data);
 
-            auth()->login($user);
+            auth('web')->login($user);
             return true;
         }
 

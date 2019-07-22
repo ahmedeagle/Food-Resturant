@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use guard;
 class FavoritController extends Controller
 {
     public function get_favorites(){
@@ -12,15 +13,15 @@ class FavoritController extends Controller
         $data['class'] = 'front-page page-template';
         
         
-          $lat   = auth()  -> user() -> latitude;
-         $long   = auth()  -> user() -> longitude;
+          $lat   = auth('web')  -> user() -> latitude;
+         $long   = auth('web')  -> user() -> longitude;
 
 
         $branches  = DB::table("provider_favorits")
                                              ->join("branches" , "branches.id" ,"provider_favorits.provider_id")
                                             ->join("providers" , "providers.id" , "branches.provider_id")
                                             ->join('images' , 'images.id' , 'providers.image_id')
-                                            ->where('provider_favorits.user_id' ,  auth()->id())
+                                            ->where('provider_favorits.user_id' ,  auth('web')->id())
                                             ->where('branches.published' , "1")
                                             ->orderBy('branches.id' , 'DESC')
                                             ->select(
@@ -73,7 +74,7 @@ class FavoritController extends Controller
         }
 
         DB::table("provider_favorits")
-                ->where("user_id", auth()->id())
+                ->where("user_id", auth('web')->id())
                 ->where("provider_id", $check-> id)
                 ->delete();
 
@@ -97,7 +98,7 @@ class FavoritController extends Controller
         }
 
         $fav = DB::table("provider_favorits")
-                    ->where("user_id", auth()->id())
+                    ->where("user_id", auth('web')->id())
                     ->where("provider_id", $check->provider_id)
                     ->first();
 
@@ -106,7 +107,7 @@ class FavoritController extends Controller
         }
         DB::table("provider_favorits")
                     ->insert([
-                        "user_id" => auth()->id(),
+                        "user_id" => auth('web')->id(),
                         "provider_id" => $check->provider_id
                     ]);
 

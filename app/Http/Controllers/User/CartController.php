@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Session;
 use Auth;
+use guard;
 use DB;
 class CartController extends Controller
 {
@@ -762,8 +763,8 @@ class CartController extends Controller
          if($orderTotal <= 0 ){
              return response() -> json(['balanceMessage' => 'اجمالي الطلب غير صحيح', 'type' => "1"]);
          }
-         if(auth()-> check()){
-                  $userBalance = DB::table('balances') ->where('actor_id',auth() -> id()) -> where('actor_type','user') -> select('balance') -> first();
+         if(auth('web')-> check()){
+                  $userBalance = DB::table('balances') ->where('actor_id',auth('web')->user() -> id) -> where('actor_type','user') -> select('balance') -> first();
                      if($userBalance -> balance > 0 )
                      {
                          
@@ -813,7 +814,7 @@ class CartController extends Controller
             "payment_id"         =>  $payment_method,
             "order_status_id"    =>  1,
             "branch_id"          =>  $branch_id,
-            "user_id"            =>  auth()->id(),
+            "user_id"            =>  auth('web')->user()->id,
             "process_number"     =>  ""
         ];
 
@@ -845,14 +846,14 @@ class CartController extends Controller
             }
 
             $user_balance = DB::table("balances")
-                            ->where("actor_id", auth()->id())
+                            ->where("actor_id", auth('web')->user()->id)
                             ->where("actor_type", "user")
                             ->first();
 
             if($user_balance){
 
                 DB::table("balances")
-                    ->where("actor_id", auth()->id())
+                    ->where("actor_id", auth('web')->user()->id)
                     ->where("actor_type", "user")
                     ->update([
                         "balance" => ($user_balance->balance - $usedBalance)
@@ -865,7 +866,7 @@ class CartController extends Controller
 
                 $notif_data = array();
                 
-                $content = "  هناك طلب جديد من المستخدم ".auth() -> user() -> name;
+                $content = "  هناك طلب جديد من المستخدم ".auth('web') -> user() -> name;
 
                 $notif_data['title']      = 'مجرب';
                 $notif_data['body']       = $content;
@@ -938,7 +939,7 @@ class CartController extends Controller
     public function get_user_balance(){
         // check user balance
         $balance = DB::table("balances")
-                    ->where("actor_id", auth()->id())
+                    ->where("actor_id", auth('web')->user()->id
                     ->where("actor_type", "user")
                     ->first();
 
@@ -1071,8 +1072,8 @@ class CartController extends Controller
          if($orderTotal <= 0 ){
              return response() -> json(['balanceMessage' => 'اجمالي الطلب غير صحيح', 'type' => "1"]);
          }
-         if(auth()-> check()){
-                  $userBalance = DB::table('balances') ->where('actor_id',auth() -> id()) -> where('actor_type','user') -> select('balance') -> first();
+         if(auth('web')-> check()){
+                  $userBalance = DB::table('balances') ->where('actor_id',auth('web')->user() -> id) -> where('actor_type','user') -> select('balance') -> first();
                      if($userBalance -> balance > 0 )
                      {
                          

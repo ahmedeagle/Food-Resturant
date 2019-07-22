@@ -40,7 +40,7 @@ class CommentController extends Controller
 
         if($request->input("service") != "0" && $request->input("quality") != "0" && $request->input("cleanliness") != "0") {
 
-            $user_id = auth()->id();
+            $user_id = auth('web')->id();
             $service = $request->input("service");
             $quality = $request->input("quality");
             $cleanliness = $request->input("cleanliness");
@@ -115,7 +115,7 @@ class CommentController extends Controller
                 ->insert([
                     "comment" => $request->input("comment"),
                     "branch_id" => $id,
-                    "user_id" => auth()->id()
+                    "user_id" => auth('web')->id()
                 ]);
 
 

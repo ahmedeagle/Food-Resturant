@@ -14,7 +14,7 @@ class PaymentController extends Controller
     protected $access_token = "xru0xOaVxn7vurcB7v4SGN8syKh2nsjUUOVrC6m9ttFYVRA2nEU3s3v1NN3afn49b0BN6XXArCymu8oRNjVfmqh9ekjuIoEUofHv";
     public function get_payment_page(){
 
-        $user_name_arr = explode(" ", auth()->user()->name);
+        $user_name_arr = explode(" ", auth('web')->user()->name);
 
         $order_data = (array)Session::get("order_data");
 
@@ -29,12 +29,12 @@ class PaymentController extends Controller
         $result = $pt->create_pay_page(array(
             "merchant_email" => $this->merchant_email,
             'secret_key' => $this->access_token,
-            'title' => auth()->user()->name,
+            'title' => auth('web')->user()->name,
             'cc_first_name' => $user_name_arr[0],
             'cc_last_name' => (isset($user_name_arr[1])) ? $user_name_arr[1] : $user_name_arr[0] ,
-            'email' => auth()->user()->email,
+            'email' => auth('web')->user()->email,
             'cc_phone_number' => "966",
-            'phone_number' => auth()->user()->phone,
+            'phone_number' => auth('web')->user()->phone,
             'billing_address' => "Juffair, Manama, Bahrain",
             'city' => "Manama",
             'state' => "Capital",
@@ -126,14 +126,14 @@ class PaymentController extends Controller
 
             // update user balance
             $user_balance = DB::table("balances")
-                            ->where("actor_id", auth()->id())
+                            ->where("actor_id", auth('web')->id())
                             ->where("actor_type", "user")
                             ->first();
 
             if($user_balance){
 
                 DB::table("balances")
-                    ->where("actor_id", auth()->id())
+                    ->where("actor_id", auth('web')->id())
                     ->where("actor_type", "user")
                     ->update([
                         "balance" => ((int)$user_balance->balance - (int)$usedBalance)
@@ -166,7 +166,7 @@ class PaymentController extends Controller
 
                 $notif_data = array();
                 
-                $content = "  هناك طلب جديد من المستخدم ".auth() -> user() -> name;
+                $content = "  هناك طلب جديد من المستخدم ".auth('web') -> user() -> name;
 
                 $notif_data['title']      = 'مجرب';
                 $notif_data['body']       = $content;

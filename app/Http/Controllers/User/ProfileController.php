@@ -20,16 +20,16 @@ class ProfileController extends Controller
                                 ->get();
 
         foreach ($data['countries'] as $key => $value){
-            if($value->active == "0" && $value->id != auth()->user()->country_id){
+            if($value->active == "0" && $value->id != auth('web')->user()->country_id){
                 unset($data['countries'][$key]);
             }
         }
         $data['cities'] = DB::table("cities")
-                               ->where("country_id", auth()->user()->country_id)
+                               ->where("country_id", auth('web')->user()->country_id)
                                ->get();
 
         foreach ($data['cities'] as $key => $value){
-            if($value->active == "0" && $value->id != auth()->user()->city_id){
+            if($value->active == "0" && $value->id != auth('web')->user()->city_id){
                 unset($data['cities'][$key]);
             }
         }
@@ -45,7 +45,7 @@ class ProfileController extends Controller
 
        // App()->setLocale("ar");
 
-        $user = \App\User::find(auth()->id());
+        $user = \App\User::find(auth('web')->id());
 
         $rules = [
 
@@ -114,7 +114,7 @@ class ProfileController extends Controller
         }
 
         $id = DB::table("users")
-                    ->where("id", auth()->id())
+                    ->where("id", auth('web')->id())
                     ->update($data);
 
         return redirect()->back()->with("success", trans("messages.success"));
@@ -143,13 +143,13 @@ class ProfileController extends Controller
             return redirect("/user/profile#change-password-form")->withErrors($validator)->withInput();
         }
 
-        if(!Hash::check($request->input("old-password"), auth()->user()->password)){
+        if(!Hash::check($request->input("old-password"), auth('web')->user()->password)){
             return redirect("/user/profile#change-password-form")->with("edit-password-error", "الرقم السرى غير صحيح");
         }
         // insert into database
 
         DB::table("users")
-            ->where("id", auth()->id())
+            ->where("id", auth('web')->id())
             ->update([
                 'password'  => bcrypt($request->input("password"))
             ]);
@@ -188,7 +188,7 @@ class ProfileController extends Controller
                     "name" => $request->image->hashName()
                 ]);
             DB::table("users")
-                ->where("id", auth()->id())
+                ->where("id", auth('web')->id())
                 ->update([
                     "image_id" => $img_id
                 ]);
@@ -205,7 +205,7 @@ class ProfileController extends Controller
 
     public static function get_image(){
         $img = DB::table("images")
-                    ->where("id", auth()->user()->image_id)
+                    ->where("id", auth('web')->user()->image_id)
                     ->select(
                         DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS image")
                     )->first();

@@ -85,7 +85,7 @@ class RegisterController extends Controller
                  
                  
         $loginuser = \App\User::find($user);
-        auth()->login($loginuser);
+        auth('web')->login($loginuser);
         
         return redirect("/user/activate-phone");
 

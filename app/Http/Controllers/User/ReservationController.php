@@ -42,7 +42,7 @@ class ReservationController extends Controller
                             ->join("users", "users.id", "reservations.user_id")
                             ->leftjoin("images", "images.id", "users.image_id")
                             ->join("reservation_statuses", "reservation_statuses.id", "reservations.status_id")
-                            ->where("reservations.user_id", auth()->id())
+                            ->where("reservations.user_id", auth('web')->id())
                             ->whereIn("reservations.status_id", $filter)
                             ->orderBy("reservations.id", "DESC")
                             ->select(
@@ -81,9 +81,9 @@ class ReservationController extends Controller
             return redirect("/user/dashboard");
         }
 
-        if(auth()->check()){
+        if(auth('web')->check()){
             $user_id = (new \App\Http\Controllers\Provider\GeneralController())->get_reservation_provider_id($reservation->id,true);
-            if($user_id != auth()->id()){
+            if($user_id != auth('web')->id()){
                 return redirect("user/dashboard");
             }
         }
@@ -318,7 +318,7 @@ class ReservationController extends Controller
                 "special_reservation"  => $special,
                 "occasion_description" => $special_decription,
                 "branch_id"            => $id,
-                "user_id"              => auth()->id(),
+                "user_id"              => auth('web')->id(),
                 "status_id"            => 1
             ]);
 
@@ -337,7 +337,7 @@ class ReservationController extends Controller
             return redirect("/user/dashboard");
         }
 
-        if($check->user_id != auth()->id()){
+        if($check->user_id != auth('web')->id()){
             return redirect("/user/dashboard");
         }
 
