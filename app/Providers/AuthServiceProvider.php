@@ -29,8 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
             //Auth::shouldUse('admin');    if you use different guard from different tables 
             //here gate will applayed to all gaurds 
-            
-                 
+                    
                   foreach (config('global.permissions') as $ability => $value) {
                     Gate::define($ability, function ($auth) use ($ability){
                         return $auth->hasAbility($ability);
