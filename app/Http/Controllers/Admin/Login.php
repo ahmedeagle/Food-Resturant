@@ -49,8 +49,15 @@ class Login extends Controller {
         $data = \App\Admin::find($admin->id);
         if(Hash::check($request->input("password"), $data->password) ){
             // login the user
-            Auth::guard('admin')->login($data ,$request->has('remember'));
-            return redirect("/admin/dashboard");
+               if(Auth::guard('admin')->login($data ,$request->has('remember'))){
+
+                     return redirect("/admin/dashboard");
+               }else{
+
+                    return redirect()->back()->with("error" , 'البيانات خطا من فضلك حاول مجددا ');
+
+               }
+            
         }else{
             return redirect()->back()->with("error" , 'كلمة المرور خاطئة');
         }
