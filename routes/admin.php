@@ -11,14 +11,11 @@
 |
 */
 
-
-  //cron job to check if subscription expired
+       //cron job to check if subscription expired
        // Route::get("/subscription" , "Admin\Providers@check_subscription");
+            
         
-        
-        
-        
-Route::middleware(['web' , 'auth:admin'])->prefix('admin')->group(function(){
+Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
 
 
     Route::get('/dashboard', "Admin\Dashboard@index") -> middleware('can:dashboard');
