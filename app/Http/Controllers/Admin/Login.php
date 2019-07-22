@@ -41,29 +41,18 @@ class Login extends Controller {
             return redirect()->back()->with("error" , 'لم نجد أي سجلات لهذا البريد الالكتروني.');
         }
 
-//        if ( !auth()->guard('admin')->attempt(['email' =>  $request->input("email"), 'password' =>  $request->input("password")]) ) {
-//            //session()->flash('fail', 'كلمة المرور خاطئة.');
-//            //return back()->withInput();
-//            return redirect()->back()->with("error" , 'كلمة المرور خاطئة');
-//        }
-        $data = \App\Admin::find($admin->id);
-        if(Hash::check($request->input("password"), $data->password) ){
-            // login the user
-               if(Auth::guard('admin')->login($data ,$request->has('remember'))){
-
-                     return redirect("/admin/dashboard");
-               }else{
-
-                    return redirect()->back()->with("error" , 'البيانات خطا من فضلك حاول مجددا ');
-
-               }
-            
-        }else{
+        if ( !auth()->guard('admin')->attempt(['email' =>  $request->input("email"), 'password' =>  $request->input("password")]) ) {
+                 session()->flash('fail', 'كلمة المرور خاطئة.');
+                 return back()->withInput();
             return redirect()->back()->with("error" , 'كلمة المرور خاطئة');
-        }
+       }
+
+
+       return redirect('admin/dashboard');
+       
     }
-	public function logout(){
+    public function logout(){
         Auth::guard("admin")->logout();
         return redirect("/admin/login");
-	}
+    }
 }
