@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-            Auth::shouldUse('admin');   // if you use different guard from different tables 
+         //   Auth::shouldUse('admin');   // if you use different guard from different tables 
 
           foreach (config('global.permissions') as $ability => $value) {
             Gate::define($ability, function ($auth) use ($ability){

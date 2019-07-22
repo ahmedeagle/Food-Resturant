@@ -45,7 +45,7 @@ return [
     "search_for_resturant_to_try"       => "قم بالبحث عن المطعم الذي تريد تجربته",
     "search_for_resturant"              => "أبحث عن مطعم ",
     "as_user"                           => "كمستخدم ",
-    "as_provider"                       => "كمقدم حدمة ",
+    "as_provider"                       => "كمقدم خدمة  ",
     "emailorphone"                      => "البريد الإلكتروني أو رقم الهاتف",
     "password"                          => "كلمة المرور ",
     "login_via"                         => "أو الدخول  عن طريق ", 
@@ -120,15 +120,6 @@ return [
     "from"                              => "من",
     "to"                                => "إلي",
     "closed"                            => "مغلق ",
-
-
-
-
-
-
-
-
-
 
 
 ]; 
