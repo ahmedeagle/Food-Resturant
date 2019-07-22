@@ -11,11 +11,11 @@
         <div class="container">
             <div class="row">
 
-                @if(auth()->check())
+                @if(auth('web')->check())
                     @include("User.includes.menu")
                 @endif
 
-                <div class="@if(auth()->check()) col-lg-9 col-md-8 @else col-lg-12 col-md-11 @endif col-12 mt-4 mt-md-0 ">
+                <div class="@if(auth('web')->check()) col-lg-9 col-md-8 @else col-lg-12 col-md-11 @endif col-12 mt-4 mt-md-0 ">
                     <div class="section-header d-flex p-3 rounded-lg bg-white shadow-around justify-content-between font-body-bold flex-lg-row flex-md-column flex-sm-row flex-column">
 
                         <h4 class="page-title mb-auto">{{ $cat_name }}</h4>

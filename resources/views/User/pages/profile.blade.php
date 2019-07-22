@@ -70,7 +70,7 @@
                                        class="form-control border-gray font-body-md text-gray"
                                        id="user-name"
                                        name="user-name"
-                                       value="{{ old("user-name", auth()->user()->name) }}"
+                                       value="{{ old('user-name', auth('web')->user()->name) }}"
                                        placeholder="محمد عبد الله"
                                        required
                                 >
@@ -92,7 +92,7 @@
                                     <option value="">يرجى تحديد الدولة</option>
 
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->id }}" @if( old("user-country") )  @if(old("user-country") == $country->id) selected @endif @else @if($country->id == auth()->user()->country_id) selected @endif @endif>{{ $country->ar_name }}</option>
+                                        <option value="{{ $country->id }}" @if( old("user-country") )  @if(old("user-country") == $country->id) selected @endif @else @if($country->id == auth('web')->user()->country_id) selected @endif @endif>{{ $country->ar_name }}</option>
                                     @endforeach
                                 </select>
 
@@ -116,7 +116,7 @@
                                         @if(old("user-country") != "")
                                             <option value="">برجاء اختيار المدينة</option>
                                             @foreach(\App\Http\Controllers\User\HelperController::get_cities(old("user-country")) as $city)
-                                                <option value="{{ $city->id }}" @if(old("user-city")) @if(old("user-city") == $city->id) selected @endif @else @if($city->id == auth()->user()->city_id) selected @endif @endif>{{ $city->ar_name }}</option>
+                                                <option value="{{ $city->id }}" @if(old("user-city")) @if(old("user-city") == $city->id) selected @endif @else @if($city->id == auth('web')->user()->city_id) selected @endif @endif>{{ $city->ar_name }}</option>
                                             @endforeach
                                         @else
                                             <option value="">برجاء تحديد الدولة اولا</option>
@@ -127,7 +127,7 @@
                                     @else
                                         <option value="">برجاء اختيار المدينة</option>
                                         @foreach($cities as $city)
-                                            <option value="{{ $city->id }}" @if(old("user-city")) @if(old("user-city") == $city->id) selected @endif @else @if($city->id == auth()->user()->city_id) selected @endif @endif>{{ $city->ar_name }}</option>
+                                            <option value="{{ $city->id }}" @if(old("user-city")) @if(old("user-city") == $city->id) selected @endif @else @if($city->id == auth('web')->user()->city_id) selected @endif @endif>{{ $city->ar_name }}</option>
                                         @endforeach
 
                                     @endif
@@ -149,8 +149,8 @@
                                 <label for="user-sax">الجنس</label>
                                 <select class="custom-select text-gray font-body-md" name="user-gender" id="user-sax" required>
                                     <option value="">يرجى تحديد الجنس</option>
-                                    <option value="1"  @if(old('user-gender')) @if(old('user-gender') == '1') selected @endif  @else @if(auth()->user()->gender == 'male') selected @endif @endif>ذكر</option>
-                                    <option value="2" @if(old('user-gender'))  @if(old('user-gender') == '2') selected @endif  @else @if(auth()->user()->gender == 'female') selected @endif @endif>أنثى</option>
+                                    <option value="1"  @if(old('user-gender')) @if(old('user-gender') == '1') selected @endif  @else @if(auth('web')->user()->gender == 'male') selected @endif @endif>ذكر</option>
+                                    <option value="2" @if(old('user-gender'))  @if(old('user-gender') == '2') selected @endif  @else @if(auth('web')->user()->gender == 'female') selected @endif @endif>أنثى</option>
                                 </select>
 
                                 @if($errors->has("user-gender"))
@@ -165,7 +165,7 @@
 
                             <div class="form-group">
                                 <label for="phone-number">العمر</label>
-                                <input type="tel" class="form-control border-gray font-body-md" value="{{ old('user-age', auth()->user()->age) }}" id="user-age" name="user-age" required>
+                                <input type="tel" class="form-control border-gray font-body-md" value="{{ old('user-age', auth('web')->user()->age) }}" id="user-age" name="user-age" required>
                                 @if($errors->has("user-age"))
                                     <div class="alert alert-danger top-margin">
                                         {{ $errors->first("user-age") }}
@@ -178,7 +178,7 @@
                                 <label for="phone-number">رقم الجوال</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md text-gray"
-                                       value="{{ old("user-phone", auth()->user()->phone) }}"
+                                       value="{{ old("user-phone", auth('web')->user()->phone) }}"
                                        id="phone-number"
                                        name="user-phone"
                                        placeholder="966-553-6556556+"
@@ -199,7 +199,7 @@
                                 <label for="email">البريد الإلكتروني</label>
                                 <input type="email"
                                        class="form-control border-gray font-body-md text-gray"
-                                       value="{{ old("user-email", auth()->user()->email) }}"
+                                       value="{{ old("user-email", auth('web')->user()->email) }}"
                                        id="email"
                                        name="user-email"
                                        placeholder="your@mail.com"

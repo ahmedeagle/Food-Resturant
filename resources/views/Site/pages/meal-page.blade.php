@@ -12,10 +12,10 @@
         <div class="container">
             <div class="row">
                 
-                @if(auth()->user())
+                @if(auth('web')->user())
                     @include("User.includes.menu")
                 @endif
-                <div class="@if(auth()->user()) col-lg-9 col-md-8 col-12 @else col-lg-12 col-md-11 col-12 @endif mt-4 mt-md-0 ">
+                <div class="@if(auth('web')->user()) col-lg-9 col-md-8 col-12 @else col-lg-12 col-md-11 col-12 @endif mt-4 mt-md-0 ">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
                         <h4 class="page-title font-body-bold">{{ $meal->ar_name }}</h4>
                     </div>
@@ -342,7 +342,7 @@
                         </div>
                     </div>
 
-                    @if(auth()->user() && $meal->accept_order == "1")
+                    @if(auth('web')->user() && $meal->accept_order == "1")
                     <div class="p-3 rounded-lg shadow-around mt-4 d-flex bg-white justify-content-center flex-column flex-sm-row">
                         <label class="col-lg-6 co-md-4 col-xl-7 font-body-md">{{trans('site.amount')}}</label>
                         <span class="count-buttom d-inline-flex px-0">

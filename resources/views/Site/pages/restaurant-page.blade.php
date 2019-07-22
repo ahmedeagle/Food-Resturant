@@ -13,10 +13,10 @@
 
             <div class="row">
 
-                @if(auth()->user())
+                @if(auth('web')->user())
                     @include("User.includes.menu")
                 @endif
-                <div class="@if(auth()->user()) col-lg-9 col-md-8 col-12 @else col-lg-12 col-md-11 col-12 @endif mt-4 mt-md-0 font-body-bold">
+                <div class="@if(auth('web')->user()) col-lg-9 col-md-8 col-12 @else col-lg-12 col-md-11 col-12 @endif mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
                         <h4 class="page-title font-body-bold">{{ $branch->name }}</h4>
                     </div>
@@ -161,7 +161,7 @@
                                     <p class="page-content font-body-md text-gray py-3 px-3 mb-0">
                                         {{ $branch->description }}
                                     </p>
-                                    @if(auth()->user())
+                                    @if(auth('web')->user())
 
                                         @if($branch->is_favorite)
                                             <a href="{{ url("/user/favorites/remove/" . $branch->id) }}">
@@ -415,7 +415,7 @@
                              role="tabpanel"
                              aria-describedby="comments-tab">
 
-                            @if(auth()->user())
+                            @if(auth('web')->user())
                                 <a href="new-branch.html"
                                    class="btn btn-primary no-decoration mt-3 px-5"
                                    data-toggle="modal"
@@ -666,7 +666,7 @@
                                             <div class="media-body">
 
                                                 <h5 class="mt-lg-2 mt-md-0 mt-xs-0 text-lg-right text-center font-body-md font-size-base">
-                                                    {{ auth()->user()->name }}
+                                                    {{ auth('web')->user()->name }}
                                                 </h5>
 
                                                 <p class="text-gray font-body-md pl-3 pr-3 pr-lg-0 pb-3 mb-0 mt-2 mt-sm-0 text-lg-right text-md-center text-sm-center text-center font-size-base">
