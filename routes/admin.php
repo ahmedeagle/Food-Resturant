@@ -11,8 +11,8 @@
 |
 */
 
-       //cron job to check if subscription expired
-       // Route::get("/subscription" , "Admin\Providers@check_subscription");
+       ////cron job to check if subscription expired
+       Route::get("/subscription" , "Admin\Providers@check_subscription");
             
         
 Route::middleware(['auth:admin'])->prefix('admin')->group(function(){

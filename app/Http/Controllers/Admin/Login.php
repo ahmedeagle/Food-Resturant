@@ -46,7 +46,7 @@ class Login extends Controller {
                 return redirect('admin/dashboard');
        }
              session()->flash('fail', 'كلمة المرور خاطئة.');
-             return redirect()->back()->with("error" , 'كلمة المرور خاطئة');
+             return redirect()->back()->with("error" , 'كلمة المرور خاطئة');//
         
     }
     public function logout(){
