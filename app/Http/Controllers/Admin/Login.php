@@ -45,12 +45,10 @@ class Login extends Controller {
                 
                 return redirect('admin/dashboard');
        }
-             session()->flash('fail', 'كلمة المرور خاطئة.');
-             return redirect()->back()->with("error" , 'كلمة المرور خاطئة');//
+           session()->flash('fail', 'كلمة المرور خاطئة.');
+            return redirect()->back()->with("error" , 'كلمة المرور خاطئة');
         
     }
-
-    //
     public function logout(){
         Auth::guard("admin")->logout();
         return redirect("/admin/login");
