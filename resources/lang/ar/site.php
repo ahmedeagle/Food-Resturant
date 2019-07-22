@@ -116,7 +116,7 @@ return [
     "profile"                           => "الملف الشخصي",
     "reservations"                      => "ألحجوزات ",
     "orders"                            => "الطلبات ",
-    "favourite"                         => "المفضلة  ة ",
+    "favourite"                         => "المفضله ",
     "logout"                            => "الخروج ",
     "from"                              => "من",
     "to"                                => "إلي",

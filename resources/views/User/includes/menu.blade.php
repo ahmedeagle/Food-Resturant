@@ -81,7 +81,20 @@
   
 </ul>
 
- 
+
+            <li class="nav-item">
+                <a class="nav-link text-gray" href="{{ url('/user/logout') }}">
+                    <img src="{{ url('/assets/site/img/icons/log-out.svg')}}"
+                         class="ml-1"
+                         width="24"
+                         height="22"
+                         alt="Logout icon">
+                    {{trans('site.logout')}}
+                </a>
+            </li>
+
+
+
         </ul>
     </div>
 </div><!-- .col-* -->
