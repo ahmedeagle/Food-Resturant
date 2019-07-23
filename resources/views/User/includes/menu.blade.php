@@ -48,7 +48,7 @@
                     <img src="{{ url('/assets/site/img/icons/favourite.svg') }}"
                          class="ml-1"
                          alt="Menu icon">
-                    ا {{trans('site.favourite')}}
+                   {{trans('site.favourite')}}
                 </a>
             </li>
             @foreach(  \App\Http\Controllers\Provider\GeneralController::get_pages_list() as $page)

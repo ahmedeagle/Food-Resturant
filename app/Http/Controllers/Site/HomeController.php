@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 
 class HomeController extends Controller
 {
@@ -113,9 +114,9 @@ class HomeController extends Controller
                         "branches.id AS branch_id",
                         "branches.longitude",
                         "branches.latitude",
-                        "branches.ar_address AS address",
+                        "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
                         "offers.provider_id",
-                        "offers.ar_title AS title",
+                        "offers.".LaravelLocalization::getCurrentLocale()."_title AS title",
                     
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
@@ -124,7 +125,7 @@ class HomeController extends Controller
                     ->get();
                     
         
-        (new \App\Http\Controllers\Apis\User\HomeController())->filter_offers_branches($request,"ar", $offers);
+        (new \App\Http\Controllers\Apis\User\HomeController())->filter_offers_branches($request,LaravelLocalization::getCurrentLocale(), $offers);
         
         return $offers;
 

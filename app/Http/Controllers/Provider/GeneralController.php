@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Provider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 class GeneralController extends Controller
 {
     public static function get_pages_list(){
@@ -13,7 +14,7 @@ class GeneralController extends Controller
             ->where("active", "1")
             ->select(
                 "id",
-                "ar_title AS title"
+                LaravelLocalization::getCurrentLocale()."_title AS title"
             )
             ->where("active", "1")
             ->get();

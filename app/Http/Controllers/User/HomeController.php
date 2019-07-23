@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index(){
 
-          $data['offers'] = ( new \App\Http\Controllers\Site\HomeController() )->get_home_page_offers();
+        $data['offers'] = ( new \App\Http\Controllers\Site\HomeController() )->get_home_page_offers();
         $data['cats']   = ( new \App\Http\Controllers\Site\HomeController() )->get_home_page_cats(true);
 
 

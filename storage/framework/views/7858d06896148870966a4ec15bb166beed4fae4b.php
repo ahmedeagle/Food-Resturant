@@ -1,23 +1,23 @@
-@extends("User.layouts.master")
+<?php $__env->startSection("title"); ?>
+    <?php echo e($title); ?>
 
-@section("title")
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("class")
-    {{ $class }}
-@endsection
+<?php $__env->startSection("class"); ?>
+    <?php echo e($class); ?>
 
-@section("content")
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection("content"); ?>
     <main class="page-content py-5">
         <div class="container">
             <div class="row">
 
-                @include("User.includes.menu")
+                <?php echo $__env->make("User.includes.menu", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">{{trans('site.offers')}}</h4>
+                        <h4 class="page-title font-body-bold"><?php echo e(trans('site.offers')); ?></h4>
                     </div>
 
 
@@ -29,57 +29,59 @@
 
                             <div class="carousel-inner">
 
-                    @foreach($offers as $key => $offer)
+                    <?php $__currentLoopData = $offers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $offer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         
-                        @if ($key % 2 == 0)
-                            <div class="carousel-item @if($key == 0) active @endif">
+                        <?php if($key % 2 == 0): ?>
+                            <div class="carousel-item <?php if($key == 0): ?> active <?php endif; ?>">
                                 <div class="row">
-                        @endif
+                        <?php endif; ?>
                         
                         
                                 <div class="col-md-6 col-12">
                                     <figure class="item-content shadow-sm">
                                         <img class="d-block img-fluid mx-auto rounded-top-lg"
-                                             src="{{ $offer->image_url }}"
+                                             src="<?php echo e($offer->image_url); ?>"
                                              style="width:397px;height:193px"
                                              alt="First slide">
                                         <figcaption class="font-body-md p-3">
                                             <h4 class="item-title">
-                                                <a href="{{ url('/restaurant-page/'. $offer-> branch_id) }}" class="text-secondary no-decoration" title="{{ $offer-> title }}">
-                                                    {{ str_limit($offer-> title, $limit = 35, $end = "..") }}
+                                                <a href="<?php echo e(url('/restaurant-page/'. $offer-> branch_id)); ?>" class="text-secondary no-decoration" title="<?php echo e($offer-> title); ?>">
+                                                    <?php echo e(str_limit($offer-> title, $limit = 35, $end = "..")); ?>
+
                                                 </a>
                                             </h4>
                                             <p class="h5 address text-gray">
                                                 <i class="fa fa-map-marker-alt text-primary ml-2"
                                                    aria-expanded="false"></i>
-                                                {{ $offer->address }}
+                                                <?php echo e($offer->address); ?>
+
                                             </p>
                                         </figcaption>
                                     </figure>
                                 </div>
                         
-                        @if ($key % 2 != 0)
+                        <?php if($key % 2 != 0): ?>
                             </div>
                                 </div>
-                        @endif
-                    @endforeach
+                        <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </div><!-- .carousel-inner -->
-                            @if(count($offers) > 0)
+                            <?php if(count($offers) > 0): ?>
                                 <ol class="carousel-indicators position-relative mt-4 pr-0">
-                                    @foreach($offers as $key => $offer)
-                                        @if ($key % 2 == 0)
+                                    <?php $__currentLoopData = $offers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $offer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($key % 2 == 0): ?>
                                             <li data-target="#offers-slider"
-                                                data-slide-to="{{ ($key == 0) ? $key : ($key - ($key - 1) ) }}"
-                                                class="@if($key == 0) active @endif rounded-circle"></li>
-                                        @endif
-                                    @endforeach
+                                                data-slide-to="<?php echo e(($key == 0) ? $key : ($key - ($key - 1) )); ?>"
+                                                class="<?php if($key == 0): ?> active <?php endif; ?> rounded-circle"></li>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ol>
-                            @else
+                            <?php else: ?>
                                 <div class="position-relative mt-4 pr-0">
-                                    <p>{{trans('site.empty_offer_list')}}</p>
+                                    <p><?php echo e(trans('site.empty_offer_list')); ?></p>
                                 <div>
-                            @endif
+                            <?php endif; ?>
                             
                         </div><!-- .offers-slider -->
 
@@ -87,7 +89,7 @@
                     </div><!-- .section-content -->
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">{{trans('site.details')}}</h4>
+                        <h4 class="page-title font-body-bold"><?php echo e(trans('site.details')); ?></h4>
                     </div>
 
 
@@ -96,25 +98,26 @@
                         <div class="row">
 
 
-                            @foreach($cats as $key => $cat)
+                            <?php $__currentLoopData = $cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="col-lg-4 col-md-6 col-12 mt-4">
                                     <div class="cat-item position-relative rounded-lg overflow-hidden">
                                         <div class="overlay position-absolute w-100 h-100"></div>
 
                                             <figure class="cat-figure mb-0">
-                                                <a href="{{ url('/cat-restaurants/'. $cat->id) }}">
-                                                <img src="{{ $cat->image_url }}"
+                                                <a href="<?php echo e(url('/cat-restaurants/'. $cat->id)); ?>">
+                                                <img src="<?php echo e($cat->image_url); ?>"
                                                      class="img-fluid d-block mx-auto w-100"
                                                      style="width:255px;height:358px"
                                                      alt="Category image"></a>
                                                 <figcaption class="cat-figcaption position-absolute px-3">
                                                     <h3 class="cat-title font-body-md position-relative">
-                                                        <a href="{{ url('/cat-restaurants/'. $cat->id) }}" class="text-white no-decoration">
+                                                        <a href="<?php echo e(url('/cat-restaurants/'. $cat->id)); ?>" class="text-white no-decoration">
 
                                                 <?php $name = LaravelLocalization::getCurrentLocale()."_name" ?>
                                                             
-                                                            {{ $cat-> $name }}
+                                                            <?php echo e($cat-> $name); ?>
+
                                                         </a>
                                                     </h3>
                                                 </figcaption>
@@ -125,7 +128,7 @@
 
 
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
                         </div>
@@ -134,13 +137,16 @@
                     </div><!-- .section-content -->
 
 
-                    {{ $cats->links("Pagination.pagination") }}
+                    <?php echo e($cats->links("Pagination.pagination")); ?>
+
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
         </div><!-- .container -->
     </main><!-- .page-content -->
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make("User.layouts.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

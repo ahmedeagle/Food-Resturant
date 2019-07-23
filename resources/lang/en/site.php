@@ -121,6 +121,13 @@ return [
     "from"                              => "From",
     "to"                                => "To",
     "closed"                            => "Closed ",
+    "details"                           => "Details",
+    "user_pic"                          => "User Picture",
+    "change_pic"                        => "Change Picture",
+    "choose_city"                       =>"Choose a city",
+    "age"                               => "Age",
+    "old_password"                      => "Old Password"
+
     
 
 
