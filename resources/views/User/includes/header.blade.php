@@ -23,9 +23,9 @@
                 </form>
 
                 <div class="input-group input-group-sm mb-0 justify-content-end align-items-center flex-lg-row">
-                    <input type="search" form="user-search-form" name="query" class="form-control border-gray font-body-md text-gray d-sm-inline-flex" placeholder="عن ما تبحث ..." aria-label="" aria-describedby="basic-addon1" required>
+                    <input type="search" form="user-search-form" name="query" class="form-control border-gray font-body-md text-gray d-sm-inline-flex" placeholder="{{trans('site.search_for')}}" aria-label="" aria-describedby="basic-addon1" required>
                     <div class="input-group-prepend d-inline d-sm-inline-flex">
-                        <button form="user-search-form" class="btn btn-primary py-1 px-4" type="submit">بحث</button>
+                        <button form="user-search-form" class="btn btn-primary py-1 px-4" type="submit">{{trans('site.search')}}</button>
                     </div>
                 </div>
 

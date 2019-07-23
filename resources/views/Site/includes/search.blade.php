@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="py-3 py-md-4 py-lg-5">
-            <form method = "POST" action="{{ url("/search") }}" class="search-form py-3 py-md-4 py-lg-5">
+            <form method = "POST" action="{{ url('/search') }}" class="search-form py-3 py-md-4 py-lg-5">
                 {{ csrf_field() }}
                 <div class="form-group py-3 py-md-4 py-lg-5">
                     <label for="search-field"

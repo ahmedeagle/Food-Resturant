@@ -90,6 +90,20 @@
 </ul>
 
 
+              <?php $__currentLoopData = LaravelLocalization::getSupportedLocales(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $localeCode => $properties): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                    <?php if(LaravelLocalization::getCurrentLocale()  != $localeCode ): ?>
+                        <li class="nav-item"> 
+                            <a   class="nav-link text-gray" rel="alternate" hreflang="<?php echo e($localeCode); ?>" href="<?php echo e(LaravelLocalization::getLocalizedURL($localeCode, null, [], true)); ?>">
+                                <i class="fa fa-gloable"></i>
+                                <?php echo e($properties['native']); ?>
+
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
             <li class="nav-item">
                 <a class="nav-link text-gray" href="<?php echo e(url('/user/logout')); ?>">
                     <img src="<?php echo e(url('/assets/site/img/icons/log-out.svg')); ?>"

@@ -939,7 +939,7 @@ class CartController extends Controller
     public function get_user_balance(){
         // check user balance
         $balance = DB::table("balances")
-                    ->where("actor_id", auth('web')->user()->id
+                    ->where("actor_id", auth('web')->user()->id)
                     ->where("actor_type", "user")
                     ->first();
 

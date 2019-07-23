@@ -1,25 +1,25 @@
-@extends("User.layouts.master")
+<?php $__env->startSection("title"); ?>
+    <?php echo e($title); ?>
 
-@section("title")
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("class")
-    {{ $class }}
-@endsection
+<?php $__env->startSection("class"); ?>
+    <?php echo e($class); ?>
 
-@section("content")
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection("content"); ?>
 
     <main class="page-content py-5">
         <div class="container">
 
             <div class="row">
 
-                @include("User.includes.menu")
+                <?php echo $__env->make("User.includes.menu", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">{{trans('site.reservations')}}</h4>
+                        <h4 class="page-title"><?php echo e(trans('site.reservations')); ?></h4>
                     </div>
                     <div class="d-flex px-3 rounded-lg shadow-around mt-4 justify-content-between flex-lg-row flex-md-column flex-sm-row flex-column">
                         <ul class="nav nav-tabs border-0 pr-lg-2 pr-0 text-center justify-content-center"
@@ -34,7 +34,8 @@
                                    role="tab"
                                    aria-controls="current"
                                    aria-selected="true">
-                                    {{trans('site.current_reservations')}}
+                                    <?php echo e(trans('site.current_reservations')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -46,28 +47,29 @@
                                    role="tab"
                                    aria-controls="prev"
                                    aria-selected="false">
-                                    {{trans('site.previous_reservations')}}
+                                    <?php echo e(trans('site.previous_reservations')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
                         </ul><!-- .nav-tabs -->
-                        {{--<div class="sort-by dropdown font-body-md text-gray align-self-center my-2">--}}
-                        {{--<span class="dropdown-toggle cursor"--}}
-                        {{--data-toggle="dropdown"--}}
-                        {{--aria-expanded="false"--}}
-                        {{--aria-haspopup="true">--}}
-                        {{--فرز حسب:--}}
-                        {{--</span>--}}
-                        {{--<div class="dropdown-menu text-right">--}}
-                        {{--<a href="#"--}}
-                        {{--class="dropdown-item bg-white text-gray">التاريخ</a>--}}
-                        {{--<a href="#"--}}
-                        {{--class="dropdown-item bg-white text-gray">رقم الحجز</a>--}}
-                        {{--<a href="#"--}}
-                        {{--class="dropdown-item bg-white text-gray">عدد الأشخاص</a>--}}
-                        {{--</div>--}}
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
 
-                        {{--</div>--}}
+                        
                     </div>
                     <div class="tab-content">
 
@@ -77,33 +79,35 @@
                              aria-describedby="current-tab">
 
 
-                            @foreach($currentReservations as $reservation)
+                            <?php $__currentLoopData = $currentReservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                     <div class="p-3 rounded-lg shadow-around mt-4">
 
                                         <div class="media align-items-center flex-column flex-lg-row">
                                             <img class="ml-3 rounded-circle mb-lg-0 mb-3"
                                                  style="width:70px;height:70px"
-                                                 src="{{ ($reservation->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservation->user_image_url }}"
+                                                 src="<?php echo e(($reservation->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservation->user_image_url); ?>"
                                                  alt="Generic placeholder image">
 
                                             <div class="media-body">
                                                 <h5 class="mt-0 text-lg-right text-center font-body-bold font-size-base">
-                                                    {{ $reservation->username }}
+                                                    <?php echo e($reservation->username); ?>
+
                                                 </h5>
                                                 <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                {{trans('site.reservation_num')}} <span class="reservation-number">{{ $reservation->reservation_code }}</span>
+                                                <?php echo e(trans('site.reservation_num')); ?> <span class="reservation-number"><?php echo e($reservation->reservation_code); ?></span>
                                             </span>
                                                     <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
-                                                 {{trans('site.person_num')}}<span class="reservation-person">{{ $reservation->seats_number }}</span>
+                                                 <?php echo e(trans('site.person_num')); ?><span class="reservation-person"><?php echo e($reservation->seats_number); ?></span>
                                             </span>
                                                     <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
                                                 <span class="reservation-date">
                                                     <time datetime="2018-10-25 17:30">
-                                                        {{ $reservation->reservation_time }} {{ $reservation->time_extention }} - {{ $reservation->reservation_date }}
+                                                        <?php echo e($reservation->reservation_time); ?> <?php echo e($reservation->time_extention); ?> - <?php echo e($reservation->reservation_date); ?>
+
                                                     </time>
                                                 </span>
                                             </span>
@@ -111,25 +115,29 @@
                                             </div><!-- .media-body -->
 
 
-                                            @component('User.pages.reservation.reservation-status')
-                                                @slot('id')
-                                                    {{ $reservation->reservation_id }}
-                                                @endslot
+                                            <?php $__env->startComponent('User.pages.reservation.reservation-status'); ?>
+                                                <?php $__env->slot('id'); ?>
+                                                    <?php echo e($reservation->reservation_id); ?>
 
-                                                @slot('statusname')
-                                                    {{ $reservation->status_name }}
-                                                @endslot
+                                                <?php $__env->endSlot(); ?>
 
-                                                {{ $reservation->status_id }}
-                                            @endcomponent
+                                                <?php $__env->slot('statusname'); ?>
+                                                    <?php echo e($reservation->status_name); ?>
+
+                                                <?php $__env->endSlot(); ?>
+
+                                                <?php echo e($reservation->status_id); ?>
+
+                                            <?php echo $__env->renderComponent(); ?>
 
                                         </div><!-- .media -->
 
                                     </div>
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                {{ $currentReservations->links("Pagination.pagination") }}
+                                <?php echo e($currentReservations->links("Pagination.pagination")); ?>
+
 
                         </div><!-- .tab-pane -->
 
@@ -139,33 +147,35 @@
                              aria-labelledby="prev-tab">
 
 
-                            @foreach($previousReservations as $reservation)
+                            <?php $__currentLoopData = $previousReservations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reservation): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                     <div class="p-3 rounded-lg shadow-around mt-4">
 
                                         <div class="media align-items-center flex-column flex-lg-row">
                                             <img class="ml-3 rounded-circle mb-lg-0 mb-3"
                                                  style="width:70px;height:70px"
-                                                 src="{{ ($reservation->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservation->user_image_url }}"
+                                                 src="<?php echo e(($reservation->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservation->user_image_url); ?>"
                                                  alt="Generic placeholder image">
 
                                             <div class="media-body">
                                                 <h5 class="mt-0 text-lg-right text-center font-body-bold font-size-base">
-                                                    {{ $reservation->username }}
+                                                    <?php echo e($reservation->username); ?>
+
                                                 </h5>
                                                 <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                {{trans('site.reservation_num')}}<span class="reservation-number">{{ $reservation->reservation_code }}</span>
+                                                <?php echo e(trans('site.reservation_num')); ?><span class="reservation-number"><?php echo e($reservation->reservation_code); ?></span>
                                             </span>
                                                     <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
-                                                {{trans('site.person_num')}} <span class="reservation-person">{{ $reservation->seats_number }}</span>
+                                                <?php echo e(trans('site.person_num')); ?> <span class="reservation-person"><?php echo e($reservation->seats_number); ?></span>
                                             </span>
                                                     <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
                                                 <span class="reservation-date">
                                                     <time datetime="2018-10-25 17:30">
-                                                        {{ $reservation->reservation_time }} {{ $reservation->time_extention }} - {{ $reservation->reservation_date }}
+                                                        <?php echo e($reservation->reservation_time); ?> <?php echo e($reservation->time_extention); ?> - <?php echo e($reservation->reservation_date); ?>
+
                                                     </time>
                                                 </span>
                                             </span>
@@ -173,38 +183,42 @@
                                             </div><!-- .media-body -->
 
 
-                                            @component('User.pages.reservation.reservation-status')
-                                                @slot('id')
-                                                    {{ $reservation->reservation_id }}
-                                                @endslot
+                                            <?php $__env->startComponent('User.pages.reservation.reservation-status'); ?>
+                                                <?php $__env->slot('id'); ?>
+                                                    <?php echo e($reservation->reservation_id); ?>
 
-                                                @slot('statusname')
-                                                    {{ $reservation->status_name }}
-                                                @endslot
+                                                <?php $__env->endSlot(); ?>
 
-                                                {{ $reservation->status_id }}
-                                            @endcomponent
+                                                <?php $__env->slot('statusname'); ?>
+                                                    <?php echo e($reservation->status_name); ?>
+
+                                                <?php $__env->endSlot(); ?>
+
+                                                <?php echo e($reservation->status_id); ?>
+
+                                            <?php echo $__env->renderComponent(); ?>
 
                                         </div><!-- .media -->
 
                                     </div>
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                {{ $previousReservations->links("Pagination.pagination") }}
+                                <?php echo e($previousReservations->links("Pagination.pagination")); ?>
+
                         </div><!-- .tab-pane -->
-                        {{--<div class="tab-pane fade show active"--}}
-                             {{--id="current"--}}
-                             {{--role="tabpanel"--}}
-                             {{--aria-describedby="current-tab">--}}
-                            {{--{{ $currentReservations->links("Pagination.pagination") }}--}}
-                        {{--</div>--}}
-                        {{--<div class="tab-pane fade"--}}
-                             {{--id="prev"--}}
-                             {{--role="tabpanel"--}}
-                             {{--aria-describedby="current-tab">--}}
-                            {{--{{ $previousReservations->links("Pagination.pagination") }}--}}
-                        {{--</div>--}}
+                        
+                             
+                             
+                             
+                            
+                        
+                        
+                             
+                             
+                             
+                            
+                        
 
                     </div><!-- .tab-content -->
 
@@ -214,7 +228,9 @@
         </div><!-- .container -->
     </main><!-- .page-content -->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make("User.layouts.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

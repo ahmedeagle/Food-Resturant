@@ -19,7 +19,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">الطلبات</h4>
+                        <h4 class="page-title">{{trans('site.orders')}}</h4>
                     </div>
 
 
@@ -53,21 +53,21 @@
 
                                 <p class="text-gray font-body-md mb-0">
                                     <span class="d-block">
-                                        رقم الطلب: <span class="orders-number">{{ $orderDetails->order_code }}</span>
+                                        {{trans('site.order_num')}}  <span class="orders-number">{{ $orderDetails->order_code }}</span>
                                     </span>
                                     <span class="d-block">
                                         <span class="orders-date">
-                                            الوقت والتاريخ:
+                                            {{trans('site.time_date')}}
                                             <time datetime="2018-10-25 17:30">
                                                 {{ $orderDetails->order_date }} - {{ $orderDetails->time_extention }} {{ $orderDetails->order_time }}
                                             </time>
                                         </span>
                                     </span>
                                     <span class="d-block">
-                                        طريقة الدفع:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
+                                        {{trans('site.payment_method')}}:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
-                                        العنوان:
+                                        {{trans('site.address')}}:
                                         <span class="orders-address">
                                             العنوان بشكل مفصل حسب ما كتبه المستخدم
                                         </span>
@@ -89,7 +89,7 @@
                         <div class="row px-3 px-lg-0">
                             <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
                                 <h6 class="font-size-base text-lg-right text-center">
-                                    التفاصيل
+                                    {{trans('site.details')}}:
                                 </h6>
 
 
@@ -106,12 +106,12 @@
                                                 &times;
                                                 <span class="count">{{ $meal->meal_qty }}</span>
                                                 &nbsp;
-                                                <span class="currency">ر.س</span>
+                                                <span class="currency">{{trans('site.riyal')}}:</span>
                                             </div>
                                         </div>
                                         <div class="result text-primary">
                                             <span class="total">{{ ((int)$meal->meal_price) * ((int)$meal->meal_qty) }}</span>
-                                            <span class="currency">ر.س</span>
+                                            <span class="currency">{{trans('site.riyal')}}</span>
                                         </div>
                                     </div><!-- .item -->
                                     @php
@@ -121,10 +121,10 @@
 
 
                                 <div class="invoice d-flex justify-content-between mt-3">
-                                    <h6 class="font-size-base">المجموع</h6>
+                                    <h6 class="font-size-base">{{trans('site.total')}}</h6>
                                     <div class="result text-primary font-body-md">
                                         <span class="total">{{ $sum }}</span>
-                                        <span class="currency">ر.س</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
 
@@ -134,7 +134,7 @@
 
                     </div>
 
-                    <a href="{{ url("/user/orders") }}" class="btn btn-primary px-5">العودة</a>
+                    <a href="{{ url("/user/orders") }}" class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

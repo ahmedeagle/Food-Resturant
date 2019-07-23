@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use guard;
+use LaravelLocalization;
 class FavoritController extends Controller
 {
     public function get_favorites(){
@@ -26,13 +27,13 @@ class FavoritController extends Controller
                                             ->orderBy('branches.id' , 'DESC')
                                             ->select(
                                                      "branches.id AS branch_id",
-                                                     "branches.ar_address AS address" ,
+                                                     "branches.".LaravelLocalization::getCurrentLocale()."_address AS address" ,
                                                      "branches.latitude" ,
                                                      "branches.longitude",
                                                       "branches.has_delivery",
                                                       "branches.has_booking",
                                                       "branches.average_price AS mealAveragePrice",
-                                                      DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                                                      DB::raw("CONCAT(providers .".LaravelLocalization::getCurrentLocale()."_name,'-',branches .".LaravelLocalization::getCurrentLocale()."_name) AS name"),
                                                       DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url"),
                                                      "providers.id AS provider_id"
                                                     )
@@ -54,7 +55,7 @@ class FavoritController extends Controller
                     
                        $request = new Request();
                        
-                       (new \App\Http\Controllers\Apis\User\HomeController())->filter_providers_branches($request,'ar',$branches);
+                       (new \App\Http\Controllers\Apis\User\HomeController())->filter_providers_branches($request,LaravelLocalization::getCurrentLocale(),$branches);
                         
         return view("User.pages.favorite.favorites", $data)-> with('branches',$branches);
     }

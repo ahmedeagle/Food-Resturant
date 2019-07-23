@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use LaravelLocalization;
 use DB;
+
 class SearchController extends Controller
 {
     public function search(Request $request){
 
-        App()->setLocale("ar");
+       // App()->setLocale("ar");
 
         $query = $request->input("query");
 
@@ -24,7 +26,7 @@ class SearchController extends Controller
                                 ->where("providers.accountactivated" , "1")
                                 ->select(
                                     "providers.id AS provider_id",
-                                    "providers.ar_name AS name",
+                                    "providers.".LaravelLocalization::getCurrentLocale()."_name AS name",
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                                 )
                                 ->paginate(30);

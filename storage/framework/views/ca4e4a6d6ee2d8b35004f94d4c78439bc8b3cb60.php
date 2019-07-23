@@ -1,115 +1,117 @@
-@extends("User.layouts.master")
+<?php $__env->startSection("title"); ?>
+    <?php echo e($title); ?>
 
-@section("title")
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section("class")
-    {{ $class }}
-@endsection
+<?php $__env->startSection("class"); ?>
+    <?php echo e($class); ?>
 
-@section("content")
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection("content"); ?>
 
 
     <main class="main-content page-content py-5">
         <div class="container">
             <div class="row">
 
-                @include("User.includes.menu")
+                <?php echo $__env->make("User.includes.menu", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">{{trans('site.order_details')}}</h4>
+                        <h4 class="page-title font-body-bold">تفاصيل الطلب</h4>
                     </div>
 
 
-                                  @if(Session::has('closed'))
+                                  <?php if(Session::has('closed')): ?>
                                   
                                     <div class="alert alert-danger top-margin">
-                                           {{Session::get('closed')}} 
+                                           <?php echo e(Session::get('closed')); ?> 
                                     </div>
-                                 @endif
+                                 <?php endif; ?>
                                  
-                                   @if(Session::has('outWork'))
+                                   <?php if(Session::has('outWork')): ?>
                                   
                                     <div class="alert alert-danger top-margin">
-                                           {{Session::get('outWork')}} 
+                                           <?php echo e(Session::get('outWork')); ?> 
                                     </div>
-                                 @endif
+                                 <?php endif; ?>
                                  
                                   
 
 
                     <div class="p-3 rounded-lg shadow-around mt-4 bg-white">
 
-                        <form id="complete-order-form" method="POST" action="{{ url("/user/cart/complete-order") }}">
-                            {{ csrf_field() }}
-                            {{--<div class="form-group my-2">--}}
-                                {{--<label for="delivery-time font-body-bold">{{trans('site.delivery_time')}}</label>--}}
-                                {{--<select class="custom-select text-gray font-body-md border-gray"--}}
-                                        {{--id="delivery-time">--}}
-                                    {{--<option selected value="يرجى تحديد وقت التسليم">يرجى تحديد وقت التسليم</option>--}}
-                                    {{--<option value="السبت">السبت</option>--}}
-                                    {{--<option value="الاحد">الاحد</option>--}}
-                                    {{--<option value="الاثنين">الاثنين</option>--}}
-                                    {{--<option value="الثلاثاء">الثلاثاء</option>--}}
-                                    {{--<option value="الاربعاء">الاربعاء</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
+                        <form id="complete-order-form" method="POST" action="<?php echo e(url("/user/cart/complete-order")); ?>">
+                            <?php echo e(csrf_field()); ?>
+
+                            
+                                
+                                
+                                        
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                
+                            
 
 
-                            {{--<label class="my-1">الساعة</label>--}}
-                            {{--<div class="form-row  mt-1">--}}
-                                {{--<div class="col">--}}
-                                    {{--<select class="custom-select text-gray font-body-md border-gray">--}}
-                                        {{--<option value="30" selected>30</option>--}}
-                                        {{--<option value="29">29</option>--}}
-                                        {{--<option value="28">28</option>--}}
-                                        {{--<option value="27">27</option>--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
-                                {{--<div class="col">--}}
-                                    {{--<select class="custom-select text-gray font-body-md border-gray">--}}
-                                        {{--<option value="12" selected>12</option>--}}
-                                        {{--<option value="01">01</option>--}}
-                                        {{--<option value="02">02</option>--}}
-                                        {{--<option value="03">03</option>--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
-                                {{--<div class="col">--}}
-                                    {{--<select class="custom-select text-gray font-body-md border-gray">--}}
-                                        {{--<option value="مساءاً" selected>مساءاً</option>--}}
-                                        {{--<option value="صباحاً">صباحاً</option>--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            
+                            
+                                
+                                    
+                                        
+                                        
+                                        
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                        
+                                        
+                                        
+                                    
+                                
+                                
+                                    
+                                        
+                                        
+                                    
+                                
+                            
 
 
-                            <label for="delivery-method" class="font-body-bold">{{trans('site.delivery_time')}}</label>
+                            <label for="delivery-method" class="font-body-bold">وقت التسليم</label>
                             <div class="d-flex justify-content-center flex-column flex-sm-row">
 
                                 <select form="complete-order-form" name="in_future" class="custom-select text-gray font-body-md border-gray font-body-md"
                                         id="in-future">
-                                    <option value="">{{trans('site.choose_delivery_time')}}</option>
-                                    <option value="0" @if(old("in_future") == "0") selected @endif>   {{trans('site.now_order')}}</option>
-                                    <option value="1" @if(old("in_future") == "1") selected @endif> {{trans('site.later_order')}}    </option>
+                                    <option value="">برجاء تحديد وقت التسليم</option>
+                                    <option value="0" <?php if(old("in_future") == "0"): ?> selected <?php endif; ?>>طلب مباشر</option>
+                                    <option value="1" <?php if(old("in_future") == "1"): ?> selected <?php endif; ?>>طلب لوقت لاحق</option>
                                 </select>
 
                             </div>
 
-                            @if($errors->has("in_future"))
+                            <?php if($errors->has("in_future")): ?>
 
                                 <div class="alert alert-danger top-margin">
-                                    {{ $errors->first("in_future") }}
+                                    <?php echo e($errors->first("in_future")); ?>
+
                                 </div>
 
-                            @endif
+                            <?php endif; ?>
 
-                            <div class="@if(old('in_future')) @if(old('in_future') == "0") hidden-element @endif @else hidden-element @endif order-date-container form-group my-2">
-                                <label for="people-count"> {{trans('site.date')}}</label>
-                                <input type="date" name="date" value="{{ old("date") }}" class="form-control border-gray">
+                            <div class="<?php if(old('in_future')): ?> <?php if(old('in_future') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> order-date-container form-group my-2">
+                                <label for="people-count">التاريخ</label>
+                                <input type="date" name="date" value="<?php echo e(old("date")); ?>" class="form-control border-gray">
 
-                                <input type="hidden" value="{{ $delivery_price }}" id="delivery_price_input" />
+                                <input type="hidden" value="<?php echo e($delivery_price); ?>" id="delivery_price_input" />
 
                                 <input type="hidden"
                                        name="latLng"
@@ -117,32 +119,34 @@
 
                                 <input type="hidden"
                                        name="lat"
-                                       value="{{ old("lat") }}"
+                                       value="<?php echo e(old("lat")); ?>"
                                        id="branch-lat" />
                                 <input type="hidden"
                                        name="lng"
-                                       value="{{ old("lng") }}"
+                                       value="<?php echo e(old("lng")); ?>"
                                        id="branch-lng" />
 
-                                @if($errors->has("date"))
+                                <?php if($errors->has("date")): ?>
 
                                     <div class="alert alert-danger top-margin">
-                                        {{ $errors->first("date") }}
+                                        <?php echo e($errors->first("date")); ?>
+
                                     </div>
 
-                                @endif
+                                <?php endif; ?>
                             </div>
 
-                            <div class="@if(old('in_future')) @if(old('in_future') == "0") hidden-element @endif @else hidden-element @endif order-time-container form-group my-2">
-                                <label for="people-count">{{trans('site.time')}}</label>
-                                <input type="time" id="time" name="time" value="{{ old("time") }}" class="form-control border-gray">
-                                @if($errors->has("time"))
+                            <div class="<?php if(old('in_future')): ?> <?php if(old('in_future') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> order-time-container form-group my-2">
+                                <label for="people-count">الساعة</label>
+                                <input type="time" id="time" name="time" value="<?php echo e(old("time")); ?>" class="form-control border-gray">
+                                <?php if($errors->has("time")): ?>
 
                                     <div class="alert alert-danger top-margin">
-                                        {{ $errors->first("time") }}
+                                        <?php echo e($errors->first("time")); ?>
+
                                     </div>
 
-                                @endif
+                                <?php endif; ?>
                             </div>
 
                         </form>
@@ -152,34 +156,36 @@
                     <div class="rounded-lg shadow-around mt-3 font-body-bold bg-white">
                         <div class="p-3">
                             <div class="form-group mb-1">
-                                <label for="delivery-method" class="font-body-bold">{{trans('site.delivery_method')}}</label>
+                                <label for="delivery-method" class="font-body-bold">طريقة التسليم</label>
                                 <div class="d-flex justify-content-center flex-column flex-sm-row">
                                     <select form="complete-order-form" name="delivery_method" class="custom-select text-gray font-body-md border-gray font-body-md"
                                             id="delivery-method">
-                                        <option value="0" @if(old("delivery_method") == "0") selected @endif>{{trans('site.delivery_form_rest')}}</option>
-                                        <option value="1" @if(old("delivery_method") == "1") selected @endif>{{trans('site.transparent')}}</option>
+                                        <option value="0" <?php if(old("delivery_method") == "0"): ?> selected <?php endif; ?>>استلام من المطعم</option>
+                                        <option value="1" <?php if(old("delivery_method") == "1"): ?> selected <?php endif; ?>>توصيل</option>
 
                                     </select>
 
-                                    <button id="complete-order-location-btn" class="@if(old('delivery_method')) @if(old('delivery_method') == "0") hidden-element @endif @else hidden-element @endif btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
-                                            type="button">   {{trans('site.address')}}</button>
+                                    <button id="complete-order-location-btn" class="<?php if(old('delivery_method')): ?> <?php if(old('delivery_method') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
+                                            type="button">تحديد العنوان</button>
 
                                 </div>
-                                @if($errors->has("delivery_method"))
+                                <?php if($errors->has("delivery_method")): ?>
 
                                     <div class="alert alert-danger top-margin">
-                                        {{ $errors->first("delivery_method") }}
+                                        <?php echo e($errors->first("delivery_method")); ?>
+
                                     </div>
 
-                                @endif
+                                <?php endif; ?>
 
-                                @if($errors->has("lat"))
+                                <?php if($errors->has("lat")): ?>
 
                                     <div class="alert alert-danger top-margin">
-                                        {{ $errors->first("lat") }}
+                                        <?php echo e($errors->first("lat")); ?>
+
                                     </div>
 
-                                @endif
+                                <?php endif; ?>
 
                             </div>
                         </div>
@@ -188,52 +194,53 @@
 
 
 
-                    {{--<div class="rounded-lg shadow-around mt-3 font-body-bold bg-white">--}}
-                       {{----}}
-                            {{--<div class="form-group mb-1">--}}
-                                {{--<label for="delivery-method" class="font-body-bold">طريقة التسليم</label>--}}
-                                {{--<div class="d-flex justify-content-center flex-column flex-sm-row">--}}
-                                    {{--<select class="custom-select text-gray font-body-md border-gray font-body-md"--}}
-                                            {{--id="delivery-method">--}}
-                                        {{--<option selected value="يرجى تحديد طريقة التسليم">يرجى تحديد طريقة التسليم</option>--}}
-                                        {{--<option value="فوري">فوري</option>--}}
-                                        {{--<option value="فوري">فوري</option>--}}
+                    
+                       
+                            
+                                
+                                
+                                    
+                                            
+                                        
+                                        
+                                        
 
-                                    {{--</select>--}}
+                                    
 
-                                    {{--<button class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"--}}
-                                            {{--type="submit">تحديد العنوان</button>--}}
+                                    
+                                            
 
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</div>--}}
+                                
+                            
+                        
+                    
 
 
 
                     <div class="rounded-lg shadow-around mt-3 font-body-bold bg-white">
                         <form class="p-3">
-                            <label class="my-1"> {{trans('site.payment_method')}}</label>
+                            <label class="my-1">طريقة الدفع</label>
                             <div class="form-row my-1 mr-4">
-                                @foreach($payment_methods as $method)
+                                <?php $__currentLoopData = $payment_methods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $method): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="col">
                                     <div class="custom-control custom-radio">
-                                        <input form="complete-order-form" type="radio" id="customRadio_{{ $method->id }}" value="{{ $method->id }}" name="payment_method" class="custom-control-input">
-                                        <label class="custom-control-label text-gray font-body-md" for="customRadio_{{ $method->id }}">{{ $method->name }}</label>
+                                        <input form="complete-order-form" type="radio" id="customRadio_<?php echo e($method->id); ?>" value="<?php echo e($method->id); ?>" name="payment_method" class="custom-control-input">
+                                        <label class="custom-control-label text-gray font-body-md" for="customRadio_<?php echo e($method->id); ?>"><?php echo e($method->name); ?></label>
                                     </div>
                                 </div>
 
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </div>
-                            @if($errors->has("payment_method"))
+                            <?php if($errors->has("payment_method")): ?>
 
                                 <div class="alert alert-danger top-margin">
-                                    {{ $errors->first("payment_method") }}
+                                    <?php echo e($errors->first("payment_method")); ?>
+
                                 </div>
 
-                            @endif
+                            <?php endif; ?>
                         </form>
                     </div>
 
@@ -248,14 +255,14 @@
                                 <p class="mb-2">المجموع النهائي</p>
                             </div>
                             <div class="col-sm-6 col text-gray">
-                                <p class="mb-2"><span class="delivery_price_span">@if(old('delivery_method')) @if(old("delivery_method") == "1") {{ $delivery_price }} @else 0 @endif  @else 0 @endif</span> ر.س </p>
-                                <p class="mb-2">{{ $tax }} % ر.س </p>
-                                <p class="mb-2"> <span class="order_price">{{ $total_price }}</span> ر.س </p>
-                                <p class="mb-2 text-primary"><span class="total_paid_value2">{{ $total_paid_value }}</span> ر.س </p>
+                                <p class="mb-2"><span class="delivery_price_span"><?php if(old('delivery_method')): ?> <?php if(old("delivery_method") == "1"): ?> <?php echo e($delivery_price); ?> <?php else: ?> 0 <?php endif; ?>  <?php else: ?> 0 <?php endif; ?></span> ر.س </p>
+                                <p class="mb-2"><?php echo e($tax); ?> % ر.س </p>
+                                <p class="mb-2"> <span class="order_price"><?php echo e($total_price); ?></span> ر.س </p>
+                                <p class="mb-2 text-primary"><span class="total_paid_value2"><?php echo e($total_paid_value); ?></span> ر.س </p>
                             </div>
                         </div>
 
-                      <input type="hidden" value="{{ $tax }}" id="tax">
+                      <input type="hidden" value="<?php echo e($tax); ?>" id="tax">
                       
  
                             <div id="checkBalanceStatus" class="alert alert-success" style="display:none;">
@@ -280,7 +287,7 @@
         <header class="page-header mt-4 text-center">
             <h1 class="page-title h2 font-body-bold">تحديد الموقع</h1>
             <p class="description text-gray font-body-md mt-3">يرجى تحديد موقع الاستلام عبر الخريطة</p>
-            {{--<p id="register-map-address" class="description text-gray font-body-md mt-3"></p>--}}
+            
         </header>
         <div class="container">
             <div class="row">
@@ -299,11 +306,11 @@
         </div><!-- .container -->
     </main><!-- .page-content -->
 
-@endsection
+<?php $__env->stopSection(); ?>
 
  
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
 <script>
 
@@ -315,7 +322,7 @@
             }
         });
         
-var orderTotal = {{$total_paid_value}};
+var orderTotal = <?php echo e($total_paid_value); ?>;
 
 
 
@@ -726,7 +733,9 @@ $(document).ready(function(){
     
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make("User.layouts.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

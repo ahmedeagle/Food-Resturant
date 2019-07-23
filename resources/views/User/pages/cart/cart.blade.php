@@ -26,7 +26,7 @@
 
                     @endif
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">السلة</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.cart')}}</h4>
                     </div>
 
 
@@ -58,24 +58,24 @@
                                         &times;
                                         <span class="count">{{ $item['qty'] }}</span>
                                         &nbsp;
-                                        <span class="currency">ر.س</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
                                     </p>
                                 </div>
 
 
                                 <p class="mt-lg-1 mt-md-0 mt-xs-0 mb-lg-0 text-lg-right text-center font-body-md font-size-base">
-                                    الإضافات:
-                                    <span class="text-gray">{{ $item['addsNameString'] }} ( السعر المضاف : {{ $item['addsAddedPrice'] }} ر.س)</span>
+                                    {{trans('site.options')}}::
+                                    <span class="text-gray">{{ $item['addsNameString'] }} ( {{trans('site.added_price')}} : {{ $item['addsAddedPrice'] }} {{trans('site.riyal')}})</span>
                                 </p>
 
                                 <p class="mt-lg-1 mt-md-0 mt-xs-0 mb-lg-0 text-lg-right text-center font-body-md font-size-base">
-                                    التفضيلات:
-                                    <span class="text-gray">{{ $item['optionsNameString'] }}   ( السعر المضاف : {{ $item['optionsAddedPrice'] }} ر.س)</span>
+                                     {{trans('site.adds')}}::
+                                    <span class="text-gray">{{ $item['optionsNameString'] }}   (   {{trans('site.added_price')}} : {{ $item['optionsAddedPrice'] }} {{trans('site.riyal')}})</span>
                                 </p>
 
                             </div><!-- .media-body -->
 
-                            <a href="{{ url("/user/cart/remove-cart-meal/" . $key) }}" class="cancel-btn py-1 px-4 mt-lg-4 no-bg border border-primary d-lg-inline d-block rounded text-primary font-body-md ml-lg-3">إلغاء</a>
+                            <a href="{{ url('/user/cart/remove-cart-meal/' . $key) }}" class="cancel-btn py-1 px-4 mt-lg-4 no-bg border border-primary d-lg-inline d-block rounded text-primary font-body-md ml-lg-3">{{trans('site.cancel')}}</a>
 
 
                         </div><!-- .media -->
@@ -84,10 +84,10 @@
 
                     @endforeach
 
-                        <a href="{{ url("/user/cart/complete-order") }}" class="btn btn-primary px-5">التالي</a>
+                        <a href="{{ url('/user/cart/complete-order') }}" class="btn btn-primary px-5">{{trans('site.next')}}</a>
                     @else
 
-                        <div class="mt-4">محتويات السلة فارغة</div>
+                        <div class="mt-4">{{trans('site.cart_list_empty')}}</div>
 
                     @endif
 

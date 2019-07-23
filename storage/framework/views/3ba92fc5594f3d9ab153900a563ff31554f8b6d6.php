@@ -1,65 +1,69 @@
-@extends("User.layouts.master")
+<?php $__env->startSection('title'); ?>
+    <?php echo e($title); ?>
 
-@section('title')
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('class')
-    {{ $class }}
-@endsection
+<?php $__env->startSection('class'); ?>
+    <?php echo e($class); ?>
 
-@section("content")
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection("content"); ?>
 <main class="page-content py-5">
     <div class="container">
 
         <div class="row">
 
-            @include("User.includes.menu")
+            <?php echo $__env->make("User.includes.menu", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
             <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                 <div class="py-2 pr-3 rounded-lg shadow-around">
-                    <h4 class="page-title"> {{trans('site.reservations')}} </h4>
+                    <h4 class="page-title">الحجوزات</h4>
                 </div>
 
 
-                @if(Session::has("success"))
+                <?php if(Session::has("success")): ?>
                     <div class="alert alert-success top-margin">
-                        {{ Session::get("success") }}
-                    </div>
-                @endif
+                        <?php echo e(Session::get("success")); ?>
 
-                @if(Session::has("error"))
-                    <div class="alert alert-danger top-margin">
-                        {{ Session::get("error") }}
                     </div>
-                @endif
+                <?php endif; ?>
+
+                <?php if(Session::has("error")): ?>
+                    <div class="alert alert-danger top-margin">
+                        <?php echo e(Session::get("error")); ?>
+
+                    </div>
+                <?php endif; ?>
 
                 <div class="p-3 rounded-lg shadow-around my-4">
 
                     <div class="media align-items-center flex-column flex-lg-row">
                         <img class="ml-3 rounded-circle mb-lg-0 mb-3"
-                             src="{{ ($reservationDetails->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservationDetails->user_image_url }}"
+                             src="<?php echo e(($reservationDetails->user_image_url == null) ? url("/storage/app/public/users/avatar.png") : $reservationDetails->user_image_url); ?>"
                              style="width:70px;height:70px"
                              alt="Generic placeholder image">
 
                         <div class="media-body">
 
                             <h5 class="mt-0 text-lg-right text-center font-body-bold font-size-base">
-                                {{ $reservationDetails->username }}
+                                <?php echo e($reservationDetails->username); ?>
+
                             </h5>
 
                             <p class="text-gray font-body-md mb-0">
                                 <span class="d-block">
-                                     {{trans('site.reservation_num')}}  <span class="reservation-number">{{ $reservationDetails->reservation_code }}</span>
+                                    رقم الحجز: <span class="reservation-number"><?php echo e($reservationDetails->reservation_code); ?></span>
                                 </span>
                                 <span class="d-block">
-                                        {{trans('site.person_num')}} <span class="reservation-person">{{ $reservationDetails->seats_number }}</span>
+                                        عدد الأشخاص: <span class="reservation-person"><?php echo e($reservationDetails->seats_number); ?></span>
                                 </span>
                                 <span class="d-block">
                                     <span class="reservation-date">
-                                        {{trans('site.time_date')}}
+                                        الوقت والتاريخ:
                                         <time datetime="2018-10-25 17:30">
-                                             {{ $reservationDetails->reservation_time }} {{ $reservationDetails->time_extention }} - {{ $reservationDetails->reservation_date }}
+                                             <?php echo e($reservationDetails->reservation_time); ?> <?php echo e($reservationDetails->time_extention); ?> - <?php echo e($reservationDetails->reservation_date); ?>
+
                                         </time>
                                     </span>
                                 </span>
@@ -67,17 +71,19 @@
 
                         </div><!-- .media-body -->
                         <span class="py-2 bg-warning text-white mt-3 mt-lg-0 text-white font-body-md px-3 rounded-curved">
-                                {{ $reservationDetails->status_name }}
+                                <?php echo e($reservationDetails->status_name); ?>
+
                         </span>
                     </div><!-- .media -->
 
                 </div>
 
-                <a href="{{ url("/user/reservations") }}" class="btn btn-primary px-5">{{trans('site.back')}}</a>
+                <a href="<?php echo e(url("/user/reservations")); ?>" class="btn btn-primary px-5">العودة</a>
 
             </div><!-- .col-* -->
         </div><!-- .row -->
 
     </div><!-- .container -->
 </main><!-- .page-content -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make("User.layouts.master", array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

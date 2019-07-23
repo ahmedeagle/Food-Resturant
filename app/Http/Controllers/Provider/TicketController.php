@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Validator;
 use Carbon\Carbon;
+use LaravelLocalization;
 class TicketController extends Controller
 {
     public function __construct()
@@ -29,7 +30,7 @@ class TicketController extends Controller
         $data['types'] = DB::table("ticket_types")
                         ->select(
                             "id AS id",
-                            "ar_name AS name"
+                            LaravelLocalization::getCurrentLocale()."_name AS name"
                         )
                         ->get();
         return view("Provider.pages.open-new-ticket", $data);
@@ -115,7 +116,7 @@ class TicketController extends Controller
                             ->select(
                                 "tickets.id AS ticket_id",
                                 "tickets.title AS ticket_title",
-                                "providers.ar_name AS provider_name",
+                                "providers.".LaravelLocalization::getCurrentLocale()."_name AS provider_name",
                                 DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS provider_image_url")
                             )->first();
 

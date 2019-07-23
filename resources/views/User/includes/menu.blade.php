@@ -82,6 +82,19 @@
 </ul>
 
 
+              @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                    @if(LaravelLocalization::getCurrentLocale()  != $localeCode )
+                        <li class="nav-item"> 
+                            <a   class="nav-link text-gray" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <i class="fa fa-gloable"></i>
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+
+
             <li class="nav-item">
                 <a class="nav-link text-gray" href="{{ url('/user/logout') }}">
                     <img src="{{ url('/assets/site/img/icons/log-out.svg')}}"

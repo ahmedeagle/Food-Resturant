@@ -19,7 +19,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">الإشعارات</h4>
+                        <h4 class="page-title font-body-bold"><?php echo e(trans('site.notifications')); ?></h4>
                     </div>
 
                     <?php if(count($notification) > 0): ?>
@@ -44,7 +44,7 @@
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <?php else: ?>
-                        <p class="mt-4">لا توجد إشعارات</p>
+                        <p class="mt-4"><?php echo e(trans('site.no_notifications')); ?></p>
                     <?php endif; ?>
 
 

@@ -9,6 +9,7 @@ use DB;
 use DateTime;
 use Validator;
 use Illuminate\Pagination\Paginator;
+use LaravelLocalization;
 
 class ReservationController extends Controller
 {
@@ -53,7 +54,7 @@ class ReservationController extends Controller
                                 "reservations.seats_number",
                                 "users.name AS username",
                                 DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                "reservation_statuses.ar_name AS status_name",
+                                "reservation_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                 "reservation_statuses.id AS status_id"
                             )
                             ->paginate(10,['*'], $page);
@@ -105,7 +106,7 @@ class ReservationController extends Controller
                                             "reservations.seats_number",
                                             "users.name AS username",
                                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                            "reservation_statuses.ar_name AS status_name",
+                                            "reservation_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                             "reservation_statuses.id AS status_id"
                                         )
                                         ->first();

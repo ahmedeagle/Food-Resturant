@@ -1,14 +1,14 @@
-@extends('Site.layouts.master')
+<?php $__env->startSection('title'); ?>
+    <?php echo e($title); ?>
 
-@section('title')
-    {{ $title }}
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('class')
-    {{ $class }}
-@endsection
+<?php $__env->startSection('class'); ?>
+    <?php echo e($class); ?>
 
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
 
     <main class="page-content py-5">
         <div class="container">
@@ -17,10 +17,10 @@
 
                 <div class="col-lg-12 col-md-12 col-12 mt-4 mt-md-0 ">
 
-                    @if(count($providers) > 0)
+                    <?php if(count($providers) > 0): ?>
                     <div class="section-header d-flex p-3 rounded-lg bg-white shadow-around justify-content-between font-body-bold flex-lg-row flex-md-column flex-sm-row flex-column">
 
-                        <h4 class="page-title mb-auto">{{trans('site.show_results')}}  {{  $query  }}</h4>
+                        <h4 class="page-title mb-auto"><?php echo e(trans('site.show_results')); ?>  <?php echo e($query); ?></h4>
 
                         <!--<div class="orders-sort dropdown font-body-md text-gray align-self-center">
                         <span class="dropdown-toggle cursor"
@@ -42,55 +42,55 @@
                         </div>-->
 
                     </div><!-- .section-header -->
-                    @endif
+                    <?php endif; ?>
 
                     <div class="row">
 
-                        @if(count($providers) > 0)
+                        <?php if(count($providers) > 0): ?>
 
-                            @foreach($providers as $provider)
+                            <?php $__currentLoopData = $providers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $provider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                                 <div class="col-12 col-lg-4 mt-4">
                                     <div class="rounded-lg shadow-around bg-white text-center py-3">
                                         <img class="rounded-circle mb-lg-0 mb-3"
-                                        src="{{ $provider->image_url }}"
-                                        alt="{{ $provider->name }}"
+                                        src="<?php echo e($provider->image_url); ?>"
+                                        alt="<?php echo e($provider->name); ?>"
                                         style="width:90px;height:90px">
-                                        <p class="my-1 font-body-bold"><a href="{{ url("/restaurant-page/" . $provider->id) }}">{{ $provider->name }}</a></p>
+                                        <p class="my-1 font-body-bold"><a href="<?php echo e(url("/restaurant-page/" . $provider->id)); ?>"><?php echo e($provider->name); ?></a></p>
                                         <div>
-                                            @php
+                                            <?php
                                                 $count = 0;
-                                            @endphp
-                                            @for($i = 1; $i <= (int)$provider->averageRate; $i++)
-                                                <img src="{{ url("/assets/site/img/-e-rating-icon.svg") }}"
+                                            ?>
+                                            <?php for($i = 1; $i <= (int)$provider->averageRate; $i++): ?>
+                                                <img src="<?php echo e(url("/assets/site/img/-e-rating-icon.svg")); ?>"
                                                 class="img-fluid d-inline mx-auto">
 
-                                                @php
+                                                <?php
                                                     $count++
-                                                @endphp
-                                            @endfor
-                                            @if($count < 5)
-                                                @for($i = $count+1; $i <= 5; $i++)
-                                                  <img src="{{ url("/assets/site/img/-e-rating-icon-ncolor.svg") }}"
+                                                ?>
+                                            <?php endfor; ?>
+                                            <?php if($count < 5): ?>
+                                                <?php for($i = $count+1; $i <= 5; $i++): ?>
+                                                  <img src="<?php echo e(url("/assets/site/img/-e-rating-icon-ncolor.svg")); ?>"
                                                                 class="img-fluid d-inline mx-auto">
-                                                @endfor
-                                            @endif
+                                                <?php endfor; ?>
+                                            <?php endif; ?>
                                         </div>
                                         <div>
-                                            @if($provider->has_booking == "1")
-                                                <img src="{{ url("/assets/site/img/-e-reserved-icon.svg") }}"
+                                            <?php if($provider->has_booking == "1"): ?>
+                                                <img src="<?php echo e(url("/assets/site/img/-e-reserved-icon.svg")); ?>"
                                                 class="img-fluid d-inline mx-auto my-2">
-                                            @endif
+                                            <?php endif; ?>
 
-                                            @if($provider->has_delivery == "1")
-                                                <img src="{{ url("/assets/site/img/-e-delivery-icon.svg") }}"
+                                            <?php if($provider->has_delivery == "1"): ?>
+                                                <img src="<?php echo e(url("/assets/site/img/-e-delivery-icon.svg")); ?>"
                                                 class="img-fluid d-inline mx-auto my-2 pr-2">
-                                            @endif
+                                            <?php endif; ?>
                                         </div>
                                         <div>
-                                            <img src="{{ url("/assets/site/img/-e-money-icon.svg") }}"
+                                            <img src="<?php echo e(url("/assets/site/img/-e-money-icon.svg")); ?>"
                                             class="img-fluid d-inline mx-auto my-2 pr-2">
-                                            <span class="font-body-md">{{ $provider->mealAveragePrice }} {{trans('site.riyal')}}</span>
+                                            <span class="font-body-md"><?php echo e($provider->mealAveragePrice); ?> <?php echo e(trans('site.riyal')); ?></span>
                                             <!--
                                             <img src="assets/img/-e-mark-icon.svg"
                                             class="img-fluid d-inline mx-auto my-2 pr-2">
@@ -100,22 +100,23 @@
                                     </div>
                                 </div>
 
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
-                        @else
+                        <?php else: ?>
                              <div class="col-12 col-lg-4 mt-4">
                                     <div class="rounded-lg shadow-around bg-white text-center py-3">
-                            <p>{{ trans('site.empty-search-results') }}</p>
+                            <p><?php echo e(trans('site.empty-search-results')); ?></p>
                         </div>
                     </div>
 
 
-                        @endif
+                        <?php endif; ?>
                     </div>
 
 
-                    {{ $providers->links('Pagination.pagination') }}
+                    <?php echo e($providers->links('Pagination.pagination')); ?>
+
 
 
                 </div><!-- .col-* -->
@@ -123,9 +124,9 @@
         </div><!-- .container -->
     </main><!-- .page-content -->
 
-@endsection
-@if(count($providers) == 0)
-    @section('style')
+<?php $__env->stopSection(); ?>
+<?php if(count($providers) == 0): ?>
+    <?php $__env->startSection('style'); ?>
     
     .site-footer{
         position: absolute;
@@ -134,5 +135,6 @@
         width: 100%;
     }
     
-    @endsection
-@endif
+    <?php $__env->stopSection(); ?>
+<?php endif; ?>
+<?php echo $__env->make('Site.layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
