@@ -11,7 +11,7 @@
 
                     <div class="section-header d-flex p-3 rounded-lg shadow-around justify-content-between flex-lg-row flex-md-column flex-sm-row flex-column">
 
-                        <h4 class="page-title mb-auto">الطلبات</h4>
+                        <h4 class="page-title mb-auto">{{trans('site.orders')}}</h4>
 
                         {{--<div class="orders-sort dropdown font-body-md text-gray align-self-center">--}}
                             {{--<span class="dropdown-toggle cursor"--}}
@@ -52,7 +52,7 @@
                                         </h5>
                                         <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                رقم الطلب: <span class="order-number">{{ $order->order_code }}</span>
+                                                {{trans('site.order_num')}} <span class="order-number">{{ $order->order_code }}</span>
                                             </span>
 
                                             <span class="d-block d-lg-inline">
@@ -65,7 +65,7 @@
 
                                             <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">-</span>
-                                                <span class="order-price">{{ $order->total_price }}</span>ر.س
+                                                <span class="order-price">{{ $order->total_price }}</span>{{trans('site.riyal')}}
                                             </span>
                                         </p>
                                     </div><!-- .media-body -->
@@ -97,7 +97,7 @@
                         @if(count($orders) > 0)
                             <div class="mb-4 mt-5 text-center">
                                 <a href="{{ url("/restaurant/orders/list/1") }}"
-                                class="more-link font-body-bold btn px-5 btn-primary">المزيد</a>
+                                class="more-link font-body-bold btn px-5 btn-primary">{{trans('site.more')}}</a>
                             </div>
                         @endif
                     </div><!-- .section-content -->
@@ -108,7 +108,7 @@
 
                     <div class="section-header d-flex p-3 rounded-lg shadow-around justify-content-between flex-lg-row flex-md-column flex-sm-row flex-column">
 
-                        <h4 class="page-title mb-auto">الحجوزات</h4>
+                        <h4 class="page-title mb-auto">{{trans('site.reservations')}}</h4>
 
                         {{--<div class="reservation-sort dropdown font-body-md text-gray align-self-center">--}}
                             {{--<span class="dropdown-toggle cursor"--}}
@@ -148,11 +148,11 @@
                                         </h5>
                                         <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                رقم الحجز: <span class="reservation-number">{{ $reservation->reservation_code }}</span>
+                                                   {{trans('site.reservation_num')}} <span class="reservation-number">{{ $reservation->reservation_code }}</span>
                                             </span>
                                             <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
-                                                عدد الأشخاص: <span class="reservation-person">{{ $reservation->seats_number }}</span>
+                                                 {{trans('site.person_num')}}    : <span class="reservation-person">{{ $reservation->seats_number }}</span>
                                             </span>
                                             <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
@@ -194,7 +194,7 @@
                         @if(count($reservations) > 0)
                             <div class="mb-4 mt-5 text-center">
                                 <a href="{{ url("/restaurant/reservations/list/1") }}"
-                                class="more-link font-body-bold btn px-5 btn-primary">المزيد</a>
+                                class="more-link font-body-bold btn px-5 btn-primary">{{trans('site.more')}}</a>
                             </div>
                         @endif
                     </div><!-- .section-content -->

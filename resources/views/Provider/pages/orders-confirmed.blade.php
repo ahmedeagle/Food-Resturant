@@ -19,7 +19,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">الطلبات</h4>
+                        <h4 class="page-title">{{trans('site.orders')}}</h4>
                     </div>
 
                     @if(Session::has("success"))
@@ -51,21 +51,21 @@
 
                                 <p class="text-gray font-body-md mb-0">
                                     <span class="d-block">
-                                        رقم الطلب: <span class="orders-number">{{ $orderDetails->order_code }}</span>
+                                         {{trans('site.order_num')}} <span class="orders-number">{{ $orderDetails->order_code }}</span>
                                     </span>
                                     <span class="d-block">
                                         <span class="orders-date">
-                                            الوقت والتاريخ:
+                                             {{trans('site.time_date')}}
                                             <time datetime="2018-10-25 17:30">
                                                 {{ $orderDetails->order_date }} - {{ $orderDetails->time_extention }} {{ $orderDetails->order_time }}
                                             </time>
                                         </span>
                                     </span>
                                     <span class="d-block">
-                                        طريقة الدفع:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
+                                        {{trans('site.payment_method')}}:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
-                                        العنوان:
+                                        {{trans('site.address')}}:
                                         <span class="orders-address">
                                              {{$orderDetails -> address}}
                                         </span>
@@ -87,7 +87,7 @@
                         <div class="row px-3 px-lg-0">
                             <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
                                 <h6 class="font-size-base text-lg-right text-center">
-                                    التفاصيل
+                                  {{trans('site.details')}}
                                 </h6>
 
 
@@ -104,7 +104,7 @@
                                                 &times;
                                                 <span class="count">{{ $meal->meal_qty }}</span>
                                                 &nbsp;
-                                                <span class="currency">ر.س</span>
+                                                <span class="currency">{{trans('site.riyal')}}</span>
                                             </div>
 
                                             <!-- start meal options -->
@@ -112,15 +112,15 @@
                                                 $options_sum = 0;
                                             @endphp
                                             @if(count($meal->options) > 0)
-                                                <p class="item-head mb-auto">التفضيلات</p>
+                                                <p class="item-head mb-auto">{{trans('site.adds')}}</p>
                                                 @foreach($meal->options as $option)
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $option->option_name }}</span>
-                                                        : السعر المضاف
+                                                        :  {{trans('site.added_price')}}
                                                         <span class="count"> {{ $option->added_price }} </span>
                                                         &nbsp;
-                                                        <span class="currency"> ر.س </span>
+                                                        <span class="currency">  {{trans('site.riyal')}} </span>
                                                     </div>
                                                     @php
                                                         $options_sum  = $options_sum + $option->added_price;
@@ -135,15 +135,15 @@
                                                 $adds_sum = 0;
                                             @endphp
                                             @if(count($meal->adds) > 0)
-                                                <p class="item-head mb-auto">الإضافات</p>
+                                                <p class="item-head mb-auto"> {{trans('site.options')}} </p>
                                                 @foreach($meal->adds as $add)
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $add->add_name }}</span>
-                                                        : السعر المضاف
+                                                        :  {{trans('site.added_price')}}
                                                         <span class="count"> {{ $add->added_price }} </span>
                                                         &nbsp;
-                                                        <span class="currency"> ر.س </span>
+                                                        <span class="currency">  {{trans('site.riyal')}} </span>
                                                     </div>
                                                 @php
                                                     $adds_sum  = $adds_sum + $add->added_price;
@@ -155,7 +155,7 @@
                                         </div>
                                         <div class="result text-primary">
                                             <span class="total">{{ ( ( (int)$meal->meal_price + $options_sum + $adds_sum ) * ( (int)$meal->meal_qty ) )  }}</span>
-                                            <span class="currency">ر.س</span>
+                                            <span class="currency"> {{trans('site.riyal')}}</span>
                                         </div>
                                     </div><!-- .item -->
                                     <hr class="border-light border">
@@ -167,10 +167,10 @@
 
 
                                 <div class="invoice d-flex justify-content-between mt-3">
-                                    <h6 class="font-size-base">المجموع</h6>
+                                    <h6 class="font-size-base">{{trans('site.total')}}:</h6>
                                     <div class="result text-primary font-body-md">
                                         <span class="total">{{ $sum }}</span>
-                                        <span class="currency">ر.س</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
                                 
@@ -184,10 +184,10 @@
                                   
         
                                 <div class="invoice d-flex justify-content-between mt-3">
-                                    <h6 class="font-size-base">الضريبة </h6>
+                                    <h6 class="font-size-base">{{trans('site.tax')}}: </h6>
                                     <div class="result text-primary font-body-md">
                                         <span class="total">{{ ($sum * $orderTax ) / 100 }}</span>
-                                        <span class="currency">ر.س</span>
+                                        <span class="currency">{{trans('site.tax')}}</span>
                                     </div>
                                 </div>
                                 
@@ -205,7 +205,7 @@
                                 <div class="order-confirm text-center text-sm-right">
                                     <a href="{{ url("/restaurant/orders/confirm-processed-order/" . $orderDetails->order_id) }}" class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 mt-2"
                                     >
-                                        تم تجهيز الطلب
+                                        {{trans('site.order_ready')}}
                                     </a>
 
                                 </div>
@@ -214,7 +214,7 @@
 
                     </div>
 
-                    <a href="{{ url("/restaurant/orders/list/1") }}" class="btn btn-primary px-5">العودة</a>
+                    <a href="{{ url("/restaurant/orders/list/1") }}" class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

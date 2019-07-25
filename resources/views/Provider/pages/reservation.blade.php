@@ -18,7 +18,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">الحجوزات</h4>
+                        <h4 class="page-title"> {{trans('site.reservations')}}</h4>
                     </div>
                     <div class="d-flex px-3 rounded-lg shadow-around mt-4 justify-content-between flex-lg-row flex-md-column flex-sm-row flex-column">
                         <ul class="nav nav-tabs border-0 pr-lg-2 pr-0 text-center justify-content-center"
@@ -33,7 +33,7 @@
                                    role="tab"
                                    aria-controls="current"
                                    aria-selected="true">
-                                    الحجوزات الحالية
+                                    {{trans('site.current_reservations')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -45,7 +45,8 @@
                                    role="tab"
                                    aria-controls="prev"
                                    aria-selected="false">
-                                    الحجوزات السابقة
+                                    
+                                    {{trans('site.previous_reservations')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -92,11 +93,11 @@
                                                     </h5>
                                                     <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                رقم الحجز: <span class="reservation-number">{{ $reservation->reservation_code }}</span>
+                                               {{trans('site.reservation_num')}} <span class="reservation-number">{{ $reservation->reservation_code }}</span>
                                             </span>
                                                         <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
-                                                عدد الأشخاص: <span class="reservation-person">{{ $reservation->seats_number }}</span>
+                                                {{trans('site.person_num')}} <span class="reservation-person">{{ $reservation->seats_number }}</span>
                                             </span>
                                                         <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
@@ -111,7 +112,7 @@
                                                      
                            @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
                                 <p>                                    
-                                      وصف المناسبه <br>
+                                      {{trans('site.occasion_description')}} <br>
 
                                      
                                 </p>
@@ -168,11 +169,11 @@
                                             </h5>
                                             <p class="text-gray font-body-md mb-0">
                                             <span class="d-block d-lg-inline">
-                                                رقم الحجز: <span class="reservation-number">{{ $reservation->reservation_code }}</span>
+                                                {{trans('site.reservation_num')}}  <span class="reservation-number">{{ $reservation->reservation_code }}</span>
                                             </span>
                                                 <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>
-                                                عدد الأشخاص: <span class="reservation-person">{{ $reservation->seats_number }}</span>
+                                               {{trans('site.person_num')}} <span class="reservation-person">{{ $reservation->seats_number }}</span>
                                             </span>
                                                 <span class="d-block d-lg-inline">
                                                 <span class="d-none d-lg-inline">|</span>

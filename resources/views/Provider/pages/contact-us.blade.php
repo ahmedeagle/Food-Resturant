@@ -18,7 +18,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">إتصل بنا</h4>
+                        <h4 class="page-title font-body-bold"> {{trans('site.contact_us')}}</h4>
                     </div>
 
 
@@ -32,7 +32,7 @@
                                          class="img-fluid d-block mx-auto"
                                          alt="">
                                     <h5 class="item-tile font-size-base font-body-bold open-ticket pt-4 mb-1">
-                                        فتح تذكرة
+                                        {{trans('site.open_ticket')}}
                                     </h5>
                                 </a>
 
@@ -47,8 +47,8 @@
                                          class="img-fluid d-block mx-auto"
                                          alt="">
                                     <h5 class="item-tile font-size-base font-body-bold pt-3 mb-1">
-                                        تذاكري السابقة
-                                    </h5>
+                                        {{trans('site.my_previous_tickets')}}
+                                         </h5>
                                 </a>
                             </div>
                         </div>

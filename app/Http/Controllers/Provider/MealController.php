@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Validator;
+use LaravelLocalization;
 class MealController extends Controller
 {
     public function get_food_menu_list(){
@@ -25,7 +26,7 @@ class MealController extends Controller
                                 ->where("provider_id", auth("provider")->id())
                                 ->select(
                                     "id AS id",
-                                    "ar_name AS name"
+                                    LaravelLocalization::getCurrentLocale()."_name AS name"
                                 )->get();
 
         if(count($data['cats']) == 0){
@@ -37,7 +38,7 @@ class MealController extends Controller
                             ->where("provider_id", auth("provider")->id())
                             ->select(
                                 "id",
-                                "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
 
@@ -210,7 +211,7 @@ class MealController extends Controller
             DB::table("meal_component")
                         ->insert([
                             "ar_name" => (string)$c,
-                            "en_name" => "",
+                            "en_name" => (string)$c,
                             "meal_id" => $meal
                         ]);
         }
@@ -332,10 +333,10 @@ class MealController extends Controller
                             ->where("meals.deleted", "0")
                             ->select(
                                 "meals.id AS meal_id",
-                                "meals.ar_name AS meal_name",
-                                "mealcategories.ar_name AS cat_name",
+                                "meals.".LaravelLocalization::getCurrentLocale()."_name AS meal_name",
+                                "mealcategories.".LaravelLocalization::getCurrentLocale()."_name AS cat_name",
                                 "meals.published",
-                                "branches.ar_name AS branch_name"
+                                "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name"
                             )->paginate(12);
 
         return view("Provider.pages.meals", $data);
@@ -356,7 +357,7 @@ class MealController extends Controller
                                 ->select(
                                     "meals.*",
                                     "mealcategories.id AS cat_id",
-                                    "mealcategories.ar_name AS cat_name"
+                                    "mealcategories.".LaravelLocalization::getCurrentLocale()."_name AS cat_name"
                                 )->first();
 
         if(!$data['meal']){
@@ -374,7 +375,7 @@ class MealController extends Controller
                             ->where("meal_id", $id)
                             ->select(
                                 "id AS size_id",
-                                "ar_name AS size_name",
+                           "ar_name AS size_name",
                                 "price AS price"
                             )->get();
 
@@ -382,21 +383,21 @@ class MealController extends Controller
         $data['cats']  = DB::table("mealcategories")
                             ->select(
                                 "id AS id",
-                                "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                             )->get();
 
         $data['branches'] = DB::table("branches")
                             ->where("provider_id", auth("provider")->id())
                             ->select(
                                 "id",
-                                "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
 
         $component = DB::table("meal_component")
                                 ->where("meal_id", $id)
                                 ->select(
-                                    "ar_name AS name"
+                                    LaravelLocalization::getCurrentLocale()."_name AS name"
                                 )->get();
 
         $data['adds'] = DB::table("meal_adds")
@@ -598,7 +599,7 @@ class MealController extends Controller
             DB::table("meal_component")
                 ->insert([
                     "ar_name" => (string)$c,
-                    "en_name" => "",
+                    "en_name" => (string)$c,
                     "meal_id" => $meal
                 ]);
         }
@@ -725,7 +726,7 @@ class MealController extends Controller
                             ->where("deleted", "0")
                             ->select(
                                 "id AS cat_id",
-                                "ar_name AS name",
+                                LaravelLocalization::getCurrentLocale()."_name AS name",
                                 "published"
                             )->get();
 

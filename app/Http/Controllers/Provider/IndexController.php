@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Carbon\Carbon;
+use LaravelLocalization;
 class IndexController extends Controller
 {
     public function index(){
@@ -34,15 +35,15 @@ class IndexController extends Controller
             ->orderBy("orders.id", "DESC")
             ->select(
                 "orders.id AS order_id",
-                "branches.ar_name AS branch_name",
+                "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name",
                 "orders.order_code",
                 DB::raw("TIME(orders.order_date) AS order_time"),
                 "orders.total_price",
                 "users.name AS username",
                 DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                "order_statuses.ar_name AS status_name",
+                "order_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                 "order_statuses.id AS status_id",
-                "order_statuses.ar_name as status_name"
+                "order_statuses.".LaravelLocalization::getCurrentLocale()."_name as status_name"
             )
             ->paginate(5);
 
@@ -69,13 +70,13 @@ class IndexController extends Controller
                                 ->select(
                                     "reservations.id AS reservation_id",
                                     "reservations.reservation_code",
-                                    "branches.ar_name As branch_name",
+                                    "branches.".LaravelLocalization::getCurrentLocale()."_name As branch_name",
                                     "reservations.date AS reservation_date",
                                     "reservations.time AS reservation_time",
                                     "reservations.seats_number",
                                     "users.name AS username",
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                    "reservation_statuses.ar_name AS status_name",
+                                    "reservation_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                     "reservation_statuses.id AS status_id"
                                 )
                                 ->paginate(5);

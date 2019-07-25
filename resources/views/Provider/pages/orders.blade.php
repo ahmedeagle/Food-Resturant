@@ -19,7 +19,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">الطلبات</h4>
+                        <h4 class="page-title"> {{trans('site.orders')}}</h4>
                     </div>
                     <div class="d-flex px-3 rounded-lg shadow-around mt-4 justify-content-between flex-lg-row flex-md-column flex-sm-row flex-column">
                         <ul class="nav nav-tabs border-0 pr-lg-2 pr-0 text-center justify-content-center"
@@ -34,7 +34,7 @@
                                    role="tab"
                                    aria-controls="current"
                                    aria-selected="true">
-                                    الطلبات الحالية
+                                      {{trans('site.current_orders')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -46,7 +46,7 @@
                                    role="tab"
                                    aria-controls="prev"
                                    aria-selected="false">
-                                    الطلبات السابقة
+                                    {{trans('site.previous_orders')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -91,7 +91,7 @@
                                                 </h5>
                                                 <p class="text-gray font-body-md mb-0">
                                                     <span class="d-block d-lg-inline">
-                                                        رقم الطلب: <span class="order-number">{{ $order->order_code }}</span>
+                                                            {{trans('site.order_num')}} <span class="order-number">{{ $order->order_code }}</span>
                                                     </span>
 
                                                     <span class="d-block d-lg-inline">
@@ -104,7 +104,7 @@
 
                                                     <span class="d-block d-lg-inline">
                                                         <span class="d-none d-lg-inline">-</span>
-                                                        <span class="order-price">{{ $order->total_price }}</span>ر.س
+                                                        <span class="order-price">{{ $order->total_price }}</span> {{trans('site.riyal')}}
                                                     </span>
                                                 </p>
                                             </div><!-- .media-body -->
@@ -147,7 +147,7 @@
                                                 </h5>
                                                 <p class="text-gray font-body-md mb-0">
                                                     <span class="d-block d-lg-inline">
-                                                        رقم الطلب: <span class="order-number">{{ $order->order_code }}</span>
+                                                          {{trans('site.order_num')}} <span class="order-number">{{ $order->order_code }}</span>
                                                     </span>
 
                                                     <span class="d-block d-lg-inline">
@@ -160,7 +160,7 @@
 
                                                     <span class="d-block d-lg-inline">
                                                         <span class="d-none d-lg-inline">-</span>
-                                                        <span class="order-price">{{ $order->total_price }}</span>ر.ل
+                                                        <span class="order-price">{{ $order->total_price }}</span>  {{trans('site.riyal')}}
                                                     </span>
                                                 </p>
                                             </div><!-- .media-body -->

@@ -19,7 +19,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold">كل الوجبات</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.all_meals')}}</h4>
                     </div>
 
                     @if(Session::has("warning"))
@@ -48,9 +48,9 @@
                             <table class="table">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col">إسم التصنيف</th>
-                                    <th scope="col">عدد الوجبات</th>
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col">{{trans('site.category_name')}}</th>
+                                    <th scope="col"> {{trans('site.meals_count')}}</th>
+                                    <th scope="col">{{trans('site.control')}}</th>
                                 </tr>
                                 </thead>
 
@@ -102,15 +102,15 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content py-3">
                                         <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                            هل تريد تأكيد عملية الحذف
+                                             {{trans('site.delete_message')}}
                                         </p>
                                         <div class="modal-footer d-flex justify-content-center pt-0">
                                             <button type="button"
                                                     class="btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                                    data-dismiss="modal">إلغاء</button>
+                                                    data-dismiss="modal">{{trans('site.cancel')}}</button>
                                             <a type="submit"
                                                     class="btn btn-primary px-4 px-sm-5 font-weight-bold"
-                                                    id="yes">نعم</a>
+                                                    id="yes">{{trans('site.yes')}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -131,11 +131,11 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
-                                <label for="new-cat" class="font-body-bold">إضافة تصنيف جديد</label>
+                                <label for="new-cat" class="font-body-bold">{{trans('site.add_new_category')}}</label>
                                 <div class="d-flex justify-content-center flex-column flex-sm-row">
                                     <input type="text" name="ar_name" value="{{ old("ar_name") }}" class="form-control" id="new-cat">
                                     <button class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
-                                            type="submit">إضافة</button>
+                                            type="submit">{{trans('site.confirm')}}</button>
 
                                 </div>
                                 @if($errors->has("ar_name"))

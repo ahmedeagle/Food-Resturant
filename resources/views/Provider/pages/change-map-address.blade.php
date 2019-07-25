@@ -15,8 +15,8 @@
     <main id="map-content" class="map-content page-content py-5">
 
         <header class="page-header mt-4 text-center">
-            <h1 class="page-title h2 font-body-bold">تغيير الموقع</h1>
-            <p class="description text-gray font-body-md mt-3">يرجى تحديد الموقع عبر الخريطة</p>
+            <h1 class="page-title h2 font-body-bold">{{trans('site.change_location')}}</h1>
+            <p class="description text-gray font-body-md mt-3">{{trans('site.select_location_on_map')}}</p>
             {{--<p id="register-map-address" class="description text-gray font-body-md mt-3"></p>--}}
         </header>
         <div class="container">
@@ -50,9 +50,9 @@
 
                     @endif
 
-                    <Button type="submit" form="form" class="btn btn-primary px-5 no-decoration">تأكيد</Button>
+                    <Button type="submit" form="form" class="btn btn-primary px-5 no-decoration">{{trans('site.confirm')}}</Button>
                     <a href="{{ url("/restaurant/profile") }}">
-                        <button  class="btn btn-default px-5 no-decoration">رجوع</button>
+                        <button  class="btn btn-default px-5 no-decoration">{{trans('site.back')}}</button>
                     </a>
                 </div><!-- .col-* -->
             </div><!-- .row -->
@@ -61,6 +61,9 @@
 
 @endsection
 @section('script')
+
+<?php  $nameMap = LaravelLocalization::getCurrentLocale()."_name"?>
+
 
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&callback=initMap">
@@ -72,6 +75,7 @@
    <script>
      
    
+
             
     var map, infoWindow , marker ,geocoder;
         
@@ -104,9 +108,10 @@
           infoWindow = new google.maps.InfoWindow;
           geocoder = new google.maps.Geocoder();
           
+         
           
                       infoWindow.setPosition({lat: parseFloat(prevlat), lng: parseFloat(prevLng)});
-                     infoWindow.setContent('{{$branch -> ar_name}}');
+                     infoWindow.setContent('{{$branch -> $nameMap}}');
                       infoWindow.open(map);
                    
 
@@ -215,7 +220,7 @@
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng( parseInt($("#branch-lat").val()),parseInt($("#branch-lng").val())),
                 map: map,
-                title: '{{$branch -> ar_name}}'
+                title: '{{$branch -> $nameMap}}'
             });
             
 

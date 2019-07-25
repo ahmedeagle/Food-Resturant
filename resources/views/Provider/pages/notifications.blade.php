@@ -6,92 +6,58 @@
  
 
 @section("content")
+
     <main class="page-content py-5">
         <div class="container">
-
             <div class="row">
 
                 @include("Provider.pages.menu")
 
-                <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
+                <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
-                    <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold"> اشعارات الاداره </h4>
+                    <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
+                        <h4 class="page-title font-body-bold">{{trans('site.notifications')}}</h4>
                     </div>
 
-                    @if(Session::has("success"))
-                        <div class="alert alert-success top-margin">
-                            {{ Session::get("success") }}
-                        </div>
+                     @if(isset($notifications) && $notifications -> count() > 0)
+                           @foreach($notifications as $n)
+                                <div class="pr-3 rounded-lg shadow-around bg-white py-2 font-body-md my-3 mt-4">
+
+                                    <div class="media align-items-lg-start align-items-center flex-column flex-lg-row">
+
+                                        <div class="media-body">
+
+                                            <h5 class="mt-lg-2 mt-md-0 mt-xs-0 pt-2 pt-lg-0 text-lg-right text-center font-size-base">
+                                                {{ $n->title }}
+                                            </h5>
+                                            <p class="text-lg-right text-center pb-1 text-gray mb-0">{{ $n->created_at }}</p>
+
+                                            <p class="text-gray  pl-3 pr-3 pr-lg-0 pb-3 mb-0 mt-2 mt-sm-0 text-lg-right text-md-center text-sm-center text-center font-size-base">
+                                                <span class="d-block">{{ $n->content }}</span>
+                                            </p>
+
+                                           <p class="text-lg-right text-center pb-1 text-gray mb-0">  {{ $notification -> seen ==  '1' ? ' مقرؤه ': 'جديده  ' }}</p>
+
+                                        </div><!-- .media-body -->
+                                    </div><!-- .media -->
+                                </div>
+                            @endforeach
+
+                    @else
+                        <p class="mt-4">{{trans('site.no_notifications')}}</p>
                     @endif
 
-                    @if(Session::has("error"))
-                        <div class="alert alert-danger top-margin">
-                            {{ Session::get("error") }}
-                        </div>
-                    @endif
 
-                    @if(isset($notifications) && $notifications -> count() > 0)
 
-                    <div class="rounded-lg shadow-around mt-4 overflow-hidden">
+                    {{ $notifications->links("Pagination.pagination") }}
 
-                        <div class="table-responsive bg-light">
-                            <table class="table">
-                                <thead class="font-body-bold">
-                                <tr>
-                                    <th scope="col">الموضوع </th>
-                                     <th scope="col"> المحتوي </th>
-                                    <th scope="col"> التاريخ </th>
-                                    <th scope="col">الحالة </th>
-                                </tr>
-                                </thead>
-
-                                <tbody class="font-body-md text-gray border-bottom bg-white">
-                                    @foreach($notifications as $notification)
-                                        <tr>
-                                            
-                                            <td class="text-nowrap">{{ $notification -> title }}</td>
-                                            <td class="text-nowrap">
-
-                                                 {{ $notification -> content }}
-
-                                            </td>
-
-                                            <td class="text-nowrap">
-
-                                                 {{ $notification -> created_at }}
-
-                                            </td>
-
-                                            <td class="text-nowrap">
-
-                                                 {{ $notification -> seen ==  '1' ? ' مقرؤه ': 'جديده  ' }}
-
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
- 
-
-                        </div>
-
-                    </div>
-
-                    
-                     @else
-                        <div class="mt-4">
-                            لايوجد اشعارات 
-                        </div>
-                    @endif
-
-                       {{ $notifications->links("Pagination.pagination") }}
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
-
         </div><!-- .container -->
     </main><!-- .page-content -->
+
 @endsection
 
- 
+
+

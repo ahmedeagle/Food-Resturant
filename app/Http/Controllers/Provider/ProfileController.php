@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Validator;
 use Hash;
+use LaravelLocalization;
 class ProfileController extends Controller
 {
     public function get_profile(){
@@ -219,7 +220,7 @@ class ProfileController extends Controller
         $data['cats'] = DB::table("mealsubcategories")
                             ->select(
                                 "id",
-                                "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
 
@@ -260,7 +261,7 @@ public function change_resturant_categories(){
           $data['cats'] = DB::table("subcategories")
                                     ->select(
                                         "id",
-                                        "ar_name AS name"
+                                        LaravelLocalization::getCurrentLocale()."_name AS name"
                                     )
                                     ->get();
         
@@ -372,7 +373,7 @@ public function post_change_meal_type(Request $request){
         $data['title'] = " - ملف المطعم - تغيير عنوان المطعم على الخارطة";
         $data['class'] = "page-template register address";
         
-        $data['branch']  = DB::table('providers') -> where('id',auth("provider")->id()) -> select('latitude','longitude','ar_name') -> first();
+        $data['branch']  = DB::table('providers') -> where('id',auth("provider")->id()) -> select('latitude','longitude','ar_name','en_name') -> first();
         
 
         return view("Provider.pages.change-map-address", $data);
@@ -407,7 +408,13 @@ public function post_change_meal_type(Request $request){
     }
     public function download_rules(){
         $filename = "Menu and meals regulations _ ضوابط معلومات قوائم الطعام و الوجبات.docx";
+        if(file_exists($filename)){
         return response()->download(storage_path("app/public/settings/{$filename}"));
+
+        }else{
+
+            return redirect() -> back() -> with('error_no_file',trans('site.file_no_exists'));
+        }
     }
     
     

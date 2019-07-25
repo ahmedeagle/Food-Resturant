@@ -20,7 +20,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold">الفروع</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.branches')}}</h4>
                     </div>
 
                     @if(Session::has("success"))
@@ -43,9 +43,9 @@
                             <table class="table">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col">إسم الفرع</th>
-                                    <th scope="col">العنوان</th>
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col"> {{trans('site.branch_name')}}</th>
+                                    <th scope="col"> {{trans('site.branch_address')}}</th>
+                                    <th scope="col">{{trans('site.control')}}</th>
                                 </tr>
                                 </thead>
 
@@ -95,16 +95,16 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content py-3">
                                         <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                            هل تريد بالتأكيد حذف “إسم الصنف”.
+                                           {{trans('site.delete_branch_message')}}
                                         </p>
                                         <div class="modal-footer d-flex justify-content-center pt-0">
                                             <button type="button"
                                                     class="btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                                    data-dismiss="modal">إلغاء</button>
+                                                    data-dismiss="modal">{{trans('site.cancel')}}</button>
                                             <a type="submit"
                                                     href=""
                                                     id="yes"
-                                                    class="btn btn-primary px-4 px-sm-5 font-weight-bold">نعم</a>
+                                                    class="btn btn-primary px-4 px-sm-5 font-weight-bold">{{trans('site.yes')}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                             {{ trans("provider.empty_branches") }}
                         </div>
                     @endif
-                    <a href="{{ url("/restaurant/branches/new-branch") }}" class="btn btn-primary no-decoration mt-4 px-4">إضافة فرع جديد</a>
+                    <a href="{{ url("/restaurant/branches/new-branch") }}" class="btn btn-primary no-decoration mt-4 px-4">{{trans('site.add_new_branch')}}</a>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

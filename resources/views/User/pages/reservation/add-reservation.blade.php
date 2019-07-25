@@ -136,7 +136,7 @@
                             <button type="submit" class="btn btn-primary py-2 px-5 mt-3">{{trans('site.confirm')}}</button>
 
 
-                            {{--<!--For Test--> <a href="user-booking-confirmation.html" class="btn btn-primary py-2 px-5 mt-3">حجز</a><!--For Test-->--}}
+                            {{--<!--For Test--> <a href="user-booking-confirmation.html" class="btn btn-primary py-2 px-5 mt-3">{{trans('site.confirm')}}</a><!--For Test-->--}}
 
                         </form>
 

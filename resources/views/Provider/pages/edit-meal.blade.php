@@ -18,14 +18,14 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">تعديل الصنف</h4>
+                        <h4 class="page-title">{{trans('site.edit_meal')}}</h4>
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
                         <form data-action="{{ url("/restaurant/food-menu/edit") }}" id="edit-meal-from" class="new-kind-form multi-forms">
 
                             <div class="form-group">
-                                <p> صور الصنف <span class="text-gray font-body-md">امتداد الصور المسموح بها هو jpg-jpeg-png</span></p>
+                                <p>{{trans('site.meal_photo')}}<span class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
                                 <div class="custom-file h-auto">
                                     <input type="file" name="file" class="add-meal-image custom-file-input" id="restaurant-logo" hidden>
                                     <label class="border-0 mb-0 cursor" for="restaurant-logo">
@@ -33,7 +33,7 @@
                                             <i class="fa fa-plus fa-fw fa-lg text-gray" aria-hidden="true"></i>
                                         </span>
                                     </label>
-                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">برجاء اختيار صور الوجبة</p>
+                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
                                 </div>
                             </div><!-- .form-group logo -->
 
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة العربية</label>
+                                <label for="kind-name">{{trans('site.ar_name')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="ar_name"
@@ -58,7 +58,7 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة الانجليزية</label>
+                                <label for="kind-name">{{trans('site.en_name')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="en_name"
@@ -67,10 +67,10 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="categorie">تصنيف الوجية</label>
+                                <label for="categorie">{{trans('site.meal_categories')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="categorie" name="category" required>
-                                    <option value="">يرجى تحديد التصنيف</option>
+                                    <option value="">{{trans('site.choose_category')}}</option>
                                     @foreach($cats as $cat)
 
                                         <option value="{{ $cat->id }}" @if($meal->mealCategory_id == $cat->id) selected @endif>{{ $cat->name }}</option>
@@ -81,10 +81,10 @@
 
 
                             <div class="form-group">
-                                <label for="categorie">الفروع المتوفر بها التصنيف</label>
+                                <label for="categorie">{{trans('site.branches_have_meal')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="branch" name="branch" required>
-                                    <option value="">يرجى تحديد الفرع</option>
+                                    <option value="">{{trans('site.choose_branches')}}</option>
 
                                     @foreach($branches as $branch)
 
@@ -96,9 +96,9 @@
 
                             <div class="form-group">
                                 <label for="input-tags">
-                                    المكونات
+                                    {{trans('site.ingredients')}}
                                     <span class="text-gray font-body-md">
-                                        (يرجى وضع فاصلة بين كل مكون والآخر)
+                                        ({{trans('site.ingredients_note')}})
                                     </span>
                                 </label>
                                 <input type="text"
@@ -108,59 +108,60 @@
                             </div><!-- .form-group tags -->
 
                             <div class="form-group">
-                                <label for="available">متوفر جميع الاوقات</label>
+                                <label for="available">{{trans('site.available_all_time')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="available" name="available" required>
-                                    <option value="">يرجى تحديد الحالة</option>
-                                    <option value="1" @if($meal->available == "1") selected @endif>نعم</option>
-                                    <option value="0" @if($meal->available == "0") selected @endif>لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1" @if($meal->available == "1") selected @endif> {{trans('site.yes')}}</option>
+                                    <option value="0" @if($meal->available == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group available -->
 
                             <div class="form-group">
-                                <label for="spicy">حار</label>
+                                <label for="spicy">{{trans('site.spicy')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="spicy" name="spicy" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1" @if($meal->spicy == "1") selected @endif>نعم</option>
-                                    <option value="0" @if($meal->spicy == "0") selected @endif>لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1" @if($meal->spicy == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0" @if($meal->spicy == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group spicy -->
 
                             <div class="spicy-degree-container form-group @if($meal->spicy == "0") hidden-element @endif">
-                                <label for="spicy-degree">درجة حرارة الصنف</label>
+                                <label for="spicy-degree">{{trans('site.spicy_degree')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="spicy-degree"
                                        value="{{ old("spicy-degree", $meal->spicy_degree) }}"
-                                       placeholder="برجاء ادخال قيمة من 1 الى 5"
+                                       placeholder="{{trans('site.value_from1_to5')}}"
                                        id="spicy-degree">
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="vegetable">مناسب للنباتيين</label>
+                                <label for="vegetable">{{trans('site.suitable_for_vegetarians')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="vegetable" name="vegetable" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1" @if($meal->vegetable == "1") selected @endif>نعم</option>
-                                    <option value="0" @if($meal->vegetable == "0") selected @endif>لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1" @if($meal->vegetable == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0" @if($meal->vegetable == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group vegetable -->
 
                             <div class="form-group">
-                                <label for="gluten">خالي من الجلوتين </label>
+                                <label for="gluten">{{trans('site.gluten_free')
+                                }}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="gluten" name="gluten" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1" @if($meal->gluten == "1") selected @endif>نعم</option>
-                                    <option value="0" @if($meal->gluten == "0") selected @endif>لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1" @if($meal->gluten == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0" @if($meal->gluten == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
                             <div class="form-group">
                                 <label for="calorie">
-                                    عدد السعرات الحرارية
-                                    <span class="text-gray font-body-md">السعرات الكلية للطلب متوسط الحجم</span>
+                                    {{trans('site.number_of_calories')}}
+                                    <span class="text-gray font-body-md">{{trans('site.meduim_colaries')}}</span>
                                 </label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
@@ -171,7 +172,7 @@
                             </div><!-- .form-group calorie -->
 
                             <div class="form-group">
-                                <label for="details"> الوصف باللغة العربية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
+                                <label for="details">{{trans('site.description_ar')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="form-control ar-details font-body-md border-gray"
                                           id="details"
                                           name="ar_description"
@@ -180,7 +181,7 @@
 
 
                             <div class="form-group">
-                                <label for="details"> الوصف باللغة الانجليزية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
+                                <label for="details">{{trans('site.description_en')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="form-control en-details font-body-md border-gray"
                                           id="details"
                                           name="en_description"
@@ -189,7 +190,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>الأحجام</p>
+                                    <p>{{trans('site.sizes')}}</p>
 
                                     @foreach($sizes as $key => $s)
                                         <div class="form-group">
@@ -215,7 +216,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر</p>
+                                    <p>{{trans('site.price')}}</p>
                                     @foreach($sizes as $key => $s)
                                         <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                             <input type="text"
@@ -227,7 +228,7 @@
                                                    aria-describedby="price-addon" @if($key == 0) required @endif>
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -246,7 +247,7 @@
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -262,7 +263,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>الاضافات</p>
+                                    <p> {{trans('site.options')}} </p>
 
                                     @foreach($adds as $key => $s)
                                         <div class="form-group">
@@ -288,7 +289,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر المضاف</p>
+                                    <p>{{trans('site.added_price')}}</p>
                                     @foreach($adds as $key => $s)
                                         <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                             <input type="text"
@@ -300,7 +301,7 @@
                                                    aria-describedby="price-addon">
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray">{{trans('site.riyal')}}
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -319,7 +320,7 @@
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -335,7 +336,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>التفضيلات</p>
+                                    <p> {{trans('site.adds')}}</p>
 
                                     @foreach($options as $key => $s)
                                         <div class="form-group">
@@ -361,7 +362,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر المضاف</p>
+                                    <p>{{trans('site.added_price')}}</p>
                                     @foreach($options as $key => $s)
                                         <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                             <input type="text"
@@ -373,7 +374,7 @@
                                                    aria-describedby="price-addon">
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -392,7 +393,7 @@
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -407,16 +408,16 @@
 
 
                             <div class="form-group">
-                                <label for="recommended">ينصح به من قبل المطعم </label>
+                                <label for="recommended">{{trans('site.recommanded_restaurant')}}</label>
                                 <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
-                                    <option value="">برجاء اختيار الحالة</option>
-                                    <option value="1" @if($meal->recommend == "1") selected @endif>نعم</option>
-                                    <option value="0" @if($meal->recommend == "0") selected @endif>لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1" @if($meal->recommend == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0" @if($meal->recommend == "0") selected @endif>{{trans('site.no')}}option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
                             <input type="hidden" name="meal_id" value="{{ $meal->id }}" />
-                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">تعديل</button>
+                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">{{trans('site.edit')}}</button>
                         </form><!-- .new-kind-form -->
                     </div>
                 </div><!-- .col-* -->

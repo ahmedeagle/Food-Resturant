@@ -57,7 +57,7 @@
                                     </span>
                                     <span class="d-block">
                                         <span class="orders-date">
-                                            {{trans('site.time_date')}}
+                                            {{trans('site.time_date')}}:
                                             <time datetime="2018-10-25 17:30">
                                                 {{ $orderDetails->order_date }} - {{ $orderDetails->time_extention }} {{ $orderDetails->order_time }}
                                             </time>

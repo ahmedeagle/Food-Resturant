@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Hash;
 use Validator;
+use LaravelLocalization;
 class BranchController extends Controller
 {
     public function get_branches(){
@@ -17,8 +18,8 @@ class BranchController extends Controller
                             ->where("branches.deleted", "0")
                             ->select(
                                 "branches.id AS branch_id",
-                                "branches.ar_name AS branch_name",
-                                "branches.ar_address AS branch_address",
+                                "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name",
+                                "branches.".LaravelLocalization::getCurrentLocale()."_address AS branch_address",
                                 "branches.published"
                             )->get();
 
@@ -36,13 +37,13 @@ class BranchController extends Controller
         $data['congestion'] = DB::table("congestion_settings")
                                 ->select(
                                     "id",
-                                    "ar_name AS name"
+                                    LaravelLocalization::getCurrentLocale()."_name AS name"
                                 )->get();
 
         $data['options'] = DB::table("options")
                                 ->select(
                                     "id",
-                                    "ar_name AS name"
+                                    LaravelLocalization::getCurrentLocale()."_name AS name"
                                 )->get();
 
         $data['week_days'] = [
@@ -64,8 +65,8 @@ class BranchController extends Controller
                             ->where("providers.id", auth("provider")->id())
                             ->select(
                                 "meals.id AS meal_id",
-                                "meals.ar_name as meal_name",
-                                "mealcategories.ar_name as cat_name"
+                                "meals.".LaravelLocalization::getCurrentLocale()."_name as meal_name",
+                                "mealcategories.".LaravelLocalization::getCurrentLocale()."_name as cat_name"
                             )->get();
         return view("Provider.pages.new-branch", $data);
     }
@@ -261,7 +262,7 @@ return              $error = $validator->errors();
         $data['congestion'] = DB::table("congestion_settings")
                                 ->select(
                                     "id",
-                                    "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                                 )->get();
 
         $data['images'] = DB::table("branch_images")
@@ -275,7 +276,7 @@ return              $error = $validator->errors();
         $data['options'] = DB::table("options")
                             ->select(
                                 "id",
-                                "ar_name as name"
+                                LaravelLocalization::getCurrentLocale()."_name as name"
                             )->get();
 
         $data['cats'] = DB::table("categories")
@@ -335,15 +336,15 @@ return              $error = $validator->errors();
             }
         }
 
-        $data['meals'] = DB::table("meals")
+         $data['meals'] = DB::table("meals")
                             ->join("branches", "branches.id", "meals.branch_id")
                             ->join("providers", "providers.id", "branches.provider_id")
                             ->join("mealcategories", "mealcategories.id", "meals.mealCategory_id")
                             ->where("providers.id", auth("provider")->id())
                             ->select(
                                 "meals.id AS meal_id",
-                                "meals.ar_name as meal_name",
-                                "mealcategories.ar_name as cat_name"
+                                "meals.".LaravelLocalization::getCurrentLocale()."_name as meal_name",
+                                "mealcategories.".LaravelLocalization::getCurrentLocale()."_name as cat_name"
                             )->get();
 
         foreach ($data['meals'] as $meal){

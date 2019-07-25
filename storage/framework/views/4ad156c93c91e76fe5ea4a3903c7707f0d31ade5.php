@@ -6,7 +6,7 @@
         <?php if(!$paginator->onFirstPage()): ?>
             <li class="page-item">
                 <a class="page-link rounded shadow-sm px-3 mx-2 font-body h5 mb-0"
-                href="<?php echo e($paginator->previousPageUrl()); ?>">السابق</a>
+                href="<?php echo e($paginator->previousPageUrl()); ?>"><?php echo e(trans('site.previous')); ?></a>
             </li>
         <?php endif; ?>
 
@@ -39,7 +39,7 @@
         <?php if($paginator->hasMorePages()): ?>
             <li class="page-item">
                 <a class="page-link rounded shadow-sm px-3 mx-2 font-body h5 mb-0"
-                   href="<?php echo e($paginator->nextPageUrl()); ?>">التالي</a>
+                   href="<?php echo e($paginator->nextPageUrl()); ?>"><?php echo e(trans('site.next')); ?></a>
             </li>
         <?php endif; ?>
     </ul>

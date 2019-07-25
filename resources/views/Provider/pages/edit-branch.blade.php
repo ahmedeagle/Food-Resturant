@@ -19,7 +19,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold">تعديل الفرع</h4>
+                        <h4 class="page-title font-body-bold"> {{trans('site.edit_branch')}}</h4>
                     </div>
 
                     @if(Session::has("warning"))
@@ -53,7 +53,7 @@
                                    role="tab"
                                    aria-controls="branch-info"
                                    aria-selected="true">
-                                    معلومات الفرع
+                                     {{trans('site.branch_info')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -65,7 +65,7 @@
                                    role="tab"
                                    aria-controls="work"
                                    aria-selected="false">
-                                    ساعات العمل
+                                     {{trans('site.work_hours')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -77,7 +77,7 @@
                                    role="tab"
                                    aria-controls="category"
                                    aria-selected="false">
-                                    الأصناف الموجودة
+                                    {{trans('site.existing_cats')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -92,7 +92,7 @@
                                 <form data-action="{{ url('/restaurant/branches/edit') }}" id="edit-branch-from" class="new-branch-form multi-forms p-3 font-body-bold">
 
                                     <div class="form-group">
-                                        <p>صور الفرع</p>
+                                        <p>{{trans('site.branch_photos')}}</p>
                                         <div class="custom-file h-auto">
                                             <input type="file" class="custom-file-input" id="restaurant-logo" hidden>
                                             <label class="border-0 mb-0 cursor" for="restaurant-logo">
@@ -100,7 +100,7 @@
                                             <i class="fa fa-plus fa-fw fa-lg text-gray" aria-hidden="true"></i>
                                         </span>
                                             </label>
-                                            <p id="branch-images-error" class="hidden-element alert alert-danger top-margin">برجاء اختيار صور الفرع</p>
+                                            <p id="branch-images-error" class="hidden-element alert alert-danger top-margin">{{trans('site.choose_branch_photos')}}</p>
                                         </div>
                                     </div><!-- .form-group logo -->
 
@@ -115,7 +115,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="branch-name">إسم الفرع باللغة العربية</label>
+                                        <label for="branch-name">{{trans('site.branch_name_ar')}}</label>
                                         <input type="text"
                                                name="ar_name"
                                                value="{{ $branch->ar_name }}"
@@ -125,7 +125,7 @@
 
 
                                     <div class="form-group">
-                                        <label for="branch-name">إسم الفرع باللغة الانجليزية</label>
+                                        <label for="branch-name">{{trans('site.branch_name_en')}}</label>
                                         <input type="text"
                                                name="en_name"
                                                value="{{ $branch->en_name }}"
@@ -134,17 +134,20 @@
                                     </div><!-- .form-group name -->
 
                                     <div class="form-group">
-                                        <label for="service-provider">نوع الفرع</label>
+                                        <label for="service-provider">{{trans('site.branch_type')}}</label>
                                         <select class="custom-select text-gray font-body-md" name="service-provider" id="service-provider" required>
-                                            <option value="">يرجى تحديد نوع الفرع</option>
+                                            <option value="">{{trans('site.choose_branch_type')}}</option>
+                                          @if(isset($cats) && $cats -> count() > 0 )
+                                          <?php  $name = LaravelLocalization::getCurrentLocale()."_name"?>
                                             @foreach($cats as $cat)
-                                                <option value="{{ $cat->id }}" @if($branch->category_id == $cat->id) selected @endif>{{ $cat->ar_name }}</option>
+                                                <option value="{{ $cat->id }}" @if($branch->category_id == $cat->id) selected @endif>{{ $cat-> $name }}</option>
                                             @endforeach
+                                           @endif 
                                         </select>
                                     </div><!-- .form-group service provider -->
 
                                     <div class="form-group">
-                                        <p>الخدمات المتوفرة</p>
+                                        <p>{{trans('site.services_available')}}</p>
                                         <div class="row pr-4 text-gray font-body-md">
 
                                             <div class="custom-control custom-checkbox pl-0 col-md-4 col-12 mb-2">
@@ -153,7 +156,7 @@
                                                        id="has-booking"
                                                        name="has-booking" @if($branch->has_booking == "1") checked @endif>
                                                 <label class="custom-control-label font-body-md"
-                                                       for="has-booking">قبول حجوزات</label>
+                                                       for="has-booking">{{trans('site.accept_resservations')}}</label>
                                             </div><!-- .custom-control -->
 
                                             <div class="custom-control custom-checkbox pl-0 col-md-4 col-12 mb-2">
@@ -162,7 +165,7 @@
                                                        id="has-delivery"
                                                        name="has-delivery" @if($branch->has_delivery == "1") checked @endif>
                                                 <label class="custom-control-label font-body-md"
-                                                       for="has-delivery">توصيل الطلبات</label>
+                                                       for="has-delivery">{{trans('site.delivery_orders')}}</label>
                                             </div><!-- .custom-control -->
                                             
                                             
@@ -172,7 +175,7 @@
                                                        id="has_payment"
                                                        name="has_payment" @if($branch->has_payment == "1") checked @endif>
                                                 <label class="custom-control-label font-body-md"
-                                                       for="has_payment">قبول الدفع الالكتروني</label>
+                                                       for="has_payment">{{trans('site.elect_payment')}}</label>
                                             </div><!-- .custom-control -->
 
 
@@ -180,7 +183,7 @@
                                     </div><!-- .form-group available service -->
 
                                     <div class="form-group">
-                                        <label for="average-price">سعر التوصيل</label>
+                                        <label for="average-price">{{trans('site.delivery_price')}}</label>
                                         <div class="input-group rounded border border-gray overflow-hidden">
                                             <input type="text"
                                                    id="delivery-price"
@@ -193,7 +196,7 @@
 
                                             <div class="input-group-prepend">
                                         <span id="average-price-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -202,22 +205,22 @@
                                     </div><!-- .form-group average-price -->
 
                                     <div class="form-group">
-                                        <label for="booking-features">خصائص الحجز</label>
+                                        <label for="booking-features">{{trans('site.booking_features')}}</label>
                                         <select class="custom-select text-gray font-body-md border-gray"
                                                 id="booking-features" name="booking-features" required>
-                                            <option value="">يرجى تحديد خصائص الحجز</option>
+                                            <option value="">{{trans('site.choose_booking_features')}}</option>
 
-                                            <option value="0" @if($branch->booking_status == "0") selected @endif>افراد</option>
-                                            <option value="1" @if($branch->booking_status == "1") selected @endif>عائلات</option>
-                                            <option value="2" @if($branch->booking_status == "2") selected @endif>افراد وعائلات</option>
+                                            <option value="0" @if($branch->booking_status == "0") selected @endif>{{trans('site.persons')}}</option>
+                                            <option value="1" @if($branch->booking_status == "1") selected @endif>{{trans('site.famlies')}}</option>
+                                            <option value="2" @if($branch->booking_status == "2") selected @endif>{{trans('site.person_family')}}</option>
                                         </select>
                                     </div><!-- .form-group booking-features -->
 
                                     <div class="form-group">
-                                        <label for="congestion-status">حالة الإزدحام</label>
+                                        <label for="congestion-status">{{trans('site.congestion_status')}}</label>
                                         <select class="custom-select text-gray font-body-md border-gray"
                                                 id="congestion-status" name="congestion-status" required>
-                                            <option value="">يرجى تحديد حالة الإزدحام</option>
+                                            <option value="">{{trans('site.choose_congestion_status')}} </option>
                                             @foreach($congestion as $c)
                                                 <option value="{{ $c->id }}" @if($c->id == $branch->congestion_settings_id) selected @endif>{{ $c->name }}</option>
                                             @endforeach
@@ -225,7 +228,7 @@
                                     </div><!-- .form-group congestion-status -->
 
                                     <div class="form-group">
-                                        <label for="average-price">متوسط الأسعار</label>
+                                        <label for="average-price">{{trans('site.average_price')}}</label>
                                         <div class="input-group rounded border border-gray overflow-hidden">
                                             <input type="text"
                                                    id="average-price"
@@ -238,7 +241,7 @@
 
                                             <div class="input-group-prepend">
                                         <span id="average-price-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -246,7 +249,7 @@
                                     </div><!-- .form-group average-price -->
 
                                     <div class="form-group">
-                                        <p>خصائص الفرع</p>
+                                        <p> {{trans('site.branch_properties')}}</p>
                                         <div class="row pr-4 text-gray font-body-md">
 
                                             <input type="hidden" name="options_count" value="{{ count($options) }}" />
@@ -267,7 +270,7 @@
 
                                     <div class="form-group">
                                         <label for="address-text">
-                                            عنوان الفرع بشكل نصي
+                                            {{trans('site.branch_address_text')}}
                                         </label>
                                         <input type="text"
                                                class="form-control border-gray font-body-md"
@@ -278,11 +281,13 @@
 
                                     <div class="form-group">
                                         <label for="address-map"
-                                               class="font-body-bold">عنوان الفرع على الخريطة</label>
+                                               class="font-body-bold">{{trans('site.branch_on_map')}}</label>
                                         <div class="d-flex justify-content-center flex-column flex-sm-row">
+
+                                          <?php $address = LaravelLocalization::getCurrentLocale().'_address' ?>
                                             <input type="text"
                                                    class="form-control border-gray"
-                                                   id="address-map" value="{{ $branch->ar_address }}" disabled>
+                                                   id="address-map" value="{{ $branch-> $address }}" disabled>
 
                                             <input type="hidden"
                                                    name="latLng"
@@ -303,16 +308,16 @@
                                                     data-toggle="modal"
                                                     data-target="#confirm-location"
                                                     id="new-branch-map-btn"
-                                                    class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto">إذهب للخريطة</button>
+                                                    class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto">{{trans('site.go_to_map')}}</button>
                                         </div>
                                         <p class="branch-location-error alert alert-danger top-margin hidden-element"></p>
                                     </div><!-- .form-group address-map -->
 
                                     <div class="form-group">
                                         <label for="phone-number">
-                                            رقم المسؤول
+                                            {{trans('site.branch_phone')}}
                                             <span class="text-gray font-body-md">
-                                                 (يستخدم لتسجيل الدخول)
+                                                 ({{trans('site.used_for_login')}})
                                             </span>
                                         </label>
                                         <input type="text"
@@ -324,7 +329,7 @@
                                     
                                       <div class="form-group">
                                         <label for="phone-number">
-                                             كلمة المرور  
+                                             {{trans('site.password')}}
                                             <span class="text-gray font-body-md">
                                                  
                                             </span>
@@ -332,13 +337,13 @@
                                         
                                         <input type="text"
                                                class="form-control border-gray"
-                                               id="password" name="password" placeholder="ادخل كلمة المرور جديدة"  >
+                                               id="password" name="password" placeholder="{{trans('site.password')}}"  >
                                         <p class="password-error top-margin alert alert-danger hidden-element"></p>
                                     </div><!-- .form-group phone-number -->
                                     
 
                                     <input type="hidden" name="branch_id" value="{{ $branch->id }}" />
-                                    <button type="submit" class="btn btn-primary py-2 px-5"> تعديل </button>
+                                    <button type="submit" class="btn btn-primary py-2 px-5"> {{trans('site.edit')}} </button>
                                 </form><!-- .new-kind-form -->
                             </div><!-- .tab-pane -->
 
@@ -346,7 +351,7 @@
                                  id="work"
                                  role="tabpanel"
                                  aria-labelledby="work-tab">
-                                <p id="working-hours-error" class="alert alert-danger top-margin hidden-element">برجاء تحديد مواعيد العمل</p>
+                                <p id="working-hours-error" class="alert alert-danger top-margin hidden-element">{{trans('site.choose_work_hours')}} </p>
                                 
                                 
                                   @if(isset($branches) && $branches -> count() > 0 )
@@ -354,13 +359,14 @@
                  <div class="col-lg-6 col-12 mt-3 mt-lg-auto">
                     <div class="row">
                         <label for=""
-                               class="col-form-label col-auto"> سحب التوقيتات من الفرع :</label>
+                               class="col-form-label col-auto"> {{trans('site.get_times_from')}}:</label>
                         <div class="col pr-md-0">
                             <select id="autoCompeletTimes" class="working-hours custom-select text-gray font-body-md border-gray">
-                                <option value="">اختر فرع</option>
-                                 
+                                <option value="">{{trans('site.choose_branch')}}</option>
+                                  
+                                  <?php $br_name = LaravelLocalization::getCurrentLocale()."_name"?>
                                   @foreach($branches as $branch)
-                                   <option value="{{$branch -> id}}"> {{$branch -> ar_name}} </option>
+                                   <option value="{{$branch -> id}}"> {{$branch -> $br_name}} </option>
                                    @endforeach    
                                    
                              </select>
@@ -371,7 +377,7 @@
             
         <br>
         
-        أو
+        {{ trans('site.or_manually')}}
         
         
         <br>
@@ -386,7 +392,7 @@
 
                                         @php
                                             $start_time = $key . "_start_work";
-                                            $end_time = $key . "_end_work";
+                                            $end_time   = $key . "_end_work";
                                         @endphp
                                         @component('User.includes.working-time')
 
@@ -681,7 +687,7 @@
                                     
                                     
                                     
-                                    <button  type="submit" class="btn btn-primary py-2 px-5 submit_edit_form"> تعديل </button>
+                                    <button  type="submit" class="btn btn-primary py-2 px-5 submit_edit_form"> {{trans('site.edit')}} </button>
                                     
                                     
 
@@ -698,9 +704,9 @@
                                     <table class="table">
                                         <thead class="font-body-bold">
                                         <tr>
-                                            <th scope="col">إسم الصنف</th>
-                                            <th scope="col">التصنيف</th>
-                                            <th scope="col">التحكم</th>
+                                            <th scope="col">{{trans('site.meal_name')}}</th>
+                                            <th scope="col">{{trans('site.category')}}</th>
+                                            <th scope="col">{{trans('site.control')}}</th>
                                         </tr>
                                         </thead>
 
@@ -719,7 +725,7 @@
                                                                data="{{ $meal->meal_id }}"
                                                                name="meal_{{ $meal->meal_id }}" @if($meal->selected == "1") checked @endif>
                                                         <label class="custom-control-label font-body-md"
-                                                               for="meal_{{ $meal->meal_id }}">إضافة الى الفرع</label>
+                                                               for="meal_{{ $meal->meal_id }}"> {{trans('site.add_to_the_branch')}} </label>
                                                     </div><!-- .custom-control -->
 
                                                 </td>
@@ -730,7 +736,7 @@
 
                                 </div>
                                 
-                                <button   type="submit" class="btn btn-primary py-2 px-5 submit_edit_form"> تعديل </button>
+                                <button   type="submit" class="btn btn-primary py-2 px-5 submit_edit_form">{{trans('site.edit')}} </button>
                                 {{--<nav aria-label="Page navigation"--}}
                                 {{--class="d-flex justify-content-center mt-3">--}}
                                 {{--<ul class="pagination pr-0">--}}
@@ -770,8 +776,8 @@
     <main id="map-content" class="hidden-element map-content page-content py-5">
 
         <header class="page-header mt-4 text-center">
-            <h1 class="page-title h2 font-body-bold">تحديد الموقع</h1>
-            <p class="description text-gray font-body-md mt-3">يرجى تحديد موقع الفرع عبر الخريطة</p>
+            <h1 class="page-title h2 font-body-bold">{{trans('site.dete_locations')}}</h1>
+            <p class="description text-gray font-body-md mt-3">{{trans('site.branch_on_map')}}</p>
             {{--<p id="register-map-address" class="description text-gray font-body-md mt-3"></p>--}}
         </header>
         <div class="container">
@@ -783,8 +789,8 @@
 
                     </div>
 
-                    <Button type="button" id="confirm-branch-location" class="btn btn-primary px-5 no-decoration">تأكيد</Button>
-                    <Button type="button" id="decline-branch-location" class="btn btn-default px-5 no-decoration">رجوع</Button>
+                    <Button type="button" id="confirm-branch-location" class="btn btn-primary px-5 no-decoration">{{trans('site.confirm')}}</Button>
+                    <Button type="button" id="decline-branch-location" class="btn btn-default px-5 no-decoration">{{trans('site.back')}}</Button>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

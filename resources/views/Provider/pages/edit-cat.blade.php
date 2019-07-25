@@ -18,7 +18,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">تعديل التصنيف</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.edit_categories')}}</h4>
                     </div>
 
 
@@ -32,7 +32,7 @@
                             {{ csrf_field() }}
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة العربية</label>
+                                <label for="kind-name">{{trans('site.cat_name_ar')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="ar_name" value="{{ old("ar_name", $cat->ar_name) }}">
@@ -45,7 +45,7 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة الانجليزية</label>
+                                <label for="kind-name">{{trans('site.cat_name_en')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="en_name" value="{{ old("en_name", $cat->en_name) }}">
@@ -59,7 +59,7 @@
                             </div><!-- .form-group name -->
 
                             <input type="hidden" name="id" value="{{ $cat->id }}" />
-                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">إضافة</button>
+                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">{{trans('site.confirm')}}</button>
                         </form><!-- .new-kind-form -->
                     </div>
                 </div><!-- .col-* -->

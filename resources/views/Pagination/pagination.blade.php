@@ -6,7 +6,7 @@
         @if (!$paginator->onFirstPage())
             <li class="page-item">
                 <a class="page-link rounded shadow-sm px-3 mx-2 font-body h5 mb-0"
-                href="{{ $paginator->previousPageUrl() }}">السابق</a>
+                href="{{ $paginator->previousPageUrl() }}">{{trans('site.previous')}}</a>
             </li>
         @endif
 
@@ -39,7 +39,7 @@
         @if ($paginator->hasMorePages())
             <li class="page-item">
                 <a class="page-link rounded shadow-sm px-3 mx-2 font-body h5 mb-0"
-                   href="{{ $paginator->nextPageUrl() }}">التالي</a>
+                   href="{{ $paginator->nextPageUrl() }}">{{trans('site.next')}}</a>
             </li>
         @endif
     </ul>

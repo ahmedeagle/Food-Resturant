@@ -20,7 +20,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">الرصيد</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.balance')}}</h4>
                     </div>
 
                     @if(Session::has("success"))
@@ -39,13 +39,13 @@
                         <div class="row">
 
                             <div class="col-lg-8 col-12 text-center font-body-bold py-2">
-                                <h2 class="balance">{{ $balance }}<span>ر.س</span></h2>
-                                <h4 class="mt-3">الرصيد المتوفر</h4>
+                                <h2 class="balance">{{ $balance }}<span>{{trans('site.riyal')}}</span></h2>
+                                <h4 class="mt-3">{{trans('site.available_balance')}}</h4>
                             </div>
 
                             <div class="col-lg-4 col-12 text-left">
                                 <div class="d-flex justify-content-center my-4">
-                                    <a href="{{ url("/restaurant/balance/withdraw") }}" class="btn btn-primary px-4">سحب الرصيد</a>
+                                    <a href="{{ url("/restaurant/balance/withdraw") }}" class="btn btn-primary px-4"> {{trans('site.withdraw')}}</a>
                                 </div>
                             </div>
                         </div>
@@ -59,10 +59,10 @@
                             <table class="table">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col">نوع العملية</th>
-                                    <th scope="col">رقم العملية</th>
-                                    <th scope="col">القيمة</th>
-                                    <th scope="col">التاريخ</th>
+                                    <th scope="col">{{trans('site.operation_type')}}</th>
+                                    <th scope="col">{{trans('site.operation_num')}}</th>
+                                    <th scope="col">{{trans('site.value')}}</th>
+                                    <th scope="col">{{trans('site.date')}}</th>
                                 </tr>
                                 </thead>
 
@@ -71,7 +71,7 @@
                                     <tr>
                                         <th scope="row" class="font-body-md text-nowrap">{{ ($log->balance_action == "order") ? trans("provider.order_meal") : trans("provider.withdraw_request") }}</th>
                                         <td class="text-nowrap">{{ $log->code }}</td>
-                                        <td class="text-nowrap">{{ $log->value }}{{ ($log->value_type == "increase") ? "+" : "-" }} ر.س</td>
+                                        <td class="text-nowrap">{{ $log->value }}{{ ($log->value_type == "increase") ? "+" : "-" }}  {{trans('site.riyal')}}</td>
                                         <td class="text-nowrap">{{ $log->created_at }}</td>
 
                                     </tr>

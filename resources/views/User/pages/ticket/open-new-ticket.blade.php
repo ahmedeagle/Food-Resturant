@@ -29,7 +29,7 @@
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="messaging-type"
                                         name="type">
-                                    <option selected value="يرجى تحديد نوع المراسلة">{{trans('site.choose_conversation_type')}}</option>
+                                    <option selected value="{{trans('site.choose_conversation_type')}}">{{trans('site.choose_conversation_type')}}</option>
 
                                     @foreach($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->name }}</option>

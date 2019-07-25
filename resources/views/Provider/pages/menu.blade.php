@@ -1,7 +1,7 @@
 <div class="col-lg-3 col-md-4 col-12">
     <div class="rounded-bottom-lg rounded-top-lg shadow-around-lg overflow-hidden">
         <h4 class="welcome mb-0 bg-primary text-light p-3 font-body-bold">
-            أهلا بك في مجرّب
+           {{trans('site.hello_mjrb')}}
         </h4>
         <ul class="nav flex-column font-body-md pr-0 py-3">
             @if(auth("provider")->check())
@@ -12,7 +12,7 @@
                          width="24"
                          height="24"
                          alt="Home icon">
-                    الرئيسية
+                   {{trans('site.home')}}
                 </a>
             </li>
             <li class="nav-item">
@@ -22,7 +22,7 @@
                          width="24"
                          height="18"
                          alt="File icon">
-                    ملف مقدم الخدمة
+                   {{trans('site.profile')}}
                 </a>
             </li>
             {{--<li class="nav-item">--}}
@@ -48,7 +48,7 @@
                              width="24"
                              height="24"
                              alt="Menu icon">
-                        قائمة الطعام
+                        {{trans('site.food_list')}}
                     </a>
 
                     <div class="collapse pr-3 {{ ( Request::segment(2) == 'food-menu') ? 'show' : ''}}"
@@ -56,11 +56,11 @@
                          aria-labelledby="dropdownMenuLink"
                          data-parent="#dropdown">
                         <a class="dropdown-item bg-white {{ ( Request::segment(2) == 'food-menu' && Request::segment(3) == 'list') ? 'text-secondary' : 'text-gray'}}"
-                           href="{{ url("/restaurant/food-menu/list") }}">كل الوجبات</a>
+                           href="{{ url("/restaurant/food-menu/list") }}"> {{trans('site.all_meals')}}  </a>
                         <a class="dropdown-item bg-white {{ ( Request::segment(2) == 'food-menu' && Request::segment(3) == 'add-new-meal') ? 'text-secondary' : 'text-gray'}}"
-                           href="{{ url("/restaurant/food-menu/add-new-meal") }}">وجبه جديده</a>
+                           href="{{ url("/restaurant/food-menu/add-new-meal") }}">  {{trans('site.new_meal')}}</a>
                         <a class="dropdown-item bg-white {{ ( Request::segment(2) == 'food-menu' && Request::segment(3) == 'categories') ? 'text-secondary' : 'text-gray'}}"
-                           href="{{ url("/restaurant/food-menu/categories") }}">التصنيفات</a>
+                           href="{{ url("/restaurant/food-menu/categories") }}">{{trans('site.categories')}}</a>
                     </div>
                 </div>
             </li>
@@ -74,7 +74,7 @@
                          width="24"
                          height="21"
                          alt="Branch icon">
-                          نوع الطعام المقدم 
+                          {{trans('site.food_type')}}
                 </a>
              </li>
              
@@ -87,7 +87,7 @@
                          width="24"
                          height="21"
                          alt="Branch icon">
-                         تصنيفات المطعم
+                         {{trans('site.resturant_categories')}}
                 </a>
              </li>
             
@@ -102,7 +102,7 @@
                          height="21"
                          alt="Branch icon">
                          
-                         الموقع علي الخريطة
+                         {{trans('site.location_on_map')}}
                  </a>
              </li>
             
@@ -119,7 +119,7 @@
                          width="24"
                          height="21"
                          alt="Branch icon">
-                    الفروع
+                    {{trans('site.branches')}}
                 </a>
             </li>
             @endif
@@ -131,7 +131,7 @@
                          width="24"
                          height="22"
                          alt="Reservations icon">
-                    الحجوزات
+                    {{trans('site.reservations')}}
                 </a>
             </li>
             <li class="nav-item">
@@ -141,7 +141,7 @@
                          width="24"
                          height="22"
                          alt="Orders icon">
-                    الطلبات
+                {{trans('site.orders')}}
                 </a>
             </li>
             @foreach(  \App\Http\Controllers\Provider\GeneralController::get_pages_list() as $page)
@@ -164,10 +164,24 @@
                          width="24"
                          height="22"
                          alt="Contact icon">
-                    اتصل بنا
+                   {{trans('site.contact_us')}}
                 </a>
             </li>
             @endif
+
+
+               @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+
+                    @if(LaravelLocalization::getCurrentLocale()  != $localeCode )
+                        <li class="nav-item"> 
+                            <a   class="nav-link text-gray" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                <i class="fa fa-gloable"></i>
+                                {{ $properties['native'] }}
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
+                
             <li class="nav-item">
                 <a class="nav-link text-gray" href="{{ url("/restaurant/logout") }}">
                     <img src="{{ url("/assets/site/img/icons/log-out.svg") }}"
@@ -175,7 +189,7 @@
                          width="24"
                          height="22"
                          alt="Logout icon">
-                    الخروج
+                   {{trans('site.logout')}}
                 </a>
             </li>
         </ul>

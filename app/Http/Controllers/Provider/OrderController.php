@@ -6,6 +6,7 @@ use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 class OrderController extends Controller
 {
     public function __construct()
@@ -50,16 +51,16 @@ class OrderController extends Controller
                         ->select(
                             "orders.id AS order_id",
                             "orders.order_code",
-                            "branches.ar_name AS branch_name",
+                            "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name",
                             DB::raw("TIME(orders.order_date) AS order_time"),
                             DB::raw("DATE(orders.order_date) AS order_date"),
                             "orders.total_price",
                             "users.name AS username",
                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                            "order_statuses.ar_name AS status_name",
+                            "order_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                             "order_statuses.id AS status_id",
                             "payment_methods.id AS payment_id",
-                            "payment_methods.ar_name AS payment_name"
+                            "payment_methods.".LaravelLocalization::getCurrentLocale()."_name AS payment_name"
                         )
                         ->paginate(25);
 
@@ -114,10 +115,10 @@ class OrderController extends Controller
                                     "orders.total_price",
                                     "users.name AS username",
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                    "order_statuses.ar_name AS status_name",
+                                    "order_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                     "order_statuses.id AS status_id",
                                     "payment_methods.id AS payment_id",
-                                    "payment_methods.ar_name AS payment_name"
+                                    "payment_methods.".LaravelLocalization::getCurrentLocale()."_name AS payment_name"
                                 )
                                 ->first();
 
@@ -143,7 +144,7 @@ class OrderController extends Controller
                             ->select(
                                 "order_meals.id as order_meal_id",
                                 "meals.id AS meal_id",
-                                "meals.ar_name AS meal_name",
+                                "meals.".LaravelLocalization::getCurrentLocale()."_name AS meal_name",
                                 "order_meals.quantity AS meal_qty",
                                 "order_meals.meal_price"
                             )->get();

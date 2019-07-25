@@ -19,7 +19,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title font-body-bold">كل الوجبات</h4>
+                        <h4 class="page-title font-body-bold"> {{trans('site.all_meals')}}</h4>
                     </div>
 
                     @if(Session::has("success"))
@@ -42,10 +42,10 @@
                             <table class="table">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col">إسم الوجبه</th>
-                                     <th scope="col">الفرع</th>
-                                    <th scope="col">التصنيف</th>
-                                    <th scope="col">التحكم</th>
+                                    <th scope="col">{{trans('site.meal_name')}}</th>
+                                     <th scope="col">{{trans('site.branch')}}</th>
+                                    <th scope="col"> {{trans('site.category')}}</th>
+                                    <th scope="col">{{trans('site.control')}}</th>
                                 </tr>
                                 </thead>
 
@@ -98,15 +98,15 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content py-3">
                                         <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                                هل تريد تأكيد عملية الحذف
+                                               {{trans('site.delete_message')}}
                                         </p>
                                         <div class="modal-footer d-flex justify-content-center pt-0">
                                             <button type="button"
                                                     class="btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                                    data-dismiss="modal">إلغاء</button>
+                                                    data-dismiss="modal">{{trans('site.cancel')}}</button>
                                             <a type="submit"
                                                     id="yes"
-                                                    class="btn btn-primary px-4 px-sm-5 font-weight-bold">نعم</a>
+                                                    class="btn btn-primary px-4 px-sm-5 font-weight-bold">{{trans('site.yes')}}</a>
                                         </div>
                                     </div>
                                 </div>

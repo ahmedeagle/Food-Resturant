@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Provider;
 use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use laravelLocalization;
 
 class PageController extends Controller
 {
@@ -23,7 +24,9 @@ class PageController extends Controller
         if(!$data['page']){
             return redirect("/restaurant/dashboard");
         }
-        $data['title'] = " - " . $data['page']->ar_title;
+
+        $title = laravelLocalization::getCurrentLocale() . "_title";
+        $data['title'] = " - " . $data['page']-> $title;
         $data['class'] = "page-template page";
 
         return view("Provider.pages.page", $data);

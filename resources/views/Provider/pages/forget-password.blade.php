@@ -11,7 +11,7 @@
 <main class="page-content py-5 mt-4">
 
     <header class="page-header mt-5 text-center">
-        <h1 class="page-title h2 font-body-bold">إستعادة كلمة المرور</h1>
+        <h1 class="page-title h2 font-body-bold">{{trans('site.password_reset')}}</h1>
     </header>
     <div class="container">
         <div class="row">
@@ -31,7 +31,7 @@
                                                 <div class="form-check">
                                                     <label class="btn btn-primary f-food ">
                                                         <input data-id="1" name="guard" value="1" class="form-check-input0" type="radio">
-                                                         حساب فرع  
+                                                         {{trans('site.branch_account')}}
                                                     </label>
                                                 </div>
                                            
@@ -40,7 +40,7 @@
                                                 <div class="form-check">
                                                     <label class="btn btn-primary f-food ">
                                                         <input data-id="1"  name="guard" value="2" class="form-check-input0" type="radio" checked="">
-                                                         حساب رئيسي
+                                                         {{trans('site.main_account')}}
                                                     </label>
                                                 </div>
                                  </div>
@@ -48,7 +48,7 @@
                             
                             
                     <div class="form-group">
-                        <label for="phone-number">يرجى إدخال رقم الهاتف الخاص بك</label>
+                        <label for="phone-number">{{trans('site.enter_your_phone')}}</label>
                         <input type="text" name="phone" class="form-control border-gray" id="phone-number">
                         @if($errors->has("phone"))
                             <div class="alert alert-danger top-margin">
@@ -56,7 +56,7 @@
                             </div>
                         @endif
                     </div><!-- .form-group -->
-                    <button type="submit" class="btn btn-primary px-5">إرسال</button>
+                    <button type="submit" class="btn btn-primary px-5">{{trans('site.send')}}</button>
                 </form><!-- .login-form -->
             </div><!-- .col-* -->
         </div><!-- .row -->

@@ -20,7 +20,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
 
                     <div class="page-header py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">قائمة الطعام</h4>
+                        <h4 class="page-title"> {{trans('site.food_list')}}</h4>
                     </div>
 
                     <div class="row">
@@ -34,7 +34,7 @@
                                          height="99"
                                          alt="">
                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                        كل الوجبات
+                                        {{trans('site.all_meals')}}
                                     </h5>
                                 </a>
                             </div>
@@ -50,7 +50,7 @@
                                          height="100"
                                          alt="">
                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                        وجبه جديده
+                                        {{trans('site.new_meal')}}
                                     </h5>
                                 </a>
                             </div>
@@ -66,7 +66,7 @@
                                          height="99"
                                          alt="">
                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                        التصنيفات
+                                       {{trans('site.categories')}}
                                     </h5>
                                 </a>
                             </div>

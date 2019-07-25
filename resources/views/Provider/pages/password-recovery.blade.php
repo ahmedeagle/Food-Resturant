@@ -13,7 +13,7 @@
     <main class="page-content py-5 mt-4">
 
         <header class="page-header mt-5 text-center">
-            <h1 class="page-title h2 font-body-bold">إستعادة كلمة المرور</h1>
+            <h1 class="page-title h2 font-body-bold"> {{trans('site.password_reset')}}</h1>
         </header>
         <div class="container">
             <div class="row">
@@ -29,7 +29,7 @@
 
                         @endif
                         <div class="form-group">
-                            <label for="code-number">قم بإدخال رقم التأكيد الذي وصلك</label>
+                             <label for="code-number">{{trans('site.enter_confirm_code')}}</label>
                             <input type="hidden" name="token" value="{{ $token }}">
                             <input type="hidden" name="guard" value="{{ $guard }}">
                             
@@ -40,7 +40,7 @@
                                 </div>
                             @endif
                         </div><!-- .form-group -->
-                        <button type="submit" class="btn btn-primary px-5">تفعيل</button>
+                        <button type="submit" class="btn btn-primary px-5"> {{trans('site.activate')}}</button>
                     </form><!-- .login-form -->
                 </div><!-- .col-* -->
             </div><!-- .row -->

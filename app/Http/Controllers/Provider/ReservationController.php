@@ -6,6 +6,7 @@ use App\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 class ReservationController extends Controller
 {
     public function __construct()
@@ -38,14 +39,14 @@ class ReservationController extends Controller
                                         ->orderBy("reservations.id", "DESC")
                                         ->select(
                                             "reservations.id AS reservation_id",
-                                            "branches.ar_name AS branch_name",
+                                            "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name",
                                             "reservations.reservation_code",
                                             "reservations.date AS reservation_date",
                                             "reservations.time AS reservation_time",
                                             "reservations.seats_number",
                                             "users.name AS username",
                                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                            "reservation_statuses.ar_name AS status_name",
+                                            "reservation_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                             "reservation_statuses.id AS status_id"
                                         )
                                         ->paginate(25);
@@ -94,7 +95,7 @@ class ReservationController extends Controller
                                         ->take(5)
                                         ->select(
                                             "reservations.id AS reservation_id",
-                                            "branches.ar_name AS branch_name",
+                                            "branches.".LaravelLocalization::getCurrentLocale()."_name AS branch_name",
                                             "reservations.reservation_code",
                                             "reservations.date AS reservation_date",
                                             "reservations.time AS reservation_time",
@@ -103,7 +104,7 @@ class ReservationController extends Controller
                                             "reservations.seats_number",
                                             "users.name AS username",
                                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/users/', images.name) AS user_image_url"),
-                                            "reservation_statuses.ar_name AS status_name",
+                                            "reservation_statuses.".LaravelLocalization::getCurrentLocale()."_name AS status_name",
                                             "reservation_statuses.id AS status_id"
                                         )
                                         ->first();

@@ -30,10 +30,10 @@
             
             @if($type == 'create')
             
-            <button type="button" class="prev-work btn btn-primary py-2 px-5">السابق</button>
-            <button type="button" class="next-cats btn btn-default py-2 px-5">التالى</button>
+            <button type="button" class="prev-work btn btn-primary py-2 px-5"> {{trans('site.previous')}} </button>
+            <button type="button" class="next-cats btn btn-default py-2 px-5"> {{trans('site.next')}}</button>
             @elseif($type == 'edit')
-              <button type="submit" class="btn btn-primary py-2 px-5 submit_edit_form"> تعديل </button>
+              <button type="submit" class="btn btn-primary py-2 px-5 submit_edit_form"> {{trans('site.edit')}} </button>
             @else
             
             @endif

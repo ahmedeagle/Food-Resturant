@@ -9,6 +9,9 @@
 @endsection
 
 @section("content")
+
+ <?php $name = LaravelLocalization::getCurrentLocale()."_name" ?>
+
     <main class="page-content py-5 mb-4">
         <div class="container">
             <div class="row">
@@ -17,7 +20,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">ملف المطعم</h4>
+                        <h4 class="page-title"> {{trans('site.profile')}} </h4>
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
@@ -30,7 +33,7 @@
 
                      
                          <div class="form-group">
-                            <p>شعار المطعم</p>
+                            <p>{{trans('site.restaurant_logo')}}</p>
                             <div class="custom-file h-auto">
                                 <input type="file" class="edit-logo-file custom-file-input" id="restaurant-logo" hidden>
                                 <label class="border-0 mb-0 cursor" for="restaurant-logo">
@@ -41,17 +44,17 @@
                                          id="edit-logo-image"
                                          alt="Restaurant Logo">
                                     <span class="font-body-md mr-2 text-primary">
-                                        تغيير شعار المطعم
+                                        {{trans('site.change_restaurant_logo')}}
                                     </span>
                                 </label>
                             </div>
                         </div><!-- .form-group logo -->
-                        <button type="button" data-action="{{ url("/restaurant/profile/edit-image") }}" id="edit-logo-btn" class="hidden-element btn btn-primary py-2 px-5">تغيير</button>
+                        <button type="button" data-action="{{ url('/restaurant/profile/edit-image') }}" id="edit-logo-btn" class="hidden-element btn btn-primary py-2 px-5">{{trans('site.change')}}</button>
 
-                       <form action="{{ url("/restaurant/profile") }}" method="POST" class="edit-form">
+                       <form action="{{ url('/restaurant/profile') }}" method="POST" class="edit-form">
                             {{ csrf_field() }}
                             <div class="top-margin form-group">
-                                <label for="restaurant-name">إسم المطعم باللغة العربية</label>
+                                <label for="restaurant-name">{{trans('site.resturant_name_ar')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md text-gray"
                                        id="restaurant-name"
@@ -66,7 +69,7 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="restaurant-name">إسم المطعم باللغة الانجليزية</label>
+                                <label for="restaurant-name">{{trans('site.resturant_name_en')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md text-gray"
                                        id="restaurant-name"
@@ -82,11 +85,13 @@
                             
                             
                                <div class="form-group">
-                                    <label for="service-provider">نوع مقدم الخدمة</label>
+                                    <label for="service-provider">{{trans('site.provider_type')}}</label>
+
+                                   
                                     <select class="custom-select text-gray font-body-md" name="service-provider" id="service-provider">
-                                        <option value="">يرجى تحديد نوع مقدم الخدمة</option>
+                                        <option value="">{{trans('site.choose_provider_type')}}</option>
                                         @foreach($cats as $cat)
-                                            <option value="{{ $cat->id }}" @if($cat->id == $provider -> category_id) selected="" @endif>{{ $cat->ar_name }}</option>
+                                            <option value="{{ $cat->id }}" @if($cat->id == $provider -> category_id) selected="" @endif>{{ $cat-> $name }}</option>
                                         @endforeach
                                     </select>
                                     
@@ -99,7 +104,7 @@
                                 </div><!-- .form-group service provider -->
 
                                 <div class="form-group">
-                                    <p>الخدمات المطلوبة</p>
+                                    <p>{{trans('site.services')}}</p>
                                     <div class="row pr-4 text-gray font-body-md">
 
                                         <div class="custom-control custom-checkbox pl-0 col-md-6 col-12 mb-2">
@@ -112,7 +117,7 @@
                                                    
                                                    >
                                             <label class="custom-control-label font-body-md"
-                                                   for="automatic-list">قائمة الكترونية</label>
+                                                   for="automatic-list">  {{trans('site.elect_list')}}</label>
                                         </div><!-- .custom-control -->
 
                                         <div class="custom-control custom-checkbox pl-0 col-md-6 col-12">
@@ -121,7 +126,7 @@
                                                    name="accept-online-payment"
                                                    id="accept-online-payment" @if($provider -> accept_online_payment == '1') checked="" @endif >
                                             <label class="custom-control-label font-body-md"
-                                                   for="accept-online-payment">قبول الدفع الالكتروني</label>
+                                                   for="accept-online-payment">{{trans('site.elect_payment')}}</label>
                                         </div><!-- .custom-control -->
                                         
                                         <div class="custom-control custom-checkbox pl-0 col-md-6 col-12">
@@ -130,7 +135,7 @@
                                                    name="accept-order"
                                                    id="accept-order" @if($provider -> order_status == '1') checked="" @endif>
                                             <label class="custom-control-label font-body-md"
-                                                   for="accept-order">قبول الطلبات</label>
+                                                   for="accept-order">{{trans('site.recieve_orders')}}</label>
                                         </div><!-- .custom-control -->
 
                                     </div>
@@ -139,12 +144,12 @@
                                 </div><!-- .form-group service -->
 
                             <div class="form-group">
-                                <label for="country">الدولة</label>
+                                <label for="country">{{trans('site.country')}}</label>
                                 <select class="country-ajax-request custom-select text-gray font-body-md border-gray"
                                         id="country" name="country">
-                                    <option value="">يرجى تحديد الدولة</option>
+                                    <option value="">{{trans('site.choose_country')}}</option>
                                     @foreach($countries as $c)
-                                        <option value="{{ $c->id }}" @if($provider->country_id == $c->id) selected @endif>{{ $c->ar_name }}</option>
+                                        <option value="{{ $c->id }}" @if($provider->country_id == $c->id) selected @endif>{{ $c-> $name }}</option>
                                     @endforeach
                                 </select>
 
@@ -161,12 +166,12 @@
                             <!-- .form-group country -->
 
                             <div class="form-group">
-                                <label for="city">المدينة</label>
+                                <label for="city">{{trans('site.city')}}</label>
                                 <select class="city-ajax-request form-control custom-select text-gray font-body-md border-gray"
                                         id="city" name="city">
-                                    <option>يرجى تحديد المدينة</option>
+                                    <option>{{trans('site.choose_city')}}</option>
                                     @foreach($cities as $c)
-                                        <option value="{{ $c->id }}" @if($provider->city_id == $c->id) selected @endif>{{ $c->ar_name }}</option>
+                                        <option value="{{ $c->id }}" @if($provider->city_id == $c->id) selected @endif>{{ $c-> $name}}</option>
                                     @endforeach
                                 </select>
 
@@ -180,13 +185,13 @@
                               <!-- .form-group recieve orders -->
 
                             <div class="form-group">
-                                <label for="accept_order"> تفعيل استلام الطلبات </label>
+                                <label for="accept_order">{{trans('site.active_order_recieve')}}</label>
                                 <select class="form-control custom-select text-gray font-body-md border-gray"
                                         id="accept_order" name="accept_order">
-                                    <option value="0">يرجى  اختيار حالة </option>
+                                    <option value="0">{{trans('site.choose_status')}}</option>
                                     
-                                        <option value="1" @if($provider->order_status == 1) selected @endif>مفعل</option>
-                                        <option value="2" @if($provider->order_status ==0) selected @endif>غير مفعل </option>
+                                        <option value="1" @if($provider->order_status == 1) selected @endif> {{trans('site.active')}}</option>
+                                        <option value="2" @if($provider->order_status ==0) selected @endif>{{trans('site.inactive')}} </option>
                                    
                                 </select>
 
@@ -200,7 +205,7 @@
 
 
                             <div class="form-group">
-                                <label for="phone-number">رقم التواصل</label>
+                                <label for="phone-number">{{trans('site.phone')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md text-gray"
                                        id="phone-number"
@@ -217,7 +222,7 @@
                             </div><!-- .form-group phone -->
 
                             <div class="form-group">
-                                <label for="email">البريد الإلكتروني</label>
+                                <label for="email"> {{trans('site.email')}} </label>
                                 <input type="email"
                                        class="form-control border-gray font-body-md text-gray"
                                        id="email"
@@ -233,7 +238,7 @@
                             </div><!-- .form-group email -->
 
                             <div class="form-group">
-                                <label for="provider-details">نبذة عن الخدمة المقدمة باللغة العربية</label>
+                                <label for="provider-details">{{trans('site.abbrev_services_ar')}}</label>
                                 <textarea class="form-control font-body-md"
                                           id="provider-details"
                                           name="ar_description"
@@ -247,7 +252,7 @@
 
                             </div><!-- .form-group details -->
                             <div class="form-group">
-                                <label for="provider-details">نبذة عن الخدمة المقدمة باللغة الانجليزية</label>
+                                <label for="provider-details"> {{trans('site.abbrev_services_en')}} </label>
                                 <textarea class="form-control font-body-md"
                                           id="provider-details"
                                           name="en_description"
@@ -261,7 +266,7 @@
 
                             </div><!-- .form-group details -->
 
-                            <button type="submit" class="btn btn-primary py-2 px-5">تغيير</button>
+                            <button type="submit" class="btn btn-primary py-2 px-5">{{trans('site.change')}}</button>
 
                         </form>
                         <form id="editpasswordform" action="{{ url("/restaurant/profile/change-password") }}" method="POST">
@@ -279,7 +284,7 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label for="old-password">كلمة المرور القديمة</label>
+                                <label for="old-password">{{trans('site.old_password')}}</label>
                                 <input type="password"
                                        class="form-control border-gray font-body-md"
                                        id="old-password"
@@ -294,7 +299,7 @@
                             </div><!-- .form-group password -->
 
                             <div class="form-group">
-                                <label for="new-password">كلمة المرور الجديدة</label>
+                                <label for="new-password">{{trans('site.new_password')}}</label>
                                 <input type="password"
                                        class="form-control border-gray font-body-md"
                                        id="new-password"
@@ -309,7 +314,7 @@
                             </div><!-- .form-group password -->
 
                             <div class="form-group">
-                                <label for="confirm-password">تأكيد كلمة المرور</label>
+                                <label for="confirm-password">{{trans('site.confirm_password')}}</label>
                                 <input type="password"
                                        class="form-control border-gray font-body-md"
                                        id="confirm-password"
@@ -317,7 +322,7 @@
 
                             </div><!-- .form-group password -->
 
-                            <button type="submit" class="btn btn-primary py-2 px-5">تغيير</button>
+                            <button type="submit" class="btn btn-primary py-2 px-5">{{trans('site.change')}}</button>
 
                         </form><!-- .login-form -->
 

@@ -18,7 +18,7 @@
 
             <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                 <div class="py-2 pr-3 rounded-lg shadow-around">
-                    <h4 class="page-title">الحجوزات</h4>
+                    <h4 class="page-title"> {{trans('site.reservations')}}</h4>
                 </div>
 
 
@@ -50,14 +50,14 @@
 
                             <p class="text-gray font-body-md mb-0">
                                     <span class="d-block">
-                                        رقم الحجز: <span class="reservation-number">{{ $reservationDetails->reservation_code }}</span>
+                                            {{trans('site.reservation_num')}}: <span class="reservation-number">{{ $reservationDetails->reservation_code }}</span>
                                     </span>
                                 <span class="d-block">
-                                        عدد الأشخاص: <span class="reservation-person">{{ $reservationDetails->seats_number }}</span>
+                                        {{trans('site.person_num')}}: <span class="reservation-person">{{ $reservationDetails->seats_number }}</span>
                                     </span>
                                 <span class="d-block">
                                         <span class="reservation-date">
-                                            الوقت والتاريخ:
+                                           {{trans('site.time_date')}}
                                             <time datetime="2018-10-25 17:30">
                                              {{ $reservationDetails->reservation_time }} {{ $reservationDetails->time_extention }} - {{ $reservationDetails->reservation_date }}
                                             </time>
@@ -68,7 +68,7 @@
                            
                             @if(!empty($reservationDetails -> special_reservation) && $reservationDetails -> special_reservation !=null )
                                 <p>                                    
-                                      وصف المناسبه <br>
+                                        {{trans('site.occasion_description')}} <br>
 
                                      
                                 </p>
@@ -86,7 +86,7 @@
 
                 </div>
 
-                <a href="{{ url("/restaurant/reservations/list/1") }}" class="btn btn-primary px-5">العودة</a>
+                <a href="{{ url("/restaurant/reservations/list/1") }}" class="btn btn-primary px-5"> {{trans('site.back')}} <br></a>
 
             </div><!-- .col-* -->
         </div><!-- .row -->

@@ -17,7 +17,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">تغيير نوع الطعام</h4>
+                        <h4 class="page-title">{{trans('site.change_food_type')}}</h4>
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
@@ -77,7 +77,7 @@
                     @endforeach
 
                     <div class="text-center mt-4 text-center">
-                        <button type="submit" id="register-food-btn" class="btn btn-primary px-5 mx-auto text-center">تغيير</button>
+                        <button type="submit" id="register-food-btn" class="btn btn-primary px-5 mx-auto text-center">{{trans('site.change')}}</button>
                     </div>
                     </form>
 

@@ -17,8 +17,17 @@
                 @include("Provider.pages.menu")
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
+
+
+                   @if(Session::has("error_no_file"))
+                        <div class="alert alert-danger top-margin">
+                            {{ Session::get("error_no_file") }}
+                        </div>
+                    @endif
+
+
                     <div class="py-2 pr-3 rounded-lg shadow-around">
-                        <h4 class="page-title">صنف جديد</h4>
+                        <h4 class="page-title"> {{trans('site.new_meal')}}</h4>
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
@@ -31,9 +40,10 @@
                                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_iQ9tX59-heOF1cAF4BB5ndB8TUxJT_jtD6JUkdoV2WjEfRv" class="d-inline-block rounded-circle" width="86" height="86" >
                                     <span class="font-body-md mr-2 text-primary">
                                     
-                                      تحميل ضوابط معلومات قوائم الطعام والوجبات 
+                                      {{trans('site.download_guide')}}
                                         
                                       </span>
+                                      
                                 </label>
                                 
                                 </a>
@@ -43,7 +53,7 @@
                             <hr>
                             
                             <div class="form-group">
-                                <p> صور الصنف  <span class="text-gray font-body-md">امتداد الصور المسموح بها هو jpg-jpeg-png</span></p>
+                                <p> {{trans('site.meal_photo')}} <span class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
                                 <div class="custom-file h-auto">
                                     <input type="file" name="file" class="add-meal-image custom-file-input" id="restaurant-logo" hidden>
                                     <label class="border-0 mb-0 cursor" for="restaurant-logo">
@@ -51,7 +61,7 @@
                                             <i class="fa fa-plus fa-fw fa-lg text-gray" aria-hidden="true"></i>
                                         </span>
                                     </label>
-                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">برجاء اختيار صور الوجبة</p>
+                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
                                 </div>
                             </div><!-- .form-group logo -->
 
@@ -60,7 +70,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة العربية</label>
+                                <label for="kind-name">{{trans('site.ar_name')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="ar_name"
@@ -68,7 +78,7 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="kind-name">الإسم باللغة الانجليزية</label>
+                                <label for="kind-name">{{trans('site.en_name')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="en_name"
@@ -76,10 +86,10 @@
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="categorie">تصنيف الوجية</label>
+                                <label for="categorie">{{trans('site.meal_categories')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="categorie" name="category" required>
-                                    <option value="">يرجى تحديد التصنيف</option>
+                                    <option value="">{{trans('site.choose_category')}}</option>
                                     @foreach($cats as $cat)
 
                                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -90,11 +100,11 @@
 
 
                             <div class="form-group">
-                                <label for="categorie">الفروع المتوفر بها التصنيف</label>
+                                <label for="categorie">{{trans('site.branches_have_meal')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="branch" name="branch" required>
-                                    <option value="">يرجى تحديد الفرع</option>
-                                    <option value="0">يوجد بجميع الفروع</option>
+                                    <option value="">{{trans('site.choose_branches')}}</option>
+                                    <option value="0">{{trans('site.in_all_branches')}}</option>
                                     @foreach($branches as $branch)
 
                                         <option value="{{ $branch->id }}">{{ $branch->name }}</option>
@@ -105,9 +115,9 @@
 
                             <div class="form-group">
                                 <label for="input-tags">
-                                    المكونات
+                                    {{trans('site.ingredients')}}
                                     <span class="text-gray font-body-md">
-                                        (يرجى وضع فاصلة بين كل مكون والآخر)
+                                        ({{trans('site.ingredients_note')}})
                                     </span>
                                 </label>
                                 <input type="text"
@@ -116,58 +126,58 @@
                             </div><!-- .form-group tags -->
 
                             <div class="form-group">
-                                <label for="available">متوفر جميع الاوقات</label>
+                                <label for="available">{{trans('site.available_all_time')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="available" name="available" required>
-                                    <option value="">يرجى تحديد الحالة</option>
-                                    <option value="1">نعم</option>
-                                    <option value="0">لا</option>
+                                    <option value=""> {{trans('site.choose_status')}}</option>
+                                    <option value="1">{{trans('site.yes')}}</option>
+                                    <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group available -->
 
                             <div class="form-group">
-                                <label for="spicy">حار</label>
+                                <label for="spicy"> {{trans('site.spicy')}} </label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="spicy" name="spicy" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1">نعم</option>
-                                    <option value="0">لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1">{{trans('site.yes')}}</option>
+                                    <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group spicy -->
 
                             <div class="spicy-degree-container form-group hidden-element">
-                                <label for="spicy-degree">درجة حرارة الصنف</label>
+                                <label for="spicy-degree">{{trans('site.spicy_degree')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="spicy-degree"
-                                       placeholder="برجاء ادخال قيمة من 1 الى 5"
+                                       placeholder="{{trans('site.value_from1_to5')}}"
                                        id="spicy-degree">
                             </div><!-- .form-group name -->
 
                             <div class="form-group">
-                                <label for="vegetable">مناسب للنباتيين</label>
+                                <label for="vegetable"> {{trans('site.suitable_for_vegetarians')}} </label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="vegetable" name="vegetable" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1">نعم</option>
-                                    <option value="0">لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1">{{trans('site.yes')}}</option>
+                                    <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group vegetable -->
 
                             <div class="form-group">
-                                <label for="gluten">خالي من الجلوتين </label>
+                                <label for="gluten">{{trans('site.gluten_free')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="gluten" name="gluten" required>
-                                    <option value="">يرجى تحديد القيمة</option>
-                                    <option value="1">نعم</option>
-                                    <option value="0">لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1">{{trans('site.yes')}}</option>
+                                    <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
                             <div class="form-group">
                                 <label for="calorie">
-                                    عدد السعرات الحرارية
-                                    <span class="text-gray font-body-md">السعرات الكلية للطلب متوسط الحجم</span>
+                                    {{trans('site.number_of_calories')}}
+                                    <span class="text-gray font-body-md">{{trans('site.meduim_colaries')}}</span>
                                 </label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
@@ -177,30 +187,30 @@
                             </div><!-- .form-group calorie -->
 
                             <div class="form-group">
-                                <label for="details"> الوصف باللغة العربية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
+                                <label for="details"> {{trans('site.description_ar')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="ar-details form-control font-body-md border-gray"
                                           id="details"
                                           name="ar_description"
                                           rows="6" required></textarea>
                                           
-                                          <p id="ar-details-error" class="hidden-element alert alert-danger top-margin">يجب ان يكون الوصف علي الاقل 5 كلمات  </p>
+                                          <p id="ar-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}} </p>
 
                             </div><!-- .form-group details -->
 
 
                             <div class="form-group">
-                                <label for="details"> الوصف باللغة الانجليزية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
+                                <label for="details">{{trans('site.description_en')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="en-details form-control font-body-md border-gray"
                                           id="details"
                                           name="en_description"
                                           rows="6" required></textarea>
                                           
-                                           <p id="ثى-details-error" class="hidden-element alert alert-danger top-margin">يجب ان يكون الوصف علي الاقل 5 كلمات  </p>
+                                           <p id="ثى-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
                             </div><!-- .form-group details -->
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>الأحجام</p>
+                                    <p>{{trans('site.sizes')}}</p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="size1"
@@ -234,7 +244,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر</p>
+                                    <p>{{trans('site.price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
@@ -245,7 +255,7 @@
                                                aria-describedby="price-addon" required>
                                         <div class="input-group-prepend">
                                         <span id="price1-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray">{{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -259,7 +269,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price2-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -273,7 +283,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price3-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
 
@@ -288,7 +298,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price4-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -302,7 +312,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price5-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -313,7 +323,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>الإضافات</p>
+                                    <p> {{trans('site.options')}} </p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="add1"
@@ -347,7 +357,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر المضاف</p>
+                                   <p>{{trans('site.added_price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
@@ -358,7 +368,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price1-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> <p>{{trans('site.riyal')}}</p>
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -372,7 +382,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price2-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -386,7 +396,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price3-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
 
@@ -401,7 +411,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price4-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -415,7 +425,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price5-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -426,7 +436,7 @@
 
                             <div class="row">
                                 <div class="col-sm-6 col-12">
-                                    <p>التفضيلات</p>
+                                    <p> {{trans('site.adds')}}</p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="option1"
@@ -460,7 +470,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                    <p>السعر المضاف</p>
+                                   <p>{{trans('site.added_price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
@@ -471,7 +481,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price1-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -485,7 +495,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price2-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -499,7 +509,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price3-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
 
@@ -514,7 +524,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price4-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -528,7 +538,7 @@
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
                                         <span id="price5-addon"
-                                              class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                              class="input-group-text bg-white border-0 font-body-md text-gray"> {{trans('site.riyal')}}
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
@@ -538,15 +548,15 @@
 
 
                             <div class="form-group">
-                                <label for="recommended"> ينصح به من قبل المطعم <span class="text-gray font-body-md">اختيار فقط 3 من كل تصنيف</span> </label>
+                                <label for="recommended"> {{trans('site.recommanded_restaurant')}}<span class="text-gray font-body-md">{{trans('site.choose_only_3from_eachCAt')}}</span> </label>
                                 <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
-                                    <option value="">برجاء اختيار الحالة</option>
-                                    <option value="1">نعم</option>
-                                    <option value="0">لا</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
+                                    <option value="1">{{trans('site.yes')}}</option>
+                                    <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
-                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">إضافة</button>
+                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5"> {{trans('site.save')}} </button>
                         </form><!-- .new-kind-form -->
                     </div>
                 </div><!-- .col-* -->
