@@ -710,7 +710,7 @@
                                     @endforeach
                                 </div>
                             @else
-                                <p class='mt-4'>لا توجد تعليقات حتى الان</p>
+                                <p class='mt-4'>{{trans('site.no_comments')}}</p>
                             @endif
 
                         </div><!-- .tab-pane -->

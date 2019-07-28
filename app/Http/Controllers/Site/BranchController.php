@@ -205,7 +205,7 @@ class BranchController extends Controller
                         ->join("options" , "options.id" , "branch_options.option_id")
                         ->join("images" , "images.id" , "options.image_id")
                         ->where("branches.id" , $branch->id)
-                        ->select("options.ar_name AS option_name",
+                        ->select("options.".LaravelLocalization::getCurrentLocale()."_name AS option_name",
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/options/', images.name) AS option_image_url"))
                         ->get();
         $branch->options = $options;

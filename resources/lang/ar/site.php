@@ -299,6 +299,9 @@ return [
     "what_rate_forService"              => "ماهو تقييمك للخدمة  ؟",
     "what_rate_forCleaning"             => "ماهو تقييمك للنظافة ؟",
     "what_rate_forvalue"                => "ما هو تقييمك للجودة ؟",
+    "no_comments"                       => "لا يوجد تعليقات حتي الان ",
+    "meals_list_empty"                  => "قائمه الوجبات فارغة ",
+
 
 
 

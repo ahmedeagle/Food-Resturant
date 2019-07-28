@@ -296,5 +296,10 @@ return [
     "food_list_empty"                   => "Food List Empty ",
     "advantages"                        => "Advantages ",
     "comments"                          => "Comments",
-
+    "recieve_reservation_service_stoped"=> "Reservation reception services are off for this restaurant",
+    "what_rate_forService"              => "What is your assessment of the service? ",
+    "what_rate_forCleaning"             => "What is your assessment of cleanliness? ",
+    "what_rate_forvalue"                => "What is your assessment of quality? ",
+    "no_comments"                       => "No comments yet",
+    "meals_list_empty"                   =>  "The meals list is empty",
 ];

@@ -402,7 +402,8 @@
                                                             <p class="text-primary font-body-md mb-0 mt-2 mt-sm-0 text-lg-right text-md-center text-sm-center text-center">
 
                                                             <span class="d-block">
-                                                                <?php echo e($meal->price); ?> ر.س
+                                                                <?php echo e($meal->price); ?>  <?php echo e(trans('site.riyal')); ?>
+
                                                             </span>
 
                                                             </p>
@@ -417,7 +418,7 @@
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             <?php else: ?>
-                                <p class="mt-4">قائمة الوجبات فارغة</p>
+                                <p class="mt-4"><?php echo e(trans('site.meals_list_empty')); ?></p>
                             <?php endif; ?>
                         </div><!-- .tab-pane -->
 
@@ -434,7 +435,8 @@
                                    data-target="#add-comment"
                                    aria-hidden="true"
                                 >
-                                    إضافة تعليق
+                                     <?php echo e(trans('site.add_comment')); ?>
+
                                 </a>
 
 
@@ -450,7 +452,8 @@
                                                 <form>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للخدمة؟
+                                                        <?php echo e(trans('site.what_rate_forService')); ?>
+
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -516,7 +519,8 @@
                                                     </div>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للنظافة؟
+                                                       <?php echo e(trans('site.what_rate_forCleaning')); ?>
+
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -582,7 +586,8 @@
                                                     </div>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للجودة؟
+                                                       <?php echo e(trans('site.what_rate_forvalue')); ?>
+
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -647,7 +652,7 @@
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="message-text" class="col-form-label">أضف تعليقك</label>
+                                                        <label for="message-text" class="col-form-label"> <?php echo e(trans('site.add_comment')); ?></label>
                                                         <input type="hidden" id="branch_id" value="<?php echo e($branch->id); ?>" />
                                                         <input type="hidden" id="is_user_rate" value="<?php echo e($branch->is_user_rate_branch); ?>" />
                                                         <input type="hidden" id="is_user_can_rate" value="<?php echo e($branch->is_user_can_rate); ?>" />
@@ -658,7 +663,7 @@
                                             </div>
 
                                             <div class="modal-footer border-0  pt-0">
-                                                <button type="submit" id="add-comment-btn" class="btn btn-primary btn btn-primary px-4 px-sm-5 font-weight-bold">إضافة</button>
+                                                <button type="submit" id="add-comment-btn" class="btn btn-primary btn btn-primary px-4 px-sm-5 font-weight-bold"><?php echo e(trans('site.add')); ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -725,7 +730,7 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                             <?php else: ?>
-                                <p class='mt-4'>لا توجد تعليقات حتى الان</p>
+                                <p class='mt-4'><?php echo e(trans('site.no_comments')); ?></p>
                             <?php endif; ?>
 
                         </div><!-- .tab-pane -->
