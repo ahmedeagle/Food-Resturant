@@ -293,6 +293,8 @@ return [
     "occasion_description"              => "Occasion Description",
     "confirm_reservation"               => "Confirm",
     "finish_reservation"                => "Finish Reservation",
-    "food_list_empty"                   => "Food List Empty "
+    "food_list_empty"                   => "Food List Empty ",
+    "advantages"                        => "Advantages ",
+    "comments"                          => "Comments",
 
 ];

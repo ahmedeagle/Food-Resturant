@@ -292,7 +292,14 @@ return [
     "occasion_description"              => "وصف المناسبة ",
     "confirm_reservation"               => "تأكيد  الحجز ",
     "finish_reservation"                => "أنهاء الحجز ",
-    "food_list_empty"                   => "قائمه الطعام فارغة "
+    "food_list_empty"                   => "قائمه الطعام فارغة ",
+    "advantages"                        => "الميزات ",
+    "comments"                          => "التعليقات ",
+    "recieve_reservation_service_stoped"=> "خدمات استقبال الحجوزات  متوقفة لهذا المطعم ",
+    "what_rate_forService"              => "ماهو تقييمك للخدمة  ؟",
+    "what_rate_forCleaning"             => "ماهو تقييمك للنظافة ؟",
+    "what_rate_forvalue"                => "ما هو تقييمك للجودة ؟",
+
 
 
 

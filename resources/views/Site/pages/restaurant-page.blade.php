@@ -50,7 +50,7 @@
                                    role="tab"
                                    aria-controls="current"
                                    aria-selected="true">
-                                    التفاصيل
+                                     {{trans('site.details')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -62,7 +62,7 @@
                                    role="tab"
                                    aria-controls="features"
                                    aria-selected="false">
-                                    الميزات
+                                    {{trans('site.advantages')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -74,7 +74,7 @@
                                    role="tab"
                                    aria-controls="reservations"
                                    aria-selected="false">
-                                    الحجز
+                                   {{trans('site.reservations')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -86,7 +86,7 @@
                                    role="tab"
                                    aria-controls="menu"
                                    aria-selected="false">
-                                    قائمة الطعام
+                                  {{trans('site.food_list')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -98,7 +98,7 @@
                                    role="tab"
                                    aria-controls="comments"
                                    aria-selected="false">
-                                    التعليقات
+                                   {{trans('site.comments')}}
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -138,11 +138,11 @@
 
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
+                                        <span class="sr-only">{{trans('site.previous')}}</span>
                                     </a>
                                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
+                                        <span class="sr-only">{{trans('site.next')}}</span>
                                     </a>
                                 </div>
 
@@ -185,11 +185,11 @@
 
                                 <div class="row">
                                     <div class="res-column-one col-sm-4 col font-body-md ">
-                                        <p>ساعات العمل</p>
-                                        <p>متوسط الاسعار</p>
-                                        <p>نوع الأكل</p>
-                                        <p>العنوان</p>
-                                        <p>خدمات</p>
+                                        <p>{{trans('site.work_hours')}}</p>
+                                        <p>{{trans('site.average_price')}}</p>
+                                        <p>{{trans('site.food_type')}}</p>
+                                        <p>{{trans('site.address')}}</p>
+                                        <p>{{trans('site.services')}}</p>
                                     </div>
                                     <div class="res-column-two col-sm-8 col text-gray font-body-md">
                                         <p>الأحد :-@if($branch_working_hours->sunday_start_work != null) من {{ $branch_working_hours->sunday_start_work }} {{ $branch_working_hours->sunday_start_work_extention }} حتى {{ $branch_working_hours->sunday_end_work }} {{ $branch_working_hours->sunday_end_work_extention }} @else لا يعمل @endif
@@ -201,9 +201,9 @@
                                             <i class="fas fa-eye"></i>        
                                             </a>
                                         </p>
-                                        <p>{{ $branch->menu_average_price }} ر.س</p>
+                                        <p>{{ $branch->menu_average_price }} {{trans('site.riyal')}}</p>
                                         <p>{{ $branch->categories_string }}</p>
-                                        <p>{{ $branch->address }}</p>
+                                        <p>{{ !empty($branch->address) ?  $branch->address : '' }}</p>
                                         <div>
                                             @if($branch->has_delivery || $branch->has_booking)
                                                 @if($branch->has_booking)
@@ -217,7 +217,7 @@
                                                 @endif
 
                                             @else
-                                                <p>لا توجد خدمات</p>
+                                                <p>{{trans('site.no_services')}}</p>
                                             @endif
                                         </div>
                                     </div>
@@ -234,7 +234,7 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content py-3">
                                         <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                            ساعات العمل
+                                           {{trans('site.work_hours')}}
                                         </p>
                                         <div style="padding: 15px;" class="form-group">
 
@@ -256,7 +256,7 @@
                                         <div class="modal-footer d-flex justify-content-center pt-0">
                                             <button type="button"
                                                     class="top-margin btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                                    data-dismiss="modal">إلغاء</button>
+                                                    data-dismiss="modal">  {{trans('site.cancel')}} </button>
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +299,7 @@
                                     @endforeach
                                 @else
 
-                                    <p class="mt-4">قائمة المميزات فارغة</p>
+                                    <p class="mt-4">{{trans('site.advantages_list_empty')}}</p>
 
                                 @endif
                             </div>
@@ -323,7 +323,7 @@
                                                          class="img-fluid d-block mx-auto"
                                                          alt="">
                                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                                        أفراد
+                                                        {{trans('site.persons')}}
                                                     </h5>
                                                 </a>
                                             </div>
@@ -338,7 +338,7 @@
                                                          class="img-fluid d-block mx-auto"
                                                          alt="">
                                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                                        عائلات
+                                                        {{trans('site.famlies')}}
                                                     </h5>
                                                 </a>
                                             </div>
@@ -347,7 +347,7 @@
 
                                 @else
 
-                                    <div class="col-12 col-lg-4 mt-4">خدمة استقبال الحجوزات غير متوفرة فى هذا المطعم</div>
+                                    <div class="col-12 col-lg-4 mt-4">{{trans('site.recieve_reservation_service_stoped')}}</div>
 
                                 @endif
                             </div>
@@ -390,7 +390,7 @@
                                                             <p class="text-primary font-body-md mb-0 mt-2 mt-sm-0 text-lg-right text-md-center text-sm-center text-center">
 
                                                             <span class="d-block">
-                                                                {{ $meal->price }} ر.س
+                                                                {{ $meal->price }}  {{trans('site.riyal')}}
                                                             </span>
 
                                                             </p>
@@ -405,7 +405,7 @@
                                 @endforeach
 
                             @else
-                                <p class="mt-4">قائمة الوجبات فارغة</p>
+                                <p class="mt-4">{{trans('site.meals_list_empty')}}</p>
                             @endif
                         </div><!-- .tab-pane -->
 
@@ -422,7 +422,7 @@
                                    data-target="#add-comment"
                                    aria-hidden="true"
                                 >
-                                    إضافة تعليق
+                                     {{trans('site.add_comment')}}
                                 </a>
 
 
@@ -438,7 +438,7 @@
                                                 <form>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للخدمة؟
+                                                        {{trans('site.what_rate_forService')}}
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -504,7 +504,7 @@
                                                     </div>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للنظافة؟
+                                                       {{trans('site.what_rate_forCleaning')}}
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -570,7 +570,7 @@
                                                     </div>
 
                                                     <p class="mb-1">
-                                                        ما هو تقييمك للجودة؟
+                                                       {{trans('site.what_rate_forvalue')}}
                                                     </p>
 
                                                     <div class="text-lg-right  pb-1 rating-stars">
@@ -635,7 +635,7 @@
 
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="message-text" class="col-form-label">أضف تعليقك</label>
+                                                        <label for="message-text" class="col-form-label"> {{trans('site.add_comment')}}</label>
                                                         <input type="hidden" id="branch_id" value="{{ $branch->id }}" />
                                                         <input type="hidden" id="is_user_rate" value="{{ $branch->is_user_rate_branch }}" />
                                                         <input type="hidden" id="is_user_can_rate" value="{{ $branch->is_user_can_rate }}" />
@@ -646,7 +646,7 @@
                                             </div>
 
                                             <div class="modal-footer border-0  pt-0">
-                                                <button type="submit" id="add-comment-btn" class="btn btn-primary btn btn-primary px-4 px-sm-5 font-weight-bold">إضافة</button>
+                                                <button type="submit" id="add-comment-btn" class="btn btn-primary btn btn-primary px-4 px-sm-5 font-weight-bold">{{trans('site.add')}}</button>
                                             </div>
                                         </div>
                                     </div>

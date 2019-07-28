@@ -52,7 +52,8 @@
                                    role="tab"
                                    aria-controls="current"
                                    aria-selected="true">
-                                    التفاصيل
+                                     <?php echo e(trans('site.details')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -64,7 +65,8 @@
                                    role="tab"
                                    aria-controls="features"
                                    aria-selected="false">
-                                    الميزات
+                                    <?php echo e(trans('site.advantages')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -76,7 +78,8 @@
                                    role="tab"
                                    aria-controls="reservations"
                                    aria-selected="false">
-                                    الحجز
+                                   <?php echo e(trans('site.reservations')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -88,7 +91,8 @@
                                    role="tab"
                                    aria-controls="menu"
                                    aria-selected="false">
-                                    قائمة الطعام
+                                  <?php echo e(trans('site.food_list')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -100,7 +104,8 @@
                                    role="tab"
                                    aria-controls="comments"
                                    aria-selected="false">
-                                    التعليقات
+                                   <?php echo e(trans('site.comments')); ?>
+
                                 </a>
                             </li><!-- .nav-item -->
 
@@ -140,11 +145,11 @@
 
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
+                                        <span class="sr-only"><?php echo e(trans('site.previous')); ?></span>
                                     </a>
                                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
+                                        <span class="sr-only"><?php echo e(trans('site.next')); ?></span>
                                     </a>
                                 </div>
 
@@ -188,11 +193,11 @@
 
                                 <div class="row">
                                     <div class="res-column-one col-sm-4 col font-body-md ">
-                                        <p>ساعات العمل</p>
-                                        <p>متوسط الاسعار</p>
-                                        <p>نوع الأكل</p>
-                                        <p>العنوان</p>
-                                        <p>خدمات</p>
+                                        <p><?php echo e(trans('site.work_hours')); ?></p>
+                                        <p><?php echo e(trans('site.average_price')); ?></p>
+                                        <p><?php echo e(trans('site.food_type')); ?></p>
+                                        <p><?php echo e(trans('site.address')); ?></p>
+                                        <p><?php echo e(trans('site.services')); ?></p>
                                     </div>
                                     <div class="res-column-two col-sm-8 col text-gray font-body-md">
                                         <p>الأحد :-<?php if($branch_working_hours->sunday_start_work != null): ?> من <?php echo e($branch_working_hours->sunday_start_work); ?> <?php echo e($branch_working_hours->sunday_start_work_extention); ?> حتى <?php echo e($branch_working_hours->sunday_end_work); ?> <?php echo e($branch_working_hours->sunday_end_work_extention); ?> <?php else: ?> لا يعمل <?php endif; ?>
@@ -204,9 +209,9 @@
                                             <i class="fas fa-eye"></i>        
                                             </a>
                                         </p>
-                                        <p><?php echo e($branch->menu_average_price); ?> ر.س</p>
+                                        <p><?php echo e($branch->menu_average_price); ?> <?php echo e(trans('site.riyal')); ?></p>
                                         <p><?php echo e($branch->categories_string); ?></p>
-                                        <p><?php echo e($branch->address); ?></p>
+                                        <p><?php echo e(!empty($branch->address) ?  $branch->address : ''); ?></p>
                                         <div>
                                             <?php if($branch->has_delivery || $branch->has_booking): ?>
                                                 <?php if($branch->has_booking): ?>
@@ -220,7 +225,7 @@
                                                 <?php endif; ?>
 
                                             <?php else: ?>
-                                                <p>لا توجد خدمات</p>
+                                                <p><?php echo e(trans('site.no_services')); ?></p>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -237,7 +242,8 @@
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content py-3">
                                         <p class="modal-body h4 font-weight-bold text-center mb-auto">
-                                            ساعات العمل
+                                           <?php echo e(trans('site.work_hours')); ?>
+
                                         </p>
                                         <div style="padding: 15px;" class="form-group">
 
@@ -259,7 +265,7 @@
                                         <div class="modal-footer d-flex justify-content-center pt-0">
                                             <button type="button"
                                                     class="top-margin btn btn-primary px-4 px-sm-5 ml-3 font-weight-bold"
-                                                    data-dismiss="modal">إلغاء</button>
+                                                    data-dismiss="modal">  <?php echo e(trans('site.cancel')); ?> </button>
                                         </div>
                                     </div>
                                 </div>
@@ -302,7 +308,7 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php else: ?>
 
-                                    <p class="mt-4">قائمة المميزات فارغة</p>
+                                    <p class="mt-4"><?php echo e(trans('site.advantages_list_empty')); ?></p>
 
                                 <?php endif; ?>
                             </div>
@@ -326,7 +332,8 @@
                                                          class="img-fluid d-block mx-auto"
                                                          alt="">
                                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                                        أفراد
+                                                        <?php echo e(trans('site.persons')); ?>
+
                                                     </h5>
                                                 </a>
                                             </div>
@@ -341,7 +348,8 @@
                                                          class="img-fluid d-block mx-auto"
                                                          alt="">
                                                     <h5 class="item-tile font-size-base font-body-bold mt-4">
-                                                        عائلات
+                                                        <?php echo e(trans('site.famlies')); ?>
+
                                                     </h5>
                                                 </a>
                                             </div>
@@ -350,7 +358,7 @@
 
                                 <?php else: ?>
 
-                                    <div class="col-12 col-lg-4 mt-4">خدمة استقبال الحجوزات غير متوفرة فى هذا المطعم</div>
+                                    <div class="col-12 col-lg-4 mt-4"><?php echo e(trans('site.recieve_reservation_service_stoped')); ?></div>
 
                                 <?php endif; ?>
                             </div>
