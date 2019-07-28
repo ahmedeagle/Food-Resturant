@@ -19,7 +19,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold"><?php echo e(trans('site.secondary_page')); ?></h4>
+                        <h4 class="page-title font-body-bold"><?php echo e($page-> $title); ?></h4>
                     </div>
 
                 <?php  
