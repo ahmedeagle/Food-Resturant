@@ -301,6 +301,7 @@ return [
     "what_rate_forvalue"                => "ما هو تقييمك للجودة ؟",
     "no_comments"                       => "لا يوجد تعليقات حتي الان ",
     "meals_list_empty"                  => "قائمه الوجبات فارغة ",
+    "reply"                             => "أضافة رد ",
 
 
 

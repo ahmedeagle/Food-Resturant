@@ -156,9 +156,9 @@ class TicketController extends Controller
 
         DB::table("ticket_replies")
                     ->insert([
-                        "reply" => $request->input("reply"),
+                        "reply"     => $request->input("reply"),
                         "ticket_id" => $request->input("ticket_id"),
-                        "FromUser" => "1",
+                        "FromUser"  => "1",
                     ]);
 
         $mytime = Carbon::now();

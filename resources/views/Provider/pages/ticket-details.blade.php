@@ -82,14 +82,14 @@
                     <div class="p-3 rounded-lg shadow-around bg-white py-2 font-body-bold my-3">
                         <form id="add-reply-form" data-action="{{ url("/restaurant/contact-us/ticket/add-reply") }}" class="edit-form">
                             <div class="form-group">
-                                <label for="provider-details">إضافة رد</label>
+                                <label for="provider-details">{{trans('site.reply')}}</label>
                                 <input type="hidden" name="ticker_id" class="ticker_id" value="{{ $ticket->ticket_id }}" />
                                 <textarea class="form-control font-body-md"
                                           id="provider-details"
                                           rows="6"></textarea>
                                 <p id= "reply-error" class="alert alert-danger top-margin hidden-element"></p>
                             </div><!-- .form-group details -->
-                            <button type="submit" id="add-reply-btn" class="btn btn-primary py-2 px-5 mt-1 mb-1">إرسال</button>
+                            <button type="submit" id="add-reply-btn" class="btn btn-primary py-2 px-5 mt-1 mb-1">{{trans('site.send')}}</button>
                         </form>
                     </div>
 

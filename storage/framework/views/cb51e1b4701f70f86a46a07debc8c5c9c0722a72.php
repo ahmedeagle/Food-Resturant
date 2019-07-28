@@ -142,7 +142,7 @@
                                 <label for="vegetable"><?php echo e(trans('site.suitable_for_vegetarians')); ?></label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="vegetable" name="vegetable" required>
-                                    <option value=""><?php echo e(trans('site.choose_value')); ?></option>
+                                    <option value=""><?php echo e(trans('site.choose_status')); ?></option>
                                     <option value="1" <?php if($meal->vegetable == "1"): ?> selected <?php endif; ?>><?php echo e(trans('site.yes')); ?></option>
                                     <option value="0" <?php if($meal->vegetable == "0"): ?> selected <?php endif; ?>><?php echo e(trans('site.no')); ?></option>
                                 </select>
@@ -152,7 +152,7 @@
                                 <label for="gluten"><?php echo e(trans('site.gluten_free')); ?></label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="gluten" name="gluten" required>
-                                    <option value=""><?php echo e(trans('site.choose_value')); ?></option>
+                                    <option value=""><?php echo e(trans('site.choose_status')); ?></option>
                                     <option value="1" <?php if($meal->gluten == "1"): ?> selected <?php endif; ?>><?php echo e(trans('site.yes')); ?></option>
                                     <option value="0" <?php if($meal->gluten == "0"): ?> selected <?php endif; ?>><?php echo e(trans('site.no')); ?></option>
                                 </select>

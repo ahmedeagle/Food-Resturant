@@ -45,7 +45,7 @@
 
 
                             <div class="form-group my-2">
-                                <label for="address">{{trans('site.address')}}</label>
+                                <label for="address">{{trans('site.subject')}}</label>
                                 <input type="text"
                                        class="form-control border-gray font-body-md text-gray"
                                        id="address"
@@ -61,7 +61,7 @@
                             </div>
 
                             <div class="form-group mb-1">
-                                <label for="subject">{{trans('site.subject')}}</label>
+                                <label for="subject">{{trans('site.message')}}</label>
                                 <textarea class="form-control font-body-md"
                                           id="subject"
                                           name="subject"

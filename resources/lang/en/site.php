@@ -301,5 +301,6 @@ return [
     "what_rate_forCleaning"             => "What is your assessment of cleanliness? ",
     "what_rate_forvalue"                => "What is your assessment of quality? ",
     "no_comments"                       => "No comments yet",
-    "meals_list_empty"                   =>  "The meals list is empty",
+    "meals_list_empty"                  =>  "The meals list is empty",
+    "reply"                             =>  "Reply",
 ];

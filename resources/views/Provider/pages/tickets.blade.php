@@ -18,7 +18,7 @@
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">تذاكري السابقة</h4>
+                        <h4 class="page-title font-body-bold"> {{trans('site.my_previous_tickets')}}</h4>
                     </div>
 
                     @if(Session::has('success'))
@@ -37,8 +37,8 @@
                             <table class="table table-striped">
                                 <thead class="font-body-bold">
                                 <tr>
-                                    <th scope="col-7">العنوان</th>
-                                    <th scope="col-4">التاريخ</th>
+                                    <th scope="col-7">{{trans('site.subject')}}</th>
+                                    <th scope="col-4">{{trans('site.date')}}</th>
                                 </tr>
 
                                 </thead>
@@ -60,7 +60,7 @@
 
                     </div>
                     @else
-                        <div class="mt-4">قائمة التذاكر فارغة</div>
+                        <div class="mt-4">{{trans('site.tickets_list_empty')}}</div>
                     @endif
                     {{ $tickets->links('Pagination.pagination') }}
 
