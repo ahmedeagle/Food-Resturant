@@ -18,7 +18,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">الطلب</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.the_order')}}</h4>
                     </div>
 
                     <div class="py-4 rounded-lg shadow-around my-4 bg-white">
@@ -27,13 +27,13 @@
                             <img src="{{ url("/assets/site/img/-e-successful-icon.jpg") }}"
                                  class="img-fluid d-inline mx-auto my-2">
                             <p class="font-body-md">
-                                تم إرسال طلبك بنجاح
+                                 {{trans('site.order_send_successfully')}}
                             </p>
                         </div>
 
                     </div>
 
-                    <a href="{{ url("/user/dashboard") }}" class="btn btn-primary px-5">العودة</a>
+                    <a href="{{ url("/user/dashboard") }}" class="btn btn-primary px-5">{{trans('site.back')}}</a>
 
 
                 </div><!-- .col-* -->

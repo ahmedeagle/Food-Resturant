@@ -8,6 +8,10 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
+  <?php 
+          $name        =LaravelLocalization::getCurrentLocale()."_name";
+          $description =LaravelLocalization::getCurrentLocale()."_description";
+  ?>
         <main class="page-content py-5 mb-4 ">
         <div class="container">
             <div class="row">
@@ -17,7 +21,7 @@
                 <?php endif; ?>
                 <div class="<?php if(auth('web')->user()): ?> col-lg-9 col-md-8 col-12 <?php else: ?> col-lg-12 col-md-11 col-12 <?php endif; ?> mt-4 mt-md-0 ">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold"><?php echo e($meal->ar_name); ?></h4>
+                        <h4 class="page-title font-body-bold"><?php echo e($meal-> $name); ?></h4>
                     </div>
 
                     <div class="mael-pic mt-4 rounded-lg shadow-around bg-white">
@@ -66,7 +70,7 @@
 
                         <div class="d-flex justify-content-center flex-column flex-sm-row pb-3">
                             <p class="page-content font-body-md text-gray py-3 px-3 mb-0">
-                                <?php echo e($meal->ar_description); ?>      
+                                <?php echo e($meal-> $description); ?>      
                             </p>
                         </div>
                     

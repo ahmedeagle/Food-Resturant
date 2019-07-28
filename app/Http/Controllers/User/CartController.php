@@ -8,6 +8,7 @@ use Session;
 use Auth;
 use guard;
 use DB;
+use LaravelLocalization;
 class CartController extends Controller
 {
     public function get_cart_page(){
@@ -24,7 +25,7 @@ class CartController extends Controller
                             ->where("published", "1")
                             ->where("deleted", "0")
                             ->select(
-                                "meals.ar_name AS name",
+                                "meals.".LaravelLocalization::getCurrentLocale()."_name AS name",
                                 "meals.price"
                             )->first();
 
@@ -62,7 +63,7 @@ class CartController extends Controller
                 $optionsData = DB::table("meal_options")
                                 ->where("id", $option)
                                 ->select(
-                                        "ar_name AS name",
+                                        LaravelLocalization::getCurrentLocale()."_name AS name",
                                         "added_price"
                                 )->first();
 
@@ -81,7 +82,7 @@ class CartController extends Controller
                 $addsData = DB::table("meal_adds")
                                 ->where("id", $add)
                                 ->select(
-                                        "ar_name AS name",
+                                        LaravelLocalization::getCurrentLocale()."_name AS name",
                                         "added_price"
                                 )->first();
 
@@ -458,7 +459,7 @@ class CartController extends Controller
         $data['payment_methods'] = DB::table("payment_methods")
                                     ->select(
                                         "id",
-                                        "ar_name AS name"
+                                        LaravelLocalization::getCurrentLocale()."_name AS name"
                                     )->get();
 
         return view("User.pages.cart.complete-order", $data);
@@ -508,8 +509,6 @@ class CartController extends Controller
         $this->validate($request, $rules , $messages);
         
           
-         
-         
          
 
         $inFuture = $request->input("in_future");
@@ -721,7 +720,7 @@ class CartController extends Controller
         $order_app_percentage = 0;
         $provider_id = 0;
 
-        $tax = $this->get_tax_value();
+        $tax     = $this->get_tax_value();
         $balance = $this->get_user_balance();
 
         foreach($cart as $key => $item){
@@ -747,15 +746,12 @@ class CartController extends Controller
 
         $total_paid_without_tax = $total_price + $delivery_price;
         $total_paid_value = $total_paid_without_tax + ( ( $tax * $total_paid_without_tax) / 100);
- 
 
         $data_time_string = $date . " " . $time . ":00";
 
         $orderDateTime = ($inFuture == "1") ? $data_time_string : \Carbon\Carbon::now();
 
-        $code  = (new \App\Http\Controllers\Apis\User\GeneralController())->generate_random_number(10);
-
-
+        $code  = (new \App\Http\Controllers\Apis\User\GeneralController())->generate_random_number(9);
 
          $orderTotal = $total_paid_value;
          $paid_price = $orderTotal;

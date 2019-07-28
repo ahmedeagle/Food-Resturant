@@ -242,16 +242,16 @@
 
                         <div class="row">
                             <div class="col-sm-6 col ">
-                                <p class="mb-2">قيمة التوصيل</p>
-                                <p class="mb-2">قيمة نسبة الضريبة</p>
-                                <p class="mb-2">قيمة الطلب</p>
-                                <p class="mb-2">المجموع النهائي</p>
+                                <p class="mb-2">{{trans('site.delivery_value')}}</p>
+                                <p class="mb-2">{{trans('site.tax_percentage_value')}}</p>
+                                <p class="mb-2">{{trans('site.order_value')}}</p></p>
+                                <p class="mb-2"> {{trans('site.last_total')}}</p></p>
                             </div>
                             <div class="col-sm-6 col text-gray">
-                                <p class="mb-2"><span class="delivery_price_span">@if(old('delivery_method')) @if(old("delivery_method") == "1") {{ $delivery_price }} @else 0 @endif  @else 0 @endif</span> ر.س </p>
-                                <p class="mb-2">{{ $tax }} % ر.س </p>
-                                <p class="mb-2"> <span class="order_price">{{ $total_price }}</span> ر.س </p>
-                                <p class="mb-2 text-primary"><span class="total_paid_value2">{{ $total_paid_value }}</span> ر.س </p>
+                                <p class="mb-2"><span class="delivery_price_span">@if(old('delivery_method')) @if(old("delivery_method") == "1") {{ $delivery_price }} @else 0 @endif  @else 0 @endif</span> {{trans('site.riyal')}}</p> </p>
+                                <p class="mb-2">{{ $tax }} %  {{trans('site.riyal')}}</p> </p>
+                                <p class="mb-2"> <span class="order_price">{{ $total_price }}</span> {{trans('site.riyal')}}</p> </p>
+                                <p class="mb-2 text-primary"><span class="total_paid_value2">{{ $total_paid_value }}</span> {{trans('site.riyal')}}</p> </p>
                             </div>
                         </div>
 
@@ -268,7 +268,7 @@
                         إدفع
                     </button> -->
 
-                    <!-- For Test --><button form="complete-order-form" type="submit" class="btn btn-primary px-5 mt-3">اكمال الطلب</button><!-- For Test -->
+                    <!-- For Test --><button form="complete-order-form" type="submit" class="btn btn-primary px-5 mt-3"> {{trans('site.complete_order')}}</p> </button><!-- For Test -->
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
@@ -278,8 +278,8 @@
     <main id="map-content" class="hidden-element map-content page-content py-5">
 
         <header class="page-header mt-4 text-center">
-            <h1 class="page-title h2 font-body-bold">تحديد الموقع</h1>
-            <p class="description text-gray font-body-md mt-3">يرجى تحديد موقع الاستلام عبر الخريطة</p>
+            <h1 class="page-title h2 font-body-bold"> {{trans('site.dete_locations')}}</h1>
+            <p class="description text-gray font-body-md mt-3">{{trans('site.reciept_location_map')}}</p>
             {{--<p id="register-map-address" class="description text-gray font-body-md mt-3"></p>--}}
         </header>
         <div class="container">
@@ -291,8 +291,8 @@
 
                     </div>
 
-                    <Button type="button" id="confirm-user-location" class="btn btn-primary px-5 no-decoration">تأكيد</Button>
-                    <Button type="button" id="decline-user-location" class="btn btn-default px-5 no-decoration">رجوع</Button>
+                    <Button type="button" id="confirm-user-location" class="btn btn-primary px-5 no-decoration">{{trans('site.confirm')}}</Button>
+                    <Button type="button" id="decline-user-location" class="btn btn-default px-5 no-decoration">{{trans('site.back')}}</Button>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

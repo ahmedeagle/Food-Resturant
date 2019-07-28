@@ -107,7 +107,7 @@ return [
     "enter_your_phone"                  => "من فضلك ادخل رقم الهاتف الخاص بكم ",
     "male"                              => "ذكر ", 
     "female"                            => "أنثي ",
-    "hello_mjrb"                        => "مرحبا بك لفي مجرب ",
+    "hello_mjrb"                        => "مرحبا بك  في مجرب ",
     "profile"                           => "الملف الشخصي",
     "reservations"                      => "ألحجوزات ",
     "orders"                            => "الطلبات ",
@@ -302,11 +302,12 @@ return [
     "no_comments"                       => "لا يوجد تعليقات حتي الان ",
     "meals_list_empty"                  => "قائمه الوجبات فارغة ",
     "reply"                             => "أضافة رد ",
-
-
-
-
-
+    "choose_delivery_time"              => "اختر وقت التسلسم ",
+    "reciept_location_map"              => "يرجى تحديد موقع الاستلام عبر الخريطة",
+    "complete_order"                    => "أكمال الطلب ",
+    "order_send_successfully"           => "لقد تم أرسال  طلبكم بنجاح ",
+    "the_order"                         =>"الطلب ",
+ 
 ]; 
 
 

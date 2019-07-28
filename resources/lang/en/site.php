@@ -303,4 +303,14 @@ return [
     "no_comments"                       => "No comments yet",
     "meals_list_empty"                  =>  "The meals list is empty",
     "reply"                             =>  "Reply",
+    "choose_delivery_time"              => "Choose your delivery date",
+    "reciept_location_map"              => "Please locate the receipt on the map",
+    "delivery_value"                    => "delivery value ",
+    "tax_percentage_value"              => "Tax percentage value",
+    "order_value"                       => "Order Value",
+    "last_total"                        => "Final Total",
+    "complete_order"                    => "Complete Order",
+    "order_send_successfully"           => "Your Order has been successfully sent",
+    "the_order"                         => "Order",
+    
 ];

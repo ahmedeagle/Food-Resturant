@@ -19,7 +19,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">تفاصيل الطلب</h4>
+                        <h4 class="page-title font-body-bold"><?php echo e(trans('site.order_details')); ?></h4>
                     </div>
 
 
@@ -86,14 +86,14 @@
                             
 
 
-                            <label for="delivery-method" class="font-body-bold">وقت التسليم</label>
+                            <label for="delivery-method" class="font-body-bold"><?php echo e(trans('site.delivery_time')); ?></label>
                             <div class="d-flex justify-content-center flex-column flex-sm-row">
 
                                 <select form="complete-order-form" name="in_future" class="custom-select text-gray font-body-md border-gray font-body-md"
                                         id="in-future">
-                                    <option value="">برجاء تحديد وقت التسليم</option>
-                                    <option value="0" <?php if(old("in_future") == "0"): ?> selected <?php endif; ?>>طلب مباشر</option>
-                                    <option value="1" <?php if(old("in_future") == "1"): ?> selected <?php endif; ?>>طلب لوقت لاحق</option>
+                                    <option value=""><?php echo e(trans('site.choose_delivery_time')); ?></option>
+                                    <option value="0" <?php if(old("in_future") == "0"): ?> selected <?php endif; ?>>   <?php echo e(trans('site.now_order')); ?></option>
+                                    <option value="1" <?php if(old("in_future") == "1"): ?> selected <?php endif; ?>> <?php echo e(trans('site.later_order')); ?>    </option>
                                 </select>
 
                             </div>
@@ -108,7 +108,7 @@
                             <?php endif; ?>
 
                             <div class="<?php if(old('in_future')): ?> <?php if(old('in_future') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> order-date-container form-group my-2">
-                                <label for="people-count">التاريخ</label>
+                                <label for="people-count"> <?php echo e(trans('site.date')); ?></label>
                                 <input type="date" name="date" value="<?php echo e(old("date")); ?>" class="form-control border-gray">
 
                                 <input type="hidden" value="<?php echo e($delivery_price); ?>" id="delivery_price_input" />
@@ -137,7 +137,7 @@
                             </div>
 
                             <div class="<?php if(old('in_future')): ?> <?php if(old('in_future') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> order-time-container form-group my-2">
-                                <label for="people-count">الساعة</label>
+                                <label for="people-count"><?php echo e(trans('site.time')); ?></label>
                                 <input type="time" id="time" name="time" value="<?php echo e(old("time")); ?>" class="form-control border-gray">
                                 <?php if($errors->has("time")): ?>
 
@@ -156,17 +156,17 @@
                     <div class="rounded-lg shadow-around mt-3 font-body-bold bg-white">
                         <div class="p-3">
                             <div class="form-group mb-1">
-                                <label for="delivery-method" class="font-body-bold">طريقة التسليم</label>
+                                <label for="delivery-method" class="font-body-bold"><?php echo e(trans('site.delivery_method')); ?></label>
                                 <div class="d-flex justify-content-center flex-column flex-sm-row">
                                     <select form="complete-order-form" name="delivery_method" class="custom-select text-gray font-body-md border-gray font-body-md"
                                             id="delivery-method">
-                                        <option value="0" <?php if(old("delivery_method") == "0"): ?> selected <?php endif; ?>>استلام من المطعم</option>
-                                        <option value="1" <?php if(old("delivery_method") == "1"): ?> selected <?php endif; ?>>توصيل</option>
+                                        <option value="0" <?php if(old("delivery_method") == "0"): ?> selected <?php endif; ?>><?php echo e(trans('site.delivery_form_rest')); ?></option>
+                                        <option value="1" <?php if(old("delivery_method") == "1"): ?> selected <?php endif; ?>><?php echo e(trans('site.transparent')); ?></option>
 
                                     </select>
 
                                     <button id="complete-order-location-btn" class="<?php if(old('delivery_method')): ?> <?php if(old('delivery_method') == "0"): ?> hidden-element <?php endif; ?> <?php else: ?> hidden-element <?php endif; ?> btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
-                                            type="button">تحديد العنوان</button>
+                                            type="button">   <?php echo e(trans('site.address')); ?></button>
 
                                 </div>
                                 <?php if($errors->has("delivery_method")): ?>
@@ -219,7 +219,7 @@
 
                     <div class="rounded-lg shadow-around mt-3 font-body-bold bg-white">
                         <form class="p-3">
-                            <label class="my-1">طريقة الدفع</label>
+                            <label class="my-1"> <?php echo e(trans('site.payment_method')); ?></label>
                             <div class="form-row my-1 mr-4">
                                 <?php $__currentLoopData = $payment_methods; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $method): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
@@ -249,16 +249,16 @@
 
                         <div class="row">
                             <div class="col-sm-6 col ">
-                                <p class="mb-2">قيمة التوصيل</p>
-                                <p class="mb-2">قيمة نسبة الضريبة</p>
-                                <p class="mb-2">قيمة الطلب</p>
-                                <p class="mb-2">المجموع النهائي</p>
+                                <p class="mb-2"><?php echo e(trans('site.delivery_value')); ?></p>
+                                <p class="mb-2"><?php echo e(trans('site.tax_percentage_value')); ?></p>
+                                <p class="mb-2"><?php echo e(trans('site.order_value')); ?></p></p>
+                                <p class="mb-2"> <?php echo e(trans('site.last_total')); ?></p></p>
                             </div>
                             <div class="col-sm-6 col text-gray">
-                                <p class="mb-2"><span class="delivery_price_span"><?php if(old('delivery_method')): ?> <?php if(old("delivery_method") == "1"): ?> <?php echo e($delivery_price); ?> <?php else: ?> 0 <?php endif; ?>  <?php else: ?> 0 <?php endif; ?></span> ر.س </p>
-                                <p class="mb-2"><?php echo e($tax); ?> % ر.س </p>
-                                <p class="mb-2"> <span class="order_price"><?php echo e($total_price); ?></span> ر.س </p>
-                                <p class="mb-2 text-primary"><span class="total_paid_value2"><?php echo e($total_paid_value); ?></span> ر.س </p>
+                                <p class="mb-2"><span class="delivery_price_span"><?php if(old('delivery_method')): ?> <?php if(old("delivery_method") == "1"): ?> <?php echo e($delivery_price); ?> <?php else: ?> 0 <?php endif; ?>  <?php else: ?> 0 <?php endif; ?></span> <?php echo e(trans('site.riyal')); ?></p> </p>
+                                <p class="mb-2"><?php echo e($tax); ?> %  <?php echo e(trans('site.riyal')); ?></p> </p>
+                                <p class="mb-2"> <span class="order_price"><?php echo e($total_price); ?></span> <?php echo e(trans('site.riyal')); ?></p> </p>
+                                <p class="mb-2 text-primary"><span class="total_paid_value2"><?php echo e($total_paid_value); ?></span> <?php echo e(trans('site.riyal')); ?></p> </p>
                             </div>
                         </div>
 
@@ -275,7 +275,7 @@
                         إدفع
                     </button> -->
 
-                    <!-- For Test --><button form="complete-order-form" type="submit" class="btn btn-primary px-5 mt-3">اكمال الطلب</button><!-- For Test -->
+                    <!-- For Test --><button form="complete-order-form" type="submit" class="btn btn-primary px-5 mt-3"> <?php echo e(trans('site.complete_order')); ?></p> </button><!-- For Test -->
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
@@ -285,8 +285,8 @@
     <main id="map-content" class="hidden-element map-content page-content py-5">
 
         <header class="page-header mt-4 text-center">
-            <h1 class="page-title h2 font-body-bold">تحديد الموقع</h1>
-            <p class="description text-gray font-body-md mt-3">يرجى تحديد موقع الاستلام عبر الخريطة</p>
+            <h1 class="page-title h2 font-body-bold"> <?php echo e(trans('site.dete_locations')); ?></h1>
+            <p class="description text-gray font-body-md mt-3"><?php echo e(trans('site.reciept_location_map')); ?></p>
             
         </header>
         <div class="container">
@@ -298,8 +298,8 @@
 
                     </div>
 
-                    <Button type="button" id="confirm-user-location" class="btn btn-primary px-5 no-decoration">تأكيد</Button>
-                    <Button type="button" id="decline-user-location" class="btn btn-default px-5 no-decoration">رجوع</Button>
+                    <Button type="button" id="confirm-user-location" class="btn btn-primary px-5 no-decoration"><?php echo e(trans('site.confirm')); ?></Button>
+                    <Button type="button" id="decline-user-location" class="btn btn-default px-5 no-decoration"><?php echo e(trans('site.back')); ?></Button>
 
                 </div><!-- .col-* -->
             </div><!-- .row -->
