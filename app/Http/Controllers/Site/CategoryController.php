@@ -44,7 +44,9 @@ class CategoryController extends Controller
             return redirect("/");
         }
 
-        $data['cat_name'] = $check->ar_name;
+        $name = LaravelLocalization::getCurrentLocale()."_name";
+
+        $data['cat_name'] = $check->  $name;
          $data['providers'] =  DB::table("provider_subcategories")
                                 ->join("providers" , "providers.id" , "provider_subcategories.provider_id")
                                 ->join("images" , "images.id" ,"providers.image_id")
@@ -69,7 +71,7 @@ class CategoryController extends Controller
                                 ->groupBy("branches.id")
                                 ->get();  
         $request = new Request();
-        (new \App\Http\Controllers\Apis\User\HomeController())->filter_providers_branches($request,"ar", $data['providers'],1);
+        (new \App\Http\Controllers\Apis\User\HomeController())->filter_providers_branches($request,LaravelLocalization::getCurrentLocale(), $data['providers'],1);
         
         
         
