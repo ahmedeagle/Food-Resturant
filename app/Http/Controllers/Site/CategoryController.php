@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 class CategoryController extends Controller
 {
     public function categories(){
@@ -58,10 +59,10 @@ class CategoryController extends Controller
                                         "branches.has_booking",
                                         "branches.longitude",
                                         "branches.latitude",
-                                        "branches.ar_address AS address",
+                                        "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
                                         "branches.average_price AS mealAveragePrice",
                                    /* "providers." . $name . "_name AS name",*/
-                                    DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                                    DB::raw("CONCAT(providers .".LaravelLocalization::getCurrentLocale()."_name,'-',branches .".LaravelLocalization::getCurrentLocale()."_name) AS name"),
                                     
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                                 )

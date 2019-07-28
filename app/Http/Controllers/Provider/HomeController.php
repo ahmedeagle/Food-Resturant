@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Validator;
+use LaravelLocalization;
 class HomeController extends Controller
 {
 
@@ -38,7 +39,7 @@ class HomeController extends Controller
                     ->where("active" , "1")
                     ->select(
                         "id",
-                        "ar_name AS name"
+                        LaravelLocalization::getCurrentLocale()."_name AS name"
                     )->get();
 
         return response()->json(['status' => true, 'errNum' => 0, 'msg' => $msg[3], "cities" => $cities]);
@@ -49,7 +50,7 @@ class HomeController extends Controller
         $data['cats'] = DB::table("mealsubcategories")
                             ->select(
                                 "id",
-                                "ar_name AS name"
+                                 LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
         $data['title'] = " - تحديد نوع الطعام المقدم";
@@ -112,7 +113,7 @@ class HomeController extends Controller
         $data['cats'] = DB::table("subcategories")
                             ->select(
                                 "id",
-                                "ar_name AS name"
+                                 LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
         $data['title'] = " - تحديد التصنيف";

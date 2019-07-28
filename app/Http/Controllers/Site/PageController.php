@@ -13,8 +13,8 @@ class PageController extends Controller
         $page = DB::table("pages")
                     ->where("id", $id)
                     ->select(
-                        "ar_title AS title",
-                        "ar_content AS content"
+                         LaravelLocalization::getCurrentLocale()."_title AS title",
+                         LaravelLocalization::getCurrentLocale()"_content AS content"
                     )->first();
         if(!$page){
             return redirect("/");

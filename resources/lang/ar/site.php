@@ -292,6 +292,7 @@ return [
     "occasion_description"              => "وصف المناسبة ",
     "confirm_reservation"               => "تأكيد  الحجز ",
     "finish_reservation"                => "أنهاء الحجز ",
+    "food_list_empty"                   => "قائمه الطعام فارغة "
 
 
 

@@ -292,6 +292,7 @@ return [
     "inactive"                          => "Inactive ",
     "occasion_description"              => "Occasion Description",
     "confirm_reservation"               => "Confirm",
-    "finish_reservation"                => "Finish Reservation"
+    "finish_reservation"                => "Finish Reservation",
+    "food_list_empty"                   => "Food List Empty "
 
 ];

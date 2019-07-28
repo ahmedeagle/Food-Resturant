@@ -4,6 +4,8 @@
     </header><!-- .section-header -->
     <div class="section-content mt-5">
 
+
+<?php  $name = LaravelLocalization::getCurrentLocale()."_name"?>
         <div class="container">
             <div class="row">
                 @foreach($cats as $key => $cat)
@@ -21,7 +23,7 @@
                                     <figcaption class="cat-figcaption position-absolute px-3">
                                         <h3 class="cat-title font-body-md position-relative">
                                             <a href="{{ url("/cat-restaurants/". $cat->id) }}" class="text-white no-decoration">
-                                                {{ $cat->ar_name }}
+                                                {{ $cat->$name }}
                                             </a>
                                         </h3>
                                     </figcaption>

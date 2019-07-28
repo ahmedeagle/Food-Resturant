@@ -6,10 +6,13 @@
     {{ $class }}
 @endsection
 @section('content')
+
+
+<?php $name = LaravelLocalization::getCurrentLocale()."_name"?>
     <main class="page-content py-5">
 
         <header class="page-header mt-2 text-center">
-            <h1 class="page-title h2 font-body-bold">التصنيفات</h1>
+            <h1 class="page-title h2 font-body-bold">{{trans('site.categories')}}</h1>
         </header>
 
         <div class=" categories section-content mt-5">
@@ -30,7 +33,7 @@
                                             <figcaption class="cat-figcaption position-absolute px-3">
                                                 <h3 class="cat-title font-body-md position-relative">
                                                     <a href="{{ url("/cat-restaurants/". $cat->cat_id) }}" class="text-white no-decoration">
-                                                        {{ $cat->ar_name }}
+                                                        {{ $cat->  $name }}
                                                     </a>
                                                 </h3>
                                             </figcaption>

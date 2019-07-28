@@ -4,6 +4,8 @@
     </header><!-- .section-header -->
     <div class="section-content mt-5">
 
+
+<?php  $name = LaravelLocalization::getCurrentLocale()."_name"?>
         <div class="container">
             <div class="row">
                 <?php $__currentLoopData = $cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -21,7 +23,7 @@
                                     <figcaption class="cat-figcaption position-absolute px-3">
                                         <h3 class="cat-title font-body-md position-relative">
                                             <a href="<?php echo e(url("/cat-restaurants/". $cat->id)); ?>" class="text-white no-decoration">
-                                                <?php echo e($cat->ar_name); ?>
+                                                <?php echo e($cat->$name); ?>
 
                                             </a>
                                         </h3>

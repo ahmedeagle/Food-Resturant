@@ -103,7 +103,7 @@
                                         <div>
                                             <img src="{{ url("/assets/site/img/-e-money-icon.svg") }}"
                                                  class="img-fluid d-inline mx-auto my-2 pr-2">
-                                            <span class="font-body-md">{{ $provider->mealAveragePrice }} ر.س</span>
+                                            <span class="font-body-md">{{ $provider->mealAveragePrice }} {{trans('site.riyal')}}</span>
 
                                             {{--<img src="assets/img/-e-mark-icon.svg"--}}
                                             {{--class="img-fluid d-inline mx-auto my-2 pr-2">--}}
@@ -117,7 +117,7 @@
 
                         @else
 
-                            <p class="mt-4">قائمة المطاعم فارغة</p>
+                            <p class="mt-4">{{trans('site.food_list_empty')}}</p>
 
                         @endif
 

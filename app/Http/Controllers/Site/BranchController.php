@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Session;
+use LaravelLocalization;
 class BranchController extends Controller
 {
     public function get_restaurant_page($id){
@@ -34,11 +35,11 @@ class BranchController extends Controller
                     ->select(
                         "branches.id",
                         "providers.id AS provider_id",
-                        "providers.ar_name AS name",
-                        "providers.ar_description AS description",
-                        "congestion_settings.ar_name AS congestion_name",
+                        "providers.".LaravelLocalization::getCurrentLocale()."_name AS name",
+                        "providers.".LaravelLocalization::getCurrentLocale()."_description AS description",
+                        "congestion_settings.".LaravelLocalization::getCurrentLocale()."_name AS congestion_name",
                          DB::raw("CONCAT('". url('/') ."','/storage/app/public/settings/', images.name) AS congestion_image_url"),
-                        "branches.ar_address AS address",
+                        "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
                         "branches.has_booking",
                         "branches.booking_status",
                         "providers.accept_order",
@@ -188,7 +189,7 @@ class BranchController extends Controller
                         ->where("branches.id" , $branch->id)
                         ->select(
                             "mealsubcategories.id AS cat_id",
-                            "mealsubcategories.ar_name AS cat_name"
+                            "mealsubcategories.".LaravelLocalization::getCurrentLocale()."_name AS cat_name"
                             )
                         ->get();
         
@@ -305,7 +306,7 @@ class BranchController extends Controller
                                  
                             ->select(
                                 "mealcategories.id AS cat_id",
-                                "mealcategories.ar_name AS cat_name"
+                                "mealcategories.".LaravelLocalization::getCurrentLocale()."_name AS cat_name"
                              )
                             ->get();
         
@@ -318,7 +319,7 @@ class BranchController extends Controller
                         ->where("mealCategory_id", $c->cat_id)
                         ->select(
                             "meals.id AS meal_id",
-                            "meals.ar_name AS meal_name",
+                            "meals.".LaravelLocalization::getCurrentLocale()."_name AS meal_name",
                             "meals.price"
                         )
                         ->get();

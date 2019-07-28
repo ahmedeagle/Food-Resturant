@@ -8,6 +8,7 @@ use DB;
 use App\Ticket;
 use Validator;
 use Carbon\Carbon;
+use LaravelLocalization;
 class TicketController extends Controller
 {
     public function get_tickets_select(){
@@ -25,7 +26,7 @@ class TicketController extends Controller
         $data['types'] = DB::table("ticket_types")
                             ->select(
                                 "id AS id",
-                                "ar_name AS name"
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
                             )
                             ->get();
         return view("User.pages.ticket.open-new-ticket", $data);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 class HelperController extends Controller
 {
     public function filter_providers_branches_by_rate($providers){
@@ -18,7 +19,7 @@ class HelperController extends Controller
                     "branches.has_booking",
                     "branches.longitude",
                     "branches.latitude",
-                    "branches.ar_address AS address",
+                    "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
                     "branches.average_price AS mealAveragePrice"
                 )
                 ->orderBy('branches.id', 'DESC')
