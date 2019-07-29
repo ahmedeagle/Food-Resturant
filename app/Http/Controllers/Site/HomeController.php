@@ -114,7 +114,7 @@ class HomeController extends Controller
                         "branches.id AS branch_id",
                         "branches.longitude",
                         "branches.latitude",
-                        "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
+                        "branches.ar_address AS address",
                         "offers.provider_id",
                         "offers.".LaravelLocalization::getCurrentLocale()."_title AS title",
                     

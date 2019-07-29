@@ -183,10 +183,12 @@ class ProfileController extends Controller
         if($request->hasFile("image")){
 
             $request->image->store('users', 'public');
+
             $img_id = DB::table("images")
                 ->insertGetId([
                     "name" => $request->image->hashName()
                 ]);
+                
             DB::table("users")
                 ->where("id", auth('web')->id())
                 ->update([

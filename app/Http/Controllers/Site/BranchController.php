@@ -39,7 +39,7 @@ class BranchController extends Controller
                         "providers.".LaravelLocalization::getCurrentLocale()."_description AS description",
                         "congestion_settings.".LaravelLocalization::getCurrentLocale()."_name AS congestion_name",
                          DB::raw("CONCAT('". url('/') ."','/storage/app/public/settings/', images.name) AS congestion_image_url"),
-                        "branches.".LaravelLocalization::getCurrentLocale()."_address AS address",
+                        "branches.ar_address AS address",
                         "branches.has_booking",
                         "branches.booking_status",
                         "providers.accept_order",
