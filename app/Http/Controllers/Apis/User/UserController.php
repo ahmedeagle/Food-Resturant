@@ -66,7 +66,7 @@ class UserController extends Controller
                              "branches." .$name ."_address AS address",
                              "branches.average_price AS mealAveragePrice",
                                         
-                            DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                            DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                         )
                         -> paginate(10);
