@@ -89,7 +89,7 @@ class HomeController extends Controller
                         "branches.id AS branch_id",
                         "branches.longitude",
                         "branches.latitude",
-                        "branches.ar_address AS address",
+                        "branches.".$name."_address AS address",
                         "offers.provider_id",
                         "offers." .$name . "_title AS title",
                     
@@ -157,7 +157,7 @@ class HomeController extends Controller
                              "branches." .$name ."_address AS address",
                              "branches.average_price AS mealAveragePrice",
                                         
-                            DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                            DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                         )
                         ->take(17)
