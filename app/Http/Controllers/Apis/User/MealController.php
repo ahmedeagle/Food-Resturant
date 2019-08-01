@@ -213,7 +213,7 @@ class MealController extends Controller
                 )->get();
         $meal->adds = $adds;
 
-        // add meal sizes
+        // add meal sizes //
         $sizes = DB::table("meal_sizes")
                 ->where("meal_id" ,$meal->meal_id)
                 ->select(
