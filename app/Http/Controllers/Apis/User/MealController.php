@@ -198,7 +198,7 @@ class MealController extends Controller
                     ->where("meal_id" ,$meal->meal_id)
                     ->select(
                         "meal_options.id AS option_id",
-                        "meal_options." . $name . "_name AS option_name",
+                        "meal_options.ar_name AS option_name",
                         "meal_options.added_price AS option_added_price"
                     )->get();
         $meal->options = $options;
@@ -208,7 +208,7 @@ class MealController extends Controller
                 ->where("meal_id" ,$meal->meal_id)
                 ->select(
                     "meal_adds.id AS adds_id",
-                    "meal_adds." . $name . "_name AS adds_name",
+                    "meal_adds.ar_name AS adds_name",
                     "meal_adds.added_price AS adds_added_price"
                 )->get();
         $meal->adds = $adds;
@@ -218,7 +218,7 @@ class MealController extends Controller
                 ->where("meal_id" ,$meal->meal_id)
                 ->select(
                     "meal_sizes.id AS size_id",
-                    "meal_sizes." . $name . "_name AS size_name",
+                    "meal_sizes.ar_name AS size_name",
                     "meal_sizes.price AS size.added_price"
                 )->orderBy('meal_sizes.price' , "ASC")->get();
         $meal->sizes = $sizes;
