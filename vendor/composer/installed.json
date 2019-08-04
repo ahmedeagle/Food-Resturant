@@ -610,6 +610,168 @@
         ]
     },
     {
+        "name": "google/auth",
+        "version": "v1.5.1",
+        "version_normalized": "1.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/googleapis/google-auth-library-php.git",
+            "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0f75e20e7392e863f5550ed2c2d3d50af21710fb",
+            "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb",
+            "shasum": ""
+        },
+        "require": {
+            "firebase/php-jwt": "~2.0|~3.0|~4.0|~5.0",
+            "guzzlehttp/guzzle": "~5.3.1|~6.0",
+            "guzzlehttp/psr7": "^1.2",
+            "php": ">=5.4",
+            "psr/cache": "^1.0",
+            "psr/http-message": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^1.11",
+            "guzzlehttp/promises": "0.1.1|^1.3",
+            "phpseclib/phpseclib": "^2",
+            "phpunit/phpunit": "^4.8.36|^5.7",
+            "sebastian/comparator": ">=1.2.3"
+        },
+        "suggest": {
+            "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings. Please require version ^2."
+        },
+        "time": "2019-04-16T18:48:28+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\Auth\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Google Auth Library for PHP",
+        "homepage": "http://github.com/google/google-auth-library-php",
+        "keywords": [
+            "Authentication",
+            "google",
+            "oauth2"
+        ]
+    },
+    {
+        "name": "google/cloud-core",
+        "version": "v1.30.0",
+        "version_normalized": "1.30.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/googleapis/google-cloud-php-core.git",
+            "reference": "5158d214f100ae0413e2bc829960e92c8f38136b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/5158d214f100ae0413e2bc829960e92c8f38136b",
+            "reference": "5158d214f100ae0413e2bc829960e92c8f38136b",
+            "shasum": ""
+        },
+        "require": {
+            "google/auth": "^1.5.1",
+            "guzzlehttp/guzzle": "^5.3|^6.0",
+            "guzzlehttp/promises": "^1.3",
+            "guzzlehttp/psr7": "^1.2",
+            "monolog/monolog": "~1",
+            "php": ">=5.5",
+            "psr/http-message": "1.0.*",
+            "rize/uri-template": "~0.3"
+        },
+        "require-dev": {
+            "erusev/parsedown": "^1.6",
+            "google/common-protos": "^1.0",
+            "google/gax": "^1.0",
+            "opis/closure": "^3",
+            "phpdocumentor/reflection": "^3.0",
+            "phpunit/phpunit": "^4.8|^5.0",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "suggest": {
+            "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
+            "symfony/lock": "Required for the Spanner cached based session pool. Please require the following commit: 3.3.x-dev#1ba6ac9"
+        },
+        "time": "2019-07-25T17:46:28+00:00",
+        "bin": [
+            "bin/google-cloud-batch"
+        ],
+        "type": "library",
+        "extra": {
+            "component": {
+                "id": "cloud-core",
+                "target": "googleapis/google-cloud-php-core.git",
+                "path": "Core",
+                "entry": "src/ServiceBuilder.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\Cloud\\Core\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Google Cloud PHP shared dependency, providing functionality useful to all components."
+    },
+    {
+        "name": "google/cloud-translate",
+        "version": "v1.2.9",
+        "version_normalized": "1.2.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/googleapis/google-cloud-php-translate.git",
+            "reference": "d6aa2b9942525f829f812155f279d616882f7bd2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/googleapis/google-cloud-php-translate/zipball/d6aa2b9942525f829f812155f279d616882f7bd2",
+            "reference": "d6aa2b9942525f829f812155f279d616882f7bd2",
+            "shasum": ""
+        },
+        "require": {
+            "google/cloud-core": "^1.28"
+        },
+        "require-dev": {
+            "erusev/parsedown": "^1.6",
+            "phpdocumentor/reflection": "^3.0",
+            "phpunit/phpunit": "^4.8|^5.0",
+            "squizlabs/php_codesniffer": "2.*"
+        },
+        "time": "2019-04-16T20:44:33+00:00",
+        "type": "library",
+        "extra": {
+            "component": {
+                "id": "cloud-translate",
+                "target": "googleapis/google-cloud-php-translate.git",
+                "path": "Translate",
+                "entry": "src/TranslateClient.php"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Google\\Cloud\\Translate\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "Cloud Transation Client for PHP"
+    },
+    {
         "name": "guzzlehttp/guzzle",
         "version": "6.3.3",
         "version_normalized": "6.3.3.0",
@@ -2945,6 +3107,54 @@
         "abandoned": true
     },
     {
+        "name": "psr/cache",
+        "version": "1.0.1",
+        "version_normalized": "1.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/php-fig/cache.git",
+            "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+            "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2016-08-06T20:24:11+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Psr\\Cache\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PHP-FIG",
+                "homepage": "http://www.php-fig.org/"
+            }
+        ],
+        "description": "Common interface for caching libraries",
+        "keywords": [
+            "cache",
+            "psr",
+            "psr-6"
+        ]
+    },
+    {
         "name": "psr/container",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -3300,6 +3510,52 @@
             "guid",
             "identifier",
             "uuid"
+        ]
+    },
+    {
+        "name": "rize/uri-template",
+        "version": "0.3.2",
+        "version_normalized": "0.3.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rize/UriTemplate.git",
+            "reference": "9e5fdd5c47147aa5adf7f760002ee591ed37b9ca"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rize/UriTemplate/zipball/9e5fdd5c47147aa5adf7f760002ee591ed37b9ca",
+            "reference": "9e5fdd5c47147aa5adf7f760002ee591ed37b9ca",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0.0"
+        },
+        "time": "2017-06-14T03:57:53+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Rize\\UriTemplate": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marut K",
+                "homepage": "http://twitter.com/rezigned"
+            }
+        ],
+        "description": "PHP URI Template (RFC 6570) supports both expansion & extraction",
+        "keywords": [
+            "RFC 6570",
+            "template",
+            "uri"
         ]
     },
     {
@@ -3882,6 +4138,57 @@
         ],
         "description": "Library that helps with managing the version number of Git-hosted PHP projects",
         "homepage": "https://github.com/sebastianbergmann/version"
+    },
+    {
+        "name": "stichoza/google-translate-php",
+        "version": "v4.0.2",
+        "version_normalized": "4.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Stichoza/google-translate-php.git",
+            "reference": "6109b1e0035c6694aac38c2f9e119b6264c2bfb1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/6109b1e0035c6694aac38c2f9e119b6264c2bfb1",
+            "reference": "6109b1e0035c6694aac38c2f9e119b6264c2bfb1",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "guzzlehttp/guzzle": "~6.0",
+            "php": "^7.1"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2019-07-22T22:28:03+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Stichoza\\GoogleTranslate\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Levan Velijanashvili",
+                "email": "me@stichoza.com"
+            }
+        ],
+        "description": "Free Google Translate API PHP Package",
+        "homepage": "http://github.com/Stichoza/google-translate-php",
+        "keywords": [
+            "google",
+            "php",
+            "translate",
+            "translator"
+        ]
     },
     {
         "name": "swiftmailer/swiftmailer",

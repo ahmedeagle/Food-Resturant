@@ -48,7 +48,7 @@
 @section('script')
 
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language={{LaravelLocalization::getCurrentLocale()}}&callback=initMap">
     </script>
 
  
