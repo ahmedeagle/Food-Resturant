@@ -80,7 +80,7 @@ class SubcategoryController extends Controller
                                         "branches." .LaravelLocalization::getCurrentLocale() ."_address AS address",
                                         "branches.average_price AS mealAveragePrice",
                                    /* "providers." . $name . "_name AS name",*/
-                                    DB::raw("CONCAT(providers .".LaravelLocalization::getCurrentLocale()."_name,'-',branches .".LaravelLocalization::getCurrentLocale()."_name) AS name"),
+                                    DB::raw("CONCAT(providers.en_name,'-',branches.en_name) AS name"),
                                     
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                                 )
