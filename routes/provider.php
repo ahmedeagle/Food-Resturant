@@ -1,12 +1,13 @@
 <?php
 
+use GoogleTranslate;
 
 Route::prefix('restaurant')->group(function(){
 
     Route::get('trans',function(){
 
       
-       $tr = new Stichoza\GoogleTranslate\GoogleTranslate('en');
+       $tr = GoogleTranslate('en');
 
        $tr->setSource('en'); // Translate from English
        $tr->setTarget('ar'); // Translate to Georgian

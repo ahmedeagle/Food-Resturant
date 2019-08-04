@@ -232,7 +232,6 @@ return [
         'Paytabs' => Damas\Paytabs\Facades\PaytabsFacade::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
-        'googleTrans'   => Stichoza\GoogleTranslate\GoogleTranslate::class,
-    ],
+     ],
 
 ];
