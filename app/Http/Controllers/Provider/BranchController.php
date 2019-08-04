@@ -120,8 +120,8 @@ class BranchController extends Controller
 
         $validator  = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
-return              $error = $validator->errors();
-            return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' => $msg[$error]]);
+//return              $error = $validator->errors();
+            return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' =>   'dfkdfjfj']);
         }
 
 
@@ -669,7 +669,7 @@ return              $error = $validator->errors();
       public function getTimesFromOtherBranch($id ,Request $request){
 
 
-          
+
           $data=[];
           
           
@@ -737,7 +737,5 @@ return              $error = $validator->errors();
          
        
       }
-      
-      
       
 }
