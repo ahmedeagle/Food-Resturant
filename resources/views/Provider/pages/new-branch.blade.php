@@ -1211,7 +1211,7 @@
             window.scrollTo(0, 0);
         });
     </script>
-
+<!-- fg-->
      <script src="{{ asset("/assets/site/js/new-branch2.js") }}"></script>
 
       <script async defer
