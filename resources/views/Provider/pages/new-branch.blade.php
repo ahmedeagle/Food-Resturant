@@ -1184,6 +1184,8 @@
             
             $("#work-tab").removeClass("active show");
             $(".working-hours-content").removeClass("active show");
+
+            alert('click done');
             
             window.scrollTo(0, 0);
         });
