@@ -788,9 +788,7 @@
 <!--    <script src="{{ asset("/assets/site/js/new-branch-location.js") }}"></script>   -->
     <script src="{{ asset("/assets/site/js/new-branch2.js") }}"></script>
     
-     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
-    </script>
+     
     
  
     
@@ -925,8 +923,7 @@
 
     });
   
-
- initMap();
+ 
 
   function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -1165,6 +1162,13 @@
         $("#branch-lng").val(Lng);
     }
          
+
+
+    </script>
+
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
     </script>
     
     <script>
