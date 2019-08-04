@@ -805,7 +805,8 @@
 
 
    $(document).on('change','#autoCompeletTimes',function(){
-       
+
+
        var branch_id = this.value;
         if(branch_id){
      
@@ -858,32 +859,13 @@
     });
          
          
-           
-            
-    var map, infoWindow , marker ,geocoder;
-        
-    var messagewindow;
-    var markers = [];
-
-    var prevlat;
-    var prevLng
-
-    var SelectedLatLng = "";
-    var SelectedLocation = "";
-
+     
     $("#new-branch-map-btn, #complete-order-location-btn").on("click", function () {
         $(".main-content").addClass("hidden-element");
         $(".map-content").removeClass("hidden-element");
 
         window.scrollTo(0,200);
-
-        if($("#branch-latLng").val() != ""){
-            prevlat = $("#branch-lat").val();
-            prevLng = $("#branch-lng").val();
-        }else{
-            prevlat = -34.397;
-            prevLng = 150.6444;
-        }
+ 
 
        
 
@@ -926,9 +908,26 @@
     });
   
 
- initMap();
+  
 
   function initMap() {
+
+
+
+            
+    var map, infoWindow , marker ,geocoder;
+        
+    var messagewindow;
+    var markers = [];
+
+    var prevlat;
+    var prevLng
+
+    var SelectedLatLng = "";
+    var SelectedLocation = "";
+
+
+
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: parseInt(prevlat), lng: parseInt(prevLng)},
             zoom: 6
@@ -946,6 +945,7 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
+
                     //infoWindow.setPosition(pos);
                    // infoWindow.setContent('Location found.');
                    // infoWindow.open(map);

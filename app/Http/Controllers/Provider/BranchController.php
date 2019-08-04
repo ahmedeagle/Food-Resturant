@@ -667,6 +667,8 @@ return              $error = $validator->errors();
     
     
       public function getTimesFromOtherBranch($id ,Request $request){
+
+
           
           $data=[];
           
