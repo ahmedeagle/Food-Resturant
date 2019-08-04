@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "aurawindsurfing/google-translate": "^1.0",
         "fideloper/proxy": "~3.3",
         "google/cloud-translate": "^1.2",
         "laravel/framework": "5.5.*",

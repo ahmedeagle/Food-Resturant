@@ -1,9 +1,24 @@
 <?php
 
 
+
+Route::get('trans',function(){
+     
+     $translator = new Dedicated\GoogleTranslate\Translator;
+
+
+            $result = $translator->setSourceLang('en')
+                                 ->setTargetLang('ru')
+                                 ->translate('Hello World');
+                                       
+            dd($result); // "Привет мир"     
+
+
+});
+
 Route::prefix('restaurant')->group(function(){
 
-   
+
      Route::post("/change-password" , "Provider\ForgetPasswordController@post_change_password");
      Route::post("/register" , "Provider\RegisterController@post_register");
      Route::post("/login" , "Provider\LoginController@post_login");

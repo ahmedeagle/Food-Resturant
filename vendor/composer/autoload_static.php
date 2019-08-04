@@ -134,6 +134,7 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
             'Doctrine\\Common\\Inflector\\' => 26,
             'Defuse\\Crypto\\' => 14,
             'DeepCopy\\' => 9,
+            'Dedicated\\GoogleTranslate\\' => 26,
         ),
         'C' => 
         array (
@@ -379,6 +380,10 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Dedicated\\GoogleTranslate\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aurawindsurfing/google-translate/src',
         ),
         'Cron\\' => 
         array (
@@ -640,6 +645,9 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'Damas\\Paytabs\\PaytabsServiceProvider' => __DIR__ . '/..' . '/maq89/paytabs-laravel/src/Damas/Paytabs/PaytabsServiceProvider.php',
         'Damas\\Paytabs\\paytabs' => __DIR__ . '/..' . '/maq89/paytabs-laravel/src/Damas/Paytabs/Paytabs.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
+        'Dedicated\\GoogleTranslate\\GoogleTranslateProvider' => __DIR__ . '/..' . '/aurawindsurfing/google-translate/src/GoogleTranslateProvider.php',
+        'Dedicated\\GoogleTranslate\\TranslateException' => __DIR__ . '/..' . '/aurawindsurfing/google-translate/src/TranslateException.php',
+        'Dedicated\\GoogleTranslate\\Translator' => __DIR__ . '/..' . '/aurawindsurfing/google-translate/src/Translator.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
