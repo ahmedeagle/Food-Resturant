@@ -9,6 +9,7 @@ use App\Mealsubcategories;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Validator;
 use DB;
+use LaravelLocalization;
 class SubcategoryController extends Controller
 {
     /*
@@ -81,7 +82,7 @@ class SubcategoryController extends Controller
                                         "branches." .$name ."_address AS address",
                                         "branches.average_price AS mealAveragePrice",
                                    /* "providers." . $name . "_name AS name",*/
-                                    DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                                    DB::raw("CONCAT(providers .".LaravelLocalization::getLocale()."name,'-',branches .".LaravelLocalization::getLocale()."name) AS name"),
                                     
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                                 )
