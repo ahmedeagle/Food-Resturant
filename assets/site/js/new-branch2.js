@@ -354,7 +354,7 @@
             }else{
                 notif({
                     msg: data.msg,
-                    type: "warning"
+                    type: "danger"
                 });
             }
 
