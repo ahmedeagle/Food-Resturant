@@ -1,22 +1,9 @@
 <?php
 
-use GoogleTranslate;
 
 Route::prefix('restaurant')->group(function(){
 
-    Route::get('trans',function(){
-
-      
-       $tr = GoogleTranslate('en');
-
-       $tr->setSource('en'); // Translate from English
-       $tr->setTarget('ar'); // Translate to Georgian
-
-
-       return  $tr->translate('Hello World!');
-
-
-    });
+   
      Route::post("/change-password" , "Provider\ForgetPasswordController@post_change_password");
      Route::post("/register" , "Provider\RegisterController@post_register");
      Route::post("/login" , "Provider\LoginController@post_login");
