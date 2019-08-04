@@ -178,6 +178,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+        Stichoza\GoogleTranslate\GoogleTranslate::class,
 
     ],
 
@@ -230,6 +231,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paytabs' => Damas\Paytabs\Facades\PaytabsFacade::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+
+        'googleTrans'   => Stichoza\GoogleTranslate\GoogleTranslate::class,
     ],
 
 ];
