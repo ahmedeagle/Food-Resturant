@@ -118,7 +118,7 @@
 
 
                                 <div class="form-group">
-                                    <label for="branch-name">إ{{trans('site.branch_name_en')}}</label>
+                                    <label for="branch-name">{{trans('site.branch_name_en')}}</label>
                                     <input type="text"
                                            name="en_name"
                                            class="form-control border-gray font-body-md"
