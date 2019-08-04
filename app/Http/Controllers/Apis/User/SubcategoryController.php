@@ -38,9 +38,7 @@ class SubcategoryController extends Controller
         // modified  get nearst branches not provider 
     public function get_nearest_providers_inside_main_sub_categories(Request $request){
         
-         (new BaseConroller())->setLang($request);
-        $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
-        // type 0 -> distance , 1 -> rate
+         // type 0 -> distance , 1 -> rate
         $rules      = [
             "cat_id" => "required|exists:subcategories,id",
             "type"   => "required|in:0,1"
@@ -79,7 +77,7 @@ class SubcategoryController extends Controller
                                         "branches.has_booking",
                                         "branches.longitude",
                                         "branches.latitude",
-                                        "branches." .$name ."_address AS address",
+                                        "branches." .LaravelLocalization::getCurrentLocale() ."_address AS address",
                                         "branches.average_price AS mealAveragePrice",
                                    /* "providers." . $name . "_name AS name",*/
                                     DB::raw("CONCAT(providers .".LaravelLocalization::getCurrentLocale()."_name,'-',branches .".LaravelLocalization::getCurrentLocale()."_name) AS name"),
@@ -92,7 +90,7 @@ class SubcategoryController extends Controller
                                 
 
             //orderby distance 
-        (new HomeController())->filter_providers_branches($request,$name,$pagianted_branches ,$type);
+        (new HomeController())->filter_providers_branches($request,LaravelLocalization::getCurrentLocale(),$pagianted_branches ,$type);
  
         if($type == 0){
             // filter based on distance
