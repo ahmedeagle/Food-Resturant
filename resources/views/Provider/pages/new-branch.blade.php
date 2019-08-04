@@ -788,10 +788,7 @@
 <!--    <script src="{{ asset("/assets/site/js/new-branch-location.js") }}"></script>   -->
     <script src="{{ asset("/assets/site/js/new-branch2.js") }}"></script>
     
-   
-        
-
-
+  
     
     <script>
 
@@ -857,38 +854,18 @@
     });
          
          
-       $(document).ready(function(){
-
-                   var map, infoWindow , marker ,geocoder;
-                    
-                var messagewindow;
-                var markers = [];
-
-                var prevlat;
-                var prevLng
-
-                var SelectedLatLng = "";
-                var SelectedLocation = "";
-                 prevlat = -34.397;
-                 prevLng = 150.6444;
-
-
-                    if($("#branch-latLng").val() != ""){
-                        prevlat = parseFloat($("#branch-lat").val());
-                        prevLng = parseFloat($("#branch-lng").val());
-                    }else{
-                        prevlat = -34.397;
-                        prevLng = 150.6444;
-                    }
-
-
-
-       });
+           
             
-  
+    var map, infoWindow , marker ,geocoder;
+        
+    var messagewindow;
+    var markers = [];
 
+    var prevlat;
+    var prevLng
 
-
+    var SelectedLatLng = "";
+    var SelectedLocation = "";
 
     $("#new-branch-map-btn, #complete-order-location-btn").on("click", function () {
         $(".main-content").addClass("hidden-element");
@@ -896,6 +873,13 @@
 
         window.scrollTo(0,200);
 
+        if($("#branch-latLng").val() != ""){
+            prevlat = $("#branch-lat").val();
+            prevLng = $("#branch-lng").val();
+        }else{
+            prevlat = -34.397;
+            prevLng = 150.6444;
+        }
 
        
 
@@ -938,14 +922,13 @@
     });
   
 
+
   function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: parseFloat(prevlat), lng: parseFloat(prevLng)},
+            center: {lat: parseInt(prevlat), lng: parseInt(prevLng)},
             zoom: 6
         });
         
-
-        console.log('dfdf'+prevlat);
           infoWindow = new google.maps.InfoWindow;
           geocoder = new google.maps.Geocoder();
 
@@ -1179,9 +1162,6 @@
          
     </script>
     
-
-
-
     <script>
         $(".next-working-hours").on("click", function(){
             $("#work-tab").addClass("active show");
@@ -1225,8 +1205,7 @@
     </script>
 
 
-  <script async defer
+     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
     </script>
-    
 @endsection
