@@ -786,7 +786,7 @@
    
 
 <!--    <script src="{{ asset("/assets/site/js/new-branch-location.js") }}"></script>   -->
-    <script src="{{ asset("/assets/site/js/new-branch2.js") }}"></script>
+   
     
      
     
@@ -1167,9 +1167,7 @@
     </script>
 
 
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
-    </script>
+   
     
     <script>
         $(".next-working-hours").on("click", function(){
@@ -1193,6 +1191,7 @@
         });
         
         $(".next-cats").on("click", function(){
+          alert('dffdddddddddddddddddddddddd');
             $("#cats-tab").addClass("active show");
             $(".cat-content").addClass("active show");
             
@@ -1211,5 +1210,11 @@
             
             window.scrollTo(0, 0);
         });
+    </script>
+
+     <script src="{{ asset("/assets/site/js/new-branch2.js") }}"></script>
+
+      <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&language=ar&callback=initMap">
     </script>
 @endsection
