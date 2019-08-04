@@ -889,8 +889,9 @@
             window.scrollTo(0, 0);
         });
         
-        $(".prev-final-cat").on("click", function(){
-            $("#cats-tab").removeClass("active show");
+
+        $(document).on('click','.prev-final-cat',function(){
+             $("#cats-tab").removeClass("active show");
             $(".cat-content").removeClass("active show");
             
             $("#work-tab").addClass("active show");
