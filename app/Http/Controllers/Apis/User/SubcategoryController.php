@@ -9,7 +9,6 @@ use App\Mealsubcategories;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Validator;
 use DB;
-use LaravelLocalization;
 class SubcategoryController extends Controller
 {
     /*
@@ -38,7 +37,9 @@ class SubcategoryController extends Controller
         // modified  get nearst branches not provider 
     public function get_nearest_providers_inside_main_sub_categories(Request $request){
         
-         // type 0 -> distance , 1 -> rate
+         (new BaseConroller())->setLang($request);
+        $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
+        // type 0 -> distance , 1 -> rate
         $rules      = [
             "cat_id" => "required|exists:subcategories,id",
             "type"   => "required|in:0,1"
@@ -77,10 +78,10 @@ class SubcategoryController extends Controller
                                         "branches.has_booking",
                                         "branches.longitude",
                                         "branches.latitude",
-                                        "branches." .LaravelLocalization::getCurrentLocale() ."_address AS address",
+                                        "branches." .$name ."_address AS address",
                                         "branches.average_price AS mealAveragePrice",
                                    /* "providers." . $name . "_name AS name",*/
-                                    DB::raw("CONCAT(providers.en_name,'-',branches.en_name) AS name"),
+                                    DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
                                     
                                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
                                 )
@@ -90,7 +91,7 @@ class SubcategoryController extends Controller
                                 
 
             //orderby distance 
-        (new HomeController())->filter_providers_branches($request,LaravelLocalization::getCurrentLocale(),$pagianted_branches ,$type);
+        (new HomeController())->filter_providers_branches($request,$name,$pagianted_branches ,$type);
  
         if($type == 0){
             // filter based on distance
