@@ -120,7 +120,7 @@ class BranchController extends Controller
 
         $validator  = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
-//return              $error = $validator->errors();
+               $error = $validator->errors() -> first();
             return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' =>   'dfkdfjfj']);
         }
 
