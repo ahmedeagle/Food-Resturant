@@ -87,7 +87,7 @@
                     </div><!-- .section-content -->
 
                     <div class="py-2 pr-3 rounded-lg shadow-around bg-white">
-                        <h4 class="page-title font-body-bold">{{trans('site.details')}}</h4>
+                        <h4 class="page-title font-body-bold">{{trans('site.categories')}}</h4>
                     </div>
 
 
