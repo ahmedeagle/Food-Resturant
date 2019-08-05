@@ -30,7 +30,7 @@
                 </div>
 
 
-                @if(auth('web') -> check)
+                @if(auth('web') -> check())
 
                 <div class="client-area mt-lg-0 mt-md-2 mt-sm-0 d-flex justify-content-center flex-column flex-lg-row align-items-center">
 
