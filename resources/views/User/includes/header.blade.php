@@ -30,10 +30,11 @@
                 </div>
 
 
-                @if(auth('web') -> check())
+                
 
                 <div class="client-area mt-lg-0 mt-md-2 mt-sm-0 d-flex justify-content-center flex-column flex-lg-row align-items-center">
 
+@if(auth('web') -> check())
                     <a class="d-inline-flex m-2 mr-md-3 ml-sm-0">
                         <img src="{{ url('/assets/site/img/-e-wallet-icon.svg') }}" class="ml-2" width="25"
                         height="25">
@@ -62,10 +63,10 @@
                             height="65"
                             alt="avatar">
                     </a>
+                    @endif
                 </div><!-- .client-area -->
 
-                @endif
-
+ 
             </div>
             {{--@if(Session::has('empty-query'))--}}
                 {{--<div class="row">--}}
