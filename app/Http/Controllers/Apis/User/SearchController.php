@@ -59,41 +59,43 @@ class SearchController extends Controller
     public function filterResturants(Request $request){
 
 
-            $lang = $request->input('lang');
+              (new BaseConroller())->setLang($request);
+               
+               $lang  = (App()->getLocale() == 'ar') ? 'ar' : 'en' ;
+
+
     if($lang == "ar"){
       $msg = array(
         0 => 'يوجد بيانات',
-        1 => 'جميع الحقول مطلوبة ',
-        2 => 'يجب ان تختار التاريخ عند البحث بالوقت',
-        3 => 'يجب إرسال تفاصيل موقع المستخدم',
-        4 => 'المسافه يجب ان تكون بالأرقام',
-        5 => 'الوقت يجب ان يكون فى تنسيق h:i (09:05)',
-        6 => 'التاريخ يجب ان يكون فى تنسيق yyyy-mm-dd',
-        7 => 'يجب إختيار المدينة المراد البحث بها',
-        8 => 'type يجب ان يكون provider او meal'
+        1 => ' جميع الحقول مطلوبة ',
+        2 => ' نوع مقدم الخدمه المختار غير موجود ',
+        3 => ' تصنيف الطعام المختار غير موجود او ربما حذف  ',
+        4 => ' نوع الطعام المختار غير موجود او ربما حذف ',
+        5 => ' الميزه المختاره غير موجوده او ربما حذفت ',
+        6 => 'لايوجد نتائج  لبحثك ',
+
       );
     }else{
       $msg = array(
+
         0 => 'Retrieved successfully',
         1 => 'All Fields are required',
-        2 => 'You must determine the date if you search with time',
-        3 => 'user longitude and latitude is required',
-        4 => 'distance must be in number',
-        5 => 'time must be in format H:i ex:- (09:05)',
-        6 => 'date must be in format yyyy-mm-dd',
-        7 => 'Please select city',
-        8 => 'type attribute must be provider or meal'
+        2 => 'Provider Type not Found ',
+        3 => 'Food category not found ',
+        4 => 'Food Type not found ',
+        5 => 'Features not found ',
+        6 => 'no data retrieved ',
+        
       );
     }
 
     $messages = array(
-      'required'         => 1,
-      'numeric'          => 4,
-      'time.date_format' => 5,
-      'date.date_format' => 6,
-      'required_with'    => 3,
-      'in'               => 8
-    );
+        'required'                   => 1,
+       'provider_type.exists'       => 2,
+       'foodcategories.exists'      => 3,
+       'foodtype.exists'            => 4,
+       'features.exists'            => 5,
+        );
 
 
   $rules=[
@@ -101,7 +103,7 @@ class SearchController extends Controller
             "provider_type"  => "sometimes|nullable|exists:categories,id",
             "foodcategories" => "sometimes|nullable|exists:subcategories,id",
             "foodtype"       => "sometimes|nullable|exists:mealcategories,id",
-            "features"       =>  "sometimes|nullable|exists:mealcategories,id",
+            "features"       => "sometimes|nullable|exists:mealcategories,id",
 
        ];
 
@@ -123,10 +125,155 @@ class SearchController extends Controller
       return response()->json(['status' => false, 'errNum' => $error, 'msg' => $msg[$error]]);
     }
 
+          $name            =  $request -> name; 
+          $providertypeId  =  $request -> provider_type;
+          $foodcategoryId  =  $request -> foodcategories;
+          $foodtypeId      =  $request -> foodtype ;
+          $featureId       =  $request -> features ;
+ 
+
+            
+            $conditions = array();
+
+
+
+        $virtualTble = "SELECT providers.id AS provider_id,providers.category_id AS providertypeId, (SELECT CONCAT(',', GROUP_CONCAT(provider_subcategories.Subcategory_id), ',') FROM provider_subcategories WHERE provider_subcategories.provider_id = providers.id) AS foodcategoryIds, (SELECT CONCAT(',', GROUP_CONCAT(provider_mealsubcategories.Mealsubcategory_id), ',') FROM provider_mealsubcategories WHERE provider_mealsubcategories.provider_id = providers.id) AS foodtypeIds,(SELECT CONCAT(',', GROUP_CONCAT(branch_options.option_id), ',') FROM branch_options WHERE branch_options.branch_id = branches.id) AS featureIds ,(SELECT branches.id FROM branches WHERE branches.provider_id = providers.id) AS molkh,CONCAT(providers.ar_name,'-',branches.ar_name) AS  name FROM providers JOIN branches ON branches.provider_id = providers.id";
+
+ 
+                                   
+                               //  DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
+                          
+
+             if($request ->filled('foodcategories')){
+
+                array_push($conditions, ["tble.foodcategoryIds", '=',$foodcategoryId]);
+
+
+
+            }
+
+
+     return $result = DB::table(DB::raw("(".$virtualTble.") AS tble"))
+            ->select('tble.*')
+            ->get();
 
 
 
 
+            if($request ->filled('name')){
+
+                array_push($conditions, ["providers.".$lang."_name", 'like', '%'.$name.'%']);
+
+            }
+
+            if($request ->filled('provider_type')){
+
+                array_push($conditions, ["providers.category_id", '=',$providertypeId]);
+            }
+
+            
+             if($request ->filled('foodtype')){
+
+                array_push($conditions, ["provider_mealsubcategories.Mealsubcategory_id", '=',$foodtypeId]);
+            }
+
+
+             if($request ->filled('features')){
+
+                array_push($conditions, ["branch_options.option_id", '=',$featureId]);
+            }
+
+
+
+       if (!empty($conditions)) {
+
+
+
+                  $sql = "select providers.id AS provider_id,";
+
+
+          $providerspag = DB::table("providers")
+
+                            ->join("images" , "images.id" ,"providers.image_id")
+                            ->join('branches','branches.provider_id','=','providers.id')
+                            ->join('categories','providers.category_id','=','categories.id')
+                            ->join('provider_subcategories','providers.id','=','provider_subcategories.provider_id')
+                            ->join('provider_mealsubcategories','providers.id','=','provider_mealsubcategories.provider_id')
+                            ->join('branch_options','branches.id','=','branch_options.branch_id')
+                           // ->where($conditions)
+                            ->where("providers.accountactivated" , "1")
+                            ->select(
+                                "branches.id AS id",
+                                "providers.id AS provider_id",
+                                 DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                                 "branches.has_delivery",
+                                 "branches.has_booking",
+                                 "branches.longitude",
+                                 "branches.latitude",
+                                 "branches.ar_address AS address",
+                                 "branches.average_price AS mealAveragePrice",
+                                DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
+                            )
+                            ->paginate(10);
+
+        }else {
+
+           $providerspag =  DB::table("providers")
+                        ->join("images" , "images.id" ,"providers.image_id")
+                        ->join('branches','branches.provider_id','=','providers.id')
+                        ->where("providers.accountactivated" , "1")
+                        ->select(
+                            "branches.id AS id",
+                            "providers.id AS provider_id",
+                             DB::raw("CONCAT(providers .".$lang."_name,'-',branches .".$lang."_name) AS name"),
+                             "branches.has_delivery",
+                             "branches.has_booking",
+                             "branches.longitude",
+                             "branches.latitude",
+                             "branches.ar_address AS address",
+                             "branches.average_price AS mealAveragePrice",
+                            DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
+                        )
+                        ->paginate(10);
+        }
+
+ 
+         $type = $request -> type; 
+
+        (new HomeController())->filter_providers_branches($request,$name,$providerspag,$type);
+
+              if($type == 0){
+            // filter based on distance
+            $branches = $providerspag->sortBy(function($item){
+                return $item->distance;
+                  })->values();
+              }else{
+                  // filter by rate
+                  $branches = $providerspag->sortByDesc(function($item){
+                      return $item->averageRate;
+                  })->values();
+        }
+
+
+               // Get current page form url e.x. &page=1
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+
+        // Create a new Laravel collection from the array data
+        $itemCollection = collect($branches);
+
+        // Define how many items we want to be visible in each page
+        $perPage = 10;
+
+        // Slice the collection to get the items to display in current page
+        $currentPageItems = $itemCollection->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+
+        // Create our paginator and pass it to the view
+        $paginatedItems= new LengthAwarePaginator($currentPageItems , count($itemCollection), $perPage);
+
+        // set url path for generted links
+        $paginatedItems->setPath(url()->current());
+   
+        return response()->json(['status' => true, 'errNum' => 0, 'msg' => $msg[0] , "providers" => $paginatedItems]);
 
     }
 

@@ -178,6 +178,8 @@ class HomeController extends Controller
     public function filter_providers_branches(Request $request ,$name,$providers ,$type = 0){
           
             foreach ($providers as $branch){
+
+
                 $rates = DB::table('rates')
                     ->where('rates.branch_id' , $branch->id)
                     ->select(
