@@ -54,17 +54,21 @@ class SearchController extends Controller
 
     }
 
+
+
+    public function filterResturants(Request $request){
+
+
+    }
+
     public function search(Request $request){
         (new BaseConroller())->setLang($request);
         $name  = (App()->getLocale() == 'ar') ? 'ar' : 'en' ;
         $rules      = [
-            "filterwith"     => "required|in:0,1",
+            "name"            => "required",
             "latitude"       => "required",
             "longitude"      => "required",
-            "provider_type"  => "sometimes|nullable|exists:categories,id",
-            "foodcategories" => "sometimes|nullable|exists:subcategories,id",
-            "foodtype"       => "sometimes|nullable|exists:mealcategories,id",
-            "features"       =>  "sometimes|nullable|exists:mealcategories,id",
+
         ];
         $messages   = [
             "required"   => 1
@@ -167,7 +171,6 @@ class SearchController extends Controller
 
         // method to fitlrt  result by distance or rate  in search nd near you screens
     public function searchResultOrderBy(Request $request){
-          
      (new BaseConroller())->setLang($request);
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
         // type 0 -> distance , 1 -> rate

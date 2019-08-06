@@ -56,6 +56,9 @@ Route::middleware(['api_auth'])->group(function () {
     Route::post("/resultOrderBy", "Apis\User\SearchController@searchResultOrderBy");
     Route::get("/resultOrderBy", "Apis\User\GeneralController@echo_Empty");
 
+    Route::post("/filterResturants", "Apis\User\SearchController@filterResturants");
+    Route::get("/filterResturants", "Apis\User\GeneralController@echo_Empty");
+
 
     Route::post("/GetOffers", "Apis\User\OfferController@get_offers");
     Route::get("/GetOffers", "Apis\User\GeneralController@echo_Empty");
@@ -84,8 +87,8 @@ Route::middleware(['api_auth'])->group(function () {
     Route::post('/forgetPassword', "Apis\User\ForgetPasswordController@forgetPassword");
     Route::get('/forgetPassword', "Apis\User\GeneralController@echo_Empty");
       
-    Route::post('/prepareSearch', "Apis\User\SearchController@prepareSearch");
-    Route::get('/prepareSearch', "Apis\User\GeneralController@echo_Empty");
+    Route::post('/prepareFilter', "Apis\User\SearchController@prepareSearch");
+    Route::get('/prepareFilter', "Apis\User\GeneralController@echo_Empty");
     
 
     Route::post('/Search', "Apis\User\SearchController@search");
