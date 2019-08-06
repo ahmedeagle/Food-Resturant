@@ -231,6 +231,11 @@ class HomeController extends Controller
                 $branch->mealAveragePrice = $branch->mealAveragePrice;
                 $branch->averageRate      = $branch->averageRate;
                 unset($branch->provider_id);
+                unset($branch->provider_name);
+                unset($branch->providertypeId);
+                unset($branch->foodcategoryIds);
+                unset($branch->foodtypeIds);
+                unset($branch->featureIds);
                // $provider->id               = $branch->branch_id;
                 $branch->distance         = $distance;
             
