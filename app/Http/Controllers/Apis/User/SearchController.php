@@ -103,7 +103,7 @@ class SearchController extends Controller
             "provider_type"  => "sometimes|nullable|exists:categories,id",
             "foodcategories" => "sometimes|nullable|exists:subcategories,id",
             "foodtype"       => "sometimes|nullable|exists:mealcategories,id",
-            "features"       => "sometimes|nullable|exists:mealcategories,id",
+            "features"       => "sometimes|nullable|exists:options,id",
 
        ];
 
