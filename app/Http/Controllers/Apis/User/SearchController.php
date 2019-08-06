@@ -59,6 +59,76 @@ class SearchController extends Controller
     public function filterResturants(Request $request){
 
 
+            $lang = $request->input('lang');
+    if($lang == "ar"){
+      $msg = array(
+        0 => 'يوجد بيانات',
+        1 => 'لا يوجد نتائج لبحثك',
+        2 => 'يجب ان تختار التاريخ عند البحث بالوقت',
+        3 => 'يجب إرسال تفاصيل موقع المستخدم',
+        4 => 'المسافه يجب ان تكون بالأرقام',
+        5 => 'الوقت يجب ان يكون فى تنسيق h:i (09:05)',
+        6 => 'التاريخ يجب ان يكون فى تنسيق yyyy-mm-dd',
+        7 => 'يجب إختيار المدينة المراد البحث بها',
+        8 => 'type يجب ان يكون provider او meal'
+      );
+    }else{
+      $msg = array(
+        0 => 'Retrieved successfully',
+        1 => 'There is no result for your search',
+        2 => 'You must determine the date if you search with time',
+        3 => 'user longitude and latitude is required',
+        4 => 'distance must be in number',
+        5 => 'time must be in format H:i ex:- (09:05)',
+        6 => 'date must be in format yyyy-mm-dd',
+        7 => 'Please select city',
+        8 => 'type attribute must be provider or meal'
+      );
+    }
+
+    $messages = array(
+      'required'         => 7,
+      'numeric'          => 4,
+      'time.date_format' => 5,
+      'date.date_format' => 6,
+      'required_with'    => 3,
+      'in'               => 8
+    );
+
+
+  $rules=[
+            "type"           => "required|in:0,1" 
+            "provider_type"  => "sometimes|nullable|exists:categories,id",
+            "foodcategories" => "sometimes|nullable|exists:subcategories,id",
+            "foodtype"       => "sometimes|nullable|exists:mealcategories,id",
+            "features"       =>  "sometimes|nullable|exists:mealcategories,id",
+
+       ];
+
+       if($request -> has('type'))
+       {
+                    // filter  result by distance  so lat and lun  must required 
+            if($request -> type == 0 or  $request -> type == '0')
+            {
+                 
+                 $rules['latitude']  = 'required';
+                 $rules['longitude'] = 'required';
+            }
+       }
+
+
+
+       return $rules;
+
+    $validator = Validator::make($request->all(),$rules,$messages);
+
+    if($validator->fails()){
+      $error = $validator->errors()->first();
+      return response()->json(['status' => false, 'errNum' => $error, 'msg' => $msg[$error]]);
+    }
+
+
+
     }
 
     public function search(Request $request){

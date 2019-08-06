@@ -89,6 +89,9 @@ Route::middleware(['api_auth'])->group(function () {
       
     Route::post('/prepareFilter', "Apis\User\SearchController@prepareSearch");
     Route::get('/prepareFilter', "Apis\User\GeneralController@echo_Empty");
+
+    Route::post('/filterResturants', "Apis\User\SearchController@filterResturants");
+    Route::get('/filterResturants', "Apis\User\GeneralController@echo_Empty");
     
 
     Route::post('/Search', "Apis\User\SearchController@search");
