@@ -173,9 +173,7 @@ class SearchController extends Controller
         // type 0 -> distance , 1 -> rate
         $rules      = [
             "type"      => "required|in:0,1",
-            "name"       => "required",
-            "latitude"   => "required",
-            "longitude"  => "required",
+             
         ];
         $messages   = [
             "required"   => 1,
