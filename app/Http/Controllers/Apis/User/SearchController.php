@@ -165,15 +165,14 @@ class SearchController extends Controller
 
 
 
-
+        // method to fitlrt  result by distance or rate 
     public function searchResultOrderBy(Request $request){
-
           
      (new BaseConroller())->setLang($request);
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
         // type 0 -> distance , 1 -> rate
         $rules      = [
-             "type"      => "required|in:0,1",
+            "type"      => "required|in:0,1",
             "name"       => "required",
             "latitude"   => "required",
             "longitude"  => "required",
