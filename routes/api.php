@@ -55,7 +55,7 @@ Route::middleware(['api_auth'])->group(function () {
     Route::get("/GetCategoryProviders", "Apis\User\GeneralController@echo_Empty");
 
 
-    Route::post("/searchResultOrderBy", "Apis\User\SubcategoryController@searchResultOrderBy");
+    Route::post("/searchResultOrderBy", "Apis\User\SearchController@searchResultOrderBy");
     Route::get("/searchResultOrderBy", "Apis\User\GeneralController@echo_Empty");
 
 
