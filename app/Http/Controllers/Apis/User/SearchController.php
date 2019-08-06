@@ -173,9 +173,10 @@ class SearchController extends Controller
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
         // type 0 -> distance , 1 -> rate
         $rules      = [
-            "cat_id" => "required|exists:subcategories,id",
-            "type"   => "required|in:0,1",
-            "name"   => "required"
+             "type"      => "required|in:0,1",
+            "name"       => "required",
+            "latitude"   => "required",
+            "longitude"  => "required",
         ];
         $messages   = [
             "required"   => 1,
