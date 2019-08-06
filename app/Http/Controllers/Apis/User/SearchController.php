@@ -130,111 +130,61 @@ class SearchController extends Controller
           $foodcategoryId  =  $request -> foodcategories;
           $foodtypeId      =  $request -> foodtype ;
           $featureId       =  $request -> features ;
+          $url             = url('/');
+          $conditions      = array();
  
-
-            
-            $conditions = array();
-
-
-
-        $virtualTble = "SELECT providers.id AS provider_id,providers.category_id AS providertypeId, (SELECT CONCAT(',', GROUP_CONCAT(provider_subcategories.Subcategory_id), ',') FROM provider_subcategories WHERE provider_subcategories.provider_id = providers.id) AS foodcategoryIds, (SELECT CONCAT(',', GROUP_CONCAT(provider_mealsubcategories.Mealsubcategory_id), ',') FROM provider_mealsubcategories WHERE provider_mealsubcategories.provider_id = providers.id) AS foodtypeIds,(SELECT CONCAT(',', GROUP_CONCAT(branch_options.option_id), ',') FROM branch_options WHERE branch_options.branch_id = branches.id) AS featureIds ,(SELECT branches.id FROM branches WHERE branches.provider_id = providers.id) AS molkh,CONCAT(providers.ar_name,'-',branches.ar_name) AS  name FROM providers JOIN branches ON branches.provider_id = providers.id";
-
- 
-                                   
-                               //  DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
-                          
-
-             if($request ->filled('foodcategories')){
-
-                array_push($conditions, ["tble.foodcategoryIds", '=',$foodcategoryId]);
-
-
-
-            }
-
-
-     return $result = DB::table(DB::raw("(".$virtualTble.") AS tble"))
-            ->select('tble.*')
-            ->get();
-
-
+         $virtualTble = "SELECT providers.id AS provider_id,providers.".$lang."_name as  provider_name,providers.category_id AS providertypeId, (SELECT CONCAT(',', GROUP_CONCAT(provider_subcategories.Subcategory_id), ',') FROM provider_subcategories WHERE provider_subcategories.provider_id = providers.id) AS foodcategoryIds, (SELECT CONCAT(',', GROUP_CONCAT(provider_mealsubcategories.Mealsubcategory_id), ',') FROM provider_mealsubcategories WHERE provider_mealsubcategories.provider_id = providers.id) AS foodtypeIds,(SELECT CONCAT(',', GROUP_CONCAT(branch_options.option_id), ',') FROM branch_options WHERE branch_options.branch_id = branches.id) AS featureIds ,(SELECT CONCAT('.$url.','/storage/app/public/providers/',images.name) FROM images WHERE images.id = providers.image_id) AS image_url, branches.id  AS id ,branches.has_delivery , branches.has_booking , branches.longitude ,branches.latitude ,branches.ar_address AS address, branches.average_price  AS mealAveragePrice,CONCAT(providers.ar_name,'-',branches.ar_name) AS  name FROM providers JOIN branches ON branches.provider_id = providers.id";
 
 
             if($request ->filled('name')){
 
-                array_push($conditions, ["providers.".$lang."_name", 'like', '%'.$name.'%']);
-
+                array_push($conditions, ["tble.provider_name", 'like', '%'.$name.'%']);
             }
+
+            if($request ->filled('foodcategories')){
+
+                array_push($conditions, ["tble.foodcategoryIds", 'like','%'.$foodcategoryId.'%']);
+             }
+
 
             if($request ->filled('provider_type')){
 
-                array_push($conditions, ["providers.category_id", '=',$providertypeId]);
+                array_push($conditions, ["tble.providertypeId", '=',$providertypeId]);
             }
 
             
              if($request ->filled('foodtype')){
 
-                array_push($conditions, ["provider_mealsubcategories.Mealsubcategory_id", '=',$foodtypeId]);
+                array_push($conditions, ["tble.foodtypeIds", 'like','%'.$foodtypeId.'%']);
             }
 
 
              if($request ->filled('features')){
 
-                array_push($conditions, ["branch_options.option_id", '=',$featureId]);
+                array_push($conditions, ["tble.featureIds", 'like','%'.$featureId.'%']);
             }
 
 
 
        if (!empty($conditions)) {
 
+                  
+         // $result = DB::select(DB::raw($virtualTble) , ['url' => $url ]) ; 
 
-
-                  $sql = "select providers.id AS provider_id,";
-
-
-          $providerspag = DB::table("providers")
-
-                            ->join("images" , "images.id" ,"providers.image_id")
-                            ->join('branches','branches.provider_id','=','providers.id')
-                            ->join('categories','providers.category_id','=','categories.id')
-                            ->join('provider_subcategories','providers.id','=','provider_subcategories.provider_id')
-                            ->join('provider_mealsubcategories','providers.id','=','provider_mealsubcategories.provider_id')
-                            ->join('branch_options','branches.id','=','branch_options.branch_id')
-                           // ->where($conditions)
-                            ->where("providers.accountactivated" , "1")
-                            ->select(
-                                "branches.id AS id",
-                                "providers.id AS provider_id",
-                                 DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
-                                 "branches.has_delivery",
-                                 "branches.has_booking",
-                                 "branches.longitude",
-                                 "branches.latitude",
-                                 "branches.ar_address AS address",
-                                 "branches.average_price AS mealAveragePrice",
-                                DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
-                            )
-                            ->paginate(10);
+         $providerspag = DB::table(DB::raw("(".$virtualTble.") AS tble"))
+            ->select('*')
+            ->where($conditions)->paginate();
 
         }else {
 
-           $providerspag =  DB::table("providers")
-                        ->join("images" , "images.id" ,"providers.image_id")
-                        ->join('branches','branches.provider_id','=','providers.id')
-                        ->where("providers.accountactivated" , "1")
-                        ->select(
-                            "branches.id AS id",
-                            "providers.id AS provider_id",
-                             DB::raw("CONCAT(providers .".$lang."_name,'-',branches .".$lang."_name) AS name"),
-                             "branches.has_delivery",
-                             "branches.has_booking",
-                             "branches.longitude",
-                             "branches.latitude",
-                             "branches.ar_address AS address",
-                             "branches.average_price AS mealAveragePrice",
-                            DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
-                        )
-                        ->paginate(10);
+              // return DB::select(DB::raw($virtualTble), ['url' => $url ]);
+
+
+         $providerspag = DB::table(DB::raw("(".$virtualTble.") AS tble"))
+            ->select('*')
+            ->paginate();
+
+
         }
 
  
