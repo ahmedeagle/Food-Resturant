@@ -39,10 +39,11 @@ class UserController extends Controller
     }
 
 
- 
+
     //get neatest providers
     public function get_nearest_providers(Request $request){
         (new BaseConroller())->setLang($request);
+        
         
         
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';

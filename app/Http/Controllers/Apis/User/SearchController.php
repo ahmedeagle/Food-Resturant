@@ -165,7 +165,7 @@ class SearchController extends Controller
 
 
 
-        // method to fitlrt  result by distance or rate 
+        // method to fitlrt  result by distance or rate  in search nd near you screens
     public function searchResultOrderBy(Request $request){
           
      (new BaseConroller())->setLang($request);
@@ -196,7 +196,12 @@ class SearchController extends Controller
 
         $type = $request->input("type");
 
-          $pagianted_branches =    DB::table("provider_subcategories")
+          if($request -> has('name'))
+          {
+                
+
+
+         $pagianted_branches =    DB::table("provider_subcategories")
                                 ->join("providers" , "providers.id" , "provider_subcategories.provider_id")
                                  ->where("providers.ar_name" , "LIKE" ,"%" . $request  -> name . "%")
                                  ->orWhere("providers.en_name" , "LIKE" ,"%" .$request  -> name . "%")
@@ -221,6 +226,38 @@ class SearchController extends Controller
                                 )
                                 ->groupBy("branches.id")
                                 ->paginate(10);  
+
+           }else{
+          
+
+          $pagianted_branches =    DB::table("provider_subcategories")
+                                ->join("providers" , "providers.id" , "provider_subcategories.provider_id")
+                                ->join("images" , "images.id" ,"providers.image_id")
+                                // ->where("providers.phoneactivated" , "1")
+                                ->where("providers.accountactivated" , "1")
+                                 ->join('branches','branches.provider_id','=','providers.id')
+                                ->select(
+                                        "branches.id AS id",
+                                        "providers.id AS provider_id",
+                                        "branches.id AS id",
+                                        "branches.has_delivery",
+                                        "branches.has_booking",
+                                        "branches.longitude",
+                                        "branches.latitude",
+                                        "branches." .$name ."_address AS address",
+                                        "branches.average_price AS mealAveragePrice",
+                                   /* "providers." . $name . "_name AS name",*/
+                                    DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
+                                    
+                                    DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
+                                )
+                                ->groupBy("branches.id")
+                                ->paginate(10);  
+
+
+  }
+
+         
                                 
                                 
 
