@@ -63,7 +63,7 @@ class SearchController extends Controller
     if($lang == "ar"){
       $msg = array(
         0 => 'يوجد بيانات',
-        1 => 'لا يوجد نتائج لبحثك',
+        1 => 'جميع الحقول مطلوبة ',
         2 => 'يجب ان تختار التاريخ عند البحث بالوقت',
         3 => 'يجب إرسال تفاصيل موقع المستخدم',
         4 => 'المسافه يجب ان تكون بالأرقام',
@@ -75,7 +75,7 @@ class SearchController extends Controller
     }else{
       $msg = array(
         0 => 'Retrieved successfully',
-        1 => 'There is no result for your search',
+        1 => 'All Fields are required',
         2 => 'You must determine the date if you search with time',
         3 => 'user longitude and latitude is required',
         4 => 'distance must be in number',
@@ -87,7 +87,7 @@ class SearchController extends Controller
     }
 
     $messages = array(
-      'required'         => 7,
+      'required'         => 1,
       'numeric'          => 4,
       'time.date_format' => 5,
       'date.date_format' => 6,
@@ -115,17 +115,16 @@ class SearchController extends Controller
                  $rules['longitude'] = 'required';
             }
        }
-
-
-
-       return $rules;
-
+ 
     $validator = Validator::make($request->all(),$rules,$messages);
 
     if($validator->fails()){
       $error = $validator->errors()->first();
       return response()->json(['status' => false, 'errNum' => $error, 'msg' => $msg[$error]]);
     }
+
+
+
 
 
 
