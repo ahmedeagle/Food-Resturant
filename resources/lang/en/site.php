@@ -312,5 +312,6 @@ return [
     "complete_order"                    => "Complete Order",
     "order_send_successfully"           => "Your Order has been successfully sent",
     "the_order"                         => "Order",
+     "successfully"                      => "successfully done ",
     
 ];

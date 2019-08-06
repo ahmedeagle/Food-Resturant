@@ -307,6 +307,7 @@ return [
     "complete_order"                    => "أكمال الطلب ",
     "order_send_successfully"           => "لقد تم أرسال  طلبكم بنجاح ",
     "the_order"                         =>"الطلب ",
+    "successfully"                      => "تم بنجاح ",
  
 ]; 
 
