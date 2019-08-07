@@ -266,7 +266,7 @@ class SearchController extends Controller
                         ->select(
                             "branches.id AS id",
                             "providers.id AS provider_id",
-                             DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                             DB::raw("CONCAT(providers .".$name."_name,'-',branches.".$name."_name) AS name"),
                              "branches.has_delivery",
                              "branches.has_booking",
                              "branches.longitude",
