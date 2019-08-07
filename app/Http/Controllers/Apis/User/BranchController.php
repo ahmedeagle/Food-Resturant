@@ -78,7 +78,7 @@ class BranchController extends Controller
 
                            
 
-                         $branch -> address =   GoogleTranslate::setSourceLang('ar')
+                         $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }
