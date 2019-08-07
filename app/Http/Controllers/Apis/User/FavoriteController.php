@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use App\ProviderFavorit;
 use DB;
+use GoogleTranslate;
 class FavoriteController extends Controller
 {
     
