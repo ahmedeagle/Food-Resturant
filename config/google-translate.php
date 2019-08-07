@@ -3,7 +3,7 @@ return [
     /**
      * Google key for authentication
      */
-    'api_key' => kkdfkdkfdkfdfldfldfdfjdufdifdlffjdfjdifdlfdmkfdjfdfodfk,
+    'api_key' => 'AIzaSyDtEjRIZr5YF4M2faclKCtgk6_b_gA89lk',
     /**
      * Url to translation REST service
      */
