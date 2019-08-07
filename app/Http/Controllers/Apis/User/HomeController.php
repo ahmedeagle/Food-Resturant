@@ -192,6 +192,15 @@ class HomeController extends Controller
             foreach ($providers as $branch){
 
 
+                if( $name == 'en'){
+
+                       $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
+                                 ->setTargetLang('en')
+                                 ->translate($branch -> address );
+                    }
+
+
+
                 $rates = DB::table('rates')
                     ->where('rates.branch_id' , $branch->id)
                     ->select(
