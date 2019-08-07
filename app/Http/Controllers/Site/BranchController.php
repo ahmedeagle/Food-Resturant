@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Session;
 use LaravelLocalization;
+use GoogleTranslate;
 class BranchController extends Controller
 {
     public function get_restaurant_page($id){
@@ -53,6 +54,16 @@ class BranchController extends Controller
                     )
                     ->first();
                      
+
+                      if( $branch && LaravelLocalization::getCurrentLocale() == 'en'){
+
+                       $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
+                                 ->setTargetLang('en')
+                                 ->translate($branch -> address );
+                    }
+
+
+
                     
         $branch_working_hours = DB::table("branch_working_hours")
                                     ->where("branch_id", $id)
