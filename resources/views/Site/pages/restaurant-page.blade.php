@@ -383,7 +383,7 @@
 
                                                             <h5 class="mt-lg-3 mt-md-0 mt-xs-0 text-lg-right text-center font-body-md font-size-base">
                                                                 <a href="{{ url('/meal-page/' . $meal->meal_id) }}">
-                                                                    إ{{ $meal->meal_name }}
+                                                            {{ $meal->meal_name }}
                                                                 </a>
                                                             </h5>
 
