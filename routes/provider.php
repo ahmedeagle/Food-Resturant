@@ -8,7 +8,7 @@ Route::get('trans',function(){
 
 
             $result = $translator->setSourceLang('en')
-                                 ->setTargetLang('ru')
+                                 ->setTargetLang('ar')
                                  ->translate('Hello World');
                                        
             dd($result); // "Привет мир"     
