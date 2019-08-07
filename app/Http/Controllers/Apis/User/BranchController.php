@@ -72,10 +72,10 @@ class BranchController extends Controller
                     ->first();
 
 
-                    if($branch){
+                    if($branch && $name == 'en'){
 
-                         $branch -> address =  $translator->setSourceLang('en')
-                                 ->setTargetLang('ar')
+                         $branch -> address =  $translator->setSourceLang('ar')
+                                 ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }
 
