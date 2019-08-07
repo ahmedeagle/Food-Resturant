@@ -9,12 +9,16 @@ use DB;
 use GoogleTranslate;
 class BranchController extends Controller
 {
- 
+
+
+    public $translator ;
+
+
                
     public function _constract(){
 
 
-
+      //  $this -> translator = new Dedicated\GoogleTranslate\Translator;
 
     }
 
