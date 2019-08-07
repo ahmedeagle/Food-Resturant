@@ -189,7 +189,7 @@ class SearchController extends Controller
  
          $type = $request -> type; 
 
-        (new HomeController())->filter_providers_branches($request,$name,$providerspag,$type);
+        (new HomeController())->filter_providers_branches($request,$lang,$providerspag,$type);
 
               if($type == 0){
             // filter based on distance
