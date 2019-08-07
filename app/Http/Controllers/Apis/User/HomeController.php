@@ -195,7 +195,9 @@ class HomeController extends Controller
                 $qualityRate   = $rates->sum_of_quality;
                 $cleanRate     = $rates->sum_of_Cleanliness;
                 if($numberOfRates != 0 && $numberOfRates != null){
-                    $totalAverage  = ( ($serviceRate/$numberOfRates) + ($qualityRate/$numberOfRates) + ($cleanRate/$numberOfRates) ) /3;
+                    $totalAverage  = round (( ($serviceRate/$numberOfRates) + ($qualityRate/$numberOfRates) + ($cleanRate/$numberOfRates) ) /3);
+
+
                 }else{
                     $totalAverage = 0;
                 }
