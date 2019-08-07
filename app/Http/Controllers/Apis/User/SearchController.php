@@ -168,7 +168,6 @@ class SearchController extends Controller
 
        if (!empty($conditions)) {
 
-                  
          // $result = DB::select(DB::raw($virtualTble) , ['url' => $url ]) ; 
 
          $providerspag = DB::table(DB::raw("(".$virtualTble.") AS tble"))
