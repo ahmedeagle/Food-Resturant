@@ -1,21 +1,6 @@
 <?php
 
 
-
-Route::get('trans',function(){
-     
-     $translator = new Dedicated\GoogleTranslate\Translator;
-
-
-            $result = $translator->setSourceLang('en')
-                                 ->setTargetLang('ar')
-                                 ->translate('Hello World');
-                                       
-            dd($result); // "Привет мир"     
-
-
-});
-
 Route::prefix('restaurant')->group(function(){
 
 
