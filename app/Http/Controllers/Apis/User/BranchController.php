@@ -8,6 +8,20 @@ use Validator;
 use DB;
 class BranchController extends Controller
 {
+
+
+    public $translator ;
+
+
+               
+    public function _constract(){
+
+
+        $this -> translator = new Dedicated\GoogleTranslate\Translator;
+
+    }
+
+
     public function get_branch_page(Request $request){
         (new BaseConroller())->setLang($request);
         $name  = (App()->getLocale() == 'ar') ? 'ar' : 'en' ;
@@ -56,10 +70,18 @@ class BranchController extends Controller
                         "branches.average_price AS menu_average_price"
                     )
                     ->first();
+
+
+                    if($branch){
+
+                         $branch -> address =  $translator->setSourceLang('en')
+                                 ->setTargetLang('ar')
+                                 ->translate($branch -> address );
+                    }
+
                     
-                    
-               
-                    
+
+                      
                     
         $logo = DB::table("providers")
                         ->join("images" , "images.id", "providers.image_id")
