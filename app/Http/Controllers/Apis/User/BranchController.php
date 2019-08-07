@@ -74,14 +74,12 @@ class BranchController extends Controller
 
                     if($branch && $name == 'en'){
 
-                         $branch -> address =  $translator->setSourceLang('ar')
+                         $branch -> address =  $this -> translator->setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }
 
-                    
-
-                      
+                     
                     
         $logo = DB::table("providers")
                         ->join("images" , "images.id", "providers.image_id")
