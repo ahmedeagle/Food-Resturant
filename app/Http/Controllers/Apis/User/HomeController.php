@@ -176,7 +176,7 @@ class HomeController extends Controller
     }
 
     public function filter_providers_branches(Request $request ,$name,$providers ,$type = 0){
-          
+          //
             foreach ($providers as $branch){
 
 
@@ -195,7 +195,7 @@ class HomeController extends Controller
                 $qualityRate   = $rates->sum_of_quality;
                 $cleanRate     = $rates->sum_of_Cleanliness;
                 if($numberOfRates != 0 && $numberOfRates != null){
-                    $totalAverage  =  ($serviceRate) + ($qualityRate) + ($cleanRate)  / $numberOfRates;
+                    $totalAverage  = ( ($serviceRate/$numberOfRates) + ($qualityRate/$numberOfRates) + ($cleanRate/$numberOfRates) ) /3;
                 }else{
                     $totalAverage = 0;
                 }
