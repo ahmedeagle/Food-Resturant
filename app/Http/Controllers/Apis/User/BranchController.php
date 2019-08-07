@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use DB;
+
 class BranchController extends Controller
 {
 
@@ -74,7 +75,10 @@ class BranchController extends Controller
 
                     if($branch && $name == 'en'){
 
-                         $branch -> address =  $this -> translator->setSourceLang('ar')
+
+                          $translator =  new Dedicated\GoogleTranslate\Translator;
+
+                         $branch -> address =   $translator ->setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }
