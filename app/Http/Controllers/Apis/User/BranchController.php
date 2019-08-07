@@ -6,19 +6,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use DB;
-
+use GoogleTranslate;
 class BranchController extends Controller
 {
-
-
-    public $translator ;
-
-
+ 
                
     public function _constract(){
 
 
-        $this -> translator = new Dedicated\GoogleTranslate\Translator;
+
 
     }
 
@@ -76,9 +72,9 @@ class BranchController extends Controller
                     if($branch && $name == 'en'){
 
 
-                          $translator =  new Dedicated\GoogleTranslate\Translator;
+                           
 
-                         $branch -> address =   $translator ->setSourceLang('ar')
+                         $branch -> address =   GoogleTranslate::setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }

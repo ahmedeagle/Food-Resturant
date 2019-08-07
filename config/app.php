@@ -231,6 +231,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paytabs' => Damas\Paytabs\Facades\PaytabsFacade::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'GoogleTranslate'     => Dedicated\GoogleTranslate\GoogleTranslateProvider::class,
 
      ],
 
