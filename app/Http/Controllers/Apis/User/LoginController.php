@@ -9,6 +9,7 @@ use App\Http\Controllers\Apis\User\GeneralController;
 use Validator;
 use Auth;
 use DB;
+use guard;
 class LoginController extends Controller
 {
     public function login(Request $request){
@@ -55,7 +56,7 @@ class LoginController extends Controller
             return response()->json(['status' => false, 'errNum' => 2, 'msg' => $msg[2]]);
         }
         
-        if (Auth::attempt([$data => $credential, 'password' => $password]) || Auth::attempt([$data => '0'.$credential, 'password' => $password])) {
+         if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')->attempt([$data => '0'.$credential, 'password' => $password])) {
             // login user
             $user = User::where($data , $credential)
                           ->orwhere($data ,'0'.$credential)->first();
