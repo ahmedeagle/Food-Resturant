@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Apis\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use GoogleTranslate;
 
 class HomeController extends Controller
 {
@@ -89,7 +90,7 @@ class HomeController extends Controller
                         "branches.id AS branch_id",
                         "branches.longitude",
                         "branches.latitude",
-                        "branches.".$name."_address AS address",
+                        "branches.ar_address AS address",
                         "offers.provider_id",
                         "offers." .$name . "_title AS title",
                     
@@ -109,11 +110,22 @@ class HomeController extends Controller
     public function filter_offers_branches(Request $request , $name , $branches){
         $data = [];
         foreach($branches as $key => $branch){
+
+ 
+                if( $name == 'en'){
+
+                       $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
+                                 ->setTargetLang('en')
+                                 ->translate($branch -> address );
+                    }
+
              
                  if($request->input('latitude') && $request->input('longitude')){
                     $latitude = $request->input('latitude');
                     $longitude = $request->input('longitude');
                     $distance = (new BaseConroller())->getDistance($branch->longitude,$branch->latitude ,$longitude,$latitude,"KM");
+
+
                 }else{
                     $distance = -1;
                 }
@@ -154,7 +166,7 @@ class HomeController extends Controller
                              "branches.has_booking",
                              "branches.longitude",
                              "branches.latitude",
-                             "branches." .$name ."_address AS address",
+                             "branches.ar_address AS address",
                              "branches.average_price AS mealAveragePrice",
                                         
                             DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),

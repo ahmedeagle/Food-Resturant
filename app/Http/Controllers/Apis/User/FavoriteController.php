@@ -68,7 +68,7 @@ class FavoriteController extends Controller
                                                      "branches.ar_address AS address" ,
                                                      "branches.latitude" ,
                                                      "branches.longitude",
-                                                      DB::raw("CONCAT(providers .ar_name,'-',branches .ar_name) AS name"),
+                                                      DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
                                                       DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url"),
                                                      "providers.id AS provider_id"
                                                     )
@@ -76,7 +76,7 @@ class FavoriteController extends Controller
                     
             foreach($branches as $key => $branch){
 
-                if($branch && $name == 'en'){
+                if( $name == 'en'){
 
 
                        $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
