@@ -136,30 +136,30 @@ class SearchController extends Controller
          $virtualTble = "SELECT providers.id AS provider_id,providers.".$lang."_name as  provider_name,providers.category_id AS providertypeId, (SELECT CONCAT(',', GROUP_CONCAT(provider_subcategories.Subcategory_id), ',') FROM provider_subcategories WHERE provider_subcategories.provider_id = providers.id) AS foodcategoryIds, (SELECT CONCAT(',', GROUP_CONCAT(provider_mealsubcategories.Mealsubcategory_id), ',') FROM provider_mealsubcategories WHERE provider_mealsubcategories.provider_id = providers.id) AS foodtypeIds,(SELECT CONCAT(',', GROUP_CONCAT(branch_options.option_id), ',') FROM branch_options WHERE branch_options.branch_id = branches.id) AS featureIds ,(SELECT CONCAT('.$url.','/storage/app/public/providers/',images.name) FROM images WHERE images.id = providers.image_id) AS image_url, branches.id  AS id ,branches.has_delivery , branches.has_booking , branches.longitude ,branches.latitude ,branches.ar_address AS address, branches.average_price  AS mealAveragePrice,CONCAT(providers.".$lang."_name,'-',branches.".$lang."_name) AS  name FROM providers JOIN branches ON branches.provider_id = providers.id";
 
 
-            if($request ->filled('name') ){
+            if($request ->filled('name') &&  $request -> name !='' &&   $request -> name != null ){
 
                 array_push($conditions, ["tble.provider_name", 'like', '%'.$name.'%']);
             }
 
-            if($request ->filled('foodcategories')){
+            if($request ->filled('foodcategories') && $request -> foodcategories != 0 $request -> foodcategories != '0' ){
 
                 array_push($conditions, ["tble.foodcategoryIds", 'like','%'.$foodcategoryId.'%']);
              }
 
 
-            if($request ->filled('provider_type')){
+            if($request ->filled('provider_type') && $request -> provider_type !=0 && $request ->provider_type !='0'){
 
                 array_push($conditions, ["tble.providertypeId", '=',$providertypeId]);
             }
 
             
-             if($request ->filled('foodtype')){
+             if($request ->filled('foodtype') && $request -> foodtype != 0 && $request ->foodtype){
 
                 array_push($conditions, ["tble.foodtypeIds", 'like','%'.$foodtypeId.'%']);
             }
 
 
-             if($request ->filled('features')){
+             if($request ->filled('features') $request -> features !=0 && $request -> features != '0'){
 
                 array_push($conditions, ["tble.featureIds", 'like','%'.$featureId.'%']);
             }
