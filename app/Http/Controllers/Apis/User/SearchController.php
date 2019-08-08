@@ -141,7 +141,7 @@ class SearchController extends Controller
                 array_push($conditions, ["tble.provider_name", 'like', '%'.$name.'%']);
             }
 
-            if($request ->filled('foodcategories') && $request -> foodcategories != 0 $request -> foodcategories != '0' ){
+            if($request ->filled('foodcategories') && $request -> foodcategories != 0 && $request -> foodcategories != '0' ){
 
                 array_push($conditions, ["tble.foodcategoryIds", 'like','%'.$foodcategoryId.'%']);
              }
@@ -159,7 +159,7 @@ class SearchController extends Controller
             }
 
 
-             if($request ->filled('features') $request -> features !=0 && $request -> features != '0'){
+             if($request ->filled('features') && $request -> features !=0 && $request -> features != '0'){
 
                 array_push($conditions, ["tble.featureIds", 'like','%'.$featureId.'%']);
             }
