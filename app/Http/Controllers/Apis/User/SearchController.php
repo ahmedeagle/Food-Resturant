@@ -100,10 +100,10 @@ class SearchController extends Controller
 
   $rules=[
             "type"           => "required|in:0,1" ,
-            "provider_type"  => "sometimes|nullable|exists:categories,id",
-            "foodcategories" => "sometimes|nullable|exists:subcategories,id",
-            "foodtype"       => "sometimes|nullable|exists:mealsubcategories,id",
-            "features"       => "sometimes|nullable|exists:options,id",
+            "provider_type"  => "sometimes|nullable",
+            "foodcategories" => "sometimes|nullable",
+            "foodtype"       => "sometimes|nullable",
+            "features"       => "sometimes|nullable",
 
        ];
 
@@ -136,7 +136,7 @@ class SearchController extends Controller
          $virtualTble = "SELECT providers.id AS provider_id,providers.".$lang."_name as  provider_name,providers.category_id AS providertypeId, (SELECT CONCAT(',', GROUP_CONCAT(provider_subcategories.Subcategory_id), ',') FROM provider_subcategories WHERE provider_subcategories.provider_id = providers.id) AS foodcategoryIds, (SELECT CONCAT(',', GROUP_CONCAT(provider_mealsubcategories.Mealsubcategory_id), ',') FROM provider_mealsubcategories WHERE provider_mealsubcategories.provider_id = providers.id) AS foodtypeIds,(SELECT CONCAT(',', GROUP_CONCAT(branch_options.option_id), ',') FROM branch_options WHERE branch_options.branch_id = branches.id) AS featureIds ,(SELECT CONCAT('.$url.','/storage/app/public/providers/',images.name) FROM images WHERE images.id = providers.image_id) AS image_url, branches.id  AS id ,branches.has_delivery , branches.has_booking , branches.longitude ,branches.latitude ,branches.ar_address AS address, branches.average_price  AS mealAveragePrice,CONCAT(providers.".$lang."_name,'-',branches.".$lang."_name) AS  name FROM providers JOIN branches ON branches.provider_id = providers.id";
 
 
-            if($request ->filled('name')){
+            if($request ->filled('name') ){
 
                 array_push($conditions, ["tble.provider_name", 'like', '%'.$name.'%']);
             }
