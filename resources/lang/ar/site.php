@@ -139,7 +139,7 @@ return [
     "not_special"                       => "غير خاصة ",
     "secondary_page"                    => " صفحه فرعية ",
     "current_orders"                    => "الطلبات الحالية ",
-    "previous_orders"                   => "الطلبات الحالية ",
+    "previous_orders"                   => "الطلبات  السابقه ",
     "order_num"                         => "رقم الطلب  :"  ,
     "orders_list_empty"                 => "قائمه الطلبات فارغة ",
     "payment_method"                    => "طريقة الدفع ",
