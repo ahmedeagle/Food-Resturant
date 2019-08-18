@@ -55,12 +55,12 @@ class BranchController extends Controller
                     ->first();
                      
 
-                      if( $branch && LaravelLocalization::getCurrentLocale() == 'en'){
+                    /*  if( $branch && LaravelLocalization::getCurrentLocale() == 'en'){
 
                        $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
-                    }
+                    }*/
 
 
 
