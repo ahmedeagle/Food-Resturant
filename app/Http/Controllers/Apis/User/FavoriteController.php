@@ -76,13 +76,13 @@ class FavoriteController extends Controller
                     
             foreach($branches as $key => $branch){
 
-                if( $name == 'en'){
+               /* if( $name == 'en'){
 
 
                        $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
-                    }
+                    }*/
 
 
                 if($lat && $long){

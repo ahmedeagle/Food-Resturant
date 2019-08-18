@@ -73,7 +73,7 @@ class BranchController extends Controller
                     ->first();
 
 
-                    if($branch && $name == 'en'){
+                   /* if($branch && $name == 'en'){
 
 
                            
@@ -81,7 +81,7 @@ class BranchController extends Controller
                          $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
-                    }
+                    }*/
 
                      
                     
