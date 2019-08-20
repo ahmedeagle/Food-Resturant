@@ -29,8 +29,8 @@ class OfferController extends Controller
       $offers = (new HomeController)->filter_offers_branches($request,$name,$offers);
         return response()->json([
             "status"      => true ,
-            "errNum" => 0,
-            "msg"     => trans("messages.success"),
+            "errNum"      => 0,
+            "msg"         => trans("messages.success"),
             "offers"      => $offers
         ]);
     }
