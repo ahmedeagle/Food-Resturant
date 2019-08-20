@@ -182,7 +182,7 @@ return [
     "branches"                          => "الفروع ",
     "balance"                           => "الرصيد ",
     "available_balance"                 => "الرصيد المتاح ",
-    "withdraw"                          => "حب الرصيد ",
+    "withdraw"                          => "سحب  الرصيد ",
     "operation_type"                    => "نوع العملية ",
     "operation_num"                     => "رقم العملية ",
     "value"                             => "القيمه ",
