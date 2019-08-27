@@ -129,7 +129,7 @@ class HomeController extends Controller
                 }else{
                     $distance = -1;
                 }
-                $branch->distance = (new GeneralController())->numberTranslator($distance,App()->getLocale()) ;
+                $branch->distance = $distance;
            
 
              
@@ -184,6 +184,10 @@ class HomeController extends Controller
                 return $item->distance;
             })->values();
         
+              
+
+
+
         return $providers;
     }
 
@@ -251,7 +255,7 @@ class HomeController extends Controller
                 
                 $branch->has_delivery     = $branch->has_delivery;
                 $branch->has_booking      = $branch->has_booking;
-                $branch->mealAveragePrice = $branch->mealAveragePrice;
+                $branch->mealAveragePrice =  (new GeneralController())->numberTranslator($branch->mealAveragePrice,App()->getLocale());
                 $branch->averageRate      = $branch->averageRate;
                 unset($branch->provider_id);
                 unset($branch->provider_name);
