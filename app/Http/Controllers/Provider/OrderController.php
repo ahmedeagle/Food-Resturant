@@ -612,12 +612,11 @@ class OrderController extends Controller
                 "en_title" => "rate the restaurant",
                 "ar_title" => $push_notif_title,
                 "en_content" => "The Service Provider by ".($branch_namee != null)?$branch_namee -> name:'---'." Finish the Order With Code {$user->code}, Please Rate the Restaurant To Help Us Provider Excellent Service",
-                "ar_content"  => $post_title,
+                "ar_content"         => $post_title,
                 "notification_type"  => 3,
-                "actor_id" => $user->user_id,
-                "actor_type" => "user",
-                "action_id" => $post_id
-
+                "actor_id"           => $user->user_id,
+                "actor_type"         => "user",
+                "action_id"          => $post_id
             ]);
         return redirect()->back()->with("success", trans("messages.success"));
     }
