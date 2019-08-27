@@ -182,7 +182,7 @@ class MealController extends Controller
                         "meals.spicy_degree",
                         "meals.vegetable",
                         "meals.gluten",
-                        "meals.price",
+                        DB::raw((new GeneralController())->numberTranslator('meals.price',App()->getLocale() ))
                         "meals.calories"
                     )->first();
 
