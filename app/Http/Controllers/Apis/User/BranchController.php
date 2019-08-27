@@ -75,9 +75,6 @@ class BranchController extends Controller
 
                    /* if($branch && $name == 'en'){
 
-
-                           
-
                          $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
@@ -97,8 +94,9 @@ class BranchController extends Controller
         $working_hours = DB::table("branch_working_hours")
                             ->where("branch_id", $id)
                             ->select(
-                                //DB::raw("IF(Saturday, Saturday,'') AS saturday")
-                                "saturday_start_work",
+                                
+                        DB::raw("(new GeneralController())->enNumberToAr('saturday_start_work')"),
+                                //"saturday_start_work",
                                 "saturday_end_work",
                                 "sunday_start_work",
                                 "sunday_end_work",
