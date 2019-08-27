@@ -129,7 +129,7 @@ class HomeController extends Controller
                 }else{
                     $distance = -1;
                 }
-                $branch->distance = $distance;
+                $branch->distance = (new GeneralController())->numberTranslator($distance,App()->getLocale()) ;
            
 
              
