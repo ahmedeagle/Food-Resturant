@@ -228,7 +228,7 @@ class OrderController extends Controller
         // send user notification
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم قبول الطلب المقدم  من قبل ".$branch_namee?$branch_namee -> name:'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم قبول الطلب المقدم  من قبل ".($branch_namee != null)?$branch_namee -> name:'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -329,7 +329,7 @@ class OrderController extends Controller
         // send user notification
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم رفض الطلب المقدم,  ".$branch_namee?$branch_namee -> name:'---'."من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم رفض الطلب المقدم,  ".($branch_namee != null)?$branch_namee -> name:'---'."من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -355,7 +355,7 @@ class OrderController extends Controller
             ->insert([
                 "en_title" => "change order status",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider by ".$branch_namee?$branch_namee -> name:'---'." Decline the Order With Code {$user->code}, Login To You Account to See More Details",
+                "en_content" => "The Service Provider by ".($branch_namee != null)?$branch_namee -> name:'---'." Decline the Order With Code {$user->code}, Login To You Account to See More Details",
                 "ar_content"  => $post_title,
                 "notification_type"  => 1,
                 "actor_id" => $user->user_id,
@@ -393,7 +393,7 @@ class OrderController extends Controller
         // send user notification
          $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل ". $branch_namee -> name ."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل ". ($branch_namee != null) ? $branch_namee -> name :'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -590,7 +590,7 @@ class OrderController extends Controller
 
         $push_notif_title = "تقييم المطعم";
         $post_id          = $user->branch_id;
-        $post_title       = "لقد قام مقدم الخدمة  ".$branch_namee?$branch_namee -> name:'---'."بإنهاء الطلب المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
+        $post_title       = "لقد قام مقدم الخدمة  ".($branch_namee != null)?$branch_namee -> name:'---'."بإنهاء الطلب المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
 
         $notif_data = array();
 
@@ -605,7 +605,7 @@ class OrderController extends Controller
             ->insert([
                 "en_title" => "rate the restaurant",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider by ".$branch_namee?$branch_namee -> name:'---'." Finish the Order With Code {$user->code}, Please Rate the Restaurant To Help Us Provider Excellent Service",
+                "en_content" => "The Service Provider by ".($branch_namee != null)?$branch_namee -> name:'---'." Finish the Order With Code {$user->code}, Please Rate the Restaurant To Help Us Provider Excellent Service",
                 "ar_content"  => $post_title,
                 "notification_type"  => 3,
                 "actor_id" => $user->user_id,
