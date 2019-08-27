@@ -49,7 +49,7 @@
                 height:     100%;
                 width:      100%;
                 background: rgba( 255, 255, 255, .8 ) 
-                            url('http://i.stack.imgur.com/FhHRx.gif') 
+                            url('https://i.stack.imgur.com/FhHRx.gif') 
                             50% 50% 
                             no-repeat;
             }
