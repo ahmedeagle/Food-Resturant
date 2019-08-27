@@ -185,6 +185,14 @@ class HomeController extends Controller
             })->values();
         
              
+             if(isset($providers) && $providers -> count() > 0 ){
+
+
+                   foreach ($providers as $key => $provider) {
+                        
+                         $provider -> distance = (new GeneralController())->numberTranslator($provider -> distance,App()->getLocale());
+                   }
+             }
 
 
         return $providers;
@@ -240,7 +248,6 @@ class HomeController extends Controller
                 }
                 
                 $branch->mealAveragePrice =   (new GeneralController())->numberTranslator($priceAverage,App()->getLocale()) ;
-
                 $branch->averageRate = $totalAverage;
 
                 if($request->input('latitude') && $request->input('longitude')){
@@ -262,7 +269,9 @@ class HomeController extends Controller
                 unset($branch->foodcategoryIds);
                 unset($branch->foodtypeIds);
                 unset($branch->featureIds);
-               // $provider->id               = $branch->branch_id;            
+               // $provider->id               = $branch->branch_id;
+              //  $branch->distance         =   (new GeneralController())->numberTranslator( $distance,App()->getLocale());
+            
         }
     }
     
