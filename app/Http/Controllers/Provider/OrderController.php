@@ -217,10 +217,21 @@ class OrderController extends Controller
                         "order_status_id" => "2"
                     ]);
 
+          DB::table('branches') -> where('id',$order -> branch_id) ->  select('ar_name as branch_name','provider_id') -> first()
+
+
+         $branch_namee =  DB::table('branches')
+                 -> where('id',$order -> branch_id) 
+                 -> join('providers','branches.provider_id','providers.id') 
+                 -> select( 
+                             DB::raw("CONCAT(providers.ar_name,'-',branches.ar_name) AS name"),
+                           )
+
+               -> first();
         // send user notification
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم قبول الطلب المقدم, برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم قبول الطلب المقدم  من قبل ".$branch_namee?$branch_namee:'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
