@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use DB;
 use GoogleTranslate;
+use App\Http\Controllers\Apis\User\GeneralController;
 class BranchController extends Controller
 {
 
@@ -95,21 +96,21 @@ class BranchController extends Controller
                             ->where("branch_id", $id)
                             ->select(
                                 
-                        DB::raw(enNumberToAr('saturday_start_work')),
-                                //"saturday_start_work",
-                                "saturday_end_work",
-                                "sunday_start_work",
-                                "sunday_end_work",
-                                "monday_start_work",
-                                "monday_end_work",
-                                "tuesday_start_work",
-                                "tuesday_end_work",
-                                "wednesday_start_work",
-                                "wednesday_end_work",
-                                "thursday_start_work",
-                                "thursday_end_work",
-                                "friday_start_work",
-                                "friday_end_work"
+                        DB::raw((new GeneralController())->numberTranslator('saturday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('saturday_end_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('sunday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('sunday_end_work',App()->getLocale() )),
+                         DB::raw((new GeneralController())->numberTranslator('monday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('monday_end_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('tuesday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('tuesday_end_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('wednesday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('wednesday_end_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('thursday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('thursday_end_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('friday_start_work',App()->getLocale() )),
+                        DB::raw((new GeneralController())->numberTranslator('friday_end_work',App()->getLocale() ))
+   
                             )
                             ->first();
 
