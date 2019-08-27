@@ -187,6 +187,11 @@ class MealController extends Controller
                     )->first();
 
 
+         if$meal){
+
+                 $meal -> price = (new GeneralController())->numberTranslator('meals.price',App()->getLocale() );
+         }
+
         // add meal images
         $images = DB::table("meal_images")
                 ->join("meals" , "meals.id" , "meal_images.meal_id")
