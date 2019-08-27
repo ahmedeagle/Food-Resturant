@@ -226,9 +226,11 @@ class OrderController extends Controller
 
                -> first();
         // send user notification
+
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم قبول الطلب المقدم  من قبل ".($branch_namee != null)?$branch_namee -> name:'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم قبول الطلب المقدم  من قبل  {$desc}برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -248,6 +250,7 @@ class OrderController extends Controller
                     )->first();
 
         $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
+
         DB::table("notifications")
             ->insert([
                 "en_title" => "change order status",
@@ -327,9 +330,10 @@ class OrderController extends Controller
         
 
         // send user notification
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم رفض الطلب المقدم,  ".($branch_namee != null)?$branch_namee -> name:'---'."من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم رفض الطلب المقدم, {$desc} من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -391,9 +395,10 @@ class OrderController extends Controller
                -> first();
         
         // send user notification
-         $push_notif_title = "  تعديل حالة الطلب-" . $id;
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';              
+        $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل ". ($branch_namee != null) ? $branch_namee -> name :'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل  {$desc}برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
@@ -588,9 +593,10 @@ class OrderController extends Controller
 
                -> first();
 
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';
         $push_notif_title = "تقييم المطعم";
         $post_id          = $user->branch_id;
-        $post_title       = "لقد قام مقدم الخدمة  ".($branch_namee != null)?$branch_namee -> name:'---'."بإنهاء الطلب المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
+        $post_title       = "لقد قام مقدم الخدمة  {$desc}بإنهاء الطلب المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
 
         $notif_data = array();
 
