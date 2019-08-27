@@ -217,9 +217,6 @@ class OrderController extends Controller
                         "order_status_id" => "2"
                     ]);
 
-          DB::table('branches') -> where('id',$order -> branch_id) ->  select('ar_name as branch_name','provider_id') -> first()
-
-
          $branch_namee =  DB::table('branches')
                  -> where('id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
