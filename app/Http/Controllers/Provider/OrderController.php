@@ -393,7 +393,7 @@ class OrderController extends Controller
         // send user notification
          $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل ".$branch_namee?$branch_namee -> name:'---'."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = "لقد تم تجهيز الطلب المقدم,  من قبل ". $branch_namee -> name ."برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
 
         $notif_data = array();
 
