@@ -218,7 +218,7 @@ class OrderController extends Controller
                     ]);
 
          $branch_namee =  DB::table('branches')
-                 -> where('id',$order -> branch_id) 
+                 -> where('branches.id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
                              DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
@@ -317,7 +317,7 @@ class OrderController extends Controller
                 ]);
 
          $branch_namee =  DB::table('branches')
-                 -> where('id',$order -> branch_id) 
+                 -> where('branches.id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
                              DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
@@ -382,7 +382,7 @@ class OrderController extends Controller
             ]);
 
          $branch_namee =  DB::table('branches')
-                 -> where('id',$order -> branch_id) 
+                 -> where('branches.id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
                              DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
@@ -580,7 +580,7 @@ class OrderController extends Controller
 
 
  $branch_namee =  DB::table('branches')
-                 -> where('id',$order -> branch_id) 
+                 -> where('branches.id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
                              DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
