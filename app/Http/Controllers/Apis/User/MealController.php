@@ -215,7 +215,7 @@ class MealController extends Controller
 
                       foreach ($options as $key => $option) {
                              
-                             $option ->  option_added_price = DB::raw((new GeneralController())->numberTranslator($option -> option_added_price,App()->getLocale() ));
+                             $option ->  option_added_price = (new GeneralController())->numberTranslator($option -> option_added_price,App()->getLocale() );
                       }
                  }
         $meal->options = $options;
@@ -233,7 +233,7 @@ class MealController extends Controller
 
                   foreach ($adds as $key => $add) {
                          
-                         $add ->  adds_added_price = DB::raw((new GeneralController())->numberTranslator($add -> adds_added_price,App()->getLocale() ));
+                         $add ->  adds_added_price = (new GeneralController())->numberTranslator($add -> adds_added_price,App()->getLocale());
                   }
              }
 
@@ -252,7 +252,7 @@ class MealController extends Controller
 
                   foreach ($sizes as $key => $size) {
                          
-                         $size ->  size.added_price = DB::raw((new GeneralController())->numberTranslator($size -> size.added_price,App()->getLocale() ));
+                         $size ->  'size.added_price' = (new GeneralController())->numberTranslator($size -> 'size.added_price',App()->getLocale() );
                   }
              }
 
