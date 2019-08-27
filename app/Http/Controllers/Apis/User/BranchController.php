@@ -161,7 +161,6 @@ class BranchController extends Controller
         ];
         $branch->working_time = $working_data;
 
-
         $branch->image_logo_url = $logo->logo_image;
         if($request->input("access_token")){
             $userData = DB::table("users")
@@ -190,7 +189,7 @@ class BranchController extends Controller
             $dis = -1;
         }
         
-        $branch->distance = $dis;
+        $branch->distance = (new GeneralController())->numberTranslator($dis,App()->getLocale()) ;
 
         $meals = DB::table("meals")
                     ->where("branch_id" , $branch->id)
