@@ -245,14 +245,14 @@ class MealController extends Controller
                 ->select(
                     "meal_sizes.id AS size_id",
                     "meal_sizes.ar_name AS size_name",
-                    "meal_sizes.price AS size.added_price"
+                    "meal_sizes.price AS size_added_price"
                 )->orderBy('meal_sizes.price' , "ASC")->get();
 
                  if(isset($sizes) && $sizes -> count() > 0 )   {
 
                   foreach ($sizes as $key => $size) {
                          
-                         $size ->  'size.added_price' = (new GeneralController())->numberTranslator($size -> 'size.added_price',App()->getLocale() );
+                         $size ->  size_added_price = (new GeneralController())->numberTranslator($size -> size_added_price,App()->getLocale() );
                   }
              }
 
