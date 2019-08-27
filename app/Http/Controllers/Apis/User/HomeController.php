@@ -181,7 +181,7 @@ class HomeController extends Controller
         
           // filter based on distance
             $providers = $providers->sortBy(function($item){
-                return $item->distance;
+                return (new GeneralController())->numberTranslator($item->distance,App()->getLocale()) ;
             })->values();
         
               
