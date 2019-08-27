@@ -95,7 +95,7 @@ class BranchController extends Controller
                             ->where("branch_id", $id)
                             ->select(
                                 
-                        DB::raw((new GeneralController())->enNumberToAr('saturday_start_work')),
+                        DB::raw("(new GeneralController())->enNumberToAr('saturday_start_work')"),
                                 //"saturday_start_work",
                                 "saturday_end_work",
                                 "sunday_start_work",
