@@ -271,7 +271,7 @@ class HomeController extends Controller
                 unset($branch->foodtypeIds);
                 unset($branch->featureIds);
                // $provider->id               = $branch->branch_id;
-                $branch->distance         =   (new GeneralController())->numberTranslator( $distance,App()->getLocale();
+                $branch->distance         =   (new GeneralController())->numberTranslator( $distance,App()->getLocale());
             
         }
     }
