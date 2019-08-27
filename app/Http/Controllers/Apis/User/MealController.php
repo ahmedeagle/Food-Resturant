@@ -187,7 +187,7 @@ class MealController extends Controller
                     )->first();
 
 
-         if$meal){
+         if($meal){
 
                  $meal -> price = (new GeneralController())->numberTranslator('meals.price',App()->getLocale() );
          }
