@@ -43,6 +43,10 @@ class MealController extends Controller
                     ->get();
     
         foreach($meals as $meal){
+
+          $meal ->  meal_price = 
+            (new GeneralController())->numberTranslator($meal -> meal_price,App()->getLocale());
+
             $data = DB::table("meal_images")
                         ->join("images" , "images.id" , "meal_images.image")
                         ->where("meal_images.meal_id" , $meal->meal_id)
