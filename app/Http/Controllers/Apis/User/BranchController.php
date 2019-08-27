@@ -73,6 +73,14 @@ class BranchController extends Controller
                     )
                     ->first();
 
+                    if($branch){
+
+                       $branch  -> delivery_price =  (new GeneralController())->numberTranslator($branch -> delivery_price,App()->getLocale());
+
+                        $branch  -> menu_average_price =  (new GeneralController())->numberTranslator($branch -> menu_average_price,App()->getLocale());
+
+                    }
+
 
                    /* if($branch && $name == 'en'){
 
