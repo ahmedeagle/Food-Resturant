@@ -199,8 +199,9 @@ class BranchController extends Controller
                     ->where("deleted" , "0")
                     ->select(DB::raw("AVG(price) AS average_price"))
                     ->first();
+ 
+        $branch->menu_average_price = ($meals->average_price == null) ? (new GeneralController())->numberTranslator('0',App()->getLocale()) : round((double) (new GeneralController())->numberTranslator($meals->average_price,App()->getLocale()));
 
-        $branch->menu_average_price = ($meals->average_price == null) ? 0 : round((double) $meals->average_price);
         $rates = DB::table('rates')
                     ->where('branch_id' ,$branch->id)
                     ->select(
