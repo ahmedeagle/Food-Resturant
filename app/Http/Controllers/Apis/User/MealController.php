@@ -182,7 +182,7 @@ class MealController extends Controller
                         "meals.spicy_degree",
                         "meals.vegetable",
                         "meals.gluten",
-                        DB::raw((new GeneralController())->numberTranslator('meals.price',App()->getLocale() )),
+                        'meals.price',
                         "meals.calories"
                     )->first();
 
@@ -210,6 +210,14 @@ class MealController extends Controller
                         "meal_options.ar_name AS option_name",
                         "meal_options.added_price AS option_added_price"
                     )->get();
+
+                 if(isset($options) && $options -> count() > 0 )   {
+
+                      foreach ($options as $key => $option) {
+                             
+                             $option ->  option_added_price = DB::raw((new GeneralController())->numberTranslator($option -> option_added_price,App()->getLocale() )),
+                      }
+                 }
         $meal->options = $options;
 
         // add meal adds
@@ -220,6 +228,15 @@ class MealController extends Controller
                     "meal_adds.ar_name AS adds_name",
                     "meal_adds.added_price AS adds_added_price"
                 )->get();
+
+             if(isset($adds) && $adds -> count() > 0 )   {
+
+                  foreach ($adds as $key => $add) {
+                         
+                         $add ->  adds_added_price = DB::raw((new GeneralController())->numberTranslator($add -> adds_added_price,App()->getLocale() )),
+                  }
+             }
+
         $meal->adds = $adds;
 
         // add meal sizes //
@@ -230,6 +247,15 @@ class MealController extends Controller
                     "meal_sizes.ar_name AS size_name",
                     "meal_sizes.price AS size.added_price"
                 )->orderBy('meal_sizes.price' , "ASC")->get();
+
+                 if(isset($sizes) && $sizes -> count() > 0 )   {
+
+                  foreach ($sizes as $key => $size) {
+                         
+                         $size ->  size.added_price = DB::raw((new GeneralController())->numberTranslator($size -> size.added_price,App()->getLocale() )),
+                  }
+             }
+
         $meal->sizes = $sizes;
 
         if(count($sizes) != 0){
