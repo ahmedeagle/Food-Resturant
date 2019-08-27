@@ -221,7 +221,7 @@ class OrderController extends Controller
                  -> where('id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
-                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name"),
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
                            )
 
                -> first();
@@ -320,7 +320,7 @@ class OrderController extends Controller
                  -> where('id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
-                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name"),
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
                            )
 
                -> first();
@@ -385,7 +385,7 @@ class OrderController extends Controller
                  -> where('id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
-                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name"),
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
                            )
 
                -> first();
@@ -583,7 +583,7 @@ class OrderController extends Controller
                  -> where('id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
                  -> select( 
-                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name"),
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
                            )
 
                -> first();
