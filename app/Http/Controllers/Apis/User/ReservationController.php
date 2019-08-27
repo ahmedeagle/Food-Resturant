@@ -359,7 +359,7 @@ class ReservationController extends Controller
                                 "reservation_statuses.". $name ."_name AS status",
                                 "branches.latitude",
                                 "branches.longitude",
-                                "branches.director_phone AS phone"
+                                "branches.phone AS phone"
                             )
                             ->orderBy("reservations.created_at" , "DESC")
                             ->paginate(10);
