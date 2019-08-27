@@ -161,6 +161,7 @@ class BranchController extends Controller
         ];
         $branch->working_time = $working_data;
 
+
         $branch->image_logo_url = $logo->logo_image;
         if($request->input("access_token")){
             $userData = DB::table("users")
@@ -189,7 +190,7 @@ class BranchController extends Controller
             $dis = -1;
         }
         
-        $branch->distance = (new GeneralController())->numberTranslator($dis,App()->getLocale()) ;
+        $branch->distance = $dis;
 
         $meals = DB::table("meals")
                     ->where("branch_id" , $branch->id)
@@ -198,7 +199,7 @@ class BranchController extends Controller
                     ->select(DB::raw("AVG(price) AS average_price"))
                     ->first();
  
-        $branch->menu_average_price = ($meals->average_price == null) ? 0 : (new GeneralController())->numberTranslator($meals->average_price,'en');
+        $branch->menu_average_price = ($meals->average_price == null) ? 0 : (new GeneralController())->numberTranslator($meals->average_price,App()->getLocale());
 
         $rates = DB::table('rates')
                     ->where('branch_id' ,$branch->id)
