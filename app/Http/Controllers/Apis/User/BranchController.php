@@ -96,19 +96,19 @@ class BranchController extends Controller
                             ->where("branch_id", $id)
                             ->select(
                                 
-                        DB::raw((new GeneralController())->numberTranslator('saturday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('saturday_end_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('sunday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('sunday_end_work',App()->getLocale() )),
-                         DB::raw((new GeneralController())->numberTranslator('monday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('monday_end_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('tuesday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('tuesday_end_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('wednesday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('wednesday_end_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('thursday_start_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('thursday_end_work',App()->getLocale() )),
-                        DB::raw((new GeneralController())->numberTranslator('friday_start_work',App()->getLocale() )),
+                         'saturday_start_work',
+                         'saturday_end_work',
+                         'sunday_start_work', 
+                         'sunday_end_work', 
+                          'monday_start_work', 
+                          'monday_end_work', 
+                          'tuesday_start_work', 
+                          'tuesday_end_work', 
+                          'wednesday_start_work', 
+                         'wednesday_end_work', 
+                         'thursday_start_work',
+                         'thursday_end_work', 
+                         'friday_start_work',
                         DB::raw((new GeneralController())->numberTranslator('friday_end_work',App()->getLocale() ))
    
                             )
@@ -126,30 +126,30 @@ class BranchController extends Controller
 
         $working_data = [
             [
-                "start" => $working_hours->saturday_start_work,
-                "end"   => $working_hours->saturday_end_work
+                "start" =>(new GeneralController())->numberTranslator($working_hours->saturday_start_work,App()->getLocale()),
+                "end"   => (new GeneralController())->numberTranslator($working_hours->saturday_end_work,App()->getLocale()),
             ],
             [
-                "start" => $working_hours->sunday_start_work,
-                "end"   => $working_hours->sunday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->sunday_start_work,App()->getLocale()),
+                "end"   =>(new GeneralController())->numberTranslator($working_hours->sunday_end_work,App()->getLocale()), 
             ],
             [
-                "start" => $working_hours->monday_start_work,
-                "end"   => $working_hours->monday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->monday_start_work,App()->getLocale()),
+                "end"   =>(new GeneralController())->numberTranslator($working_hours->monday_end_work,App()->getLocale()), 
             ],[
-                "start" => $working_hours->tuesday_start_work,
-                "end"   => $working_hours->tuesday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->tuesday_start_work,App()->getLocale()),
+                "end"   => (new GeneralController())->numberTranslator($working_hours->tuesday_end_work,App()->getLocale()),
             ],
             [
-                "start" => $working_hours->wednesday_start_work,
-                "end"   => $working_hours->wednesday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->wednesday_start_work,App()->getLocale()),
+                "end"   => (new GeneralController())->numberTranslator($working_hours->wednesday_end_work,App()->getLocale()), 
             ],
             [
-                "start" => $working_hours->thursday_start_work,
-                "end"   => $working_hours->thursday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->thursday_start_work,App()->getLocale()),
+                "end"   => (new GeneralController())->numberTranslator($working_hours->thursday_end_work,App()->getLocale()),
             ],[
-                "start" => $working_hours->friday_start_work,
-                "end"   => $working_hours->friday_end_work
+                "start" => (new GeneralController())->numberTranslator($working_hours->friday_start_work,App()->getLocale()),
+                "end"   => (new GeneralController())->numberTranslator($working_hours->friday_end_work,App()->getLocale()),
             ]
         ];
         $branch->working_time = $working_data;
