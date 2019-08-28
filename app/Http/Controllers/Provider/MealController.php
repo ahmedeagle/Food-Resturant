@@ -903,7 +903,7 @@ class MealController extends Controller
             ]);
     }
 
-    protected function add_meal_adds($meal_id, $ar_name,$en_name, $price, $en_name = ""){
+    protected function add_meal_adds($meal_id, $ar_name,$en_name, $price  ){
         DB::table("meal_adds")
             ->insert([
                 "meal_id" => $meal_id,
@@ -913,7 +913,7 @@ class MealController extends Controller
             ]);
     }
 
-    protected function add_meal_options($meal_id, $ar_name,$en_name, $price, $en_name = ""){
+    protected function add_meal_options($meal_id, $ar_name,$en_name, $price){
         DB::table("meal_options")
             ->insert([
                 "meal_id" => $meal_id,
