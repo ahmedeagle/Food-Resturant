@@ -50,7 +50,7 @@ class MealController extends Controller
 
     }
 
-    public function post_add
+    public function post_add(Request $request)
         // App()->setLocale("ar");
 
         $rules = [ 
@@ -69,6 +69,7 @@ class MealController extends Controller
             "price1"            => "required|numeric",
             "recommended"       => "required|in:1,0",
         ];
+
         $messages = [
             "required"              => 1,
             "category.exists"       => 2,
