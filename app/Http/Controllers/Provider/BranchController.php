@@ -88,7 +88,7 @@ class BranchController extends Controller
             "delivery-price"     => "required|numeric",
             "booking-features"   => "required",
             "congestion-status"  => "required|exists:congestion_settings,id",
-            "average-price"      => "required|numeric",
+            //"average-price"      => "required|numeric",
             "address-text"       => "required",
             "lat"                => "required",
             "lng"                => "required",
@@ -146,7 +146,7 @@ class BranchController extends Controller
             "password" => bcrypt($request->input("password")),
             "provider_id"   => auth("provider")->id(),
             "congestion_settings_id" => $request->input("congestion-status"),
-            "average_price" => $request->input("average-price"),
+            //"average_price" => $request->input("average-price"),
             "token"         => (new \App\Http\Controllers\Apis\User\GeneralController())->getRandomString(128),
 
         ];
@@ -380,7 +380,7 @@ class BranchController extends Controller
             "delivery-price"     => "required|numeric",
             "booking-features"   => "required",
             "congestion-status"  => "required|exists:congestion_settings,id",
-            "average-price"      => "required|numeric",
+            //"average-price"      => "required|numeric",
             "address-text"       => "required",
             "lat"                => "required",
             "lng"                => "required",
@@ -451,7 +451,7 @@ class BranchController extends Controller
             "provider_id"   => auth("provider")->id(),
             'category_id'   => $request->input("service-provider"),
             "congestion_settings_id" => $request->input("congestion-status"),
-            "average_price" => $request->input("average-price"),
+           // "average_price" => $request->input("average-price"),
 
         ];
         

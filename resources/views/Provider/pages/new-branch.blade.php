@@ -217,7 +217,7 @@
                                     </select>
                                 </div><!-- .form-group congestion-status -->
 
-                                <div class="form-group">
+                                <div class="form-group" style="display: none;">
                                      <label for="average-price">{{trans('site.average_price')}}</label>
                                     <div class="input-group rounded border border-gray overflow-hidden">
                                         <input type="text"
