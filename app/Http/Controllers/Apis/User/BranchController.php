@@ -72,14 +72,7 @@ class BranchController extends Controller
                         "branches.average_price AS menu_average_price"
                     )
                     ->first();
-
-                    if($branch){
-
-                       $branch  -> delivery_price =  (new GeneralController())->numberTranslator($branch -> delivery_price,App()->getLocale());
-
-
-                    }
-
+ 
 
                    /* if($branch && $name == 'en'){
 
@@ -87,8 +80,7 @@ class BranchController extends Controller
                                  ->setTargetLang('en')
                                  ->translate($branch -> address );
                     }*/
-
-                     
+ 
                     
         $logo = DB::table("providers")
                         ->join("images" , "images.id", "providers.image_id")
@@ -116,7 +108,8 @@ class BranchController extends Controller
                          'thursday_start_work',
                          'thursday_end_work', 
                          'friday_start_work',
-                        DB::raw((new GeneralController())->numberTranslator('friday_end_work',App()->getLocale() ))
+                         'friday_end_work',
+                       // DB::raw((new GeneralController())->numberTranslator('friday_end_work',App()->getLocale() ))
    
                             )
                             ->first();
@@ -133,30 +126,30 @@ class BranchController extends Controller
 
         $working_data = [
             [
-                "start" =>(new GeneralController())->numberTranslator($working_hours->saturday_start_work,App()->getLocale()),
-                "end"   => (new GeneralController())->numberTranslator($working_hours->saturday_end_work,App()->getLocale()),
+                "start" =>$working_hours->saturday_start_work,
+                "end"   => $working_hours->saturday_end_work,
             ],
             [
-                "start" => (new GeneralController())->numberTranslator($working_hours->sunday_start_work,App()->getLocale()),
-                "end"   =>(new GeneralController())->numberTranslator($working_hours->sunday_end_work,App()->getLocale()), 
+                "start" => $working_hours->sunday_start_work,
+                "end"   =>$working_hours->sunday_end_work,
             ],
             [
-                "start" => (new GeneralController())->numberTranslator($working_hours->monday_start_work,App()->getLocale()),
-                "end"   =>(new GeneralController())->numberTranslator($working_hours->monday_end_work,App()->getLocale()), 
+                "start" => $working_hours->monday_start_work,
+                "end"   =>$working_hours->monday_end_work,
             ],[
-                "start" => (new GeneralController())->numberTranslator($working_hours->tuesday_start_work,App()->getLocale()),
-                "end"   => (new GeneralController())->numberTranslator($working_hours->tuesday_end_work,App()->getLocale()),
+                "start" => $working_hours->tuesday_start_work,
+                "end"   => $working_hours->tuesday_end_work,
             ],
             [
-                "start" => (new GeneralController())->numberTranslator($working_hours->wednesday_start_work,App()->getLocale()),
-                "end"   => (new GeneralController())->numberTranslator($working_hours->wednesday_end_work,App()->getLocale()), 
+                "start" => $working_hours->wednesday_start_work,
+                "end"   => $working_hours->wednesday_end_work, 
             ],
             [
-                "start" => (new GeneralController())->numberTranslator($working_hours->thursday_start_work,App()->getLocale()),
-                "end"   => (new GeneralController())->numberTranslator($working_hours->thursday_end_work,App()->getLocale()),
+                "start" => $working_hours->thursday_start_work,
+                "end"   => $working_hours->thursday_end_work,
             ],[
-                "start" => (new GeneralController())->numberTranslator($working_hours->friday_start_work,App()->getLocale()),
-                "end"   => (new GeneralController())->numberTranslator($working_hours->friday_end_work,App()->getLocale()),
+                "start" => $working_hours->friday_start_work,
+                "end"   => $working_hours->friday_end_work,
             ]
         ];
         $branch->working_time = $working_data;
@@ -199,7 +192,7 @@ class BranchController extends Controller
                     ->select(DB::raw("AVG(price) AS average_price"))
                     ->first();
  
-        $branch->menu_average_price = ($meals->average_price == null) ? 0 : (new GeneralController())->numberTranslator($meals->average_price,App()->getLocale());
+        $branch->menu_average_price = ($meals->average_price == null) ? 0 : $meals->average_price;
 
         $rates = DB::table('rates')
                     ->where('branch_id' ,$branch->id)

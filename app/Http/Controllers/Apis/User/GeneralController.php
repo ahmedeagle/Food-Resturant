@@ -83,10 +83,12 @@ class GeneralController extends Controller
     }
 
 
+     // depricated
     public function numberTranslator($num,$lang){
 
             $western_arabic = array('0','1','2','3','4','5','6','7','8','9');
-            $eastern_arabic = array('٠','١','٢','٣','٤','٥','٦','٧','٨','٩');
+           // $eastern_arabic = array('٠','١','٢','٣','٤','٥','٦','٧','٨','٩');
+            $western_arabic = array('0','1','2','3','4','5','6','7','8','9');
 
             if($lang == 'ar')
             {
