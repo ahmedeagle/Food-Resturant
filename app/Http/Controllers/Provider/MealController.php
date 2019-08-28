@@ -474,7 +474,7 @@ class MealController extends Controller
 
         $validator  = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
-            $error = $validator->errors()->first();
+            return $error = $validator->errors()->first();
             return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' => $msg[$error]]);
         }
 
