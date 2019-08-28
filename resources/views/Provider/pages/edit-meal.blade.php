@@ -488,7 +488,7 @@
                                 <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
                                     <option value="">{{trans('site.choose_status')}}</option>
                                     <option value="1" @if($meal->recommend == "1") selected @endif>{{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->recommend == "0") selected @endif>{{trans('site.no')}}option>
+                                    <option value="0" @if($meal->recommend == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
