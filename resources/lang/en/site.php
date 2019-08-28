@@ -313,5 +313,11 @@ return [
     "order_send_successfully"           => "Your Order has been successfully sent",
     "the_order"                         => "Order",
      "successfully"                      => "successfully done ",
+       "sizesinarabic"                   => "Sizes In Arabic",
+      "sizesinenglish"                    => "Sizes In English",
+      "optionsinarabic"                   => "Options In Arabic",
+      "optionsinenglish"                  => "Options In English",
+      "addsinarabic"                     => "Adds In Arabic",
+      "addsinenglish"                      => "اAdds In English",
     
 ];

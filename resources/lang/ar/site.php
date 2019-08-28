@@ -308,6 +308,14 @@ return [
     "order_send_successfully"           => "لقد تم أرسال  طلبكم بنجاح ",
     "the_order"                         =>"الطلب ",
     "successfully"                      => "تم بنجاح ",
+    "sizesinarabic"                     => " الاحجام  بالعربية ",
+    "sizesinenglish"                    => "الاحجام بالانجليزية ",
+    "optionsinarabic"                   => "الاضافات بالعربية ",
+    "optionsinenglish"                  => "الاضافات بالانجليزية ",
+    "addsinarabic"                     => "التفضيلات بالعربية ",
+    "addsinenglish"                      => "التفضيلات بالانجليزية ",
+
+
  
 ]; 
 

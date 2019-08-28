@@ -209,24 +209,22 @@
                             </div><!-- .form-group details -->
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p>{{trans('site.sizes')}}</p>
+                                <div class="col-sm-3 col-6">
+                                    <p>{{trans('site.sizesinarabic')}}</p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="size1"
                                                name="size1"
-                                               class="form-control font-body-md border-gray" required>
-
-                                               <input type="text"
-                                               id="size1"
-                                               name="size1"
-                                               class="form-control font-body-md border-gray" required>
+                                               class="form-control font-body-md border-gray" 
+                                               placeholder="مثال: كبير" 
+                                               required>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <input type="text"
                                                id="size2"
                                                name="size2"
-                                               class="form-control font-body-md border-gray">
+                                               class="form-control font-body-md border-gray"
+                                                >
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <input type="text"
@@ -244,6 +242,42 @@
                                         <input type="text"
                                                id="size5"
                                                name="size5"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                </div><!-- .col -->
+
+                                <div class="col-sm-3 col-6">
+                                    <p>{{trans('site.sizesinenglish')}}</p>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size1_en"
+                                               name="size1_en"
+                                               class="form-control font-body-md border-gray"
+                                               placeholder="ex:big" 
+                                                required>
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size2_en"
+                                               name="size2_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size3_en"
+                                               name="size3_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size4_en"
+                                               name="size4_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size5_en"
+                                               name="size5_en"
                                                class="form-control font-body-md border-gray">
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
@@ -321,14 +355,13 @@
                                         </span>
                                         </div><!-- .input-group-prepend -->
                                     </div><!-- .input-group -->
-
                                 </div><!-- .col -->
                             </div>
 
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p> {{trans('site.options')}} </p>
+                                <div class="col-sm-3 col-6">
+                                    <p> {{trans('site.optionsinarabic')}} </p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="add1"
@@ -360,14 +393,47 @@
                                                class="form-control font-body-md border-gray">
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
+                                 <div class="col-sm-3 col-6">
+                                    <p> {{trans('site.optionsinenglish')}} </p>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="add1_en"
+                                               name="add1_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="add2_en"
+                                               name="add2_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="add3_en"
+                                               name="add3_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="add4_en"
+                                               name="add4_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="add5_en"
+                                               name="add5_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
                                    <p>{{trans('site.added_price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price1"
-                                               name="add-price1"
+                                               id="add-price1_en"
+                                               name="add-price1_en"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -380,8 +446,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-pric2"
-                                               name="add-price2"
+                                               id="add-pric2_en"
+                                               name="add-price2_en"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -394,8 +460,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price3"
-                                               name="add-price3"
+                                               id="add-price3_en"
+                                               name="add-price3_en"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -409,8 +475,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price4"
-                                               name="add-price4"
+                                               id="add-price4_en"
+                                               name="add-price4_en"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -423,9 +489,9 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price5"
+                                               id="add-price5_en"
                                                pattern="^[0-9]+$"
-                                               name="add-price5"
+                                               name="add-price5_en"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
@@ -440,8 +506,8 @@
 
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p> {{trans('site.adds')}}</p>
+                                <div class="col-sm-3 col-12">
+                                    <p> {{trans('site.addsinarabic')}}</p>
                                     <div class="form-group">
                                         <input type="text"
                                                id="option1"
@@ -470,6 +536,39 @@
                                         <input type="text"
                                                id="option5"
                                                name="option5"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                </div><!-- .col -->
+                                  <div class="col-sm-3 col-12">
+                                    <p> {{trans('site.addsinenglish')}}</p>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="option1_en"
+                                               name="option1_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="option2_en"
+                                               name="option2_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="option3_en"
+                                               name="option3_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="option4_en"
+                                               name="option4_en"
+                                               class="form-control font-body-md border-gray">
+                                    </div><!-- .form-group -->
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="option5_en"
+                                               name="option5_en"
                                                class="form-control font-body-md border-gray">
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
