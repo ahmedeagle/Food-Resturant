@@ -50,7 +50,7 @@ class MealController extends Controller
 
     }
 
-    public function post_add(Request $request){}
+    public function post_add(Request $request){
         // App()->setLocale("ar");
 
         $rules = [ 
