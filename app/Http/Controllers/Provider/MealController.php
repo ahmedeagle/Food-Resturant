@@ -613,10 +613,9 @@ class MealController extends Controller
                     ->where("image", $img)
                     ->where("meal_id", $meal)
                     ->delete();
-            DB::table("images")
-                        ->where("id", $img)
+               DB::table("images")
+                         ->where("id", $img)
                         ->delete();
-
             // remove image from the storage folder
         }
 
