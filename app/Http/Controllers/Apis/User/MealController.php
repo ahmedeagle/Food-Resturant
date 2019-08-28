@@ -184,11 +184,7 @@ class MealController extends Controller
                         "meals.calories"
                     )->first();
 
-
-         if($meal){
-
-                 $meal -> price = (new GeneralController())->numberTranslator('meals.price',App()->getLocale() );
-         }
+ 
 
         // add meal images
         $images = DB::table("meal_images")
@@ -209,14 +205,7 @@ class MealController extends Controller
                         "meal_options.added_price AS option_added_price"
                     )->get();
 
-                 if(isset($options) && $options -> count() > 0 )   {
-
-                      foreach ($options as $key => $option) {
-                             
-                             $option ->  option_added_price = (new GeneralController())->numberTranslator($option -> option_added_price,App()->getLocale() );
-                      }
-                 }
-        $meal->options = $options;
+            $meal->options = $options;
 
         // add meal adds
         $adds = DB::table("meal_adds")
@@ -227,13 +216,7 @@ class MealController extends Controller
                     "meal_adds.added_price AS adds_added_price"
                 )->get();
 
-             if(isset($adds) && $adds -> count() > 0 )   {
-
-                  foreach ($adds as $key => $add) {
-                         
-                         $add ->  adds_added_price = (new GeneralController())->numberTranslator($add -> adds_added_price,App()->getLocale());
-                  }
-             }
+             
 
         $meal->adds = $adds;
 
