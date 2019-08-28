@@ -189,15 +189,41 @@
                             </div><!-- .form-group details -->
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p>{{trans('site.sizes')}}</p>
+                                <div class="col-sm-3 col-6">
+                                    <p>{{trans('site.sizesinarabic')}}</p>
 
                                     @foreach($sizes as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="size{{ $key + 1 }}"
-                                                   name="size{{ $key + 1 }}"
-                                                   value="{{ old("size". ($key + 1) ."", $s->size_name) }}"
+                                                   id="ar_size{{ $key + 1 }}"
+                                                   name="ar_size{{ $key + 1 }}"
+                                                   value="{{ old("size". ($key + 1) ."", $s->ar_size_name) }}"
+                                                   class="form-control font-body-md border-gray" @if($key == 0) required @endif>
+                                        </div><!-- .form-group -->
+
+                                    @endforeach
+                                    @if(count($sizes) <= 5)
+                                        @for($i=0; $i <= (5- count($sizes)) - 1; $i++)
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       id="size{{ count($sizes) + $i + 1}}"
+                                                       name="size{{ count($sizes) + $i + 1 }}"
+                                                       value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
+                                                       class="form-control font-body-md border-gray">
+                                            </div><!-- .form-group -->
+                                        @endfor
+                                    @endif
+                                </div><!-- .col -->
+
+                                <div class="col-sm-3 col-6">
+                                    <p>{{trans('site.sizesinenglish')}}</p>
+
+                                    @foreach($sizes as $key => $s)
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   id="en_size{{ $key + 1 }}"
+                                                   name="en_size{{ $key + 1 }}"
+                                                   value="{{ old("size". ($key + 1) ."", $s->en_size_name) }}"
                                                    class="form-control font-body-md border-gray" @if($key == 0) required @endif>
                                         </div><!-- .form-group -->
 
@@ -262,15 +288,40 @@
 
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p> {{trans('site.options')}} </p>
+                                <div class="col-sm-3 col-6">
+                                    <p> {{trans('site.optionsinarabic')}} </p>
 
                                     @foreach($adds as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="add{{ $key + 1 }}"
-                                                   name="add{{ $key + 1 }}"
-                                                   value="{{ old("add". ($key + 1) ."", $s->name) }}"
+                                                   id="ar_add{{ $key + 1 }}"
+                                                   name="ar_add{{ $key + 1 }}"
+                                                   value="{{ old("add". ($key + 1) ."", $s->ar_name) }}"
+                                                   class="form-control font-body-md border-gray">
+                                        </div><!-- .form-group -->
+
+                                    @endforeach
+                                    @if(count($adds) <= 5)
+                                        @for($i=0; $i <= (5- count($adds)) - 1; $i++)
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       id="add{{ count($adds) + $i + 1}}"
+                                                       name="add{{ count($adds) + $i + 1 }}"
+                                                       value="{{ old("add". (count($adds) + $i + 1) ."") }}"
+                                                       class="form-control font-body-md border-gray">
+                                            </div><!-- .form-group -->
+                                        @endfor
+                                    @endif
+                                </div><!-- .col -->
+                                 <div class="col-sm-3 col-6">
+                                    <p>{{trans('site.optionsinenglish')}} </p>
+
+                                    @foreach($adds as $key => $s)
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   id="en_add{{ $key + 1 }}"
+                                                   name="en_add{{ $key + 1 }}"
+                                                   value="{{ old("add". ($key + 1) ."", $s->en_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
 
@@ -335,15 +386,40 @@
 
 
                             <div class="row">
-                                <div class="col-sm-6 col-12">
-                                    <p> {{trans('site.adds')}}</p>
+                                <div class="col-sm-3 col-6">
+                                    <p> {{trans('site.addsinarabic')}}</p>
 
                                     @foreach($options as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="option{{ $key + 1 }}"
-                                                   name="option{{ $key + 1 }}"
-                                                   value="{{ old("option". ($key + 1) ."", $s->name) }}"
+                                                   id="ar_option{{ $key + 1 }}"
+                                                   name="ar_option{{ $key + 1 }}"
+                                                   value="{{ old("option". ($key + 1) ."", $s->ar_name) }}"
+                                                   class="form-control font-body-md border-gray">
+                                        </div><!-- .form-group -->
+
+                                    @endforeach
+                                    @if(count($options) <= 5)
+                                        @for($i=0; $i <= (5- count($options)) - 1; $i++)
+                                            <div class="form-group">
+                                                <input type="text"
+                                                       id="option{{ count($options) + $i + 1}}"
+                                                       name="option{{ count($options) + $i + 1 }}"
+                                                       value="{{ old("option". (count($options) + $i + 1) ."") }}"
+                                                       class="form-control font-body-md border-gray">
+                                            </div><!-- .form-group -->
+                                        @endfor
+                                    @endif
+                                </div><!-- .col -->
+                                <div class="col-sm-3 col-6">
+                                    <p> {{trans('site.addsinenglish')}}</p>
+
+                                    @foreach($options as $key => $s)
+                                        <div class="form-group">
+                                            <input type="text"
+                                                   id="en_option{{ $key + 1 }}"
+                                                   name="en_option{{ $key + 1 }}"
+                                                   value="{{ old("option". ($key + 1) ."", $s->en_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
 

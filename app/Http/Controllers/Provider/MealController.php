@@ -375,7 +375,8 @@ class MealController extends Controller
                             ->where("meal_id", $id)
                             ->select(
                                 "id AS size_id",
-                           "ar_name AS size_name",
+                                "ar_name AS ar_size_name",
+                                "en_name AS en_size_name",
                                 "price AS price"
                             )->get();
 
@@ -404,7 +405,8 @@ class MealController extends Controller
                             ->where("meal_id", $id)
                             ->select(
                                 "id AS add_id",
-                                "ar_name AS name",
+                                "ar_name AS ar_name",
+                                "en_name AS en_name",
                                 "added_price AS price"
                             )->get();
 
@@ -413,7 +415,8 @@ class MealController extends Controller
                             ->where("meal_id", $id)
                             ->select(
                                 "id AS option_id",
-                                "ar_name AS name",
+                                "ar_name AS ar_name",
+                                "en_name AS en_name",
                                 "added_price AS price"
                             )->get();
 
@@ -526,21 +529,21 @@ class MealController extends Controller
                     ->where("meal_id", $meal)
                     ->delete();
 
-        $this->add_meal_size($meal, $request->input("size1"), $request->input("price1"));
+        $this->add_meal_size($meal, $request->input("ar_size1"),$request->input("en_size1"), $request->input("price1"));
 
         if($request->input("size2") && $request->input("price2")) {
-            $this->add_meal_size($meal, $request->input("size2"), $request->input("price2"));
+            $this->add_meal_size($meal, $request->input("ar_size2"),$request->input("en_size2"), $request->input("price2"));
         }
         if($request->input("size3") && $request->input("price3")) {
-            $this->add_meal_size($meal, $request->input("size3"), $request->input("price3"));
+            $this->add_meal_size($meal, $request->input("ar_size3"),$request->input("en_size3"), $request->input("price3"));
         }
 
         if($request->input("size4") && $request->input("price4")) {
-            $this->add_meal_size($meal, $request->input("size4"), $request->input("price4"));
+            $this->add_meal_size($meal, $request->input("ar_size4"), $request->input("en_size4"), $request->input("price4"));
         }
 
         if($request->input("size5") && $request->input("price5")) {
-            $this->add_meal_size($meal, $request->input("size5"), $request->input("price5"));
+            $this->add_meal_size($meal, $request->input("ar_size5"),$request->input("en_size5"), $request->input("price5"));
         }
 
         // delete meal adds
@@ -549,20 +552,20 @@ class MealController extends Controller
             ->delete();
 
         if($request->input("add1") && $request->input("add-price1")) {
-            $this->add_meal_adds($meal, $request->input("add1"), $request->input("add-price1"));
+            $this->add_meal_adds($meal, $request->input("ar_add1"),$request->input("en_add1"), $request->input("add-price1"));
         }
 
         if($request->input("add2") && $request->input("add-price2")) {
-            $this->add_meal_adds($meal, $request->input("add2"), $request->input("add-price2"));
+            $this->add_meal_adds($meal, $request->input("ar_add2"), $request->input("en_add2"), $request->input("add-price2"));
         }
         if($request->input("add3") && $request->input("add-price3")) {
-            $this->add_meal_adds($meal, $request->input("add3"), $request->input("add-price3"));
+            $this->add_meal_adds($meal, $request->input("ar_add3"),$request->input("en_add3"), $request->input("add-price3"));
         }
         if($request->input("add4") && $request->input("add-price4")) {
-            $this->add_meal_adds($meal, $request->input("add4"), $request->input("add-price4"));
+            $this->add_meal_adds($meal, $request->input("ar_add4"),$request->input("en_add4"), $request->input("add-price4"));
         }
         if($request->input("add5") && $request->input("add-price5")) {
-            $this->add_meal_adds($meal, $request->input("add5"), $request->input("add-price5"));
+            $this->add_meal_adds($meal, $request->input("ar_add5"), $request->input("en_add5"), $request->input("add-price5"));
         }
 
 
@@ -572,20 +575,20 @@ class MealController extends Controller
             ->delete();
 
         if($request->input("option1") && $request->input("option-price1")) {
-            $this->add_meal_options($meal, $request->input("option1"), $request->input("option-price1"));
+            $this->add_meal_options($meal, $request->input("ar_option1"),$request->input("en_option1"), $request->input("option-price1"));
         }
 
         if($request->input("option2") && $request->input("option-price2")) {
-            $this->add_meal_options($meal, $request->input("option2"), $request->input("option-price2"));
+            $this->add_meal_options($meal, $request->input("ar_option2"), $request->input("en_option2"), $request->input("option-price2"));
         }
         if($request->input("option3") && $request->input("option-price3")) {
-            $this->add_meal_options($meal, $request->input("option3"), $request->input("option-price3"));
+            $this->add_meal_options($meal, $request->input("ar_option3"),$request->input("en_option3"), $request->input("option-price3"));
         }
         if($request->input("option4") && $request->input("option-price4")) {
-            $this->add_meal_options($meal, $request->input("option4"), $request->input("option-price4"));
+            $this->add_meal_options($meal, $request->input("ar_option4"),$request->input("en_option4"), $request->input("option-price4"));
         }
         if($request->input("option5") && $request->input("option-price5")) {
-            $this->add_meal_options($meal, $request->input("option5"), $request->input("option-price5"));
+            $this->add_meal_options($meal, $request->input("ar_option5"),$request->input("en_option5"), $request->input("option-price5"));
         }
 
         DB::table("meal_component")
