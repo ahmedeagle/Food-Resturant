@@ -82,7 +82,7 @@
         }
 
 
-        var averagePrice = $('#average-price').val();
+       /* var averagePrice = $('#average-price').val();
 
         if(!$.isNumeric(averagePrice)){
 
@@ -93,7 +93,7 @@
         }else{
             $(".average-price-error").html("");
             $(".average-price-error").addClass("hidden-element");
-        }
+        }*/
 
         var phoneNumber = $('#phone-number').val();
 
