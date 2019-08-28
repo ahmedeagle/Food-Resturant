@@ -346,7 +346,7 @@
                                         <input type="text"
                                                id="price5"
                                                pattern="^[0-9]+$"
-                                               name="proice5"
+                                               name="price5"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
@@ -432,8 +432,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price1_en"
-                                               name="add-price1_en"
+                                               id="add-price1"
+                                               name="add-price1"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -446,8 +446,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-pric2_en"
-                                               name="add-price2_en"
+                                               id="add-pric2"
+                                               name="add-price2"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -460,8 +460,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price3_en"
-                                               name="add-price3_en"
+                                               id="add-price3"
+                                               name="add-price3"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -475,8 +475,8 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price4_en"
-                                               name="add-price4_en"
+                                               id="add-price4"
+                                               name="add-price4"
                                                pattern="^[0-9]+$"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
@@ -489,9 +489,9 @@
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
-                                               id="add-price5_en"
+                                               id="add-price5"
                                                pattern="^[0-9]+$"
-                                               name="add-price5_en"
+                                               name="add-price5"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="price-addon">
                                         <div class="input-group-prepend">
