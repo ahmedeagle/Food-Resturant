@@ -50,10 +50,10 @@ class MealController extends Controller
 
     }
 
-    public function post_add(Request $request){
-        // App()->setLocale("ar");
+    public function post_add_meal(Request $request){
+       // App()->setLocale("ar");
 
-        $rules = [ 
+        $rules = [
             "ar_name"           => "required",
             "en_name"           => "required",
             "category"          => "required|exists:mealcategories,id",
@@ -69,7 +69,6 @@ class MealController extends Controller
             "price1"            => "required|numeric",
             "recommended"       => "required|in:1,0",
         ];
-
         $messages = [
             "required"              => 1,
             "category.exists"       => 2,
@@ -270,7 +269,7 @@ class MealController extends Controller
         }
 
         if($request->input("size5") && $request->input("price5")) {
-            $this->add_meal_size($meal, $request->input("size5"),$request->input("size5_en"), $request->input("price5"));
+            $this->add_meal_size($meal, $request->input("size5"),  $request->input("size5_en"), $request->input("price5"));
         }
 
 
@@ -904,7 +903,7 @@ class MealController extends Controller
             ]);
     }
 
-    protected function add_meal_adds($meal_id, $ar_name,$en_name,$price){
+    protected function add_meal_adds($meal_id, $ar_name,$en_name, $price  ){
         DB::table("meal_adds")
             ->insert([
                 "meal_id" => $meal_id,
