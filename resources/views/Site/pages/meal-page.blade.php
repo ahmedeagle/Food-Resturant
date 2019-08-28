@@ -222,7 +222,7 @@
                                                         class="size_select custom-control-input"
                                                         {{--@if(count($cartData) > 0) @if($cartData['size'] == $size->id) checked @endif @endif--}}
                                                 >
-                                                <label class="custom-control-label text-gray mb-2" for="size_customRadio{{ $key + 1 }}">{{ $size->ar_name }}</label>
+                                                <label class="custom-control-label text-gray mb-2" for="size_customRadio{{ $key + 1 }}">{{ $size->$name }}</label>
                                             </div>
                                         @endforeach
                                     </div>
@@ -257,7 +257,7 @@
                                                         id="add_customCheck{{ $key + 1 }}"
                                                         {{--@if(count($cartData) > 0) @if(in_array($add->id, $cartData['adds'])) checked @endif @endif--}}
                                                 >
-                                                <label class="custom-control-label text-gray mb-2" for="add_customCheck{{ $key + 1 }}">{{ $add->ar_name }}</label>
+                                                <label class="custom-control-label text-gray mb-2" for="add_customCheck{{ $key + 1 }}">{{ $add->$name }}</label>
                                             </div>
                                         
                                         @endforeach
@@ -293,7 +293,7 @@
                                                         id="option_customCheck{{ $key + 1 }}"
                                                         {{--@if(count($cartData) > 0) @if(in_array($option->id, $cartData['options'])) checked @endif @endif--}}
                                                 >
-                                                <label class="custom-control-label text-gray mb-2" for="option_customCheck{{ $key + 1 }}">{{ $option->ar_name }}</label>
+                                                <label class="custom-control-label text-gray mb-2" for="option_customCheck{{ $key + 1 }}">{{ $option->$name }}</label>
                                             </div>
                                         
                                         @endforeach
