@@ -108,7 +108,7 @@ class BranchController extends Controller
                          'thursday_start_work',
                          'thursday_end_work', 
                          'friday_start_work',
-                         'friday_end_work',
+                         'friday_end_work'
                        // DB::raw((new GeneralController())->numberTranslator('friday_end_work',App()->getLocale() ))
    
                             )

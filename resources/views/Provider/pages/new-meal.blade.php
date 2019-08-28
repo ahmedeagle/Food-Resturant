@@ -216,6 +216,11 @@
                                                id="size1"
                                                name="size1"
                                                class="form-control font-body-md border-gray" required>
+
+                                               <input type="text"
+                                               id="size1"
+                                               name="size1"
+                                               class="form-control font-body-md border-gray" required>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <input type="text"
