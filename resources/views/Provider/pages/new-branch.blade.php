@@ -174,14 +174,13 @@
                                 </div><!-- .form-group available service -->
 
                                 <div class="form-group">
-                                    <label for="average-price">{{trans('site.delivery_price')}}</label>
+                                    <label for="delivery-price">{{trans('site.delivery_price')}}</label>
                                     <div class="input-group rounded border border-gray overflow-hidden">
                                         <input type="text"
                                                id="delivery-price"
                                                name="delivery-price"
                                                class="form-control border-0 font-body-md rounded-0"
                                                aria-describedby="average-price-addon">
-
 
 
                                         <div class="input-group-prepend">
@@ -224,7 +223,7 @@
                                                id="average-price"
                                                name="average-price"
                                                class="form-control border-0 font-body-md rounded-0"
-                                               aria-describedby="average-price-addon" required>
+                                               aria-describedby="average-price-addon" >
 
 
 
