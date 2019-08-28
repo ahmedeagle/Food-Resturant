@@ -445,7 +445,7 @@ class MealController extends Controller
             "calorie"           => "required|numeric",
             "ar_description"    => "required",
             "en_description"    => "required",
-            "size1"             => "required",
+            "ar_size1"             => "required",
             "price1"            => "required|numeric",
             "recommended"       => "required|in:1,2",
         ];
