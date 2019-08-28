@@ -53,9 +53,6 @@ class MealController extends Controller
     public function post_add_meal(Request $request){
        // App()->setLocale("ar");
 
-
-        return $request;
-
         $rules = [
             "ar_name"           => "required",
             "en_name"           => "required",
