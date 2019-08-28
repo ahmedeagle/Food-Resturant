@@ -51,10 +51,10 @@ class MealController extends Controller
     }
 
     public function post_add
-            "ar_name"           =>_meal(Request $request){
-       // App()->setLocale("ar");
+        // App()->setLocale("ar");
 
-        $rules = [ "required",
+        $rules = [ 
+            "ar_name"           => "required",
             "en_name"           => "required",
             "category"          => "required|exists:mealcategories,id",
             "component"         => "required",
