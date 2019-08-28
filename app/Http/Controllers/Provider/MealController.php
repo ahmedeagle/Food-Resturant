@@ -447,7 +447,7 @@ class MealController extends Controller
             "en_description"    => "required",
             "ar_size1"             => "required",
             "price1"            => "required|numeric",
-            "recommended"       => "required|in:1,2",
+            "recommended"       => "required|in:0,1",
         ];
         $messages = [
             "required"              => 1,
@@ -474,7 +474,7 @@ class MealController extends Controller
 
         $validator  = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
-            return $error = $validator->errors();
+            $error = $validator->errors()->first();
             return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' => $msg[$error]]);
         }
 
