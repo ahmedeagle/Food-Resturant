@@ -371,7 +371,7 @@ class MealController extends Controller
                                 DB::raw("CONCAT('". url('/') ."','/storage/app/public/meals/', images.name) AS meal_image_url")
                             )->get();
 
-       return  $data['sizes'] = DB::table("meal_sizes")
+        $data['sizes'] = DB::table("meal_sizes")
                             ->where("meal_id", $id)
                             ->select(
                                 "id AS size_id",
