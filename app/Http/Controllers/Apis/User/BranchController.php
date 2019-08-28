@@ -192,7 +192,7 @@ class BranchController extends Controller
                     ->select(DB::raw("AVG(price) AS average_price"))
                     ->first();
  
-        $branch->menu_average_price = ($meals->average_price == null) ? 0 : $meals->average_price;
+        $branch->menu_average_price = ($meals->average_price == null) ? 0 : round((double) $meals->average_price);
 
         $rates = DB::table('rates')
                     ->where('branch_id' ,$branch->id)
