@@ -206,8 +206,8 @@
                                         @for($i=0; $i <= (5- count($sizes)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="size{{ count($sizes) + $i + 1}}"
-                                                       name="size{{ count($sizes) + $i + 1 }}"
+                                                       id="ar_size{{ count($sizes) + $i + 1}}"
+                                                       name="ar_size{{ count($sizes) + $i + 1 }}"
                                                        value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -232,8 +232,8 @@
                                         @for($i=0; $i <= (5- count($sizes)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="size{{ count($sizes) + $i + 1}}"
-                                                       name="size{{ count($sizes) + $i + 1 }}"
+                                                       id="en_size{{ count($sizes) + $i + 1}}"
+                                                       name="en_size{{ count($sizes) + $i + 1 }}"
                                                        value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -305,8 +305,8 @@
                                         @for($i=0; $i <= (5- count($adds)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="add{{ count($adds) + $i + 1}}"
-                                                       name="add{{ count($adds) + $i + 1 }}"
+                                                       id="ar_add{{ count($adds) + $i + 1}}"
+                                                       name="ar_add{{ count($adds) + $i + 1 }}"
                                                        value="{{ old("add". (count($adds) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -330,8 +330,8 @@
                                         @for($i=0; $i <= (5- count($adds)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="add{{ count($adds) + $i + 1}}"
-                                                       name="add{{ count($adds) + $i + 1 }}"
+                                                       id="en_add{{ count($adds) + $i + 1}}"
+                                                       name="en_add{{ count($adds) + $i + 1 }}"
                                                        value="{{ old("add". (count($adds) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -403,8 +403,8 @@
                                         @for($i=0; $i <= (5- count($options)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="option{{ count($options) + $i + 1}}"
-                                                       name="option{{ count($options) + $i + 1 }}"
+                                                       id="ar_option{{ count($options) + $i + 1}}"
+                                                       name="ar_option{{ count($options) + $i + 1 }}"
                                                        value="{{ old("option". (count($options) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -428,8 +428,8 @@
                                         @for($i=0; $i <= (5- count($options)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="option{{ count($options) + $i + 1}}"
-                                                       name="option{{ count($options) + $i + 1 }}"
+                                                       id="en_option{{ count($options) + $i + 1}}"
+                                                       name="en_option{{ count($options) + $i + 1 }}"
                                                        value="{{ old("option". (count($options) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
