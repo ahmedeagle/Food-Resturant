@@ -104,16 +104,13 @@ class OrderController extends Controller
 
 
    public function updateCongestion(Request $request){
-      
-         $congestion_status = $request -> input('congestion-status');
-         
-       if(!auth('branch')->check()){   
+          $congestion_status = $request -> input('congestion-status');
+         if(!auth('branch')->check()){   
                 return redirect() -> back(); 
         }   
             
-      DB::table('branches')-> whereId(auth("branch")->id()) -> update(['connection_status_id'=>$congestion_status]);
+      DB::table('branches')-> whereId(auth("branch")->id()) -> update(['congestion_settings_id'=>$congestion_status]);
 
-      return auth("branch")->id() . '  '.$congestion_status ; 
 
        return redirect()->to('restaurant/congestion')->with("success", trans("messages.success"));
    }
@@ -500,7 +497,7 @@ class OrderController extends Controller
 
             // check if the user using credit from balance
             
-             $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> provider_id();
+             $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> id();
              
                  $balance = DB::table("balances")
                     ->where("actor_id",$resturantId)
@@ -536,7 +533,7 @@ class OrderController extends Controller
                 if($balance){
                     
                     
-                    $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> provider_id();
+                    $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> id();
                     
                     DB::table("balances")
                         ->where("actor_id", $resturantId)
@@ -556,7 +553,7 @@ class OrderController extends Controller
              
                   // check if the user using credit from balance
             
-             $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> provider_id();
+             $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> id();
              
                  $balance = DB::table("balances")
                     ->where("actor_id",$resturantId)
@@ -592,7 +589,7 @@ class OrderController extends Controller
                 if($balance){
                     
                     
-                    $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> provider_id();
+                    $resturantId =  auth('provider') -> check() ? auth('provider') -> id() : auth('branch') -> id();
                     
                     DB::table("balances")
                         ->where("actor_id", $resturantId)
