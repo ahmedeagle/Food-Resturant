@@ -83,14 +83,14 @@ class OrderController extends Controller
 
          if(auth('branch')->check()){
               
-            $branch =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_settings_id') ->  first();
+            $data['branch'] =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_settings_id') ->  first();
 
-            if(!$branch){
+            if(!$data['branch']){
 
                 return abort('404');
             }
 
-            return view('Provider.pages.congestion',compact('branch'));
+            return view('Provider.pages.congestion',$data);
         }
             
             return redirect() -> back();
