@@ -80,6 +80,12 @@ class OrderController extends Controller
         
 
         $data['title'] = " - حالة الازدحام ";
+        $data['congestion'] = DB::table("congestion_settings")
+                                ->select(
+                                    "id",
+                                LaravelLocalization::getCurrentLocale()."_name AS name"
+                                )->get();
+
 
          if(auth('branch')->check()){
               
