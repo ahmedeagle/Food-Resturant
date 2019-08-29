@@ -294,7 +294,7 @@ class OrderController extends Controller
             ->insert([
                 "en_title" => "change order status",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider Accept the Order With Code {$user->code}, Login To You Account to See More Details",
+                "en_content" => "The Service Provider {$desc} Accept the Order With Code {$user->code}, Login To You Account to See More Details",
                 "ar_content"  => $post_title,
                 "notification_type"  => 1,
                 "actor_id" => $user->user_id,
