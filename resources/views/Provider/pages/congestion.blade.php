@@ -21,15 +21,15 @@
  
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
-                        <form action="{{ url("/restaurant/food-menu/cat/edit") }}" method="POST" class="new-kind-form multi-forms">
+                        <form action="{{ url("/restaurant/congestion") }}" method="POST" class="new-kind-form multi-forms">
                             {{ csrf_field() }}<!---->
                              <div class="form-group">
                                   <label for="congestion-status">حالة الازدحام </label>
                                         <select class="custom-select text-gray font-body-md border-gray" id="congestion-status" name="congestion-status" required="">
-                                               <option value="">{{trans('site.choose_congestion_status')}} </option>
-                                                @foreach($congestion as $c)
-                                                    <option value="{{ $c->id }}" @if($c->id == $branch->congestion_settings_id) selected @endif>{{ $c->name }}</option>
-                                                @endforeach
+                                           <option value="">{{trans('site.choose_congestion_status')}} </option>
+                                            @foreach($congestion as $c)
+                                                <option value="{{ $c->id }}" @if($c->id == $branch->congestion_settings_id) selected @endif>{{ $c->name }}</option>
+                                            @endforeach
                                       </select>
                              </div>
                             <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">{{trans('site.confirm')}}</button>

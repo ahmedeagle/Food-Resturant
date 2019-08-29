@@ -103,16 +103,15 @@ class OrderController extends Controller
     }
 
 
-   public function updateCongestion($id){
-
-
-    return $id;
+   public function updateCongestion(Request $request){
+      
+         $congestion_status = $request -> input('congestion-status');
          
        if(!auth('branch')->check()){   
                 return redirect() -> back(); 
         }   
             
-      DB::table('branches')-> whereId(auth("branch")->id()) -> update(['connection_status_id',$id]);
+      DB::table('branches')-> whereId(auth("branch")->id()) -> update(['connection_status_id',$congestion_status]);
 
        return redirect()->to('restaurant/congestion')->with("success", trans("messages.success"));
    }
