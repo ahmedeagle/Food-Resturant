@@ -318,6 +318,7 @@ return [
       "optionsinarabic"                   => "Options In Arabic",
       "optionsinenglish"                  => "Options In English",
       "addsinarabic"                     => "Adds In Arabic",
-      "addsinenglish"                      => "اAdds In English",
+      "addsinenglish"                      => "Adds In English",
+      "congestion"                        => "Congestion Status ",
     
 ];

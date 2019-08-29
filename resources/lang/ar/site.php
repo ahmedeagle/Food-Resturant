@@ -314,6 +314,7 @@ return [
     "optionsinenglish"                  => "الاضافات بالانجليزية ",
     "addsinarabic"                     => "التفضيلات بالعربية ",
     "addsinenglish"                      => "التفضيلات بالانجليزية ",
+    "congestion"                        => "جالة الازدحام ",
 
 
  

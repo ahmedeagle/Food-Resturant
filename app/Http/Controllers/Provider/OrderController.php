@@ -80,7 +80,7 @@ class OrderController extends Controller
         
          if(auth('branch')->check()){
               
-            $branch =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_status_id') ->  first();
+            $branch =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_settings_id') ->  first();
 
             if(!$branch){
 
