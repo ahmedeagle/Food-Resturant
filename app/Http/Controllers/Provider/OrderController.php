@@ -103,6 +103,18 @@ class OrderController extends Controller
     }
 
 
+   public function updateCongestion($id){
+         
+       if(!auth('branch')->check()){
+                
+                return redirect() -> back(); 
+        }   
+            
+      DB::table('branches')-> whereId(auth("branch")->id()) -> update(['connection_status_id',$id]);
+      
+       return redirect()->back()->with("success", trans("messages.success"));
+   }
+
     public function get_order($id){
 
         $order = Order::find($id);

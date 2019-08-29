@@ -110,6 +110,7 @@ Route::prefix('restaurant')->group(function(){
     Route::get("/orders/confirm-processed-order/{id}" , "Provider\OrderController@processed_order");
     Route::get("/orders/finish-order/{id}" , "Provider\OrderController@finish_order");
     Route::get("/congestion" , "Provider\OrderController@congestion");
+    Route::get("/congestion/update/{id}" , "Provider\OrderController@updateCongestion");
     Route::get("/logout" , "Provider\LogoutController@logout");
     
  });
