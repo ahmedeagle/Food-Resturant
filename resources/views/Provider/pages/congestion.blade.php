@@ -4,9 +4,7 @@
     {{ $title }}
 @endsection
 
-@section("class")
-    {{ $class }}
-@endsection
+ 
 
 @section("content")
     <main class="page-content py-5">
