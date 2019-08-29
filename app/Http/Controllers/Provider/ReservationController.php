@@ -172,7 +172,7 @@ class ReservationController extends Controller
 
         $push_notif_title = "تعديل حالة الححز";
         $post_id          = $id;
-        $post_title       = "لقد تم قبول طلب الحجز    {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز";
+        $post_title       = "لقد تم قبول طلب الحجز   من قبل   {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز";
 
 
         $notif_data = array();
@@ -237,7 +237,7 @@ class ReservationController extends Controller
 
         $push_notif_title = "تعديل حالة الححز";
         $post_id          = $id;
-        $post_title       = "للأسف تم رفض طلب الحجز  منقبل  {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز وإجراء طلب جديد";
+        $post_title       = "للأسف تم رفض طلب الحجز  من قبل  {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز وإجراء طلب جديد";
 
         $notif_data = array();
 
