@@ -157,8 +157,7 @@ class Customers extends Controller {
             $rules = [
                 
                 "password"                              => 'required|min:6|confirmed',
-                "old_password"                           => "required",
-                "password_confirmation"                 => "required",
+                 "password_confirmation"                 => "required",
                  
              ];
             
@@ -180,25 +179,13 @@ class Customers extends Controller {
                     
                     $hashedPassword = $user->password;
              
-                    if (Hash::check($request->old_password, $hashedPassword)) {
-                        //Change the password
-                       
+                    
              
             		   $user ->fill([
             		        'password' => Hash::make(request()->input('password'))
             		    ])->save();
             		     
             		    return redirect()->back()->with("success", trans("messages.success"));
-            		}
-             
-             
-             
-        // oldpassword not match current password for user
-        
-              $validator->errors()->add('old_password', 'كلمة المرور الحاليه غير صحيحة');
-             
-              return redirect()->back()->with('errors',$validator->errors());
-        
     }
     
     

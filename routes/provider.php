@@ -110,7 +110,7 @@ Route::prefix('restaurant')->group(function(){
     Route::get("/orders/finish-order/{id}" , "Provider\OrderController@finish_order");
     Route::get("/congestion" , "Provider\OrderController@congestion");
     Route::post("/congestion" , "Provider\OrderController@updateCongestion");
-    Route::post('/storebrowsertoken',"Provider\ProfileController@storebrowsertoken");
+    Route::post('/storebrowsertoken',"Provider\ProfileController@storebrowsertoken");   //disktop firebase notify
     Route::get("/logout" , "Provider\LogoutController@logout");
     
  });

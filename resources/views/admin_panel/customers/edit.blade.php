@@ -218,7 +218,7 @@
                         </form>
                         
                         <br><br>
-                 <form action="{{ url("/admin/customers/change-password".'/'.$user  -> id) }}" id="change-password-form" method="POST">
+                 <form action="{{ url('/admin/customers/change-password/'.$user  -> id) }}" id="change-password-form" method="POST">
                             
                               <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 ">                            
                             {{ csrf_field() }}
@@ -242,22 +242,7 @@
 
                             @endif
 
-                            <div class="form-group">
-                                <label for="old_password">كلمة المرور القديمة</label>
-                                <input type="password"
-                                       class="form-control border-gray font-body-md"
-                                       id="old-password"
-                                       name="old_password"
-                                       required
-                                >
-                                @if($errors->has("old_password"))
-
-                                    <div class="alert alert-danger top-margin">
-                                        {{ $errors->first("old_password") }}
-                                    </div>
-
-                                @endif
-                            </div><!-- .form-group password -->
+                          
 
                             <div class="form-group">
                                 <label for="new-password">كلمة المرور الجديدة</label>
