@@ -154,12 +154,25 @@ class ReservationController extends Controller
             ->select(
                 "users.id as user_id",
                 "users.device_reg_id",
-                "reservations.reservation_code as code"
+                "reservations.reservation_code as code",
+                "reservations.branch_id"
             )->first();
+
+     $branch_namee =  DB::table('branches')
+                 -> where('branches.id',$user -> branch_id) 
+                 -> join('providers','branches.provider_id','providers.id') 
+                 -> select( 
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
+                           )
+
+               -> first();
+        // send user notification
+
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
 
         $push_notif_title = "تعديل حالة الححز";
         $post_id          = $id;
-        $post_title       = "لقد تم قبول طلب الحجز المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز";
+        $post_title       = "لقد تم قبول طلب الحجز    {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز";
 
 
         $notif_data = array();
@@ -177,7 +190,7 @@ class ReservationController extends Controller
             ->insert([
                 "en_title" => "Change Reservation status",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider Accepted the Reservation With Code {$user->code}, Please Login To Your Account To See More detais",
+                "en_content" => "The Service Provider {$desc} Accepted the Reservation With Code {$user->code}, Please Login To Your Account To See More detais",
                 "ar_content"  => $post_title,
                 "notification_type"  => 2,
                 "actor_id" => $user->user_id,
@@ -204,12 +217,27 @@ class ReservationController extends Controller
                     ->select(
                         "users.id as user_id",
                         "users.device_reg_id",
-                        "reservations.reservation_code as code"
+                        "reservations.reservation_code as code",
+                        "reservations.branch_id"
                     )->first();
+
+
+     $branch_namee =  DB::table('branches')
+                 -> where('branches.id',$user -> branch_id) 
+                 -> join('providers','branches.provider_id','providers.id') 
+                 -> select( 
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
+                           )
+
+               -> first();
+        // send user notification
+
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
+
 
         $push_notif_title = "تعديل حالة الححز";
         $post_id          = $id;
-        $post_title       = "للأسف تم رفض طلب الحجز المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز وإجراء طلب جديد";
+        $post_title       = "للأسف تم رفض طلب الحجز  منقبل  {$desc} المقدم برقم {$user->code}, برجاء الدخول لحسابك لاستعراض تفاصيل الحجز وإجراء طلب جديد";
 
         $notif_data = array();
 
@@ -225,7 +253,7 @@ class ReservationController extends Controller
             ->insert([
                 "en_title" => "Change Reservation status",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider Decline the Reservation With Code {$user->code}, Please Login To Your Account To See More detais",
+                "en_content" => "The Service Provider {$desc} Decline the Reservation With Code {$user->code}, Please Login To Your Account To See More detais",
                 "ar_content"  => $post_title,
                 "notification_type"  => 2,
                 "actor_id" => $user->user_id,
@@ -252,12 +280,28 @@ class ReservationController extends Controller
                         "users.device_reg_id",
                         "users.id as user_id",
                         "reservations.branch_id AS branch_id",
-                        "reservations.reservation_code as code"
-                    )->first();
+                        "reservations.reservation_code as code",
+                     )->first();
+
+
+
+     $branch_namee =  DB::table('branches')
+                 -> where('branches.id',$user -> branch_id) 
+                 -> join('providers','branches.provider_id','providers.id') 
+                 -> select( 
+                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
+                           )
+
+               -> first();
+        // send user notification
+
+        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
+
+
 
         $push_notif_title = "تقييم المطعم";
         $post_id          = $user->branch_id;
-        $post_title       = "لقد قام مقدم الخدمة بإنهاء الحجز المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
+        $post_title       = "لقد قام مقدم الخدمة  {$desc}بإنهاء الحجز المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
 
         $notif_data = array();
 
@@ -272,7 +316,7 @@ class ReservationController extends Controller
                 ->insert([
                    "en_title" => "rate the restaurant",
                    "ar_title" => $push_notif_title,
-                   "en_content" => "The Service Provider Finish the Reservation With Code {$user->code}, Please Rate the Restaurant To Help Us Provider Excellent Service",
+                   "en_content" => "The Service Provider {$desc} Finish the Reservation With Code {$user->code}, Please Rate the Restaurant To Help Us Provider Excellent Service",
                     "ar_content"  => $post_title,
                    "notification_type"  => 3,
                    "actor_id" => $user->user_id,
