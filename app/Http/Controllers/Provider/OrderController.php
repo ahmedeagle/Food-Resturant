@@ -113,6 +113,7 @@ class OrderController extends Controller
             
       DB::table('branches')-> whereId(auth("branch")->id()) -> update(['connection_status_id'=>$congestion_status]);
 
+      return auth("branch")->id() . '  '.$congestion_status ; 
 
        return redirect()->to('restaurant/congestion')->with("success", trans("messages.success"));
    }
