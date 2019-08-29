@@ -280,7 +280,7 @@ class ReservationController extends Controller
                         "users.device_reg_id",
                         "users.id as user_id",
                         "reservations.branch_id AS branch_id",
-                        "reservations.reservation_code as code",
+                        "reservations.reservation_code as code"
                      )->first();
 
 
