@@ -133,8 +133,8 @@
                             <div class="form-group">
                                 <label for="new-cat" class="font-body-bold">{{trans('site.add_new_category')}}</label>
                                 <div class="d-flex justify-content-center flex-column flex-sm-row">
-                                    <input type="text" name="ar_name" value="{{ old("ar_name") }}" class="form-control" id="new-cat">
-                                     <input type="text" name="en_name" value="{{ old("en_name") }}" class="form-control" id="new-cat2">
+                                    <input type="text" name="ar_name" value="{{ old("ar_name") }}" class="form-control" id="new-cat" placeholder="الاسم باللغه العربيه ">
+                                     <input type="text" name="en_name" value="{{ old("en_name") }}" class="form-control" id="new-cat2" placeholder="الاسم باللغه الانجليزية ">
                                     <button class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
                                             type="submit">{{trans('site.confirm')}}</button>
 
