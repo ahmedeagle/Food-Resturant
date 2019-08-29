@@ -21,7 +21,6 @@ Route::prefix('restaurant')->group(function(){
         Route::post("/profile/change-meal-type" , "Provider\ProfileController@post_change_meal_type");
         Route::post("/profile/change-resturant-categories" , "Provider\ProfileController@post_change_resturant_categories");
          Route::post("/profile/change-map-address" , "Provider\ProfileController@post_change_map_address");
-         Route::post('/storebrowsertoken',"Provider\ProfileController@storebrowsertoken");
          Route::post("/contact-us/ticket/add-reply" , "Provider\TicketController@add_ticket_reply");
          Route::post("/contact-us/open-new-ticket" , "Provider\TicketController@post_new_ticket");
          Route::post("/branches/edit" , "Provider\BranchController@post_edit_branch");
@@ -111,6 +110,7 @@ Route::prefix('restaurant')->group(function(){
     Route::get("/orders/finish-order/{id}" , "Provider\OrderController@finish_order");
     Route::get("/congestion" , "Provider\OrderController@congestion");
     Route::post("/congestion" , "Provider\OrderController@updateCongestion");
+    Route::post('/storebrowsertoken',"Provider\ProfileController@storebrowsertoken");
     Route::get("/logout" , "Provider\LogoutController@logout");
     
  });

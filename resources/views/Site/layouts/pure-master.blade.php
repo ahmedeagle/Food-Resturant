@@ -245,7 +245,7 @@ function sendTokenToServer(currentToken) {
     
                   $.ajax({
                     type:'POST',
-                    url:'/restaurant/storebrowsertoken',
+                    url:'{{LaravelLocalization::getCurrentLocale()}}/restaurant/storebrowsertoken',
                     data:{token : currentToken,actor:'providers' ,_token: "<?php echo csrf_token(); ?>"},
                     success:function(data){
                         $("#msg").html(data);
@@ -262,7 +262,7 @@ function sendTokenToServer(currentToken) {
     
           $.ajax({
             type:'POST',
-            url:'/restaurant/storebrowsertoken',
+            url:{{LaravelLocalization::getCurrentLocale()}}'/restaurant/storebrowsertoken',
             data:{token : currentToken,actor: 'branches', _token: "<?php echo csrf_token(); ?>"},
             success:function(data){
                 $("#msg").html(data);
