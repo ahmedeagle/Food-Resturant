@@ -141,7 +141,7 @@
                                 </div>
                                 @if($errors->has("ar_name") or $errors->has("en_name"))
                                     <div class="alert top-margin">
-                                        {{ $errors->first("ar_name") }}
+                                        {{ $errors->first("ar_name") ? $errors->first("ar_name") : $errors->first("en_name")  }}
                                     </div>
                                 @endif
                                   
