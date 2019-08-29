@@ -718,7 +718,6 @@ class MealController extends Controller
     }
 
     public function get_meal_categories(){
-
        // App()->setLocale("ar");
         $data['title'] = " - التصنيفات";
         $data['class'] = "page-template food-menu category";
@@ -793,6 +792,7 @@ class MealController extends Controller
         $rules = [
 
             "ar_name"   => "required",
+            "en_name"   => "required",
 
         ];
         $messages = [
@@ -806,11 +806,12 @@ class MealController extends Controller
         }
 
         $arName = $request->input('ar_name');
+        $enName = $request->input('en_name');
 
         DB::table("mealcategories")
             ->insert([
                 "ar_name" => $arName,
-                "en_name" => "",
+                "en_name" => $enName,
                 "provider_id" => auth("provider")->id()
             ]);
 

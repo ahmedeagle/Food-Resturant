@@ -134,6 +134,7 @@
                                 <label for="new-cat" class="font-body-bold">{{trans('site.add_new_category')}}</label>
                                 <div class="d-flex justify-content-center flex-column flex-sm-row">
                                     <input type="text" name="ar_name" value="{{ old("ar_name") }}" class="form-control" id="new-cat">
+                                     <input type="text" name="en_name" value="{{ old("en_name") }}" class="form-control" id="new-cat2">
                                     <button class="btn btn-primary font-body-bold px-lg-5 px-md-4 px-sm-5 d-sm-inline-block d-block mr-sm-3 mt-2 mt-sm-auto"
                                             type="submit">{{trans('site.confirm')}}</button>
 
@@ -143,6 +144,13 @@
                                         {{ $errors->first("ar_name") }}
                                     </div>
                                 @endif
+                                 @if($errors->has("en_name"))
+                                    <div class="alert top-margin">
+                                        {{ $errors->first("en_name") }}
+                                    </div>
+                                @endif
+
+
                             </div>
                         </form>
                     </div>
