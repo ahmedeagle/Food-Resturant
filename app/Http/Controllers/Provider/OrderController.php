@@ -78,6 +78,9 @@ class OrderController extends Controller
 
     public function congestion(){
         
+
+        $data['title'] = " - حالة الازدحام ";
+
          if(auth('branch')->check()){
               
             $branch =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_settings_id') ->  first();
