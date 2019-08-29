@@ -24,8 +24,7 @@
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
                         <form action="{{ url("/restaurant/food-menu/cat/edit") }}" method="POST" class="new-kind-form multi-forms">
-                            {{ csrf_field() }}
- 
+                            {{ csrf_field() }}<!---->
                              <div class="form-group">
                                   <label for="congestion-status">حالة الازدحام </label>
                                         <select class="custom-select text-gray font-body-md border-gray" id="congestion-status" name="congestion-status" required="">
