@@ -11,8 +11,7 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        
-        
+           
        // App()->setLocale("ar");
         if(!(auth("provider")->check() || auth("branch")->check())){
             return redirect("/login");
@@ -75,6 +74,25 @@ class OrderController extends Controller
 
          return view("Provider.pages.orders", $data);
     }
+    
+
+    public function congestion(){
+        
+         if(auth('branch')->check()){
+              
+            $branch =  DB::table('branches') ->whereId(auth("branch")->id()) ->select('congestion_status_id') ->  first();
+
+            if(!$branch){
+
+                return abort('404');
+            }
+
+            return view('Provider.pages.congestion',compact('branch'));
+        }
+            
+            return redirect() -> back();
+    }
+
 
     public function get_order($id){
 

@@ -109,7 +109,7 @@ return [
     "female"                            => "أنثي ",
     "hello_mjrb"                        => "مرحبا بك  في مجرب ",
     "profile"                           => "الملف الشخصي",
-    "reservations"                      => "ألحجوزات ",
+    "reservations"                      => "الحجوزات  ",
     "orders"                            => "الطلبات ",
     "favourite"                         => "المفضله ",
     "logout"                            => "الخروج ",

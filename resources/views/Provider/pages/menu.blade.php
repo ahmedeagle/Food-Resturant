@@ -144,6 +144,19 @@
                 {{trans('site.orders')}}
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ ( Request::segment(2) == 'congestion' ) ? 'text-secondary' : 'text-gray'}}" href="{{ url("/restaurant/congestion") }}">
+                    <img src="{{ url("/assets/site/img/icons/sub-page.svg") }}"
+                         class="ml-1"
+                         width="24"
+                         height="22"
+                         alt="congestion icon">
+                {{trans('site.congestion')}}
+                </a>
+            </li>
+
+
             @foreach(  \App\Http\Controllers\Provider\GeneralController::get_pages_list() as $page)
             <li class="nav-item">
                 <a class="nav-link {{ ( Request::segment(2) == 'page' && Request::segment(3) == $page->id) ? 'text-secondary' : 'text-gray'}}" href="{{ url("/restaurant/page/" . $page->id) }}">
