@@ -100,12 +100,18 @@ class Customers extends Controller {
            
            
            $messages = [
-                "required"                          => 'هذا الحقل  مطلوب',
-                "user-phone.numeric"                => trans("messages.phone_numeric"),
-                "user-age.date_format"              => trans("messages.reservation.date.format.error"),
-                "user-email.unique"                 => trans("messages.email_unique"),
-                "user-email.email"                  => trans("messages.email"),
-                "user-phone.unique"                 => trans("messages.phone_unique"),
+            "required"                          => 'هذا الحقل  مطلوب',
+            "user-phone.numeric"                => trans("messages.phone_numeric"),
+            "user-age.date_format"              => trans("messages.reservation.date.format.error"),
+            "date_of_birth.date_format"         => trans("messages.reservation.date.format.error"),
+            "user-email.unique"                 => trans("messages.email_unique"),
+            "user-email.email"                  => trans("messages.email"),
+            "user-phone.unique"                 => trans("messages.phone_unique"),
+            "country.exists"                    => 'الدوله غير موجوده ',
+            "city.exists"                       => 'المدينة  غير موجوده ',
+            "blocked.in"                        => 'حاله المستخدم غير موجوده ',
+            "gender.in"                         => 'يرجي تحديد حاله الجنس ',
+
               
             ];
             $rules = [
@@ -117,6 +123,7 @@ class Customers extends Controller {
                 "gender"                  => "required|in:1,2",
                 "phone"                   => "required|numeric|unique:users,phone,".$user_id,
                 "date_of_birth"           => 'required|date_format:Y-m-d',
+                "blocked"                 => "required|in:0,1"
                  
              ];
             $this->validate($request, $rules , $messages);
@@ -131,6 +138,7 @@ class Customers extends Controller {
                     'gender'           => ($request->input("gender") == 1) ? "male" : "female",
                     'date_of_birth'    => $request -> date_of_birth,
                     'phone'            => $request -> phone,
+                    'blocked'          => $request -> blocked,
                     
                  ];
                  
