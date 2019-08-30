@@ -24,7 +24,7 @@ class BannedUser
                 } else {
                     auth::guard('web')->logout();
                     
-                    $message = "This user has been banned.";
+                    $message = trans('messages.user.blocked');
                                         
                     return redirect()->guest('login') -> with('blocked_message',$message);
                 }
