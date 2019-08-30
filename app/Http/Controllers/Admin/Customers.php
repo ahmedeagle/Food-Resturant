@@ -131,16 +131,10 @@ class Customers extends Controller {
              
    //          $validator = $this->validate($request, $rules , $messages);
             
-            if ($validator->fails()) {
-     
-                  return redirect()->back()->with('errors',$validator->errors() -> first());
-                
-             }
-
+           
              if($validator->fails()){
                     $error = $validator->errors()->first();
-                    return $messages[$error];
-                     return redirect()->back()->with('errors',$messages[$error]);
+                      return redirect()->back()->with('errors',$messages[$error]);
                 }
 
                
