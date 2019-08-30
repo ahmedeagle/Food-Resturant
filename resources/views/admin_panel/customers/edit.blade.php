@@ -51,7 +51,7 @@
                             @if(Session::has("errors") )
 
                                 <div class="alert alert-danger top-margin">
-                                     هناك بعض الاخطاء يؤجي مراجعتها 
+                                     هناك بعض الاخطاء  يرجي مراجعتها 
                                 </div>
 
                             @endif
@@ -192,7 +192,7 @@
                                        value="{{ old("phone", $user ->phone) }}"
                                        id="phone-number"
                                        name="phone"
-                                       placeholder="966-553-6556556+"
+                                       placeholder="05xxxxxxxx"
                                        required
                                 >
 
