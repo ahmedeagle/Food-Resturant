@@ -126,7 +126,17 @@ class Customers extends Controller {
                 "blocked"                 => "required|in:0,1"
                  
              ];
-            $this->validate($request, $rules , $messages);
+ 
+              $validator =  Validator::make($request -> all(),$rules,$messages);
+             
+   //          $validator = $this->validate($request, $rules , $messages);
+            
+            if ($validator->fails()) {
+     
+                  return redirect()->back()->with('errors',$validator->errors());
+                
+             }
+
              
             
              $data =[

@@ -48,10 +48,10 @@
 
                             @endif
 
-                            @if(Session::has("error"))
+                            @if(Session::has("errors"))
 
                                 <div class="alert alert-danger top-margin">
-                                    {{ Session::get("error") }}
+                                    {{ Session::get("errors") }}
                                 </div>
 
                             @endif
