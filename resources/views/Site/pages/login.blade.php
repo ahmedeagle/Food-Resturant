@@ -46,6 +46,12 @@
                         </ul><!-- .nav-tabs -->
                     </div>
 
+                          
+                         @if(Session::has("blocked_message"))
+                                    <div class="alert alert-warning top-margin">
+                                        {{ Session::get("blocked_message") }}
+                                    </div>
+                                @endif 
 
                     <div class="tab-content">
                         <div class="tab-pane fade @if(!$errors->has('provider-phone-number') && !$errors->has('provider-password') && !Session::has('provider-login-error') && !Session::has('provider-login-success')) active show @endif"

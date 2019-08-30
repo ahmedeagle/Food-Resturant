@@ -26,13 +26,10 @@ class BannedUser
                     
                     $message = "This user has been banned.";
                                         
-                    return redirect()->guest('login') -> with('message',$message);
+                    return redirect()->guest('login') -> with('blocked_message',$message);
                 }
             }
-        }else{
-
-            return redirect()->guest('logind');
-        }
+        } 
         
         return $next($request);
     }
