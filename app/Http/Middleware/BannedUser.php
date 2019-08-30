@@ -16,13 +16,13 @@ class BannedUser
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::check()) {
+        if (auth::guard('web')->check()) {
             // Block access if user is banned
-            if (Auth::guard($guard)->user()->blocked == '1') {
+            if (auth::guard('web')->user()->blocked == '1') {
                 if ($request->ajax() || $request->wantsJson()) {
                     return response(trans('messages.user.blocked'), 401);
                 } else {
-                    Auth::logout();
+                    auth::guard('web')->logout();
                     
                     $message = "This user has been banned.";
                     
