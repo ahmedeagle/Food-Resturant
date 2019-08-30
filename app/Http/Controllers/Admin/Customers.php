@@ -120,7 +120,7 @@ class Customers extends Controller {
                 "email"                   => "required|email|unique:users,email,".$user_id,
                 "country"                 => "required|exists:countries,id",
                 "city"                    => "required|exists:cities,id",
-                "gender"          '' ;       => "required|in:1,2",
+                "gender"                  => "required|in:1,2",
                 "phone"                   => "required|numeric|unique:users,phone,".$user_id,
                 "date_of_birth"           => 'required|date_format:Y-m-d',
                 "blocked"                 => "required|in:0,1"
