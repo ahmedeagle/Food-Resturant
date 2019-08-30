@@ -126,18 +126,19 @@ class Customers extends Controller {
                 "blocked"                 => "required|in:0,1"
                  
              ];
- 
-              $validator =  Validator::make($request -> all(),$rules,$messages);
-             
-   //        /  $validator = $this->validate($request, $rules , $messages);
-            
-           
-             if($validator->fails()){
-                          $errors = $validator->errors();
-                      return redirect()->back()->withErrors($errors)->withInputs();
-                }
+            //$this->validate($request, $rules , $messages);
 
-               
+             $validator = Validator::make($request->all(),$rules,$messages);
+
+
+             if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput()
+                       
+        }
+ 
+            
              $data =[
                  
                     'name'             => $request -> name,
@@ -147,7 +148,7 @@ class Customers extends Controller {
                     'gender'           => ($request->input("gender") == 1) ? "male" : "female",
                     'date_of_birth'    => $request -> date_of_birth,
                     'phone'            => $request -> phone,
-                    'blocked'          => $request -> blocked,
+                    'blocked'          => $request -> blocked
                     
                  ];
                  
