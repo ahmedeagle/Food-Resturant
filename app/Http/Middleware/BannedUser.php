@@ -27,11 +27,13 @@ class BannedUser
                     $message = "This user has been banned.";
                     
                     flash()->error($message);
-                    //Alert::error($message)->flash();
                     
                     return redirect()->guest('login');
                 }
             }
+        }else{
+
+            return    return redirect()->guest('logind');
         }
         
         return $next($request);
