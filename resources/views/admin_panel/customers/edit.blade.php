@@ -48,7 +48,7 @@
 
                             @endif
 
-                            @if(Session::has("errors"))
+                            @if(Session::has("errors") )
 
                                 <div class="alert alert-danger top-margin">
                                     {{ Session::get("errors") }}
