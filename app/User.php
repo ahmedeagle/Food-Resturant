@@ -31,7 +31,8 @@ class User extends Authenticatable
         'is_social',
         'social_name',
         'social_token',
-        'phoneactivated'
+        'phoneactivated',
+        'blocked'
     ];
 
     /**
