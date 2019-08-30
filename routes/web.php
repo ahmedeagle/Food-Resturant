@@ -24,7 +24,7 @@ Route::middleware(['guest:web', 'guest:provider', 'guest:branch'])->group(functi
 
 });
 
-Route::middleware(['auth:web'])->prefix('user')->group(function() {
+Route::middleware(['auth:web','bannedUser'])->prefix('user')->group(function() {
     Route::post("/activate-phone", "User\AuthController@post_activate_phone");
      Route::middleware(['user_phone_active'])->group(function() {
          Route::post("/profile", "User\ProfileController@post_profile_page");
