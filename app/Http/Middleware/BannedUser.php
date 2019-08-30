@@ -25,10 +25,8 @@ class BannedUser
                     auth::guard('web')->logout();
                     
                     $message = "This user has been banned.";
-                    
-                    flash()->error($message);
-                    
-                    return redirect()->guest('login');
+                                        
+                    return redirect()->guest('login') -> with('message',$message);
                 }
             }
         }else{
