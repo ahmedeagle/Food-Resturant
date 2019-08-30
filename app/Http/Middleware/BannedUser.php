@@ -23,9 +23,7 @@ class BannedUser
                     return response(trans('messages.user.blocked'), 401);
                 } else {
                     auth::guard('web')->logout();
-                    
-                    $message = trans('messages.user.blocked');
-                                        
+                    $message = trans('messages.user.blocked');                                        
                     return redirect()->guest('login') -> with('blocked_message',$message);
                 }
             }

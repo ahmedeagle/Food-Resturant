@@ -19,6 +19,10 @@
          <li class="breadcrumb-item"><a href="{{ url('admin/offers/list/all') }}" style="line-height: 2.5">{{ $title }}</a>
          </li>
          <a style="float: left; color: white" href="{{ url('admin/offers/add') }}" class="btn btn-grd-primary">اضافة عرض جديد</a>
+
+          <a style="float: left; color: white;margin-left: 5px;margin-rigth: 5px;" href="{{ url('admin/offers/reorder') }}" class="btn btn-grd-primary"> إعاده ترتيب العروض  </a>
+
+
       </ul>
    </div>
 </div>

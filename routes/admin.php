@@ -165,6 +165,9 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
         Route::post('/update/{id}', "Admin\Offers@post_edit");
         Route::get('/delete/{id}', "Admin\Offers@delete");
         Route::get('/view/{id}', "Admin\Offers@view");
+        Route::get('/reorder', "Admin\Offers@reorder");
+        Route::post('/reorder', "Admin\Offers@saveReorder");
+
     });
 
    Route::group(['prefix' => 'orders', 'middleware' => 'can:orders'], function () {                  

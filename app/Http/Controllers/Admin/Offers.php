@@ -174,4 +174,23 @@ class Offers extends Controller {
             return redirect("/admin/offers")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
         }
 	}
+
+    public function reorder(){
+
+             $data['title'] = 'إعاده ترتيب العروض ';
+
+              $data['offers'] = DB::table("offers")
+                               ->get();
+
+             return view("admin_panel.offers.reorder",$data);
+
+    }
+
+
+    public function saveReorder(Request $request){
+
+        return $request;
+    }
+
+
 }
