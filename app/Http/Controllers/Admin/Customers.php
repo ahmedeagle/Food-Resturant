@@ -129,7 +129,7 @@ class Customers extends Controller {
  
               $validator =  Validator::make($request -> all(),$rules,$messages);
              
-   //          $validator = $this->validate($request, $rules , $messages);
+   //        /  $validator = $this->validate($request, $rules , $messages);
             
            
              if($validator->fails()){
