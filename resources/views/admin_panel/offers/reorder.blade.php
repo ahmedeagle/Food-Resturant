@@ -92,7 +92,16 @@
     
     <script src="{{asset('assets/admin_panel/nestedSortable/jquery.mjs.nestedSortable2.js') }}" type="text/javascript"></script>
 
+
+
     <script type="text/javascript">
+    	
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+
         jQuery(document).ready(function($) {
 
             // initialize the nested sortable plugin
