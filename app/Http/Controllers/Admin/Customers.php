@@ -139,6 +139,7 @@ class Customers extends Controller {
 
              if($validator->fails()){
                     $error = $validator->errors()->first();
+                    return $messages[$error];
                      return redirect()->back()->with('errors',$messages[$error]);
                 }
 
