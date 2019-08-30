@@ -70,8 +70,15 @@ class LoginController extends Controller
             // login user
             $user = \App\User::where($data , $credential)->orwhere($data ,'0'.$credential)->first();
             auth()->guard('web')->login($user);
+
             return redirect("/user/dashboard");
         }else{
+
+            if($user -> blocked == '1'){
+
+                 return redirect()->back()->with("user-error", trans("messages.user.blocked"));
+            }
+
             return redirect()->back()->with("user-error", trans("messages.invalid.credential"));
         }
     }

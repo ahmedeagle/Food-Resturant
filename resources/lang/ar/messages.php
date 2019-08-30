@@ -77,5 +77,6 @@ return [
     "location-empty"                => "برجاء تحديد العنوان",
     "dateMustAfterorEqualTodat"     => "لابد ان يكون تاريخ الطلب اكبر من او يساوي تاريخ اليوم",
     "invalid_phone_format"          => "صغه الهاتف غير صحيحه ",
-    "phonenotcorrect"                => "صيغه الهاتف غير صحيحه "
+    "phonenotcorrect"                => "صيغه الهاتف غير صحيحه ",
+    "user.blocked"                   => "عذرا تم إيقاف هذا الحساب ",
 ];
