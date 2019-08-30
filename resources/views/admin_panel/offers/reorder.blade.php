@@ -95,7 +95,7 @@
 
 
     <script type="text/javascript">
-    	
+
         $.ajaxSetup({
           headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -143,15 +143,15 @@
                     .done(function() {
                         console.log("success");
                         new PNotify({
-                            title: "تم حفظ الترتيب بنجاح ",
-                            text: " م حفظ الترتيب بنجاح ",
+                            title: "تم بنجاح ",
+                            text: " تم حفظ الترتيب بنجاح ",
                             type: "success"
                         });
                     })
                     .fail(function() {
                         console.log("error");
                         new PNotify({
-                            title: " فشل في حفظ الترتيب ",
+                            title: " فشل ",
                             text: " فشل في حفظ الترتيب ",
                             type: "danger"
                         });
