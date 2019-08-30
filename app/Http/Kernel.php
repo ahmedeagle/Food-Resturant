@@ -65,6 +65,6 @@ class Kernel extends HttpKernel
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
         'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
         'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
-         'bannedUser' => \App\Http\Middleware\BannedUser::class,
+         'bannedUser'           => \App\Http\Middleware\BannedUser::class,
     ];
 }
