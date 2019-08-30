@@ -66,7 +66,7 @@ class LoginController extends Controller
         }
 
 
-        if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password,'blocked'   => '0']) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password])) {
+        if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password,'blocked'   => '0']) || auth()->guard('web')-> attempt([$data => '0'.$credential, 'password' => $password,'blocked'   => '0'])) {
             // login user
             $user = \App\User::where($data , $credential)->orwhere($data ,'0'.$credential)->first();
             auth()->guard('web')->login($user);
