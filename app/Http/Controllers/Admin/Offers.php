@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use App\Offer;
 use DB;
 use Validator;
 class Offers extends Controller {
@@ -189,7 +190,30 @@ class Offers extends Controller {
 
     public function saveReorder(Request $request){
 
-        return $request;
+         $count = 0;
+        $all_entries = $request::input('tree');
+
+        if (count($all_entries)) {
+            foreach ($all_entries as $key => $entry) {
+                if ($entry['item_id'] != "" && $entry['item_id'] != null) {
+                    $entry['parent_id'] = $this->parentId;
+                    $item               = Offer::find($entry['item_id']);
+                    $item->depth        = $entry['depth'];
+                    $item->lft          = $entry['left'];
+                    $item->rgt          = $entry['right'];
+                    $item->save();
+
+                    $count++;
+                }
+            }
+        }
+        else
+        {
+            return false;
+        }
+
+        return 'success for ' . $count . " items";
+
     }
 
 
