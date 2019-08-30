@@ -88,7 +88,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function () {
 
-    Route::middleware(['auth:web'])->prefix('user')->group(function() {
+    Route::middleware(['auth:web','bannedUser'])->prefix('user')->group(function() {
         Route::get("/activate-phone", "User\AuthController@get_activate_phone");
         Route::get("/resend-activation-code", "User\AuthController@resend_activate_code");
         Route::get("/logout", "User\LogoutController@logout");
