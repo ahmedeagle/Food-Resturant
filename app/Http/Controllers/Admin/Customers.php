@@ -133,7 +133,7 @@ class Customers extends Controller {
             
            
              if($validator->fails()){
-                            $error = $validator->errors();
+                            retutn $error = $validator->errors();
                       return redirect()->back()->withErrors($error)->withInputs();
                 }
 
