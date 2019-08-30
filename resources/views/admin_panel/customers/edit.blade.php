@@ -51,7 +51,7 @@
                             @if(Session::has("errors") )
 
                                 <div class="alert alert-danger top-margin">
-                                    {{ Session::get("errors") }}
+                                    {{ Session::get("errors") -> first() }}
                                 </div>
 
                             @endif
