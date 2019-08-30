@@ -158,7 +158,7 @@
 
                             <div class="form-group">
                                 <label for="user-sax">الحالة</label>
-                                <select class="custom-select text-gray font-body-md" name="gender" id="user-sax" required>
+                                <select class="custom-select text-gray font-body-md" name="blocked" id="user-sax" required>
                                     <option value="">يرجى تحديد  الحاله</option>
                                     <option value="0"  @if(old('blocked')) @if(old('blocked') == '0') selected @endif  @else @if($user ->blocked == '0') selected @endif @endif> مفعل </option>
                                     <option value="1" @if(old('blocked'))  @if(old('blocked') == '1') selected @endif  @else @if($user -> blocked == '1') selected @endif @endif> محظور </option>
