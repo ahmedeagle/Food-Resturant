@@ -181,7 +181,7 @@ class Offers extends Controller {
              $data['title'] = 'إعاده ترتيب العروض ';
 
               $data['offers'] = DB::table("offers")
-                               ->get();
+                               ->orderBy('lft')->get();
 
              return view("admin_panel.offers.reorder",$data);
 
@@ -191,12 +191,11 @@ class Offers extends Controller {
     public function saveReorder(Request $request){
 
          $count = 0;
-        $all_entries = $request::input('tree');
+        $all_entries = $request -> input('tree');
 
         if (count($all_entries)) {
             foreach ($all_entries as $key => $entry) {
                 if ($entry['item_id'] != "" && $entry['item_id'] != null) {
-                    $entry['parent_id'] = $this->parentId;
                     $item               = Offer::find($entry['item_id']);
                     $item->depth        = $entry['depth'];
                     $item->lft          = $entry['left'];
