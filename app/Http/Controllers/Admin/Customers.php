@@ -133,8 +133,8 @@ class Customers extends Controller {
             
            
              if($validator->fails()){
-                 return    $error = $validator->errors()->first();
-                      return redirect()->back()->with('errors',$error);
+                        $error = $validator->errors()->first();
+                      return redirect()->back()->withErrors($error)->withInputs();
                 }
 
                
