@@ -33,7 +33,7 @@ class BannedUser
             }
         }else{
 
-            return    return redirect()->guest('logind');
+            return redirect()->guest('logind');
         }
         
         return $next($request);
