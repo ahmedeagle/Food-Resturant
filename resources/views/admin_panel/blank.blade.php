@@ -722,6 +722,8 @@
     <!--    firebase.initializeApp(config);-->
     <!--</script>-->
     <!--<script src="{{ asset("/assets/push_notification/js/push.js") }}"></script>-->
+
+    </script> 
 </body>
 
 </html>

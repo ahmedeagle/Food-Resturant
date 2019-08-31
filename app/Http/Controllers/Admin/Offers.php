@@ -35,9 +35,10 @@ class Offers extends Controller {
                                     "offers.approved",
                                     "offers.order_level",
                                     "images.name AS image",
+                                    "offers.lft",
                                     "providers.ar_name"
                                 )
-                                ->orderBy("offers.order_level", "DESC")
+                                ->orderBy("offers.lft")
                                 ->get();
         return view("admin_panel.offers.list",$data);
     }

@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(){
         
  
-        $data['offers']  = $this->get_home_page_offers();
+      $data['offers']  = $this->get_home_page_offers();
 
         $data['cats'] = $this->get_home_page_cats();
         $data['settings'] = DB::table("app_settings")->first();

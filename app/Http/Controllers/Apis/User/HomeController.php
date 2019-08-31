@@ -92,12 +92,13 @@ class HomeController extends Controller
                         "branches.latitude",
                         "branches.ar_address AS address",
                         "offers.provider_id",
+                        "offers.lft",
                         "offers." .$name . "_title AS title",
                     
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
                 )
-                ->orderBy("offers.order_level" , "DESC")
+                ->orderBy("offers.lft")
                 ->take(17)
                 ->get();
         $offers = $this->filter_offers_branches($request , $name , $offers);

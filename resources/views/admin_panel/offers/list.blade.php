@@ -39,7 +39,7 @@
       </div>
       <div class="card-block">
          <div class="dt-responsive table-responsive">
-            <table id="order-table" class="table table-striped table-bordered nowrap">
+            <table id="order-table" class="order-table table table-striped table-bordered nowrap">
                <thead>
                   <tr>
                       <th>صورة العرض</th>
@@ -53,13 +53,14 @@
                   </tr>
                </thead>
                <tbody>
+                <?php  $index=1;?>
                   @foreach($offers as $key => $offer)
                     <tr>
                         <td><img style="width: 100px; height: 66px" src="{{ url('/storage/app/public/offers/'.$offer->image) }}"></td>
                         <td><input type="hidden" value="{{ $offer->ar_title }}" /> {{ str_limit($offer->ar_title, $limit = 30, $end = "....") }}@if(strlen($offer->ar_title) > 30)<a href="#" class="offer_ar_more">عرض المزيد</a> @endif</td>
                         <td><input type="hidden" value="{{ $offer->en_title }}" />{{ str_limit($offer->en_title, $limit = 30, $end = "....") }}@if(strlen($offer->ar_title) > 30)<a href="#" class="offer_en_more">عرض المزيد</a>@endif</td>
                         <td>{{ $offer->ar_name }}</td>
-                        <td>{{ $offer->order_level }}</td>
+                        <td>{{$offer-> lft}}</td>
                         <td>{{ ($offer->approved == 1) ? 'مفعل' : 'غير مفعل'}}</td>
                         <td>{{ $offer->created_at }}</td>
                         <td>
@@ -122,6 +123,8 @@
             e.preventDefault();
             $(".modal-content-data p").html($(this).parent().find("input").val());
             $("#content-Modal").modal();
-        })
+        });
+
+
 </script>
 @endsection
