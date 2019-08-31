@@ -116,12 +116,13 @@ class HomeController extends Controller
                         "branches.latitude",
                         "branches.ar_address AS address",
                         "offers.provider_id",
+                        "offers.provider_id.lft"
                         "offers.".LaravelLocalization::getCurrentLocale()."_title AS title",
                     
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
                 )
-                    ->orderBy("offers.id" , "DESC")
+                    ->orderBy("offers.lft")
                     ->get();
                     
         
