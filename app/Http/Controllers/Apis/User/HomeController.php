@@ -19,7 +19,7 @@ class HomeController extends Controller
         
         $cats = $this->getSubCategoriesList($name ,7);
 
-        $offers = $this->getOffersList($request,$name);
+         $offers = $this->getOffersList($request,$name);
              
              
              //get nearst provider branches 
@@ -99,8 +99,7 @@ class HomeController extends Controller
                     "providers.accept_order"
                 )
                 ->orderBy("offers.lft")
-                ->take(17)
-                ->get();
+                 ->get();
         $offers = $this->filter_offers_branches($request , $name , $offers);
        
         
