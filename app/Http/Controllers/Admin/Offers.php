@@ -33,8 +33,7 @@ class Offers extends Controller {
                                     "offers.en_title",
                                     "offers.created_at",
                                     "offers.approved",
-                                    "offers.order_level",
-                                    "images.name AS image",
+                                     "images.name AS image",
                                     "offers.lft",
                                     "providers.ar_name"
                                 )
@@ -55,17 +54,14 @@ class Offers extends Controller {
             'image.required'         => 'الصورة مطلوبة.',
             'image.mimes'            => 'نوع الصورة غير مدعوم.',
             'approved.required'      => 'برجاء اختيار حالة العرض',
-            'order_level.required'   => 'برجاء ادخال ترتيب الظهور',
-            'order_level.numeric'    => 'برجاء ادخال قيمة صحيحة لترتيب الظهور',
-        ];
+         ];
         $rules = [
             'en_title'      => 'required',
             'ar_title'      => 'required',
             'provider_id'   => 'required',
             'approved'      => 'required',
             'image'         => 'required|mimes:jpg,jpeg,png',
-            'order_level'   => 'required|numeric'
-        ];
+         ];
         $this->validate($request, $rules , $messages);
 
         $image = DB::table("images")->insertGetId([
@@ -81,8 +77,7 @@ class Offers extends Controller {
                 "image_id"       => $image,
                 "provider_id"    => $request->input("provider_id"),
                 "approved"       => $request->input("approved"),
-                "order_level"    => $request->input("order_level")
-            ]);
+             ]);
         return redirect("/admin/offers/list/all")->with("success" , "تمت الاضافة بنجاح");
     }
     public function get_edit($id){
@@ -98,8 +93,7 @@ class Offers extends Controller {
                                     "offers.provider_id",
                                     "providers.ar_name",
                                     "offers.approved",
-                                    "offers.order_level",
-                                    "images.name AS filename"
+                                     "images.name AS filename"
                                 )
                                 ->first();
         $data['providers'] = DB::table("providers")
@@ -128,16 +122,13 @@ class Offers extends Controller {
             'provider_id.required'   => 'برجاء اختيار المطعم',
             'image.mimes'            => 'نوع الصورة غير مدعوم.',
             'approved.required'      => 'برجاء اختيار حالة العرض',
-            'order_level.required'   => 'برجاء ادخال ترتيب الظهور',
-            'order_level.numeric'    => 'برجاء ادخال قيمة صحيحة لترتيب الظهور',
-        ];
+          ];
         $rules = [
             'en_title'      => 'required',
             'ar_title'      => 'required',
             'provider_id'   => 'required',
             'approved'      => 'required',
-            'order_level'   => 'required|numeric',
-            'image'         => 'mimes:jpg,jpeg,png',
+             'image'         => 'mimes:jpg,jpeg,png',
         ];
         $this->validate($request, $rules , $messages);
 
@@ -156,8 +147,7 @@ class Offers extends Controller {
                 "ar_title"      => $request->input("ar_title"),
                 "en_title"      => $request->input("en_title"),
                 "provider_id"   => $request->input("provider_id"),
-                "order_level"   => $request->input("order_level"),
-                "approved"      => $request->input("approved")
+                 "approved"      => $request->input("approved")
             ]);
         return redirect("/admin/offers/list/all")->with("success" , "تمت العملية بنجاح");
 	}

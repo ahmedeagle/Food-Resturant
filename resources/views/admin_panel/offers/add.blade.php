@@ -72,15 +72,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">ترتيب الظهور</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="order_level" value="{{ old("order_title") }}" placeholder="ترتيب الظهور فى الموقع بإدخال 0 سيكون اقل ترتيب">
-                        @if($errors->has("order_level"))
-                            {{ $errors->first("order_level") }}
-                        @endif
-                    </div>
-                </div>
+               
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">صورة العرض</label>
                   <div class="col-sm-10">
