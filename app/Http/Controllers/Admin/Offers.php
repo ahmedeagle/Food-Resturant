@@ -114,7 +114,7 @@ class Offers extends Controller {
                 )
                 ->first();
         if(!$data){
-            return redirect("/admin/offers")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
+            return redirect("/admin/offers/list/all")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
         }
         $messages = [
             'en_title.required'      => 'برجاء ادخال عنوان العرض بالانجليزية',
