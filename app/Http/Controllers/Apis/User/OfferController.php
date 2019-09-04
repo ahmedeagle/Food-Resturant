@@ -21,10 +21,11 @@ class OfferController extends Controller
                         "offers." .$name . "_title AS title",
                         "branches.ar_address AS address",
                         "branches.id AS branch_id",
+                        "offers.lft",
                         DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                         "providers.accept_order"
                     )
-                    ->orderBy("offers.order_level" , "DESC")
+                    ->orderBy("offers.lft")
                     ->paginate(10);
       $offers = (new HomeController)->filter_offers_branches($request,$name,$offers);
         return response()->json([
