@@ -36,7 +36,7 @@
                                                 <span class="d-block">{{ $n->content }}</span>
                                             </p>
 
-                                           <p class="text-lg-right text-center pb-1 text-gray mb-0">  {{ $notification -> seen ==  '1' ? ' مقرؤه ': 'جديده  ' }}</p>
+                                           <p class="text-lg-right text-center pb-1 text-gray mb-0">  {{ $n -> seen ==  '1' ? ' مقرؤه ': 'جديده  ' }}</p>
 
                                         </div><!-- .media-body -->
                                     </div><!-- .media -->
