@@ -11,9 +11,6 @@ class HomeController extends Controller
 {
 
     public function get_cities(Request $request){
-        
-        
-
 
         $rules = [
             "country" => "required|exists:countries,id",
