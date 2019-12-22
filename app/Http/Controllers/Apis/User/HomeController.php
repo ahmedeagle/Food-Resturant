@@ -90,7 +90,7 @@ class HomeController extends Controller
                         "branches.id AS branch_id",
                         "branches.longitude",
                         "branches.latitude",
-                        "branches.ar_address AS address",
+                        "branches." .$name . "_address AS address",
                         "offers.provider_id",
                         "offers.lft",
                         "offers." .$name . "_title AS title",
