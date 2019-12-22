@@ -42,7 +42,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/bower_components/pnotify/css/pnotify.buttons.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/bower_components/pnotify/css/pnotify.history.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/bower_components/pnotify/css/pnotify.mobile.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/assets/pages/pnotify/notify.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/pages/pnotify/notify.css')}}">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/css/jquery.mCustomScrollbar.css')}}">
