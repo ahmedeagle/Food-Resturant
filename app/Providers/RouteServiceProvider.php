@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapProviderRoutes();
 
-        //
+        ////
     }
 
     /**
