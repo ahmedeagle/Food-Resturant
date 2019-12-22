@@ -5,3 +5,5 @@ Homestead.yaml
 npm-debug.log
 .env
 .htaccess
+/vendor
+app/Providers/AppServiceProvider.php
