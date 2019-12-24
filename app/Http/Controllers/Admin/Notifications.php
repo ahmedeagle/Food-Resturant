@@ -87,7 +87,7 @@ class Notifications extends Controller {
     public function post_add(Request $request){
 
 
-         $title    = $request->input("title");
+        $title    = $request->input("title");
         $content  = $request->input("content");
         $option   = $request->input("option_type");
         $type     = $request->input("type");
@@ -159,8 +159,8 @@ class Notifications extends Controller {
 
 
                 if($user->device_reg_id != null){
-                    $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
-                    
+                  return   $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
+
                 }
 
             }elseif ($type =="providers"){
@@ -182,7 +182,7 @@ class Notifications extends Controller {
 
 
                 if($user->device_reg_id != null){
-                    $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
+                  return   $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
                     
                 }
 
