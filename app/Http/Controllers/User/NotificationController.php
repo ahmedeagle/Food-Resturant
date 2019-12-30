@@ -73,7 +73,6 @@ class NotificationController extends Controller
         });
 
 
-
         if($count){
 
             $seen = 0;
