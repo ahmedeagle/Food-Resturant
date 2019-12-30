@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use DB;
+
 class api_token
 {
     /*
@@ -16,12 +17,12 @@ class api_token
     public function handle($request, Closure $next)
     {
         $method = $request->method();
-        $token  = $request->input('access_token');
-        if($method != "GET"){
+        $token = $request->input('access_token');
+        if ($method != "GET") {
             $get = DB::table('users')
-                    ->where("token" , $token)
-                    ->first();
-            if(!$get || $get == NULL){
+                ->where("token", $token)
+                ->first();
+            if (!$get || $get == NULL) {
                 return response()->json(['message' => 'Unauthenticated.']);
             }
         }

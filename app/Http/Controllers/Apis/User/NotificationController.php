@@ -45,8 +45,11 @@ class NotificationController extends Controller
 
 
         usort($results, function($a,$b) {
-            return $a->create_date < $b->create_date;
+            if($a==$b) return 0;
+             return ($a->create_date < $b->create_date)?-1:1;
         });
+
+        return $results;
 
 
         // Get current page form url e.x. &page=1
