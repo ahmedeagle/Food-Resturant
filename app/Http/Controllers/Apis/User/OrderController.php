@@ -510,7 +510,7 @@ class OrderController extends Controller
                      
                 if($branch_data  -> webtokenSubscribe){
                      
-                     (new \App\Http\Controllers\Apis\User\PushNotificationController())->sendNotificationToWebBrowser($branch_data->webtokenSubscribe,$notif_data);
+                      (new \App\Http\Controllers\Apis\User\PushNotificationController())->sendNotificationToWebBrowser($branch_data->webtokenSubscribe,$notif_data);
                      
                        $providerId =$branch_data -> provider_id ;
                 
@@ -523,7 +523,7 @@ class OrderController extends Controller
                          
                              if($providerWebtokenSubscribe  -> webtokenSubscribe){
                                 
-                                (new \App\Http\Controllers\Apis\User\PushNotificationController())->sendNotificationToWebBrowser($providerWebtokenSubscribe -> webtokenSubscribe,$notif_data);
+                                 (new \App\Http\Controllers\Apis\User\PushNotificationController())->sendNotificationToWebBrowser($providerWebtokenSubscribe -> webtokenSubscribe,$notif_data);
                                 }
                              
                         }
