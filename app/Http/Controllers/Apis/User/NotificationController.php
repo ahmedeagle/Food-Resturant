@@ -24,7 +24,7 @@ class NotificationController extends Controller
                                             DB::raw("DATE(admin_notifications_receivers.created_at) AS create_date"),
                                             DB::raw("TIME(admin_notifications_receivers.created_at) AS create_time")
                                         )
-                                        ->orderBy("admin_notifications.id", "DESC")
+                                        ->orderBy("admin_notifications.created_at", "DESC")
                                         ->get();
 
 
@@ -38,7 +38,7 @@ class NotificationController extends Controller
                                 DB::raw("DATE(notifications.created_at) AS create_date"),
                                 DB::raw("TIME(notifications.created_at) AS create_time")
                             )
-                            ->orderBy("notifications.id", "DESC")
+                            ->orderBy("notifications.created_at", "DESC")
                             ->get();
 
         $results = array_merge($adminNotification->toArray(), $notifications->toArray());
