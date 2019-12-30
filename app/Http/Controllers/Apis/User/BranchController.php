@@ -255,7 +255,7 @@ class BranchController extends Controller
                         ->get();
         $branch->options = $options;
 
-
+        $numberOfRatedUser = DB::table("rates")  ->where("branch_id" , $id)  -> count();
         if($request->input("access_token")){
             $user = \App\User::where("token" , $request->input('access_token'))->first();
             if($user == null){
@@ -275,12 +275,14 @@ class BranchController extends Controller
                                     DB::raw("COUNT(id) AS count")
                                 )->first();
 
+
             if($userRates->count == 0){
                     $branch->is_user_rate_branch    = false;
                     $branch->is_user_can_rate    = true;
                     $branch->user_cleanliness_rate  = 0.0;
                     $branch->user_service_rate      = 0.0;
                     $branch->user_quality_rate      = 0.0;
+                    $branch-> numberOfRatedUser =  $numberOfRatedUser;
             }else{
                     $branch->is_user_rate_branch    = true;
 
@@ -295,6 +297,7 @@ class BranchController extends Controller
                     $branch->user_service_rate   = round($s);
                     $branch->user_quality_rate     = round($q);
                     $branch->user_cleanliness_rate = round($c);
+                $branch-> numberOfRatedUser =  $numberOfRatedUser;
 
             }
         }else{
@@ -303,6 +306,7 @@ class BranchController extends Controller
             $branch->user_cleanliness_rate  = 0.0;
             $branch->user_service_rate      = 0.0;
             $branch->user_quality_rate      = 0.0;
+            $branch-> numberOfRatedUser =  $numberOfRatedUser;
         }
         
         return response()->json(['status' => true, 'errNum' => 0, 'msg' => $msg[3] , "restaurant" => $branch]);

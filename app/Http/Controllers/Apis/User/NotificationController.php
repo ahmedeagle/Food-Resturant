@@ -52,7 +52,6 @@ class NotificationController extends Controller
         });
 
 
-
         // Get current page form url e.x. &page=1
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
