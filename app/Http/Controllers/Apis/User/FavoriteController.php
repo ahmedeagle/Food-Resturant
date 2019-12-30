@@ -65,7 +65,7 @@ class FavoriteController extends Controller
                                             ->orderBy('branches.id' , 'DESC')
                                             ->select(
                                                      "branches.id AS branch_id",
-                                                     "branches.ar_address AS address" ,
+                                                     "branches.". $name ."_address AS address" ,
                                                      "branches.latitude" ,
                                                      "branches.longitude",
                                                       DB::raw("CONCAT(providers .".$name."_name,'-',branches .".$name."_name) AS name"),
