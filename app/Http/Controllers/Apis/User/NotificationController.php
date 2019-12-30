@@ -21,8 +21,7 @@ class NotificationController extends Controller
                                             "admin_notifications.id AS id",
                                             "admin_notifications.title AS title",
                                             "admin_notifications.content AS content",
-                                            "admin_notifications.created_at",
-
+                                            "admin_notifications_receivers.created_at",
                                             DB::raw("DATE(admin_notifications_receivers.created_at) AS create_date"),
                                             DB::raw("TIME(admin_notifications_receivers.created_at) AS create_time")
                                         )
@@ -49,7 +48,6 @@ class NotificationController extends Controller
 
         usort($results, function($a,$b) {
             if($a==$b) return 0;
-
              return (($a->created_at >  $b->created_at))?-1:1;
         });
 

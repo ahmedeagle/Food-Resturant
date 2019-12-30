@@ -135,8 +135,7 @@ class Notifications extends Controller {
                     "title" => $title,
                     "content" => $content,
                     "type" => $type,
-                    "created_at"  => Carbon\Carbon::now()
-                ]);
+                 ]);
         }
 
 
@@ -161,7 +160,6 @@ class Notifications extends Controller {
 
                 if($user->device_reg_id != null){
                        $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
-
                 }
 
             }elseif ($type =="providers"){
@@ -184,7 +182,6 @@ class Notifications extends Controller {
 
                 if($user->device_reg_id != null){
                       $push = (new \App\Http\Controllers\Apis\User\PushNotificationController())->send($user->device_reg_id,$notif_data);
-                    
                 }
 
 

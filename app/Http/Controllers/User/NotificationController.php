@@ -17,7 +17,6 @@ class NotificationController extends Controller
         $data['title'] = ' - الإشعارات';
         $data['class'] = 'front-page page-template';
 
-
         $data["notification"] = self::getUserNotification();
 
         // update seen notification
@@ -26,18 +25,14 @@ class NotificationController extends Controller
                     ->where("admin_notifications_receivers.actor_id", auth('web')->id())
                     ->where("admin_notifications.type", "users")
                     ->update([
-
                         "admin_notifications_receivers.seen" => "1",
-
                     ]);
 
         DB::table("notifications")
                     ->where("actor_id", auth('web')->id())
                     ->where("actor_type", "user")
                     ->update([
-
                         "notifications.seen" => "1",
-
                     ]);
 
         return view("User.pages.notification.notifications", $data);
@@ -72,10 +67,11 @@ class NotificationController extends Controller
 
         $results = array_merge($adminNotification->toArray(), $notifications->toArray());
 
-
         usort($results, function($a,$b) {
-            return $a->create_date < $b->create_date;
+            if($a==$b) return 0;
+            return (($a->created_at >  $b->created_at))?-1:1;
         });
+
 
 
         if($count){
