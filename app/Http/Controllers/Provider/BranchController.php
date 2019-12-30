@@ -78,9 +78,7 @@ class BranchController extends Controller
     public function post_add_branch(Request $request)
     {
 
-
         //App()->setLocale("ar");
-
 
         $rules = [
             "ar_name" => "required",
@@ -385,7 +383,8 @@ class BranchController extends Controller
             "booking-features" => "required",
             "congestion-status" => "required|exists:congestion_settings,id",
             //"average-price"      => "required|numeric",
-            "address-text" => "required",
+            "address-text-ar" => "required",
+            "address-text-en" => "required",
             "lat" => "required",
             "lng" => "required",
             "phone-number" => array('required', 'regex:/^(05|5)([0-9]{8})$/'),
@@ -443,8 +442,8 @@ class BranchController extends Controller
             "booking_status" => $request->input("booking-features"),
             "delivery_price" => $request->input("delivery-price"),
             "has_payment" => $request->input("has_payment"),
-            "ar_address" => $request->input("address-text"),
-            "en_address" => "",
+            "ar_address" => $request -> input('address-text-ar'),
+            "en_address" => $request -> input('address-text-en'),
             "longitude" => $request->input("lng"),
             "latitude" => $request->input("lat"),
 //            "start_working_time" => $request->input("start") . ":00:00",

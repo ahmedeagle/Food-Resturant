@@ -133,6 +133,9 @@
                                                id="branch-name" required>
                                     </div><!-- .form-group name -->
 
+
+
+
                                     <div class="form-group">
                                         <label for="service-provider">{{trans('site.branch_type')}}</label>
                                         <select class="custom-select text-gray font-body-md" name="service-provider" id="service-provider" required>
@@ -270,14 +273,23 @@
 
                                     <div class="form-group">
                                         <label for="address-text">
-                                            {{trans('site.branch_address_text')}}
+                                            {{trans('site.branch_address_text_ar')}}
                                         </label>
                                         <input type="text"
                                                class="form-control border-gray font-body-md"
-                                               id="address-text"
-                                               value="{{ $branch->ar_address }}"
-                                               name="address-text" required>
+                                               id="address-text-ar"
+                                               name="address-text-ar" placeholder="الحى - الشارع - المبنى" required>
                                     </div><!-- .form-group address-text -->
+                                    <div class="form-group">
+                                        <label for="address-text">
+                                            {{trans('site.branch_address_text_en')}}
+                                        </label>
+                                        <input type="text"
+                                               class="form-control border-gray font-body-md"
+                                               id="address-text-en"
+                                               name="address-text-en" placeholder="الحى - الشارع - المبنى" required>
+                                    </div><!-- .form-group address-text -->
+
 
                                     <div class="form-group">
                                         <label for="address-map"
