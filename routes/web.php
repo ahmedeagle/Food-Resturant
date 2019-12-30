@@ -12,6 +12,10 @@
 */
 
 
+Route::get('now',function (){
+    return Carbon\Carbon::now();
+});
+
 Route::middleware(['guest:web', 'guest:provider', 'guest:branch'])->group(function() {
  Route::post('/contact-us', "Site\ContactController@contact_us");
   Route::prefix('user')->group(function() {
