@@ -278,6 +278,7 @@
                                         <input type="text"
                                                class="form-control border-gray font-body-md"
                                                id="address-text-ar"
+                                               value="{{ $branch-> ar_address }}"
                                                name="address-text-ar" placeholder="الحى - الشارع - المبنى" required>
                                     </div><!-- .form-group address-text -->
                                     <div class="form-group">
@@ -287,6 +288,7 @@
                                         <input type="text"
                                                class="form-control border-gray font-body-md"
                                                id="address-text-en"
+                                               value="{{ $branch-> en_address }}"
                                                name="address-text-en" placeholder="الحى - الشارع - المبنى" required>
                                     </div><!-- .form-group address-text -->
 
