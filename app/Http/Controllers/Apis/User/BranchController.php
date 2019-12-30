@@ -59,7 +59,7 @@ class BranchController extends Controller
                         "providers.".$name ."_description AS description",
                         "congestion_settings." .$name . "_name AS congestion_name",
                          DB::raw("CONCAT('". url('/') ."','/storage/app/public/settings/', images.name) AS congestion_image_url"),
-                        "branches.ar_address AS address",
+                        "branches.".$name ."_address AS address",
                         "branches.has_booking",
                         "branches.booking_status",
                         "branches.has_delivery",
