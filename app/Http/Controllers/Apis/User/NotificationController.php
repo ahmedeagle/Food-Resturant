@@ -51,7 +51,6 @@ class NotificationController extends Controller
              return (($a->created_at >  $b->created_at))?-1:1;
         });
 
-        return $results;
 
 
         // Get current page form url e.x. &page=1
