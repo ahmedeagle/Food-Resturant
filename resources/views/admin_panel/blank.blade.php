@@ -23,7 +23,7 @@
     <!-- themify-icons line icon -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/icon/themify-icons/themify-icons.css')}}">
     <!-- simple line icon -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/icon/simple-line-icons/css/simple-line-icons.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel//icon/simple-line-icons/css/simple-line-icons.css')}}">
     <!-- ico font -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/icon/icofont/css/icofont.css')}}">
     <!-- Font Awesome -->
