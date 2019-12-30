@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use DB;
+use Carbon;
 use Validator;
 class Notifications extends Controller {
 
@@ -133,7 +134,8 @@ class Notifications extends Controller {
                 ->insertGetId([
                     "title" => $title,
                     "content" => $content,
-                    "type" => $type
+                    "type" => $type,
+                    "created_at"  => Carbon\Carbon::now()
                 ]);
         }
 
