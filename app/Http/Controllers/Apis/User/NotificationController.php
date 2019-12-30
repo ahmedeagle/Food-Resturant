@@ -46,7 +46,7 @@ class NotificationController extends Controller
 
         usort($results, function($a,$b) {
             if($a==$b) return 0;
-             return ($a->create_date < $b->create_date)?-1:1;
+             return ($a->create_time < $b->create_time)?-1:1;
         });
 
         return $results;
