@@ -90,7 +90,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">المطعم</label>
                         <div class="col-sm-10">
-                            <select style="height: 40px;" name="provider_id" class="form-control">
+                            <select style="height: 40px;" name="provider_id" id="providers" class="form-control">
                                 <option value="">من فضلك قم باختيار المطعم</option>
                                 @foreach ($providers as $p)
                                     <option value="{{ $p->id }}"
