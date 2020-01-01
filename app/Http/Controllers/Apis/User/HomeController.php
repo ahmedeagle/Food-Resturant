@@ -125,14 +125,12 @@ class HomeController extends Controller
                     $distance = -1;
                 }
                 $branch->distance = $distance;
-           
-
              
             $dataarr = [
                 "restaurant_id"     =>      $branch->branch_id,
                 "address"           =>      $branch ->address,
                 "title"             =>      $branch->title,
-                "image_url"         =>      $branch->image_url,
+                "notes"             =>      $branch->notes,
                 "accept_order"      =>      $branch->accept_order
             ];
             $data[] = $dataarr;
