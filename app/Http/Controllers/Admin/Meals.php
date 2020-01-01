@@ -141,8 +141,13 @@ class Meals extends Controller
         )
             ->get();
 
-        $viewBranches = view('admin_panel.branches.branches', compact('branches'))->renderSections();
+        if ($request->filled('admin') and $request->admin == 1) {
+            $viewBranches = view('admin_panel.offers.branches', compact('branches'))->renderSections();
+        } else {
+            $viewBranches = view('admin_panel.branches.branches', compact('branches'))->renderSections();
+        }
         $viewCategories = view('admin_panel.branches.footListCategories', compact('categories'))->renderSections();
+
         return response()->json([
             'branches' => $viewBranches['main'],
             'appendFootListCategories' => $viewCategories['main'],

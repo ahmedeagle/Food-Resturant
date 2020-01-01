@@ -87,7 +87,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">المطعم</label>
                     <div class="col-sm-10">
-                        <select style="height: 40px;" name="provider_id" class="form-control">
+                        <select style="height: 40px;" name="provider_id" id="providers"  class="form-control">
                             <option value="">من فضلك قم باختيار المطعم</option>
                             @foreach ($providers as $p)
                                 <option value="{{ $p->id }}"  @if(old('provider_id') || $errors->has('provider_id')) @if(old('provider_id') == $p->id) selected @endif @else @if($p->id == $offers->provider_id) selected @endif @endif>{{ $p->ar_name }}</option>
@@ -100,7 +100,30 @@
                 </div>
 
 
-              
+                <div class="form-group row" id="currentBrnaches">
+                    <label class="col-sm-2 col-form-label">أختر الفرع </label>
+                    <div class="col-sm-10">
+
+                        <select class="form-control" id="branches" name="branches[]" multiple>
+                            <option value="">برجاء اختيار الفرع</option>
+                            @if(isset($branches) && count($branches) > 0)
+                                @foreach($branches as $branch)
+                                    <option value="{{ $branch->id }}"  @if($branch -> selected == 1) selected @endif
+                                    >{{ $branch->name }}
+                                    </option>
+                                @endforeach
+                            @endif
+                        </select>
+                        @if($errors->has("branch"))
+                            {{ $errors->first("branch") }}
+                        @endif
+                    </div>
+                </div>
+
+
+                <div class="appendbrnachesedit"></div>
+
+
 
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label">صورة العرض</label>
@@ -121,4 +144,36 @@
             </form>
          </div>
 </div>
+</div>
 @endsection
+
+    @section('script')
+
+        <script>
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            //get provider branches
+            $(document).on('change', '#providers', function (e) {
+                e.preventDefault();
+                $.ajax({
+
+                    type: 'post',
+                    url: "{{Route('admin.meals.providerbranches')}}",
+                    data: {
+                        'parent_id': $(this).val(),
+                        //'_token'   :   $('meta[name="csrf-token"]').attr('content'),
+                        'admin'     : 1
+                    },
+                    success: function (data) {
+                        $('#currentBrnaches').remove();
+                        $('.appendbrnachesedit').empty().append(data.branches);
+
+                    }
+                });
+            });
+        </script>
+@stop

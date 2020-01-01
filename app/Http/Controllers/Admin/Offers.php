@@ -67,6 +67,11 @@ class Offers extends Controller
             'image.required' => 'الصورة مطلوبة.',
             'image.mimes' => 'نوع الصورة غير مدعوم.',
             'approved.required' => 'برجاء اختيار حالة العرض',
+            'branches.required' => 'لابد من اختيار فرع علي الاقل ',
+            'branches.array' => 'لابد ان يكون الافرع علي شكل مصفوفه ',
+            'branches.min' => 'لابد من اختيار فرع علي الاقل ',
+            'branches.*.exists' => 'هذا الفرع غير موجود لدينا ',
+            'branches.*.required' => 'لابد من اختيار فرع علي الاقل '
         ];
         $rules = [
             'en_title' => 'required',
@@ -76,6 +81,8 @@ class Offers extends Controller
             'provider_id' => 'required',
             'approved' => 'required',
             'image' => 'required|mimes:jpg,jpeg,png',
+            'branches' => 'required|array|min:1',
+            'branches.*' => 'required|exists:branches,id'
         ];
         $this->validate($request, $rules, $messages);
 
@@ -85,17 +92,32 @@ class Offers extends Controller
 
         $request->image->store('offers', 'public');
 
-        DB::table("offers")
-            ->insert([
-                "ar_title" => $request->input("ar_title"),
-                "en_title" => $request->input("en_title"),
-                "ar_notes" => $request->input("ar_notes"),
-                "en_notes" => $request->input("en_notes"),
-                "image_id" => $image,
-                "provider_id" => $request->input("provider_id"),
-                "approved" => $request->input("approved"),
-            ]);
-        return redirect("/admin/offers/list/all")->with("success", "تمت الاضافة بنجاح");
+
+        try {
+            DB::beginTransaction();
+            $offerId = DB::table("offers")
+                ->insertGetId([
+                    "ar_title" => $request->input("ar_title"),
+                    "en_title" => $request->input("en_title"),
+                    "ar_notes" => $request->input("ar_notes"),
+                    "en_notes" => $request->input("en_notes"),
+                    "image_id" => $image,
+                    "provider_id" => $request->input("provider_id"),
+                    "approved" => $request->input("approved"),
+                ]);
+
+            foreach ($request->branches as $branchId) {
+                DB::table('offers_branches')->insert([
+                    'offer_id' => $offerId,
+                    'branch_id' => $branchId
+                ]);
+            }
+            DB::commit();
+            return redirect("/admin/offers/list/all")->with("success", "تمت الاضافة بنجاح");
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect("/admin/offers/list/all")->with("error", $e->getMessage());
+        }
     }
 
     public function get_edit($id)
@@ -120,9 +142,20 @@ class Offers extends Controller
         $data['providers'] = DB::table("providers")
             ->where("accountactivated", "1")
             ->get();
+
         if (!$data['offers']) {
             return redirect("/admin/offers")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
         }
+
+
+        $data['branches'] = DB::table('branches')
+            ->where('published', 1)
+            ->where('provider_id', $data['offers']->provider_id)
+            ->select('id',
+                'ar_name as name',
+                DB::raw('IF ((SELECT count(id) FROM offers_branches WHERE offers_branches.offer_id = ' . $id . ' AND offers_branches.branch_id = branches.id) > 0, 1, 0) as selected')
+            )->get();
+
         return view("admin_panel.offers.edit", $data);
     }
 
@@ -147,6 +180,11 @@ class Offers extends Controller
             'provider_id.required' => 'برجاء اختيار المطعم',
             'image.mimes' => 'نوع الصورة غير مدعوم.',
             'approved.required' => 'برجاء اختيار حالة العرض',
+            'branches.required' => 'لابد من اختيار فرع علي الاقل ',
+            'branches.array' => 'لابد ان يكون الافرع علي شكل مصفوفه ',
+            'branches.min' => 'لابد من اختيار فرع علي الاقل ',
+            'branches.*.exists' => 'هذا الفرع غير موجود لدينا ',
+            'branches.*.required' => 'لابد من اختيار فرع علي الاقل '
         ];
         $rules = [
             'en_title' => 'required',
@@ -156,28 +194,56 @@ class Offers extends Controller
             'image' => 'mimes:jpg,jpeg,png',
             'ar_notes' => 'required',
             'en_notes' => 'required',
+            'branches' => 'required|array|min:1',
+            'branches.*' => 'required|exists:branches,id'
         ];
         $this->validate($request, $rules, $messages);
 
-        if ($request->hasFile("image")) {
-            DB::table("images")
-                ->where("id", $data->image_id)
-                ->update([
-                    'name' => $request->image->hashName()
+        try {
+            DB::beginTransaction();
+
+            if ($request->hasFile("image")) {
+                DB::table("images")
+                    ->where("id", $data->image_id)
+                    ->update([
+                        'name' => $request->image->hashName()
+                    ]);
+                Storage::delete('public/offers/' . $data->filename);
+                $request->image->store('offers', 'public');
+            }
+
+
+            //delete all previous offer branches
+            DB::table('offers_branches')->where('offer_id', $id)->delete();
+
+            foreach ($request->branches as $branchId) {
+                DB::table('offers_branches')->insert([
+                    'offer_id' => $id,
+                    'branch_id' => $branchId
                 ]);
-            Storage::delete('public/offers/' . $data->filename);
-            $request->image->store('offers', 'public');
+            }
+
+
+            DB::table("offers")
+                ->where("id", $id)
+                ->update([
+                    "ar_title" => $request->input("ar_title"),
+                    "en_title" => $request->input("en_title"),
+                    "ar_notes" => $request->input("ar_notes"),
+                    "en_notes" => $request->input("en_notes"),
+                    "provider_id" => $request->input("provider_id"),
+                    "approved" => $request->input("approved")
+                ]);
+
+
+            DB::commit();
+            return redirect("/admin/offers/list/all")->with("success", "تمت الاضافة بنجاح");
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect("/admin/offers/list/all")->with("error", $e->getMessage());
         }
-        DB::table("offers")
-            ->where("id", $id)
-            ->update([
-                "ar_title" => $request->input("ar_title"),
-                "en_title" => $request->input("en_title"),
-                "ar_notes" => $request->input("ar_notes"),
-                "en_notes" => $request->input("en_notes"),
-                "provider_id" => $request->input("provider_id"),
-                "approved" => $request->input("approved")
-            ]);
+
+
         return redirect("/admin/offers/list/all")->with("success", "تمت العملية بنجاح");
     }
 

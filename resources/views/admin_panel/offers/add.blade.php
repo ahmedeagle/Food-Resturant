@@ -100,6 +100,14 @@
                             @if($errors->has("provider_id"))
                                 {{ $errors->first("provider_id") }}
                             @endif
+                            <br>
+                            @if($errors->has("branches"))
+                                {{ $errors->first("branches") }}
+                            @endif
+                            <br>
+                            @if($errors->has("branches.*"))
+                                {{ $errors->first("branches.*") }}
+                            @endif
                         </div>
                     </div>
 
@@ -121,4 +129,34 @@
                 </form>
             </div>
         </div>
-@endsection
+        @endsection
+
+        @section('script')
+
+            <script>
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                //get provider branches
+                $(document).on('change', '#providers', function (e) {
+                    e.preventDefault();
+                    $.ajax({
+
+                        type: 'post',
+                        url: "{{Route('admin.meals.providerbranches')}}",
+                        data: {
+                            'parent_id': $(this).val(),
+                            //'_token'   :   $('meta[name="csrf-token"]').attr('content'),
+                            'admin'     : 1
+                         },
+                        success: function (data) {
+                            $('.appendbrnaches').empty().append(data.branches);
+
+                        }
+                    });
+                });
+            </script>
+@stop

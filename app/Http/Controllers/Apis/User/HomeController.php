@@ -86,6 +86,7 @@ class HomeController extends Controller
             ->join("images", "images.id", "offers.image_id")
             ->join("providers", "providers.id", "offers.provider_id")
             ->join("branches", "providers.id", "branches.provider_id")
+            ->join("offers_branches","branches.id","offers_branches.branch_id")
             ->where("offers.approved", "1")
             ->select(
                 "branches.id AS branch_id",
