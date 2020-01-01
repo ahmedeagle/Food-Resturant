@@ -12,8 +12,7 @@ class HomeController extends Controller
     public function index(){
         
  
-      $data['offers']  = $this->get_home_page_offers();
-
+       $data['offers']  = $this->get_home_page_offers();
         $data['cats'] = $this->get_home_page_cats();
         $data['settings'] = DB::table("app_settings")->first();
 
@@ -109,6 +108,7 @@ class HomeController extends Controller
                 ->join("images", "images.id" , "offers.image_id")
                 ->join("providers", "providers.id" , "offers.provider_id")
                 ->join("branches", "providers.id" , "branches.provider_id")
+                 ->join("offers_branches","branches.id","offers_branches.branch_id")
                 ->where("offers.approved" , "1")
                 ->select(
                         "branches.id AS branch_id",
@@ -117,8 +117,9 @@ class HomeController extends Controller
                         "branches.ar_address AS address",
                         "offers.provider_id",
                         "offers.lft",
-                        "offers.".LaravelLocalization::getCurrentLocale()."_title AS title",
-                    
+                        "branches.".LaravelLocalization::getCurrentLocale()."_name AS title",
+                    "offers." . LaravelLocalization::getCurrentLocale() . "_notes AS notes",
+
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
                 )
