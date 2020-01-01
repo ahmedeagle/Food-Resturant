@@ -256,11 +256,12 @@ class Offers extends Controller
             ->first();
         if ($data) {
             DB::table("images")->where("id", $data->image_id)->delete();
+            DB::table('offers_branches')->where('offer_id', $id)->delete();
             Storage::delete('public/offers/' . $data->filename);
             DB::table("offers")->where("id", $id)->delete();
-            return redirect("/admin/offers")->with("success", "تمت العملية بنجاح");
+            return redirect("/admin/offers/list/all")->with("success", "تمت العملية بنجاح");
         } else {
-            return redirect("/admin/offers")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
+            return redirect("/admin/offers/list/all")->with("error", "حدث خطأ برجاء المحاولة مرة اخرى");
         }
     }
 
