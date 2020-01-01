@@ -103,6 +103,8 @@
                         </div>
                     </div>
 
+                    <div class="appendbrnaches"></div>
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">صورة العرض</label>
                         <div class="col-sm-10">
