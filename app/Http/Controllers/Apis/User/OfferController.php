@@ -18,7 +18,7 @@ class OfferController extends Controller
                     ->where("offers.approved" , "1")
                     ->select(
                         "offers.provider_id",
-                        "offers." .$name . "_title AS title",
+                        "branches." .$name . "_name AS title",
                         "branches." .$name . "_address AS address",
                         "branches.id AS branch_id",
                         "offers.lft",

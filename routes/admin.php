@@ -132,7 +132,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
         Route::post('/store', "Admin\MealCategories@post_add");
         Route::get('/edit/{id}', "Admin\MealCategories@get_edit");
         Route::post('/update/{id}', "Admin\MealCategories@post_edit");
-        Route::get('/delete/{id}', "Admin\MealCategories@delete");
+      //  Route::get('/delete/{id}', "Admin\MealCategories@delete");
     });
 
     Route::prefix('/foodCategories')->group(function(){
@@ -147,7 +147,9 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
     Route::group(['prefix' => 'meals', 'middleware' => 'can:meals'], function () {        
         Route::get('/', "Admin\Meals@index");
         Route::get('/add', "Admin\Meals@get_add");
-        Route::post('/store', "Admin\Meals@post_add");
+        Route::post('/store', "Admin\Meals@post_add_meal");
+        Route::post('/loadBranches', "Admin\Meals@load_branches") -> name('admin.meals.providerbranches');
+        Route::post('/branch/foodlist/categories', "Admin\Meals@load_branches_fooflist_categories") -> name('admin.meals.branchFoodlist');
         Route::get('/edit/{id}', "Admin\Meals@get_edit");
         Route::post('/edit', "Admin\Meals@post_edit");
         Route::post('/update/{id}', "Admin\Meals@post_edit");

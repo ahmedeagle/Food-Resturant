@@ -25,20 +25,25 @@ class MealCategories extends Controller {
     }
     public function get_add(){
         $data['title'] = 'اضافة تصنيف قائمة طعام جديد';
+        $data['providers']   = DB::table('providers') -> pluck('ar_name','id') -> toArray();
         return view("admin_panel.categories.MealCategories.add" , $data);
     }
     public function post_add(Request $request){
         $messages = [
             'en_name.required'      => 'برجاء ادخال اسم التصنيف بالانجليزية',
             'ar_name.required'      => 'برجاء ادخال اسم التصنيف بالعربية',
+            'provider_id.required'      => 'لأبد من اختيار المطعم اولا ',
+            'provider_id.exists'      => 'المطعم غير موجود لدينا ',
         ];
         $rules = [
             'en_name'      => 'required',
             'ar_name'      => 'required',
+            'provider_id'  => 'required|exists:providers,id'
         ];
         $this->validate($request, $rules , $messages);
         DB::table("mealcategories")
             ->insert([
+                "provider_id"  => $request->input("provider_id"),
                 "ar_name"      => $request->input("ar_name"),
                 "en_name"      => $request->input("en_name"),
             ]);

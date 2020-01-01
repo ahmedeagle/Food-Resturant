@@ -13,6 +13,7 @@
          </li>
          <li class="breadcrumb-item"><a href="{{ url('admin/meals') }}" style="line-height: 2.5">{{ $title }}</a>
          </li>
+          <a style="float: left; color: white  " href="{{ url('admin/meals/add') }}" class="btn btn-grd-primary">اضافة وجبة جديدة  </a>
       </ul>
    </div>
 </div>

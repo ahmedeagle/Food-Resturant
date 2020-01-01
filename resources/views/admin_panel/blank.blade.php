@@ -68,7 +68,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/bower_components/slick-carousel/css/slick-theme.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/admin_panel/css/logic.css')}}">
 
-
+    <link rel="stylesheet" href="{{ asset('assets/site/css/notifIt.min.css') }}">
 
 <style>
     
@@ -708,6 +708,7 @@
     <!-- task board js -->
     <script  src="{{asset('assets/admin_panel/pages/task-board/task-board.js')}}"></script>
     <script  src="{{asset('assets/admin_panel/js/logic.js')}}"></script>
+    <script src="{{ asset("/assets/site/js/notifIt.min.js") }}"></script>
 
     <!--<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>-->
     <!--<script>-->

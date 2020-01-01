@@ -181,9 +181,9 @@ $(document).ready(function () {
                     msg: data.msg,
                     type: "success"
                 });
-                setTimeout(function () {
-                    window.location.href = baseUrl + "/restaurant/food-menu/list";
-                },2000)
+                // setTimeout(function () {
+                //     window.location.href = baseUrl + "/restaurant/food-menu/list";
+                // },2000)
 
             }else{
                 notif({
@@ -221,15 +221,12 @@ $(document).ready(function () {
     }
 
     function  readURL(input, handler) {
-
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function(e) {
                 var data = e.target.result;
                 var check = data.substr(0, data.indexOf(';')).slice(5).split("/");
                 if(check[0] != "image") {
-
                     notif({
                         msg: "برجاء اختيار صورة",
                         type: "warning"

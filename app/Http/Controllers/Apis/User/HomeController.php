@@ -20,15 +20,11 @@ class HomeController extends Controller
         $cats = $this->getSubCategoriesList($name ,7);
 
          $offers = $this->getOffersList($request,$name);
-             
-             
+
              //get nearst provider branches 
         $providersList = $this->getProvidersList($request,$name , 7);
         
-        
           $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
-        
-        
         
         if($request->input("access_token")){
             $user = DB::table("users")
@@ -93,7 +89,7 @@ class HomeController extends Controller
                         "branches." .$name . "_address AS address",
                         "offers.provider_id",
                         "offers.lft",
-                        "offers." .$name . "_title AS title",
+                        "branches." .$name . "_name AS title",
                     
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"
@@ -101,9 +97,7 @@ class HomeController extends Controller
                 ->orderBy("offers.lft")
                  ->get();
         $offers = $this->filter_offers_branches($request , $name , $offers);
-       
-        
-        
+
         return $offers;
 
     }

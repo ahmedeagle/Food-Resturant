@@ -1,6 +1,8 @@
 <?php
 
 
+use Illuminate\Support\Facades\Cookie;
+
 Route::prefix('restaurant')->group(function(){
 
 
@@ -29,6 +31,10 @@ Route::prefix('restaurant')->group(function(){
         Route::post("/food-menu/cat/edit" , "Provider\MealController@post_edit_meal_cat");
         Route::post("/food-menu/edit" , "Provider\MealController@post_edit_meal");
         Route::post("/food-menu/add-new-meal" , "Provider\MealController@post_add_meal");
+         Route::get("/food-menu/getse" , function (){
+             return Cookie::get('req');
+         });
+
         
         Route::post("/branches/new-branch" , "Provider\BranchController@post_add_branch");
 

@@ -18,7 +18,6 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
 
-
                    @if(Session::has("error_no_file"))
                         <div class="alert alert-danger top-margin">
                             {{ Session::get("error_no_file") }}
@@ -205,7 +204,7 @@
                                           name="en_description"
                                           rows="6" required></textarea>
                                           
-                                           <p id="ثى-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
+                                           <p id="en-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
                             </div><!-- .form-group details -->
 
                             <div class="row">
