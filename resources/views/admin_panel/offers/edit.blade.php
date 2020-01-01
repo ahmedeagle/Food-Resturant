@@ -46,6 +46,30 @@
                     </div>
                 </div>
 
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">ملاحظات العرض بالعربية </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="ar_notes" value="{{ old("ar_notes" , $offers->ar_notes) }}"
+                               placeholder="من فضلك ادخل  ملاحظات  العرض بالعربية ">
+                        @if($errors->has("ar_notes"))
+                            {{ $errors->first("ar_notes") }}
+                        @endif
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">ملاحظات العرض بالانجليزية </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="en_notes" value="{{ old("en_notes",$offers->en_notes) }}"
+                               placeholder="من فضلك ادخل  ملاحظات  العرض بالانجليزية ">
+                        @if($errors->has("en_notes"))
+                            {{ $errors->first("en_notes") }}
+                        @endif
+                    </div>
+                </div>
+
+
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">حالة العرض</label>
                     <div class="col-sm-10">

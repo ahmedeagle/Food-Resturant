@@ -19,6 +19,7 @@ class OfferController extends Controller
                     ->select(
                         "offers.provider_id",
                         "branches." .$name . "_name AS title",
+                        "offers." .$name . "_notes AS notes",
                         "branches." .$name . "_address AS address",
                         "branches.id AS branch_id",
                         "offers.lft",
