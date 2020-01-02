@@ -553,6 +553,37 @@
                                     </a>
                                 </li>
                                 @endcan
+
+
+                                 @can('withdraws')
+
+                                     <li class="pcoded-hasmenu {{ (Request::segment(2) == 'balances') ? ' pcoded-trigger active' : '' }}">
+                                         <a href="javascript:void(0)">
+                                             <span class="pcoded-micon"><i class="fa fa-money"></i><b></b></span>
+                                             <span class="pcoded-mtext"> الارصدة </span>
+                                             <span class="pcoded-mcaret"></span>
+                                         </a>
+                                         <ul class="pcoded-submenu">
+                                             <li class="{{ (Request::segment(2) == 'balances' && Request::segment(4) == 'user') ? 'active' : '' }}">
+                                                 <a href="{{ url("admin/balances/list/user") }}">
+                                                     <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
+                                                     <span class="pcoded-mtext"> ارصده المستخدمين</span>
+                                                     <span class="pcoded-mcaret"></span>
+                                                 </a>
+                                             </li>
+                                             <li class="{{ (Request::segment(2) == 'balances' && Request::segment(4) == 'provider') ? 'active' : '' }}">
+                                                 <a href="{{ url("admin/balances/list/provider") }}">
+                                                     <span class="pcoded-micon"><i class="ti-direction-alt"></i></span>
+                                                     <span class="pcoded-mtext">ارصدة المطاعم</span>
+                                                     <span class="pcoded-mcaret"></span>
+                                                 </a>
+                                             </li>
+
+                                         </ul>
+                                     </li>
+
+                                 @endcan
+
                             </ul>
 
                              @if(Gate::check('settings') || Gate::check('users'))

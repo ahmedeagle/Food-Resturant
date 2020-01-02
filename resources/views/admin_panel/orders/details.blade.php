@@ -10,7 +10,7 @@
          <li class="breadcrumb-item">
             <a href="{{ url('admin/dashboard') }}">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="{{ url('admin_panel/orders') }}">الطلبات</a>
+         <li class="breadcrumb-item"><a href="{{ url('admin/orders') }}">الطلبات</a>
          </li>
          <li class="breadcrumb-item"><a>{{ $title }}</a>
          </li>

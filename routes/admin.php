@@ -252,6 +252,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
         Route::get('/delete/{id}', "Admin\Notifications@delete");
     });
 
+  Route::group(['prefix' => 'balances', 'middleware' => 'can:withdraws'], function () {
+        Route::get('/list/{type}', "Admin\Balance@index");
+        Route::get("/add/{type}" , "Admin\Balance@get_add");
+        Route::get("/update/{balanceId}" , "Admin\Balance@update");
+     });
+
     Route::group(['prefix' => 'comments', 'middleware' => 'can:comments'], function () {     
         Route::get('/list', "Admin\Comments@index");
     });

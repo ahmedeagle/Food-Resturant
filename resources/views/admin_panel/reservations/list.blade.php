@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item" style="line-height: 2.5">
                     <a href="{{ url('admin/dashboard') }}">الرئيسية</a>
                 </li>
-                <li class="breadcrumb-item"><a href="{{ url('booking') }}" style="line-height: 2.5"><?=$title?></a>
+                <li class="breadcrumb-item"><a href="{{ url('reservations') }}" style="line-height: 2.5"><?=$title?></a>
                 </li>
                 {{--<a style="float: left; color: white" href="{{ url('admin/orderstatus/add') }}" class="btn btn-grd-primary">اضافة حالة جديدة</a>--}}
             </ul>
