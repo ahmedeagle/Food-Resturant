@@ -60,9 +60,10 @@ class BalanceController extends Controller
                         ->first();
 
             $price = $branch->delivery_price;
+            $has_delivery = $branch -> $branch;
         }else{
             $price = "0.0";
         }
-        return response()->json(['status' => true, 'errNum' => 0, 'msg' => $msg[3] , "delivery_price" => $price , "tax" => $tax]);
+        return response()->json(['status' => true, 'errNum' => 0, 'msg' => $msg[3] ,"has_delivery" => $has_delivery,"delivery_price" => $price , "tax" => $tax]);
     }
 }
