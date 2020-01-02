@@ -56,8 +56,9 @@ class BalanceController extends Controller
         if($id){
             $branch = DB::table("branches")
                         ->where("id" , $id)
-                        ->select("delivery_price")
+                        ->select("delivery_price" ,"has_delivery")
                         ->first();
+
             $price = $branch->delivery_price;
         }else{
             $price = "0.0";
