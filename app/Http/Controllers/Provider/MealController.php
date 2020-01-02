@@ -56,7 +56,8 @@ class MealController extends Controller
             "ar_name" => "required",
             "en_name" => "required",
             "category" => "required|exists:mealcategories,id",
-            "component" => "required",
+            "ar_component" => "required",
+            "en_component" => "required",
             "available" => "required|in:0,1",
             "spicy" => "required|in:0,1",
             "vegetable" => "required|in:0,1",
@@ -110,7 +111,6 @@ class MealController extends Controller
 
         }
 
-
         $data = [
             "ar_name" => $request->input("ar_name"),
             "en_name" => $request->input("en_name"),
@@ -126,11 +126,9 @@ class MealController extends Controller
             "gluten" => $request->input("gluten"),
         ];
 
-
         if ($request->input("spicy") == "1") {
             $data["spicy_degree"] = $request->input("spicy-degree");
         }
-
         if ($request->input("branch") != 0) {
             $data["branch_id"] = $request->input("branch");
             $allBranches = false;
@@ -139,13 +137,9 @@ class MealController extends Controller
                 ->insertGetId(
                     $data
                 );
-
             $this->storeMealData($meal, $request);
         } else {
-
-
             $allBranches = true;
-
             $branches = DB::table("branches")
                 ->where("provider_id", auth("provider")->id())
                 ->where("deleted", "0")
@@ -155,9 +149,7 @@ class MealController extends Controller
 
             if (isset($branches) && $branches->count() > 0) {
                 foreach ($branches as $branch) {
-
                     $data["branch_id"] = $branch->id;
-
                     // insert meal data
                     $meal = DB::table("meals")
                         ->insertGetId(
@@ -181,31 +173,28 @@ class MealController extends Controller
                     $this->storeMealData($meal, $request);
                 }
             }
-
         }
 
-        $componentArr = explode(",", $request->input("component"));
+        $componentArr = explode(",", $request->input("ar_component"));
+        $componentEn = explode(",", $request->input("en_component"));
+        if (count($componentArr) != count($componentEn)) {
+            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
+        }
+        $component = array_combine($componentArr, $componentEn);
 
-        foreach ($componentArr as $c) {
-
+        foreach ($component as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
-                    "ar_name" => (string)$c,
-                    "en_name" => (string)$c,
+                    "ar_name" => (string)$ar,
+                    "en_name" => (string)$en,
                     "meal_id" => $meal
                 ]);
         }
 
-
         if ($request->input("branch") != 0) {
-
-
             if ($request->hasFile("0")) {
-
                 for ($i = 0; $i <= $request->input("count") - 1; $i++) {
-
                     $request->$i->store('meals', 'public');
-
                     $img_id = DB::table("images")
                         ->insertGetId([
                             "name" => $request->$i->hashName()
@@ -217,13 +206,8 @@ class MealController extends Controller
                             "image" => $img_id
                         ]);
                 }
-
             }
-
-
         }
-
-
         return response()->json(["status" => true, "errNum" => 0, "msg" => trans("messages.success")]);
     }
 
@@ -377,15 +361,15 @@ class MealController extends Controller
         $component = DB::table("meal_component")
             ->where("meal_id", $id)
             ->select(
-                LaravelLocalization::getCurrentLocale() . "_name AS name"
+                "ar_name", "en_name"
             )->get();
 
         $data['adds'] = DB::table("meal_adds")
             ->where("meal_id", $id)
             ->select(
                 "id AS add_id",
-                "ar_name AS ar_name",
-                "en_name AS en_name",
+                "ar_name",
+                "en_name",
                 "added_price AS price"
             )->get();
 
@@ -394,17 +378,21 @@ class MealController extends Controller
             ->where("meal_id", $id)
             ->select(
                 "id AS option_id",
-                "ar_name AS ar_name",
-                "en_name AS en_name",
+                "ar_name",
+                "en_name",
                 "added_price AS price"
             )->get();
 
-        $data['component'] = "";
-        foreach ($component as $key => $c) {
 
+        $data['ar_component'] = "";
+        $data['en_component'] = "";
+
+        foreach ($component as $key => $c) {
             $delimeter = ($key == "") ? "" : ",";
-            $data["component"] .= $delimeter . $c->name;
+            $data["ar_component"] .= $delimeter . $c->ar_name;
+            $data["en_component"] .= $delimeter . $c->en_name;
         }
+
         // return edit meal view
         return view("Provider.pages.edit-meal", $data);
     }
@@ -418,7 +406,8 @@ class MealController extends Controller
             "ar_name" => "required",
             "en_name" => "required",
             "category" => "required|exists:mealcategories,id",
-            "component" => "required",
+            "ar_component" => "required",
+            "en_component" => "required",
             "available" => "required|in:0,1",
             "spicy" => "required|in:0,1",
             "vegetable" => "required|in:0,1",
@@ -576,14 +565,19 @@ class MealController extends Controller
             ->where("meal_id", $meal)
             ->delete();
 
-        $componentArr = explode(",", $request->input("component"));
+        $componentArr = explode(",", $request->input("ar_component"));
+        $componentEn = explode(",", $request->input("en_component"));
+        if (count($componentArr) != count($componentEn)) {
+            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
+        }
 
-        foreach ($componentArr as $c) {
+        $component = array_combine($componentArr, $componentEn);
 
+        foreach ($component as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
-                    "ar_name" => (string)$c,
-                    "en_name" => (string)$c,
+                    "ar_name" => (string)$ar,
+                    "en_name" => (string)$en,
                     "meal_id" => $meal
                 ]);
         }

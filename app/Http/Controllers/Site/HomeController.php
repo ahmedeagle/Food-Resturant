@@ -118,7 +118,7 @@ class HomeController extends Controller
                         "offers.provider_id",
                         "offers.lft",
                         "branches.".LaravelLocalization::getCurrentLocale()."_name AS title",
-                    "offers." . LaravelLocalization::getCurrentLocale() . "_notes AS notes",
+                        "offers." . LaravelLocalization::getCurrentLocale() . "_notes AS notes",
 
                     DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
                     "providers.accept_order"

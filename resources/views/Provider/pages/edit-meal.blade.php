@@ -22,18 +22,22 @@
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
-                        <form data-action="{{ url("/restaurant/food-menu/edit") }}" id="edit-meal-from" class="new-kind-form multi-forms">
+                        <form data-action="{{ url("/restaurant/food-menu/edit") }}" id="edit-meal-from"
+                              class="new-kind-form multi-forms">
 
                             <div class="form-group">
-                                <p>{{trans('site.meal_photo')}}<span class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
+                                <p>{{trans('site.meal_photo')}}<span
+                                            class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
                                 <div class="custom-file h-auto">
-                                    <input type="file" name="file" class="add-meal-image custom-file-input" id="restaurant-logo" hidden>
+                                    <input type="file" name="file" class="add-meal-image custom-file-input"
+                                           id="restaurant-logo" hidden>
                                     <label class="border-0 mb-0 cursor" for="restaurant-logo">
                                         <span class="d-inline-block border-gray rounded p-4">
                                             <i class="fa fa-plus fa-fw fa-lg text-gray" aria-hidden="true"></i>
                                         </span>
                                     </label>
-                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
+                                    <p id="meal-images-error"
+                                       class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
                                 </div>
                             </div><!-- .form-group logo -->
 
@@ -41,9 +45,9 @@
 
                                 @foreach($images as $img)
                                     <div>
-                                        <input class="image_id" type="hidden" value="{{ $img->image_id }}" />
+                                        <input class="image_id" type="hidden" value="{{ $img->image_id }}"/>
                                         <i class='delete-img fa fa-times' aria-hidden='true'></i>
-                                        <img class='io' src='{{ $img->meal_image_url }}' />
+                                        <img class='io' src='{{ $img->meal_image_url }}'/>
                                     </div>
                                 @endforeach
                             </div>
@@ -73,7 +77,8 @@
                                     <option value="">{{trans('site.choose_category')}}</option>
                                     @foreach($cats as $cat)
 
-                                        <option value="{{ $cat->id }}" @if($meal->mealCategory_id == $cat->id) selected @endif>{{ $cat->name }}</option>
+                                        <option value="{{ $cat->id }}"
+                                                @if($meal->mealCategory_id == $cat->id) selected @endif>{{ $cat->name }}</option>
 
                                     @endforeach
                                 </select>
@@ -88,7 +93,8 @@
 
                                     @foreach($branches as $branch)
 
-                                        <option value="{{ $branch->id }}" @if($meal->branch_id == $branch->id) selected @endif>{{ $branch->name }}</option>
+                                        <option value="{{ $branch->id }}"
+                                                @if($meal->branch_id == $branch->id) selected @endif>{{ $branch->name }}</option>
 
                                     @endforeach
                                 </select>
@@ -96,24 +102,40 @@
 
                             <div class="form-group">
                                 <label for="input-tags">
-                                    {{trans('site.ingredients')}}
+                                    {{trans('site.ingredientsAR')}}
                                     <span class="text-gray font-body-md">
                                         ({{trans('site.ingredients_note')}})
                                     </span>
                                 </label>
                                 <input type="text"
-                                       name="component"
-                                       value="{{ $component }}"
+                                       name="ar_component"
+                                       value="{{ $ar_component }}"
                                        id="input-tags" required>
                             </div><!-- .form-group tags -->
+
+                            <div class="form-group">
+                                <label for="input-tags">
+                                    {{trans('site.ingredientsEN')}}
+                                    <span class="text-gray font-body-md">
+                                        ({{trans('site.ingredients_note')}})
+                                    </span>
+                                </label>
+                                <input type="text"
+                                       name="en_component"
+                                       value="{{ $en_component }}"
+                                       id="input-tags" required>
+                            </div><!-- .form-group tags -->
+
 
                             <div class="form-group">
                                 <label for="available">{{trans('site.available_all_time')}}</label>
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="available" name="available" required>
                                     <option value="">{{trans('site.choose_status')}}</option>
-                                    <option value="1" @if($meal->available == "1") selected @endif> {{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->available == "0") selected @endif>{{trans('site.no')}}</option>
+                                    <option value="1"
+                                            @if($meal->available == "1") selected @endif> {{trans('site.yes')}}</option>
+                                    <option value="0"
+                                            @if($meal->available == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group available -->
 
@@ -122,8 +144,10 @@
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="spicy" name="spicy" required>
                                     <option value="">{{trans('site.choose_status')}}</option>
-                                    <option value="1" @if($meal->spicy == "1") selected @endif>{{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->spicy == "0") selected @endif>{{trans('site.no')}}</option>
+                                    <option value="1"
+                                            @if($meal->spicy == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0"
+                                            @if($meal->spicy == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group spicy -->
 
@@ -142,8 +166,10 @@
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="vegetable" name="vegetable" required>
                                     <option value="">{{trans('site.choose_status')}}</option>
-                                    <option value="1" @if($meal->vegetable == "1") selected @endif>{{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->vegetable == "0") selected @endif>{{trans('site.no')}}</option>
+                                    <option value="1"
+                                            @if($meal->vegetable == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0"
+                                            @if($meal->vegetable == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group vegetable -->
 
@@ -153,8 +179,10 @@
                                 <select class="custom-select text-gray font-body-md border-gray"
                                         id="gluten" name="gluten" required>
                                     <option value="">{{trans('site.choose_status')}}</option>
-                                    <option value="1" @if($meal->gluten == "1") selected @endif>{{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->gluten == "0") selected @endif>{{trans('site.no')}}</option>
+                                    <option value="1"
+                                            @if($meal->gluten == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0"
+                                            @if($meal->gluten == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
@@ -172,20 +200,24 @@
                             </div><!-- .form-group calorie -->
 
                             <div class="form-group">
-                                <label for="details">{{trans('site.description_ar')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
+                                <label for="details">{{trans('site.description_ar')}}<span
+                                            class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="form-control ar-details font-body-md border-gray"
                                           id="details"
                                           name="ar_description"
-                                          rows="6" required>{{ old("ar_description", $meal->ar_description) }}</textarea>
+                                          rows="6"
+                                          required>{{ old("ar_description", $meal->ar_description) }}</textarea>
                             </div><!-- .form-group details -->
 
 
                             <div class="form-group">
-                                <label for="details">{{trans('site.description_en')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
+                                <label for="details">{{trans('site.description_en')}}<span
+                                            class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="form-control en-details font-body-md border-gray"
                                           id="details"
                                           name="en_description"
-                                          rows="6" required>{{ old("en_description", $meal->en_description) }}</textarea>
+                                          rows="6"
+                                          required>{{ old("en_description", $meal->en_description) }}</textarea>
                             </div><!-- .form-group details -->
 
                             <div class="row">
@@ -198,7 +230,8 @@
                                                    id="ar_size{{ $key + 1 }}"
                                                    name="ar_size{{ $key + 1 }}"
                                                    value="{{ old("size". ($key + 1) ."", $s->ar_size_name) }}"
-                                                   class="form-control font-body-md border-gray" @if($key == 0) required @endif>
+                                                   class="form-control font-body-md border-gray"
+                                                   @if($key == 0) required @endif>
                                         </div><!-- .form-group -->
 
                                     @endforeach
@@ -224,7 +257,8 @@
                                                    id="en_size{{ $key + 1 }}"
                                                    name="en_size{{ $key + 1 }}"
                                                    value="{{ old("size". ($key + 1) ."", $s->en_size_name) }}"
-                                                   class="form-control font-body-md border-gray" @if($key == 0) required @endif>
+                                                   class="form-control font-body-md border-gray"
+                                                   @if($key == 0) required @endif>
                                         </div><!-- .form-group -->
 
                                     @endforeach
@@ -313,7 +347,7 @@
                                         @endfor
                                     @endif
                                 </div><!-- .col -->
-                                 <div class="col-sm-3 col-6">
+                                <div class="col-sm-3 col-6">
                                     <p>{{trans('site.optionsinenglish')}} </p>
 
                                     @foreach($adds as $key => $s)
@@ -485,15 +519,19 @@
 
                             <div class="form-group">
                                 <label for="recommended">{{trans('site.recommanded_restaurant')}}</label>
-                                <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
+                                <select name="recommended" class="custom-select text-gray font-body-md border-gray"
+                                        required>
                                     <option value="">{{trans('site.choose_status')}}</option>
-                                    <option value="1" @if($meal->recommend == "1") selected @endif>{{trans('site.yes')}}</option>
-                                    <option value="0" @if($meal->recommend == "0") selected @endif>{{trans('site.no')}}</option>
+                                    <option value="1"
+                                            @if($meal->recommend == "1") selected @endif>{{trans('site.yes')}}</option>
+                                    <option value="0"
+                                            @if($meal->recommend == "0") selected @endif>{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
-                            <input type="hidden" name="meal_id" value="{{ $meal->id }}" />
-                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5">{{trans('site.edit')}}</button>
+                            <input type="hidden" name="meal_id" value="{{ $meal->id }}"/>
+                            <button type="submit"
+                                    class="add-meal-btn btn btn-primary py-2 px-5">{{trans('site.edit')}}</button>
                         </form><!-- .new-kind-form -->
                     </div>
                 </div><!-- .col-* -->

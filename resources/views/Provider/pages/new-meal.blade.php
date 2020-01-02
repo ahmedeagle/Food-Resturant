@@ -18,7 +18,7 @@
 
                 <div class="col-lg-9 col-md-8 col-12 mt-4 mt-md-0 font-body-bold">
 
-                   @if(Session::has("error_no_file"))
+                    @if(Session::has("error_no_file"))
                         <div class="alert alert-danger top-margin">
                             {{ Session::get("error_no_file") }}
                         </div>
@@ -30,37 +30,42 @@
                     </div>
                     <div class="p-3 rounded-lg shadow-around mt-4">
 
-                        <form data-action="{{ url("/restaurant/food-menu/add-new-meal") }}" id="add-meal-from" class="new-kind-form multi-forms">
+                        <form data-action="{{ url("/restaurant/food-menu/add-new-meal") }}" id="add-meal-from"
+                              class="new-kind-form multi-forms">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                 
-                             <a  href="{{ url("/restaurant/download-rules") }}">     
-                                <label class="border-0 mb-0 cursor" >
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_iQ9tX59-heOF1cAF4BB5ndB8TUxJT_jtD6JUkdoV2WjEfRv" class="d-inline-block rounded-circle" width="86" height="86" >
-                                    <span class="font-body-md mr-2 text-primary">
+
+                                <a href="{{ url("/restaurant/download-rules") }}">
+                                    <label class="border-0 mb-0 cursor">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl_iQ9tX59-heOF1cAF4BB5ndB8TUxJT_jtD6JUkdoV2WjEfRv"
+                                             class="d-inline-block rounded-circle" width="86" height="86">
+                                        <span class="font-body-md mr-2 text-primary">
                                     
                                       {{trans('site.download_guide')}}
                                         
                                       </span>
-                                      
-                                </label>
-                                
+
+                                    </label>
+
                                 </a>
-                                
+
                             </div>
-                            
+
                             <hr>
-                            
+
                             <div class="form-group">
-                                <p> {{trans('site.meal_photo')}} <span class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
+                                <p> {{trans('site.meal_photo')}} <span
+                                            class="text-gray font-body-md">{{trans('site.photo_note')}}</span></p>
                                 <div class="custom-file h-auto">
-                                    <input type="file" name="file" class="add-meal-image custom-file-input" id="restaurant-logo" hidden>
+                                    <input type="file" name="file" class="add-meal-image custom-file-input"
+                                           id="restaurant-logo" hidden>
                                     <label class="border-0 mb-0 cursor" for="restaurant-logo">
                                         <span class="d-inline-block border-gray rounded p-4">
                                             <i class="fa fa-plus fa-fw fa-lg text-gray" aria-hidden="true"></i>
                                         </span>
                                     </label>
-                                    <p id="meal-images-error" class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
+                                    <p id="meal-images-error"
+                                       class="hidden-element alert alert-danger top-margin">{{trans('site.choose_meal_photo')}}</p>
                                 </div>
                             </div><!-- .form-group logo -->
 
@@ -114,13 +119,25 @@
 
                             <div class="form-group">
                                 <label for="input-tags">
-                                    {{trans('site.ingredients')}}
+                                    {{trans('site.ingredientsAR')}}
                                     <span class="text-gray font-body-md">
                                         ({{trans('site.ingredients_note')}})
                                     </span>
                                 </label>
                                 <input type="text"
-                                       name="component"
+                                       name="ar_component"
+                                       id="input-tags" required>
+                            </div><!-- .form-group tags -->
+
+                            <div class="form-group">
+                                <label for="input-tags">
+                                    {{trans('site.ingredientsEN')}}
+                                    <span class="text-gray font-body-md">
+                                        ({{trans('site.ingredients_note')}})
+                                    </span>
+                                </label>
+                                <input type="text"
+                                       name="en_component"
                                        id="input-tags" required>
                             </div><!-- .form-group tags -->
 
@@ -186,25 +203,29 @@
                             </div><!-- .form-group calorie -->
 
                             <div class="form-group">
-                                <label for="details"> {{trans('site.description_ar')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
+                                <label for="details"> {{trans('site.description_ar')}}<span
+                                            class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="ar-details form-control font-body-md border-gray"
                                           id="details"
                                           name="ar_description"
                                           rows="6" required></textarea>
-                                          
-                                          <p id="ar-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}} </p>
+
+                                <p id="ar-details-error"
+                                   class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}} </p>
 
                             </div><!-- .form-group details -->
 
 
                             <div class="form-group">
-                                <label for="details">{{trans('site.description_en')}}<span class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
+                                <label for="details">{{trans('site.description_en')}}<span
+                                            class="text-gray font-body-md">{{trans('site.min_5_words')}}</span></label>
                                 <textarea class="en-details form-control font-body-md border-gray"
                                           id="details"
                                           name="en_description"
                                           rows="6" required></textarea>
-                                          
-                                           <p id="en-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
+
+                                <p id="en-details-error"
+                                   class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
                             </div><!-- .form-group details -->
 
                             <div class="row">
@@ -214,8 +235,8 @@
                                         <input type="text"
                                                id="size1"
                                                name="size1"
-                                               class="form-control font-body-md border-gray" 
-                                               placeholder="مثال: كبير" 
+                                               class="form-control font-body-md border-gray"
+                                               placeholder="مثال: كبير"
                                                required>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
@@ -223,7 +244,7 @@
                                                id="size2"
                                                name="size2"
                                                class="form-control font-body-md border-gray"
-                                                >
+                                        >
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <input type="text"
@@ -252,8 +273,8 @@
                                                id="size1_en"
                                                name="size1_en"
                                                class="form-control font-body-md border-gray"
-                                               placeholder="ex:big" 
-                                                required>
+                                               placeholder="ex:big"
+                                               required>
                                     </div><!-- .form-group -->
                                     <div class="form-group">
                                         <input type="text"
@@ -392,7 +413,7 @@
                                                class="form-control font-body-md border-gray">
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
-                                 <div class="col-sm-3 col-6">
+                                <div class="col-sm-3 col-6">
                                     <p> {{trans('site.optionsinenglish')}} </p>
                                     <div class="form-group">
                                         <input type="text"
@@ -427,7 +448,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                   <p>{{trans('site.added_price')}}</p>
+                                    <p>{{trans('site.added_price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
@@ -538,7 +559,7 @@
                                                class="form-control font-body-md border-gray">
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
-                                  <div class="col-sm-3 col-12">
+                                <div class="col-sm-3 col-12">
                                     <p> {{trans('site.addsinenglish')}}</p>
                                     <div class="form-group">
                                         <input type="text"
@@ -573,7 +594,7 @@
                                 </div><!-- .col -->
                                 <div class="col-sm-6 col-12">
 
-                                   <p>{{trans('site.added_price')}}</p>
+                                    <p>{{trans('site.added_price')}}</p>
 
                                     <div class="input-group mb-3 rounded border border-gray overflow-hidden">
                                         <input type="text"
@@ -651,15 +672,19 @@
 
 
                             <div class="form-group">
-                                <label for="recommended"> {{trans('site.recommanded_restaurant')}}<span class="text-gray font-body-md">{{trans('site.choose_only_3from_eachCAt')}}</span> </label>
-                                <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
+                                <label for="recommended"> {{trans('site.recommanded_restaurant')}}<span
+                                            class="text-gray font-body-md">{{trans('site.choose_only_3from_eachCAt')}}</span>
+                                </label>
+                                <select name="recommended" class="custom-select text-gray font-body-md border-gray"
+                                        required>
                                     <option value="">{{trans('site.choose_status')}}</option>
                                     <option value="1">{{trans('site.yes')}}</option>
                                     <option value="0">{{trans('site.no')}}</option>
                                 </select>
                             </div><!-- .form-group gluten -->
 
-                            <button type="submit" class="add-meal-btn btn btn-primary py-2 px-5"> {{trans('site.save')}} </button>
+                            <button type="submit"
+                                    class="add-meal-btn btn btn-primary py-2 px-5"> {{trans('site.save')}} </button>
                         </form><!-- .new-kind-form -->
                     </div>
                 </div><!-- .col-* -->
