@@ -60,7 +60,7 @@ class BalanceController extends Controller
                         ->first();
 
             $price = $branch->delivery_price;
-            $has_delivery = $branch -> $branch;
+            $has_delivery = $branch -> has_delivery;
         }else{
             $price = "0.0";
         }
