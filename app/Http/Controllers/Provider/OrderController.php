@@ -12,7 +12,6 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-
         // App()->setLocale("ar");
         if (!(auth("provider")->check() || auth("branch")->check())) {
             return redirect("/login");
@@ -531,20 +530,13 @@ class OrderController extends Controller
 
 
             if ($taxData > 0) {
-
                 $AppPercent = ($totalordervalWithAppPercent * $taxData) / 100;
-
             }
-
 
             $providerBalanceFromOrder = $order->total_price - $AppPercent;
 
-
             if ($balance) {
-
-
                 $resturantId = auth('provider')->check() ? auth('provider')->id() : auth('branch')->id();
-
                 DB::table("balances")
                     ->where("actor_id", $resturantId)
                     ->where("actor_type", "provider")
@@ -552,14 +544,10 @@ class OrderController extends Controller
                         "balance" => $balance->balance - $AppPercent
                     ]);
             }
-
-
         }
 
 
         if ($order->payment_id == "2" || $order->payment_id == "3") {
-
-
             // check if the user using credit from balance
 
             $resturantId = auth('provider')->check() ? auth('provider')->id() : auth('branch')->id();
@@ -628,7 +616,7 @@ class OrderController extends Controller
 
          $push_notif_title = "تقييم المطعم";
         $post_id = $user->branch_id;
-        $post_title = " لقد قام مقدم الخدمة  {$desc_ar}بإنهاء الطلب المقدم برقم {$user->code}, برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما";
+        $post_title = " لقد قام مقدم الخدمة  {$desc_ar}بإنهاء الطلب المقدم برقم  {$user->code}  , برجاء تقييم المطعم حتى نتمكن من الاستمرار فى تقديم خدمة متميزة دائما ";
 
         $notif_data = array();
 
