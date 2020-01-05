@@ -24,7 +24,7 @@ class api_auth
                 ->where('api_password', md5($api_password))
                 ->first();
             if(!$get || $get == NULL){
-                return response()->json(['message' => 'Unauthenticated.']);
+                 return response()->json(['status' => false, 'errNum' => 300, 'msg' =>'Unauthenticated']);
             }
         }
         return $next($request);

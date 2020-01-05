@@ -76,7 +76,5 @@ return [
      "dateMustAfterorEqualTodat"     => "Order Date Must Be Greater or Equal to Today",
      "invalid_phone_format"          => "phone number not correct",
      "phonenotcorrect"                => "phone number must begin ",
-     
      "user.blocked"                    => "this account is blocked",
-     
 ];

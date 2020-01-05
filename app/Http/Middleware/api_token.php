@@ -23,12 +23,12 @@ class api_token
                 ->where("token", $token)
                 ->first();
             if (!$get || $get == NULL) {
-                return response()->json(['message' => 'Unauthenticated.']);
-            }else{
-                if($get -> blocked == '1'){
-                    return response()->json(['message' => 'Unauthenticated.']);
-                }
+                return response()->json(['status' => false, 'errNum' => 300, 'msg' =>'Unauthenticated']);
             }
+            if ($get->blocked == '1') {
+                return response()->json(['status' => false, 'errNum' => 301, 'msg' =>trans('messages.user.blocked')]);
+            }
+
         }
         return $next($request);
     }
