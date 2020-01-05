@@ -4,9 +4,9 @@
       <h5 class="m-b-10">الدول</h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item">
-            <a href="<?=base_url('admin_panel/dashboard')?>">الرئيسية</a>
+            <a href="<?=base_url('admin/dashboard')?>">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="<?=base_url('admin_panel/countries')?>">الدول</a>
+         <li class="breadcrumb-item"><a href="<?=base_url('admin/countries')?>">الدول</a>
          </li>
          <li class="breadcrumb-item"><a>تعديل</a>
          </li>

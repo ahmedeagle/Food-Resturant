@@ -11,9 +11,9 @@
       <h5 class="m-b-10">العملاء</h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item">
-            <a href="<?= url('admin_panel/dashboard')?>">الرئيسية</a>
+            <a href="<?= url('admin/dashboard')?>">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="<?= url('admin_panel/customers/all')?>"> العملاء</a>
+         <li class="breadcrumb-item"><a href="<?= url('admin/customers/all')?>"> العملاء</a>
          </li>
          <li class="breadcrumb-item"><a>تعديل</a>
          </li>

@@ -4,9 +4,9 @@
       <h5 class="m-b-10">المدن</h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item">
-            <a href="<?=base_url('admin_panel/dashboard')?>">الرئيسية</a>
+            <a href="<?=base_url('admin/dashboard')?>">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="<?=base_url('admin_panel/cities')?>">المدن</a>
+         <li class="breadcrumb-item"><a href="<?=base_url('admin/cities')?>">المدن</a>
          </li>
          <li class="breadcrumb-item"><a>اضافة</a>
          </li>

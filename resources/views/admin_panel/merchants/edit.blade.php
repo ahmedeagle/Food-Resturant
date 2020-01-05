@@ -24,9 +24,9 @@
       <h5 class="m-b-10">التجار</h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item">
-            <a href="<?= url('admin_panel/dashboard')?>">الرئيسية</a>
+            <a href="<?= url('admin/dashboard')?>">الرئيسية</a>
          </li>
-         <li class="breadcrumb-item"><a href="<?= url('admin_panel/providers/all')?>"> التجار</a>
+         <li class="breadcrumb-item"><a href="<?= url('admin/providers/all')?>"> التجار</a>
          </li>
          <li class="breadcrumb-item"><a>تعديل</a>
          </li>

@@ -8,7 +8,7 @@
       <h5 class="m-b-10"><?=$title?></h5>
       <ul class="breadcrumb-title b-t-default p-t-10">
          <li class="breadcrumb-item" style="line-height: 2.5">
-            <a href="{{ url('admin_panel/dashboard') }}">الرئيسية</a>
+            <a href="{{ url('admin/dashboard') }}">الرئيسية</a>
          </li>
          <li class="breadcrumb-item"><a href="{{ url('admin/withdraws') }}" style="line-height: 2.5"><?=$title?></a>
          </li>
