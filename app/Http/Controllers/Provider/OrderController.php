@@ -363,18 +363,21 @@ class OrderController extends Controller
          $branch_namee =  DB::table('branches')
                  -> where('branches.id',$order -> branch_id) 
                  -> join('providers','branches.provider_id','providers.id') 
-                 -> select( 
-                             DB::raw("CONCAT(providers.".LaravelLocalization::getCurrentLocale()."_name,'-',branches.".LaravelLocalization::getCurrentLocale()."_name) AS name")
+                 -> select(
+                     DB::raw("CONCAT(providers.ar_name,'-',branches.ar_name) AS ar_name"),
+                     DB::raw("CONCAT(providers.en_name,'-',branches.en_name) AS en_name")
                            )
 
                -> first();
         
 
         // send user notification
-        $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
+        $desc_ar = ($branch_namee != null)?$branch_namee -> ar_name:'---';
+        $desc_en = ($branch_namee != null)?$branch_namee -> en_name:'---';
+
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم رفض الطلب المقدم, {$desc} من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = " لقد تم رفض الطلب المقدم, {$desc_ar}  من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب ";
 
         $notif_data = array();
 
@@ -400,7 +403,7 @@ class OrderController extends Controller
             ->insert([
                 "en_title" => "change order status",
                 "ar_title" => $push_notif_title,
-                "en_content" => "The Service Provider by ".($branch_namee != null)?$branch_namee -> name:'---'." Decline the Order With Code {$user->code}, Login To You Account to See More Details",
+                "en_content" => "The Service Provider by ". $desc_en ." Decline the Order With Code {$user->code}, Login To You Account to See More Details",
                 "ar_content"  => $post_title,
                 "notification_type"  => 1,
                 "actor_id" => $user->user_id,
