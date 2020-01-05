@@ -323,5 +323,6 @@ return [
       "addsinarabic"                     => "Adds In Arabic",
       "addsinenglish"                      => "Adds In English",
       "congestion"                        => "Congestion Status ",
-    
+      "components"                        => "Components"
+
 ];

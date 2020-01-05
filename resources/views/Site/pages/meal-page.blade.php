@@ -315,9 +315,9 @@
                               </tr>
 
                               <tr>
-                                  <th scope="row" class="font-body-md">{{trans('site.adds')}}</th>
-                                  @if(isset($meal->component))
-                                      <td>{{ $meal->component  }}</td>
+                                  <th scope="row" class="font-body-md">{{trans('site.components')}}</th>
+                                  @if(isset($component))
+                                      <td>{{ $component  }}</td>
                                       <td></td>
                                   @endif
 

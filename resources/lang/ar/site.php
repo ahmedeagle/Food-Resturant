@@ -317,6 +317,7 @@ return [
     "addsinarabic"                     => "التفضيلات بالعربية ",
     "addsinenglish"                      => "التفضيلات بالانجليزية ",
     "congestion"                        => "حالة الازدحام ",
+    "components"                         => "مكونات الوجبة ",
 
 
  

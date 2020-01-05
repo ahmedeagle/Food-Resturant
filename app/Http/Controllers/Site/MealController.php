@@ -145,7 +145,7 @@ class MealController extends Controller
          }
 
 
-         $component = DB::table("meal_component")
+         $components = DB::table("meal_component")
             ->where("meal_id", $id)
             ->select(
                 LaravelLocalization::getCurrentLocale()."_name"
@@ -153,11 +153,10 @@ class MealController extends Controller
 
         $data['component'] = "";
 
-        foreach ($component as $key => $c) {
+        foreach ($components as $key => $c) {
             $delimeter = ($key == "") ? "" : ",";
             $data["component"] .= $delimeter . $c->{LaravelLocalization::getCurrentLocale().'_name'};
         }
-
 
         $data['title'] = "- صفحة الوجبة";
         $data['class'] = "page-template profile edit";
