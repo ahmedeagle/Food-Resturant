@@ -163,7 +163,8 @@ class Meals extends Controller
             "ar_name" => "required",
             "en_name" => "required",
             "category" => "required|exists:mealcategories,id",
-            "component" => "required",
+            "ar_component" => "required",
+            "en_component" => "required",
             "available" => "required|in:0,1",
             "spicy" => "required|in:0,1",
             "vegetable" => "required|in:0,1",
@@ -199,7 +200,7 @@ class Meals extends Controller
         }
         $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            $error = $validator->errors()->first();
+             $error = $validator->errors()->first();
             return response()->json(['status' => false, 'errNum' => (int)$error, 'msg' => $msg[$error]]);
         }
 
@@ -236,7 +237,7 @@ class Meals extends Controller
             $data["spicy_degree"] = $request->input("spicy-degree");
         }
 
-        if ($request->input("branch") != 0) {
+        if ($request->input("branch") != 0 &&  $request->input("branch") !="") {
             $data["branch_id"] = $request->input("branch");
             $allBranches = false;
             // insert meal data
@@ -248,13 +249,11 @@ class Meals extends Controller
             $this->storeMealData($meal, $request);
         } else {
 
-
             $allBranches = true;
-
             $branches = DB::table("branches")
                 ->where("provider_id", $request->input("provider_id"))
-                ->where("deleted", "0")
-                ->where("published", "1")
+//                ->where("deleted", "0")
+//                ->where("published", "1")
                 ->select('id')
                 ->get();
 
@@ -294,17 +293,22 @@ class Meals extends Controller
 
         }
 
-        $componentArr = explode(",", $request->input("component"));
+        $componentArr = explode(",", $request->input("ar_component"));
+        $componentEn = explode(",", $request->input("en_component"));
+        if (count($componentArr) != count($componentEn)) {
+            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
+        }
+        $component = array_combine($componentArr, $componentEn);
 
-        foreach ($componentArr as $c) {
-
+        foreach ($component as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
-                    "ar_name" => (string)$c,
-                    "en_name" => (string)$c,
+                    "ar_name" => (string)$ar,
+                    "en_name" => (string)$en,
                     "meal_id" => $meal
                 ]);
         }
+
 
         if ($request->input("branch") != 0) {
 

@@ -9,7 +9,7 @@ use DB;
 use Session;
 use LaravelLocalization;
 use GoogleTranslate;
-class BranchController extends Controller
+ class BranchController extends Controller
 {
     public function get_restaurant_page($id){
 
@@ -348,7 +348,7 @@ class BranchController extends Controller
                             DB::raw("CONCAT('". url('/') ."','/storage/app/public/meals/', images.name) AS meal_image_url")
                         )->first();
                         
-                $meal->image_url = $img->meal_image_url;
+                $meal->image_url = isset($img->meal_image_url) ? $img->meal_image_url : "" ;
             }
 
             $c->meals = $meals;

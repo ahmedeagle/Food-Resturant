@@ -70,7 +70,7 @@
 
                         <div class="d-flex justify-content-center flex-column flex-sm-row pb-3">
                             <p class="page-content font-body-md text-gray py-3 px-3 mb-0">
-                                {{ $meal-> $description }}      
+                                {!!  $meal-> $description  !!}
                             </p>
                         </div>
                     
@@ -162,10 +162,10 @@
                                    <span class="" title="{{ $meal->calories }} {{trans('site.Calories')}}"><img src="{{url('/')}}/storage/app/public/icons/no-gluten-icon.png"/></span>
                                 @endif   
                                 </td>
-                                
-                                
-                                
-                               
+
+
+
+
                               </tr>
                              
                               
@@ -277,7 +277,7 @@
                                 @endif
                                 
                               </tr>
-                              
+
                               <tr>
                               <th scope="row" class="font-body-md">{{trans('site.adds')}}</th>
                                 @if(count($meal->options) > 0)
@@ -313,7 +313,16 @@
                                 @endif
                                 
                               </tr>
-                              
+
+                              <tr>
+                                  <th scope="row" class="font-body-md">{{trans('site.adds')}}</th>
+                                  @if(isset($meal->component))
+                                      <td>{{ $meal->component  }}</td>
+                                      <td></td>
+                                  @endif
+
+                              </tr>
+
                             </tbody>
                           </table>
                         </div>

@@ -148,17 +148,37 @@
                     </div><!-- .form-group available -->
 
 
-                    <div class="form-group">
-                        <label for="input-tags">
-                            {{trans('site.ingredients')}}
+                    <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label" for="input-tags">
+                            {{trans('site.ingredientsAR')}}
                             <span class="text-gray font-body-md">
                                         ({{trans('site.ingredients_note')}})
                                     </span>
                         </label>
-                        <input type="text"
-                               name="component"
+                        <div class="col-sm-10">
+                        <input class="form-control" type="text"
+                               name="ar_component"
                                id="input-tags" required>
+                        </div>
                     </div><!-- .form-group tags -->
+
+
+
+
+                    <div class="form-group row">
+                        <label  class="col-sm-2 col-form-label" for="input-tags">
+                            {{trans('site.ingredientsEN')}}
+                            <span class="text-gray font-body-md">
+                                        ({{trans('site.ingredients_note')}})
+                                    </span>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text"
+                                   name="en_component"
+                                   id="input-tags" required>
+                        </div>
+                    </div><!-- .form-group tags -->
+
 
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="spicy">حار</label>
@@ -719,7 +739,6 @@
                         </div><!-- .col -->
                     </div>
 
-
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label" for="recommended">ينصح به من قبل المطعم </label>
 
@@ -730,8 +749,6 @@
                                 <option value="1">نعم</option>
                                 <option value="0">لا</option>
                             </select>
-
-
                             @if($errors->has("recommended"))
                                 {{ $errors->first("recommended") }}
                             @endif

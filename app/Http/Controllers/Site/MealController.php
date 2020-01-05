@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use LaravelLocalization;
 use Session;
 class MealController extends Controller
 {
@@ -80,9 +81,6 @@ class MealController extends Controller
          
         $data['clearing_cart_content_warning'] = 0;
         
-        
-        
-        
 
          if($cart){
            foreach((array)$cart as $key => $item){
@@ -145,11 +143,25 @@ class MealController extends Controller
 
         }
          }
-        
+
+
+         $component = DB::table("meal_component")
+            ->where("meal_id", $id)
+            ->select(
+                LaravelLocalization::getCurrentLocale()."_name"
+            )->get();
+
+        $data['component'] = "";
+
+        foreach ($component as $key => $c) {
+            $delimeter = ($key == "") ? "" : ",";
+            $data["component"] .= $delimeter . $c->{LaravelLocalization::getCurrentLocale().'_name'};
+        }
+
+        return $data['component'];
 
         $data['title'] = "- صفحة الوجبة";
         $data['class'] = "page-template profile edit";
-
         $data['cartData'] = $cardData;
 
         return view("Site.pages.meal-page", $data);

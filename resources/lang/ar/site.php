@@ -250,7 +250,7 @@ return [
     "choose_branches"                   => "برجاء تحديد الفروع ",
     "ingredientsAR"                       => "المكونات بالعربية ",
     "ingredientsEN"                       => "المكونات بالانجليزية  ",
-    "ingredients_note"                  =>"رجى وضع فاصلة بين كل مكون والآخر",
+    "ingredients_note"                  =>"يرجى وضع فاصلة بين كل مكون والآخر",
     "available_all_time"                => "متاح طوال الوقت ",
     "choose_status"                     => "برجاء اختيار الحالة ",
     "spicy"                             => "حار",

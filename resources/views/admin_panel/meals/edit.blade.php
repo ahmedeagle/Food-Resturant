@@ -87,96 +87,96 @@
                             {{ $errors->first("cat") }}
                         @endif
                     </div>
-                    
+
                 </div>
-                
+
                    <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" for="available">متوفر جميع الاوقات</label>
-                             <div class="col-sm-10">    
-                                <select class="custom-select text-gray font-body-md border-gray"
+                             <div class="col-sm-10">
+                                <select class="custom-select text-gray font-body-md border-gray form-control"
                                         id="available" name="available" required>
                                     <option value="">يرجى تحديد الحالة</option>
                                     <option value="1" @if($meal->available == "1") selected @endif>نعم</option>
                                     <option value="0" @if($meal->available == "0") selected @endif>لا</option>
                                 </select>
                              </div>
-                             
+
                             </div><!-- .form-group available -->
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" for="spicy">حار</label>
-                                
-                              <div class="col-sm-10">        
-                                <select class="custom-select text-gray font-body-md border-gray"
+
+                              <div class="col-sm-10">
+                                <select class="custom-select text-gray font-body-md border-gray form-control"
                                         id="spicy" name="spicy" required>
                                     <option value="">يرجى تحديد القيمة</option>
                                     <option value="1" @if($meal->spicy == "1") selected @endif>نعم</option>
                                     <option value="0" @if($meal->spicy == "0") selected @endif>لا</option>
                                 </select>
-                                
+
                                  @if($errors->has("spicy"))
                             {{ $errors->first("spicy") }}
                         @endif
-                             </div>    
+                             </div>
                             </div><!-- .form-group spicy -->
 
 
 
-                        <div class="form-group spicyDiv row  @if($meal->spicy == "0" ) hidden-element2 @endif">       
+                        <div class="form-group spicyDiv row  @if($meal->spicy == "0" ) hidden-element2 @endif">
                                  <label  class="col-sm-2 col-form-label" for="spicy-degree">درجة حرارة الصنف</label>
-                                
-                                <div class="col-sm-10">        
+
+                                <div class="col-sm-10">
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        name="spicy-degree"
                                        value="{{ old("spicy-degree", $meal->spicy_degree) }}"
                                        placeholder="برجاء ادخال قيمة من 1 الى 5"
                                        id="spicy-degree">
-                                       
-                                       
+
+
                        @if($errors->has("spicy_degree"))
                             {{ $errors->first("spicy_degree") }}
                         @endif
                              </div><!-- .form-group name -->
-                        </div>    
-                            
-                            
-                            
+                        </div>
+
+
+
 
                             <div class="form-group row">
                                 <label  class="col-sm-2 col-form-label" for="vegetable">مناسب للنباتيين</label>
-                                 
-                                  <div class="col-sm-10">        
-                                <select class="custom-select text-gray font-body-md border-gray"
+
+                                  <div class="col-sm-10">
+                                <select class="custom-select text-gray font-body-md border-gray form-control"
                                         id="vegetable" name="vegetable" required>
                                     <option value="">يرجى تحديد القيمة</option>
                                     <option value="1" @if($meal->vegetable == "1") selected @endif>نعم</option>
                                     <option value="0" @if($meal->vegetable == "0") selected @endif>لا</option>
                                 </select>
-                                
+
                                   @if($errors->has("vegetable"))
                             {{ $errors->first("vegetable") }}
                         @endif
-                        
+
                                 </div>
                             </div><!-- .form-group vegetable -->
 
                             <div class="form-group row">
-                                
+
                                 <label class="col-sm-2 col-form-label" for="gluten">خالي من الجلوتين </label>
-                                <div class="col-sm-10">        
-                                <select class="custom-select text-gray font-body-md border-gray"
+                                <div class="col-sm-10">
+                                <select class="custom-select text-gray font-body-md border-gray form-control"
                                         id="gluten" name="gluten" required>
                                     <option value="">يرجى تحديد القيمة</option>
                                     <option value="1" @if($meal->gluten == "1") selected @endif>نعم</option>
                                     <option value="0" @if($meal->gluten == "0") selected @endif>لا</option>
                                 </select>
-                                
+
                                   @if($errors->has("gluten"))
                             {{ $errors->first("gluten") }}
                         @endif
-                        
-                        
+
+
                                 </div>
                             </div><!-- .form-group gluten -->
 
@@ -185,55 +185,55 @@
                                     عدد السعرات الحرارية
                                     <span class="text-gray font-body-md">السعرات الكلية للطلب متوسط الحجم</span>
                                 </label>
-                                <div class="col-sm-10">        
+                                <div class="col-sm-10">
                                 <input type="text"
                                        class="form-control border-gray font-body-md"
                                        id="calorie"
                                        value="{{ old("calorie", $meal->calories) }}"
                                        name="calorie" required>
-                                       
-                                        
+
+
                                  @if($errors->has("calories"))
                             {{ $errors->first("calories") }}
                         @endif
-                        
-                                     </div>  
-                                
+
+                                     </div>
+
                             </div><!-- .form-group calorie -->
 
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" for="details"> الوصف باللغة العربية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
-                                
-                                <div class="col-sm-10">        
+
+                                <div class="col-sm-10">
                                 <textarea class="form-control ar-details font-body-md border-gray"
                                           id="details"
                                           name="ar_description"
                                           rows="6" >{{ old("ar_description", $meal->ar_description) }}</textarea>
-                                          
-                                          
+
+
                                           @if($errors->has("ar_description"))
                             {{ $errors->first("ar_description") }}
                         @endif
-                        
-                        
-                                    </div>      
+
+
+                                    </div>
                             </div><!-- .form-group details -->
 
 
                             <div class="form-group row">
                                 <label  class="col-sm-2 col-form-label" for="details"> الوصف باللغة الانجليزية <span class="text-gray font-body-md">برجاء ادخال على الاقل خمس كلمات</span></label>
-                                
-                                <div class="col-sm-10">        
+
+                                <div class="col-sm-10">
                                 <textarea class="form-control en-details font-body-md border-gray"
                                           id="details"
                                           name="en_description"
                                           rows="6" required>{{ old("en_description", $meal->en_description) }}</textarea>
-                                          
+
                                              @if($errors->has("en_description"))
                             {{ $errors->first("en_description") }}
                         @endif
-                        
-                                </div>          
+
+                                </div>
                             </div><!-- .form-group details -->
 
                             <div class="row">
@@ -247,13 +247,13 @@
                                                    name="size{{ $key + 1 }}"
                                                    value="{{ old("size". ($key + 1) ."", $s->size_name) }}"
                                                    class="form-control font-body-md border-gray" @if($key == 0) required @endif>
-                                                   
-                                                   
-                                                   
+
+
+
                                              @if($errors->has("size1"))
                             {{ $errors->first("size1") }}
                         @endif
-                        
+
                                         </div><!-- .form-group -->
 
                                     @endforeach
@@ -265,8 +265,8 @@
                                                        name="size{{ count($sizes) + $i + 1 }}"
                                                        value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
-                                                       
-                                          
+
+
                                             </div><!-- .form-group -->
                                         @endfor
                                     @endif
@@ -281,17 +281,17 @@
                                                    name="price{{ $key + 1 }}"
                                                    pattern="^[0-9]+$"
                                                    value="{{ old("price". ($key + 1) ."", $s->price) }}"
-                                                   class="form-control border-0 font-body-md rounded-0"
+                                                   class="form-control  font-body-md rounded-0"
                                                    aria-describedby="price-addon" @if($key == 0) required @endif>
-                                                   
-                                                            
+
+
                                              @if($errors->has("price1"))
                             {{ $errors->first("price1") }}
                         @endif
-                        
+
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -306,11 +306,11 @@
                                                        name="price{{ count($sizes) + $i +1 }}"
                                                        pattern="^[0-9]+$"
                                                        value="{{ old("price". (count($sizes) + $i + 1) ."") }}"
-                                                       class="form-control border-0 font-body-md rounded-0"
+                                                       class="form-control  font-body-md rounded-0"
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -360,11 +360,11 @@
                                                    name="add-price{{ $key + 1 }}"
                                                    pattern="^[0-9]+$"
                                                    value="{{ old("add-price". ($key + 1) ."", $s->price) }}"
-                                                   class="form-control border-0 font-body-md rounded-0"
+                                                   class="form-control  font-body-md rounded-0"
                                                    aria-describedby="price-addon">
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -379,11 +379,11 @@
                                                        name="add-price{{ count($adds) + $i +1 }}"
                                                        pattern="^[0-9]+$"
                                                        value="{{ old("add-price". (count($adds) + $i + 1) ."") }}"
-                                                       class="form-control border-0 font-body-md rounded-0"
+                                                       class="form-control  font-body-md rounded-0"
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -433,11 +433,11 @@
                                                    name="option-price{{ $key + 1 }}"
                                                    pattern="^[0-9]+$"
                                                    value="{{ old("option-price". ($key + 1) ."", $s->price) }}"
-                                                   class="form-control border-0 font-body-md rounded-0"
+                                                   class="form-control  font-body-md rounded-0"
                                                    aria-describedby="price-addon">
                                             <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                             </div><!-- .input-group-prepend -->
                                         </div><!-- .input-group -->
@@ -452,11 +452,11 @@
                                                        name="option-price{{ count($options) + $i +1 }}"
                                                        pattern="^[0-9]+$"
                                                        value="{{ old("option-price". (count($options) + $i + 1) ."") }}"
-                                                       class="form-control border-0 font-body-md rounded-0"
+                                                       class="form-control  font-body-md rounded-0"
                                                        aria-describedby="price-addon">
                                                 <div class="input-group-prepend">
                                             <span id="price1-addon"
-                                                  class="input-group-text bg-white border-0 font-body-md text-gray">ر.س
+                                                  class="input-group-text bg-white  font-body-md text-gray">ر.س
                                             </span>
                                                 </div><!-- .input-group-prepend -->
                                             </div><!-- .input-group -->
@@ -472,25 +472,25 @@
 
                             <div class="form-group row">
                                 <label  class="col-sm-2 col-form-label" for="recommended">ينصح به من قبل المطعم </label>
-                                
+
                                 <div class="col-sm-10">
-                                <select name="recommended" class="custom-select text-gray font-body-md border-gray" required>
+                                <select name="recommended" class="custom-select text-gray font-body-md border-gray form-control" required>
                                     <option value="">برجاء اختيار الحالة</option>
                                     <option value="1" @if($meal->recommend == "1") selected @endif>نعم</option>
                                     <option value="0" @if($meal->recommend == "0") selected @endif>لا</option>
                                 </select>
-                                
-                                                
+
+
                                              @if($errors->has("recommended"))
                             {{ $errors->first("recommended") }}
                         @endif
                                 </div>
                             </div><!-- .form-group gluten -->
 
- 
- 
+
+
                         <input type="hidden" name="meal_id" value="{{ $meal->id }}" />
-  
+
 
                 <button type="submit" class="btn btn-md btn-success"><i class="icofont icofont-check"></i>  تعديل </button>    <a href="{{ url("/admin/meals") }}" class="btn btn-md btn-danger"><i class="icofont icofont-close"></i>  رجوع </a>
             </form>
@@ -502,20 +502,20 @@
 @section('script')
 
  <script>
-     
+
      $(document).on('change','#spicy',function(){
-    
+
          if($(this).val() == "0")
          {
-             
+
                $('.spicyDiv').hide();
-             
+
          }else{
-             
+
              $('.spicyDiv').show();
          }
-            
-         
+
+
      });
  </script>
 @stop

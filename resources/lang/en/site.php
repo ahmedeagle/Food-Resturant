@@ -250,6 +250,8 @@ return [
     "branches_have_meal"                => "Branches with classification",
     "choose_branches"                   => "Please select branches",
     "ingredients"                       => "Ingredients",
+    "ingredientsAR"                       => "ingredients in arabic",
+    "ingredientsEN"                       => "ingredients in English",
     "ingredients_note"                  =>"please Put a comma between each component and the other",
     "available_all_time"                => "Available All Time",
     "choose_status"                     => "Please Choose Status",
