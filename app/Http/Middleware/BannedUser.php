@@ -16,6 +16,7 @@ class BannedUser
      */
     public function handle($request, Closure $next, $guard = null)
     {
+
         if (auth::guard('web')->check()) {
             // Block access if user is banned
             if (auth::guard('web')->user()->blocked == '1') {

@@ -24,6 +24,10 @@ class api_token
                 ->first();
             if (!$get || $get == NULL) {
                 return response()->json(['message' => 'Unauthenticated.']);
+            }else{
+                if($get -> blocked == '1'){
+                    return response()->json(['message' => 'Unauthenticated.']);
+                }
             }
         }
         return $next($request);

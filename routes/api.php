@@ -100,7 +100,7 @@ Route::middleware(['api_auth'])->group(function () {
     Route::post('/getSearchAutocompleteLists', "Apis\User\SearchController@get_provider_names");
     Route::get('/getSearchAutocompleteLists', "Apis\User\GeneralController@echo_Empty");
     
-    Route::middleware(['api_token','bannedUser'])->group(function () {
+    Route::middleware(['api_token'])->group(function () {
         Route::post('/activateAccount', "Apis\User\ForgetPasswordController@activateAccount");
         Route::get('/activateAccount', "Apis\User\GeneralController@echo_Empty");
 
