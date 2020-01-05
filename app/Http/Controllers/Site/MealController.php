@@ -158,7 +158,6 @@ class MealController extends Controller
             $data["component"] .= $delimeter . $c->{LaravelLocalization::getCurrentLocale().'_name'};
         }
 
-        return $data['component'];
 
         $data['title'] = "- صفحة الوجبة";
         $data['class'] = "page-template profile edit";
