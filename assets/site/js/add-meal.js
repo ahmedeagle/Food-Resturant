@@ -181,9 +181,9 @@ $(document).ready(function () {
                     msg: data.msg,
                     type: "success"
                 });
-                // setTimeout(function () {
-                //     window.location.href = baseUrl + "/restaurant/food-menu/list";
-                // },2000)
+                 setTimeout(function () {
+                    window.location.href = baseUrl + "/restaurant/food-menu/list";
+                 },2000)
 
             }else{
                 notif({
