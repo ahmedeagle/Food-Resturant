@@ -269,7 +269,7 @@ class OrderController extends Controller
         $desc = ($branch_namee != null)?$branch_namee -> name:'---';       
         $push_notif_title = "  تعديل حالة الطلب-" . $id;
         $post_id          = $id;
-        $post_title       = "لقد تم قبول الطلب المقدم  من قبل  {$desc}برجاء الدخول لحسابك لاستعراض تفاصيل الطلب";
+        $post_title       = " لقد تم قبول الطلب المقدم  من قبل  {$desc} برجاء الدخول لحسابك لاستعراض تفاصيل الطلب ";
 
         $notif_data = array();
 
