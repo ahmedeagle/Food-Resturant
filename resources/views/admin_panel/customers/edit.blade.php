@@ -81,7 +81,7 @@
 
                             <div class="form-group">
                                 <label for="country">الدولة</label>
-                                <select class="country-ajax-request custom-select text-gray font-body-md border-gray"
+                                <select class="country-ajax-request custom-select text-gray font-body-md border-gray form-control"
                                         id="country" name="country" data-action="{{ url("/restaurant/cities") }}" required>
                                     <option value="">يرجى تحديد الدولة</option>
 
@@ -102,7 +102,7 @@
 
                             <div class="form-group">
                                 <label for="city">المدينة</label>
-                                <select class="city-ajax-request custom-select text-gray font-body-md border-gray"
+                                <select class="city-ajax-request custom-select text-gray font-body-md border-gray form-control"
                                         id="city" name="city" required>
 
 
@@ -141,7 +141,7 @@
 
                             <div class="form-group">
                                 <label for="user-sax">الجنس</label>
-                                <select class="custom-select text-gray font-body-md" name="gender" id="user-sax" required>
+                                <select class="custom-select text-gray font-body-md form-control" name="gender" id="user-sax" required>
                                     <option value="">يرجى تحديد الجنس</option>
                                     <option value="1"  @if(old('gender')) @if(old('gender') == '1') selected @endif  @else @if($user ->gender == 'male') selected @endif @endif>ذكر</option>
                                     <option value="2" @if(old('gender'))  @if(old('gender') == '2') selected @endif  @else @if($user -> gender == 'female') selected @endif @endif>أنثى</option>
@@ -158,7 +158,7 @@
 
                             <div class="form-group">
                                 <label for="user-sax">الحالة</label>
-                                <select class="custom-select text-gray font-body-md" name="blocked" id="user-sax" required>
+                                <select class="custom-select text-gray font-body-md form-control" name="blocked" id="user-sax" required>
                                     <option value="">يرجى تحديد  الحاله</option>
                                     <option value="0"  @if(old('blocked')) @if(old('blocked') == '0') selected @endif  @else @if($user ->blocked == '0') selected @endif @endif> مفعل </option>
                                     <option value="1" @if(old('blocked'))  @if(old('blocked') == '1') selected @endif  @else @if($user -> blocked == '1') selected @endif @endif> محظور </option>
