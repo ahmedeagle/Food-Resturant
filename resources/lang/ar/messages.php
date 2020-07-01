@@ -79,4 +79,8 @@ return [
     "invalid_phone_format"          => "صغه الهاتف غير صحيحه ",
     "phonenotcorrect"                => "صيغه الهاتف غير صحيحه ",
     "user.blocked"                   => "عذرا تم إيقاف هذا الحساب ",
+    "workinghoursfrombranch"                   => 'تم تحديد مواعيد العمل من قبل المطعم',
+    "branchclosedtoday"                   =>  'المطعم مغلق اليوم',
+    "exitbranchhours"                   => "عفوا توقيت الطلب خارج اوقات عمل المطعم",
+    "user.blocked"                   => "عذرا تم إيقاف هذا الحساب ",
 ];

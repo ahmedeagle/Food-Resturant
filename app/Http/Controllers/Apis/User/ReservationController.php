@@ -50,9 +50,10 @@ class ReservationController extends Controller
             10  => trans("messages.branch.out.of.date"),
             11  => trans("messages.error"),
             12  => trans("messages.dateMustAfterorEqualTodat"),
-            13   => 'تم تحديد مواعيد العمل من قبل المطعم',
-            14   => 'المطعم مغلق اليوم',
-            15   => 'عفوا اتوقيت الطلب خارج اوقات  عمل المطعم '
+            13    => trans('messages.workinghoursfrombranch'),
+            14  => trans('messages.branchclosedtoday'),
+            15   => trans('messages.exitbranchhours')
+
         ];
         $validator  = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()){
