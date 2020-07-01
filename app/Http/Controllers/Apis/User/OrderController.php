@@ -16,7 +16,7 @@ class OrderController extends Controller
         return response()->json([
             "status" => false,
             "errNum" => 1,
-            "msg"    => 'dfdf'
+            "msg"    => $request -> lang
         ]);
 
         (new BaseConroller())->setLang($request);
