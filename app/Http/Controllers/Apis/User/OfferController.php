@@ -21,7 +21,7 @@ class OfferController extends Controller
                         "offers.provider_id",
                         "branches." .$name . "_name AS title",
                         "offers.".$name."_notes AS notes",
-                        "branches.".$name."_address AS address",
+                        "providers.".$name."_address AS address",
                         "branches.id AS branch_id",
                         "offers.lft",
                         DB::raw("CONCAT('". url('/') ."','/storage/app/public/offers/', images.name) AS image_url"),
