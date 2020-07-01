@@ -13,6 +13,12 @@ class OrderController extends Controller
 {
     public function create_order(Request $request){
 
+        return response()->json([
+            "status" => false,
+            "errNum" => 1,
+            "msg"    => 'dfdf'
+        ]);
+
         (new BaseConroller())->setLang($request);
 
        date_default_timezone_set('Asia/Riyadh');
