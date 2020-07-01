@@ -272,7 +272,7 @@ class SearchController extends Controller
                              "branches.latitude",
                              "branches.ar_address AS address",
                              "branches.average_price AS mealAveragePrice",
-                            DB::raw("CONCAT('". url('/') ."','/storage/app/public/providers/', images.name) AS image_url")
+                            DB::raw("CONCAT(url('/'),'/storage/app/public/providers/', images.name) AS image_url")
                         )
                         ->paginate(10);
                         
