@@ -22,7 +22,7 @@ class OrderController extends Controller
             "status"      => false ,
             "errNum"      => 0,
             "msg"         => trans("messages.error"),
-            "offers"      => $request -> lang
+            "offers"      => $request
         ]);
 
         date_default_timezone_set('Asia/Riyadh');
