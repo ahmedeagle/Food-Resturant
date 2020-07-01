@@ -137,6 +137,7 @@ class HomeController extends Controller
             $dataarr = [
                 "restaurant_id" => $branch->branch_id,
                 "address" => $branch->address,
+                "restaurant_name" => $branch->restaurant_name,
                 "title" => $branch->title,
                 "image_url" => $branch->image_url,
                 "notes" => $branch->notes,
