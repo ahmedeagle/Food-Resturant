@@ -96,6 +96,7 @@ class HomeController extends Controller
                 "offers.provider_id",
                 "offers.lft",
                 "branches." . $name . "_name AS title",
+                "branches.".$name ."_name AS restaurant_name",
                 "offers." . $name . "_notes AS notes",
 
                 DB::raw("CONCAT('" . url('/') . "','/storage/app/public/offers/', images.name) AS image_url"),
@@ -113,8 +114,6 @@ class HomeController extends Controller
     {
         $data = [];
         foreach ($branches as $key => $branch) {
-
-
             /*if( $name == 'en'){
 
                    $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
@@ -137,7 +136,7 @@ class HomeController extends Controller
             $dataarr = [
                 "restaurant_id" => $branch->branch_id,
                 "address" => $branch->address,
-               // "restaurant_name" => $branch->restaurant_name,
+                "restaurant_name" => isset($branch->restaurant_name) ? $branch->restaurant_name : "" ,
                 "title" => $branch->title,
                 "image_url" => $branch->image_url,
                 "notes" => $branch->notes,

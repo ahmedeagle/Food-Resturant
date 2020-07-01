@@ -15,7 +15,15 @@ class OrderController extends Controller
     public function create_order(Request $request)
     {
 
-        (new BaseConroller())->setLang($request);
+       (new BaseConroller())->setLang($request);
+
+
+        return response()->json([
+            "status"      => false ,
+            "errNum"      => 0,
+            "msg"         => trans("messages.error"),
+            "offers"      => $request -> lang
+        ]);
 
         date_default_timezone_set('Asia/Riyadh');
 
