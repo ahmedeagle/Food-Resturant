@@ -82,5 +82,4 @@ return [
     "workinghoursfrombranch"                   => 'تم تحديد مواعيد العمل من قبل المطعم',
     "branchclosedtoday"                   =>  'المطعم مغلق اليوم',
     "exitbranchhours"                   => "عفوا توقيت الطلب خارج اوقات عمل المطعم",
-    "user.blocked"                   => "عذرا تم إيقاف هذا الحساب ",
 ];

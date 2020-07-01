@@ -77,4 +77,7 @@ return [
      "invalid_phone_format"          => "phone number not correct",
      "phonenotcorrect"                => "phone number must begin ",
      "user.blocked"                    => "this account is blocked",
+    "workinghoursfrombranch"                   => 'Restaurant set working hours',
+    "branchclosedtoday"                   =>  'Sorry, restaurant closed today',
+    "exitbranchhours"                   => "Sorry, the order timing is outside the restaurant opening times",
 ];
