@@ -113,6 +113,48 @@ class HomeController extends Controller
 
     }
 
+    public function filter_offers_branches_site(Request $request, $name, $branches)
+    {
+        $data = [];
+        foreach ($branches as $key => $_branch) {
+
+
+            /*if( $name == 'en'){
+
+                   $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
+                             ->setTargetLang('en')
+                             ->translate($branch -> address );
+                }*/
+
+
+
+            if ($request->input('latitude') && $request->input('longitude')) {
+                $latitude = $request->input('latitude');
+                $longitude = $request->input('longitude');
+                $distance = (new BaseConroller())->getDistance($_branch->longitude, $_branch->latitude, $longitude, $latitude, "KM");
+            } else {
+                $distance = -1;
+            }
+          //  $first_branch->distance = $distance;
+
+            $dataarr = [
+                "restaurant_id" => $_branch->branch_id,
+                "address" => $_branch->address,
+                "restaurant_name" => isset($_branch->restaurant_name) ? $_branch->restaurant_name : "",
+                "title" => $_branch->title,
+                "image_url" => $_branch->image_url,
+                "notes" => $_branch->notes,
+                "accept_order" => $_branch->accept_order,
+                "distance" => $distance,
+                "offer_id" => $_branch->offer_id
+            ];
+
+            $data[] = $dataarr;
+        }
+
+        return $data;
+    }
+
     public function filter_offers_branches(Request $request, $name, $branches)
     {
         $data = [];
@@ -136,7 +178,7 @@ class HomeController extends Controller
             } else {
                 $distance = -1;
             }
-          //  $first_branch->distance = $distance;
+            //  $first_branch->distance = $distance;
 
             $dataarr = [
                 "restaurant_id" => $first_branch->branch_id,
