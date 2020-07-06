@@ -128,7 +128,7 @@ class HomeController extends Controller
 
             $collect = collect($_branch);
 
-           return  $collect -> first();
+           return  response() -> json($collect -> first());
 
             foreach ($_branch as $branch) {
 
