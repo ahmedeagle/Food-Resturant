@@ -20,6 +20,7 @@ class OfferController extends Controller
             ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
             ->select(
+                "branches.id AS branch_id",
                 "offers.provider_id",
                 "offers.id as offer_id",
                 "branches." . $name . "_address AS address",
