@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $cats = $this->getSubCategoriesList($name, 7);
 
-       return  $offers = $this->getOffersList($request, $name);
+        return $offers = $this->getOffersList($request, $name);
 
         //get nearst provider branches 
         $providersList = $this->getProvidersList($request, $name, 7);
@@ -86,7 +86,7 @@ class HomeController extends Controller
             ->join("images", "images.id", "offers.image_id")
             ->join("providers", "providers.id", "offers.provider_id")
             ->join("branches", "providers.id", "branches.provider_id")
-            ->join("offers_branches","branches.id","offers_branches.branch_id")
+            ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
             ->select(
                 "branches.id AS branch_id",
@@ -97,7 +97,7 @@ class HomeController extends Controller
                 "offers.id as offer_id",
                 "offers.lft",
                 "branches." . $name . "_name AS title",
-                "branches.".$name ."_name AS restaurant_name",
+                "branches." . $name . "_name AS restaurant_name",
                 "offers." . $name . "_notes AS notes",
 
                 DB::raw("CONCAT('" . url('/') . "','/storage/app/public/offers/', images.name) AS image_url"),
@@ -106,7 +106,7 @@ class HomeController extends Controller
             ->orderBy("offers.lft")
             ->get();
 
-          $_offers = $offers->groupBy('offer_id');
+        $_offers = $offers->groupBy('offer_id');
         $offers = $this->filter_offers_branches($request, $name, $_offers);
 
         return $offers;
@@ -116,9 +116,8 @@ class HomeController extends Controller
     public function filter_offers_branches(Request $request, $name, $branches)
     {
         $data = [];
-        foreach ($branches as $key => $branch) {
+        foreach ($branches as $key => $_branch) {
 
-            return $branch;
 
             /*if( $name == 'en'){
 
@@ -127,30 +126,38 @@ class HomeController extends Controller
                              ->translate($branch -> address );
                 }*/
 
+            foreach ($_branch as $branch) {
 
-            if ($request->input('latitude') && $request->input('longitude')) {
-                $latitude = $request->input('latitude');
-                $longitude = $request->input('longitude');
-                $distance = (new BaseConroller())->getDistance($branch->longitude, $branch->latitude, $longitude, $latitude, "KM");
+                if ($request->input('latitude') && $request->input('longitude')) {
+                    $latitude = $request->input('latitude');
+                    $longitude = $request->input('longitude');
+                    $distance = (new BaseConroller())->getDistance($branch->longitude, $branch->latitude, $longitude, $latitude, "KM");
 
 
-            } else {
-                $distance = -1;
+                } else {
+                    $distance = -1;
+                }
+                $branch->distance = $distance;
+
+                $dataarr = [
+                    "restaurant_id" => $branch->branch_id,
+                    "address" => $branch->address,
+                    "restaurant_name" => isset($branch->restaurant_name) ? $branch->restaurant_name : "",
+                    "title" => $branch->title,
+                    "image_url" => $branch->image_url,
+                    "notes" => $branch->notes,
+                    "accept_order" => $branch->accept_order,
+                    "distance" => $distance,
+                    "offer_id" => $branch->offer_id
+                ];
+
+                $data[] = $dataarr;
             }
-            $branch->distance = $distance;
-             
-            $dataarr = [
-                "restaurant_id" => $branch->branch_id,
-                "address" => $branch->address,
-                "restaurant_name" => isset($branch->restaurant_name) ? $branch->restaurant_name : "" ,
-                "title" => $branch->title,
-                "image_url" => $branch->image_url,
-                "notes" => $branch->notes,
-                "accept_order" => $branch->accept_order,
-                "distance" => $distance,
-                "offer_id"  => $branch-> offer_id
-            ];
-            $data[] = $dataarr;
+
+
+
+
+
         }
 
 //        $collectionRes = collect($data);
