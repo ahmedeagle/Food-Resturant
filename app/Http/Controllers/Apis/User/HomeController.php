@@ -96,7 +96,7 @@ class HomeController extends Controller
                 "offers.provider_id",
                 "offers.id as offer_id",
                 "offers.lft",
-                "branches." . $name . "_name AS title",
+                "offers." . $name . "_title AS title",
                 "branches." . $name . "_name AS restaurant_name",
                 "offers." . $name . "_notes AS notes",
 
