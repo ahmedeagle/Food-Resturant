@@ -146,8 +146,7 @@ class HomeController extends Controller
                 "notes" => $_branch->notes,
                 "accept_order" => $_branch->accept_order,
                 "distance" => $distance,
-                "offer_id" => $_branch->offer_id
-            ];
+             ];
 
             $data[] = $dataarr;
         }
