@@ -113,7 +113,7 @@ class HomeController extends Controller
 
     }
 
-    public function filter_offers_branches_site(Request $request, $name, $branches)
+    public function filter_offers_branches(Request $request, $name, $branches)
     {
         $data = [];
         foreach ($branches as $key => $_branch) {
@@ -155,18 +155,12 @@ class HomeController extends Controller
         return $data;
     }
 
-    public function filter_offers_branches(Request $request, $name, $branches)
+   /* public function filter_offers_branches(Request $request, $name, $branches)
     {
         $data = [];
         foreach ($branches as $key => $_branch) {
 
 
-            /*if( $name == 'en'){
-
-                   $branch -> address =   (new GoogleTranslate()) -> setSourceLang('ar')
-                             ->setTargetLang('en')
-                             ->translate($branch -> address );
-                }*/
 
             $collect = collect($_branch);
             $first_branch = $collect->first();
@@ -196,7 +190,7 @@ class HomeController extends Controller
         }
 
         return $data;
-    }
+    }*/
 
     public
     function getProvidersList(Request $request, $name)

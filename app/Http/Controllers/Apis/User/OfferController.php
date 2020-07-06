@@ -32,7 +32,7 @@ class OfferController extends Controller
             )
             ->orderBy("offers.lft")
             ->paginate(10);
-        $offers = (new HomeController)->filter_offers_branches_site($request, $name, $offers);
+        $offers = (new HomeController)->filter_offers_branches($request, $name, $offers);
         return response()->json([
             "status" => true,
             "errNum" => 0,
@@ -71,7 +71,7 @@ class OfferController extends Controller
         $_offers = $offers->groupBy('offer_id');
 
 
-        $offers = (new HomeController)->filter_offers_branches($request, $name, $_offers);
+        $offers = (new HomeController)->filter_offers_branches_app($request, $name, $_offers);
         return response()->json([
             "status" => true,
             "errNum" => 0,
