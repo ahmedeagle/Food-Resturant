@@ -94,6 +94,7 @@ class HomeController extends Controller
                 "branches.latitude",
                 "branches." . $name . "_address AS address",
                 "offers.provider_id",
+                "offers.id as offer_id",
                 "offers.lft",
                 "branches." . $name . "_name AS title",
                 "branches.".$name ."_name AS restaurant_name",
@@ -141,7 +142,8 @@ class HomeController extends Controller
                 "image_url" => $branch->image_url,
                 "notes" => $branch->notes,
                 "accept_order" => $branch->accept_order,
-                "distance" => $distance
+                "distance" => $distance,
+                "offer_id"  => $branch-> offer_id
             ];
             $data[] = $dataarr;
         }
