@@ -94,6 +94,7 @@ class HomeController extends Controller
                 "branches.latitude",
                 "branches." . $name . "_address AS address",
                 "offers.provider_id",
+                "offers.id as offer_id",
                 "offers.lft",
                 "branches." . $name . "_name AS title",
                 "branches.".$name ."_name AS restaurant_name",
