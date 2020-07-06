@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $cats = $this->getSubCategoriesList($name, 7);
 
-        $offers = $this->getOffersList($request, $name);
+       return  $offers = $this->getOffersList($request, $name);
 
         //get nearst provider branches 
         $providersList = $this->getProvidersList($request, $name, 7);
@@ -82,7 +82,7 @@ class HomeController extends Controller
 
     protected function getOffersList(Request $request, $name)
     {
-        $offers = DB::table("offers")
+        return $offers = DB::table("offers")
             ->join("images", "images.id", "offers.image_id")
             ->join("providers", "providers.id", "offers.provider_id")
             ->join("branches", "providers.id", "branches.provider_id")
@@ -126,8 +126,6 @@ class HomeController extends Controller
                 $latitude = $request->input('latitude');
                 $longitude = $request->input('longitude');
                 $distance = (new BaseConroller())->getDistance($branch->longitude, $branch->latitude, $longitude, $latitude, "KM");
-
-
             } else {
                 $distance = -1;
             }
