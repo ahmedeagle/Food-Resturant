@@ -106,7 +106,7 @@ class HomeController extends Controller
             ->orderBy("offers.lft")
             ->get();
 
-       return  $_offers = $offers->groupBy('offer_id',true);
+          $_offers = $offers->groupBy('offer_id');
         $offers = $this->filter_offers_branches($request, $name, $_offers);
 
         return $offers;
@@ -117,6 +117,8 @@ class HomeController extends Controller
     {
         $data = [];
         foreach ($branches as $key => $branch) {
+
+            return $branch;
 
             /*if( $name == 'en'){
 
