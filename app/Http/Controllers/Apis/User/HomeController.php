@@ -20,7 +20,7 @@ class HomeController extends Controller
 
         $cats = $this->getSubCategoriesList($name, 7);
 
-        $offers = $this->getOffersList($request, $name);
+       return  $offers = $this->getOffersList($request, $name);
 
         //get nearst provider branches 
         $providersList = $this->getProvidersList($request, $name, 7);
@@ -105,6 +105,8 @@ class HomeController extends Controller
             )
             ->orderBy("offers.lft")
             ->get();
+
+        return $offers -> $offers->groupBy('offer_id');
         $offers = $this->filter_offers_branches($request, $name, $offers);
 
         return $offers;
@@ -147,6 +149,10 @@ class HomeController extends Controller
             ];
             $data[] = $dataarr;
         }
+
+//        $collectionRes = collect($data);
+//        $res = $collectionRes -> groupBy('');
+
         return $data;
     }
 
