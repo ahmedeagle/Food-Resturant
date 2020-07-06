@@ -126,7 +126,14 @@ class HomeController extends Controller
                              ->translate($branch -> address );
                 }*/
 
+            $collect = collect($_branch);
+
+           return  $collect -> first();
+
             foreach ($_branch as $branch) {
+
+
+
 
                 if ($request->input('latitude') && $request->input('longitude')) {
                     $latitude = $request->input('latitude');
@@ -153,6 +160,8 @@ class HomeController extends Controller
 
                 $data[] = $dataarr;
             }
+
+
 
 
 
