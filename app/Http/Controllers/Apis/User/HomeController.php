@@ -106,7 +106,7 @@ class HomeController extends Controller
             ->orderBy("offers.lft")
             ->get();
 
-        return $offers -> $offers->groupBy('offer_id');
+        return $offers -> offers->groupBy('offer_id');
         $offers = $this->filter_offers_branches($request, $name, $offers);
 
         return $offers;
