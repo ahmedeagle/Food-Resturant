@@ -138,7 +138,7 @@ class HomeController extends Controller
             } else {
                 $distance = -1;
             }
-            $first_branch->distance = $distance;
+          //  $first_branch->distance = $distance;
 
             $dataarr = [
                 "restaurant_id" => $first_branch->branch_id,
