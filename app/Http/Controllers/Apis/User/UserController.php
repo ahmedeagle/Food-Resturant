@@ -38,8 +38,6 @@ class UserController extends Controller
         return response()->json(['status' => true , 'errNum' => 0 , 'msg' => trans('messages.success')]);
     }
 
-
-
     //get neatest providers
     public function get_nearest_providers(Request $request){
         (new BaseConroller())->setLang($request);

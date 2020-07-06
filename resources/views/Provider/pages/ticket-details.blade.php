@@ -27,7 +27,13 @@
 
                                 <div class="media align-items-lg-start align-items-center flex-column flex-lg-row">
                                     <img class="rounded-circle mb-lg-0 mb-3 ml-3 mt-2 mr-3"
-                                         src="{{ ($ticket->provider_image_url == null) ? url("/storage/app/public/users/avatar.png") : $ticket->provider_image_url }}"
+
+                                         @if($reply->FromUser == "1")
+                                            src="{{ ($ticket->provider_image_url == null) ? url("/storage/app/public/users/avatar.png") : $ticket->provider_image_url }}"
+                                         @else
+                                         src="{{  url("/storage/app/public/users/avatar.png")  }}"
+                                         @endif
+
                                          style="width:90px;height:90px"
                                          draggable="false"
                                          alt="Generic placeholder image">
@@ -56,7 +62,12 @@
 
                             <div class="media align-items-lg-start align-items-center flex-column flex-lg-row">
                                 <img class="rounded-circle mb-lg-0 mb-3 ml-3 mt-2 mr-3"
+                                     @if($reply->FromUser == "1")
                                      src="{{ ($ticket->provider_image_url == null) ? url("/storage/app/public/users/avatar.png") : $ticket->provider_image_url }}"
+                                     @else
+                                     src="{{  url("/storage/app/public/users/avatar.png")  }}"
+
+                                     @endif
                                      style="width:90px;height:90px"
                                      draggable="false"
                                      alt="Generic placeholder image">
@@ -80,16 +91,19 @@
                     </div>
 
                     <div class="p-3 rounded-lg shadow-around bg-white py-2 font-body-bold my-3">
-                        <form id="add-reply-form" data-action="{{ url("/restaurant/contact-us/ticket/add-reply") }}" class="edit-form">
+                        <form id="add-reply-form" data-action="{{ url("/restaurant/contact-us/ticket/add-reply") }}"
+                              class="edit-form">
                             <div class="form-group">
                                 <label for="provider-details">{{trans('site.reply')}}</label>
-                                <input type="hidden" name="ticker_id" class="ticker_id" value="{{ $ticket->ticket_id }}" />
+                                <input type="hidden" name="ticker_id" class="ticker_id"
+                                       value="{{ $ticket->ticket_id }}"/>
                                 <textarea class="form-control font-body-md"
                                           id="provider-details"
                                           rows="6"></textarea>
-                                <p id= "reply-error" class="alert alert-danger top-margin hidden-element"></p>
+                                <p id="reply-error" class="alert alert-danger top-margin hidden-element"></p>
                             </div><!-- .form-group details -->
-                            <button type="submit" id="add-reply-btn" class="btn btn-primary py-2 px-5 mt-1 mb-1">{{trans('site.send')}}</button>
+                            <button type="submit" id="add-reply-btn"
+                                    class="btn btn-primary py-2 px-5 mt-1 mb-1">{{trans('site.send')}}</button>
                         </form>
                     </div>
 

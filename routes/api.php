@@ -44,14 +44,12 @@ Route::middleware(['api_auth'])->group(function () {
 
     Route::post("/GetHome", "Apis\User\HomeController@get_home_page");
     Route::get("/GetHome", "Apis\User\GeneralController@echo_Empty");
-   
 
     Route::post("/GetCategories", "Apis\User\SubcategoryController@get_main_sub_categories");
     Route::get("/GetCategories", "Apis\User\GeneralController@echo_Empty");
 
     Route::post("/GetCategoryProviders", "Apis\User\SubcategoryController@get_nearest_providers_inside_main_sub_categories");
     Route::get("/GetCategoryProviders", "Apis\User\GeneralController@echo_Empty");
-
 
     Route::post("/resultOrderBy", "Apis\User\SearchController@searchResultOrderBy");
     Route::get("/resultOrderBy", "Apis\User\GeneralController@echo_Empty");
