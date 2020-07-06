@@ -154,12 +154,10 @@ class HomeController extends Controller
         return $data;
     }
 
-   /* public function filter_offers_branches(Request $request, $name, $branches)
+    public function filter_offers_branches_app(Request $request, $name, $branches)
     {
         $data = [];
         foreach ($branches as $key => $_branch) {
-
-
 
             $collect = collect($_branch);
             $first_branch = $collect->first();
@@ -189,7 +187,7 @@ class HomeController extends Controller
         }
 
         return $data;
-    }*/
+    }
 
     public
     function getProvidersList(Request $request, $name)

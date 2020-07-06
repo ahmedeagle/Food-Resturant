@@ -61,7 +61,7 @@ Route::middleware(['api_auth'])->group(function () {
     Route::post("/GetOffers", "Apis\User\OfferController@get_offers");
     Route::get("/GetOffers", "Apis\User\GeneralController@echo_Empty");
 
-    Route::post("/GetOffersApp", "Apis\User\OfferController@GetOffersApp");
+    Route::post("/GetOffersApp", "Apis\User\OfferController@get_offersApp");
     Route::get("/GetOffersApp", "Apis\User\GeneralController@echo_Empty");
 
     Route::post("/NearYou", "Apis\User\UserController@get_nearest_providers");
