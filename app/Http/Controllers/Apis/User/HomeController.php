@@ -140,7 +140,8 @@ class HomeController extends Controller
                 "title" => $branch->title,
                 "image_url" => $branch->image_url,
                 "notes" => $branch->notes,
-                "accept_order" => $branch->accept_order
+                "accept_order" => $branch->accept_order,
+                "distance" => $distance
             ];
             $data[] = $dataarr;
         }
