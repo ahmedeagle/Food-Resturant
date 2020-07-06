@@ -127,55 +127,39 @@ class HomeController extends Controller
                 }*/
 
             $collect = collect($_branch);
+            $first_branch = $collect->first();
 
-           return  response() -> json($collect -> first());
-
-            foreach ($_branch as $branch) {
-
-
-
-
-                if ($request->input('latitude') && $request->input('longitude')) {
-                    $latitude = $request->input('latitude');
-                    $longitude = $request->input('longitude');
-                    $distance = (new BaseConroller())->getDistance($branch->longitude, $branch->latitude, $longitude, $latitude, "KM");
+            if ($request->input('latitude') && $request->input('longitude')) {
+                $latitude = $request->input('latitude');
+                $longitude = $request->input('longitude');
+                $distance = (new BaseConroller())->getDistance($first_branch->longitude, $first_branch->latitude, $longitude, $latitude, "KM");
 
 
-                } else {
-                    $distance = -1;
-                }
-                $branch->distance = $distance;
-
-                $dataarr = [
-                    "restaurant_id" => $branch->branch_id,
-                    "address" => $branch->address,
-                    "restaurant_name" => isset($branch->restaurant_name) ? $branch->restaurant_name : "",
-                    "title" => $branch->title,
-                    "image_url" => $branch->image_url,
-                    "notes" => $branch->notes,
-                    "accept_order" => $branch->accept_order,
-                    "distance" => $distance,
-                    "offer_id" => $branch->offer_id
-                ];
-
-                $data[] = $dataarr;
+            } else {
+                $distance = -1;
             }
+            $first_branch->distance = $distance;
 
+            $dataarr = [
+                "restaurant_id" => $first_branch->branch_id,
+                "address" => $first_branch->address,
+                "restaurant_name" => isset($first_branch->restaurant_name) ? $first_branch->restaurant_name : "",
+                "title" => $first_branch->title,
+                "image_url" => $first_branch->image_url,
+                "notes" => $first_branch->notes,
+                "accept_order" => $first_branch->accept_order,
+                "distance" => $first_branch,
+                "offer_id" => $first_branch->offer_id
+            ];
 
-
-
-
-
-
+            $data[] = $dataarr;
         }
-
-//        $collectionRes = collect($data);
-//        $res = $collectionRes -> groupBy('');
 
         return $data;
     }
 
-    public function getProvidersList(Request $request, $name)
+    public
+    function getProvidersList(Request $request, $name)
     {
 
         $providersHasBranches = DB::table('providers')->join('branches', 'providers.id', '=', 'branches.provider_id')
@@ -217,7 +201,8 @@ class HomeController extends Controller
         return $providers;
     }
 
-    public function filter_providers_branches(Request $request, $name, $providers, $type = 0)
+    public
+    function filter_providers_branches(Request $request, $name, $providers, $type = 0)
     {
         //
         foreach ($providers as $branch) {
@@ -295,7 +280,8 @@ class HomeController extends Controller
     }
 
 
-    public function filter_providers_branches_by_distance(Request $request, $name, $providers, $type = 0)
+    public
+    function filter_providers_branches_by_distance(Request $request, $name, $providers, $type = 0)
     {
         foreach ($providers as $key => $provider) {
             $branches = DB::table('branches')
