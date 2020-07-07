@@ -31,7 +31,7 @@ return [
     "confirm_pasword_same"          => "Please Confirm The Password",
     "success"                       => "Process Done Successfully",
     "error"                         => "Error, Please Try Again",
-    "invalid.credential"            => "invalid credential",
+    "invalid.credential"            => "invalid credential or account blocked",
     "no.record.found"               => "No records Found For This credential, Please check Your credential and Try Again",
     "invalid.email.phone"           => "Enter a Valid Email Or Phone Number",
     "date_of_birth_format"          => "Birth Date Format Must be Y-m-d",
