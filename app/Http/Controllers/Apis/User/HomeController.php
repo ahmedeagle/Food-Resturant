@@ -13,7 +13,6 @@ class HomeController extends Controller
     public function get_home_page(Request $request)
     {
 
-
         (new BaseConroller())->setLang($request);
 
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
@@ -107,7 +106,7 @@ class HomeController extends Controller
             ->get();
 
         $_offers = $offers->groupBy('offer_id');
-        $offers = $this->filter_offers_branches($request, $name, $_offers);
+        $offers = $this->filter_offers_branches_app($request, $name, $_offers);
 
         return $offers;
 
