@@ -56,7 +56,7 @@ class LoginController extends Controller
             return response()->json(['status' => false, 'errNum' => 2, 'msg' => $msg[2]]);
         }
         
-         if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password]) || auth()->guard('web')->attempt([$data => '0'.$credential, 'password' => $password])) {
+         if (auth()->guard('web')->attempt([$data => $credential, 'password' => $password,'blocked'   => '0']) || auth()->guard('web')->attempt([$data => '0'.$credential, 'password' => $password,'blocked'   => '0'])) {
             // login user
             $user = User::where($data , $credential)
                           ->orwhere($data ,'0'.$credential)->first();
