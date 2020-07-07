@@ -91,6 +91,19 @@ class IndexController extends Controller
             $r->reservation_date = $dateFormate;
         }
 
-        return view("Provider.pages.dashboard", $data);
+
+        $data['congestion'] = DB::table("congestion_settings")
+            ->select(
+                "id",
+                LaravelLocalization::getCurrentLocale() . "_name AS name"
+            )->get();
+
+
+        if (auth('branch')->check()) {
+
+            $data['branch'] = DB::table('branches')->whereId(auth("branch")->id())->select('congestion_settings_id')->first();
+
+        }
+            return view("Provider.pages.dashboard", $data);
     }
 }
