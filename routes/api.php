@@ -196,8 +196,12 @@ Route::middleware(['api_auth'])->group(function () {
         
         Route::post("/GetBalanceSettings", "Apis\User\BalanceController@get_app_balanace_settings");
         Route::get("/GetBalanceSettings", "Apis\User\SmsController@echo_Empty");
-        
-        
+
+
+        Route::group(['prefix' => 'pay'], function () {
+            Route::post('get_checkout_id', 'PaymentController@get_checkout_id');
+            Route::post('check_payment_status', 'PaymentController@checkPaymentStatus');
+        });
        
         
     });
