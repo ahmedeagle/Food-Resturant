@@ -22,8 +22,7 @@ class PaymentController extends Controller
             return $this->returnValidationError($code, $validator);
         }
 
-        $user = $this->auth('user-api');
-        $userEmail = $user->email ? $user->email : 'info@wisyst.info';
+
 
         $url = env('PAY_CHECKOUTS_URL', 'https://oppwa.com/v1/checkouts');
         $data =
