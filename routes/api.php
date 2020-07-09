@@ -87,27 +87,27 @@ Route::middleware(['api_auth'])->group(function () {
 
     Route::post('/forgetPassword', "Apis\User\ForgetPasswordController@forgetPassword");
     Route::get('/forgetPassword', "Apis\User\GeneralController@echo_Empty");
-      
+
     Route::post('/prepareFilter', "Apis\User\SearchController@prepareSearch");
     Route::get('/prepareFilter', "Apis\User\GeneralController@echo_Empty");
 
     Route::post('/filterResturants', "Apis\User\SearchController@filterResturants");
     Route::get('/filterResturants', "Apis\User\GeneralController@echo_Empty");
-    
+
 
     Route::post('/Search', "Apis\User\SearchController@search");
     Route::get('/Search', "Apis\User\GeneralController@echo_Empty");
 
     Route::post('/getSearchAutocompleteLists', "Apis\User\SearchController@get_provider_names");
     Route::get('/getSearchAutocompleteLists', "Apis\User\GeneralController@echo_Empty");
-    
+
     Route::middleware(['api_token'])->group(function () {
         Route::post('/activateAccount', "Apis\User\ForgetPasswordController@activateAccount");
         Route::get('/activateAccount', "Apis\User\GeneralController@echo_Empty");
 
         Route::post('/updatePassword', "Apis\User\ForgetPasswordController@updatePassword");
         Route::get('/updatePassword', "Apis\User\GeneralController@echo_Empty");
-    
+
         Route::post("/PostUserMealSubCategories", "Apis\User\UserController@post_user_meal_sub_categories");
         Route::get("/PostUserMealSubCategories", "Apis\User\GeneralController@echo_Empty");
 
@@ -152,66 +152,65 @@ Route::middleware(['api_auth'])->group(function () {
 
         Route::post("/UpdateProfile", "Apis\User\UserController@update_user_profile");
         Route::get("/UpdateProfile", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/ChangePassword", "Apis\User\UserController@change_password");
         Route::get("/ChangePassword", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/GetNotificationsList", "Apis\User\NotificationController@get_notifications");
         Route::get("/GetNotificationsList", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/GetNotificationsCount", "Apis\User\NotificationController@get_notification_count");
         Route::get("/GetNotificationsCount", "Apis\User\GeneralController@echo_Empty");
-         
-        
+
+
         Route::post("/AddOrder", "Apis\User\OrderController@create_order");
         Route::get("/AddOrder", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/CancelOrder", "Apis\User\OrderController@cancel_order");
         Route::get("/CancelOrder", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/GetOrders", "Apis\User\OrderController@get_list_of_orders");
         Route::get("/GetOrders", "Apis\User\GeneralController@echo_Empty");
-        
-        
+
+
         Route::post("/GetOrderDetails", "Apis\User\OrderController@get_order_details");
         Route::get("/GetOrderDetails", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/AddFavoriteOrder", "Apis\User\OrderController@add_favorit_order");
         Route::get("/AddFavoriteOrder", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/RemoveFavoriteOrder", "Apis\User\OrderController@remove_favorit_order");
         Route::get("/RemoveFavoriteOrder", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/GetFavoriteOrders", "Apis\User\OrderController@get_favorit_orders");
         Route::get("/GetFavoriteOrders", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/GetFavoriteOrderDetails", "Apis\User\OrderController@get_favorit_order_details");
         Route::get("/GetFavoriteOrderDetails", "Apis\User\GeneralController@echo_Empty");
-        
+
         Route::post("/SendVerifiedCode", "Apis\User\UserController@send_verified_code");
         Route::get("/SendVerifiedCode", "Apis\User\SmsController@echo_Empty");
-        
+
         Route::post("/GetUserBalance", "Apis\User\BalanceController@get_user_balance");
         Route::get("/GetUserBalance", "Apis\User\SmsController@echo_Empty");
-        
+
         Route::post("/GetBalanceSettings", "Apis\User\BalanceController@get_app_balanace_settings");
         Route::get("/GetBalanceSettings", "Apis\User\SmsController@echo_Empty");
 
 
-        Route::group(['prefix' => 'pay' , 'namespace' => 'Apis\User'], function () {
+        Route::group(['prefix' => 'pay', 'namespace' => 'Apis\User'], function () {
             Route::post('get_checkout_id', 'PaymentController@get_checkout_id');
             Route::post('check_payment_status', 'PaymentController@checkPaymentStatus');
+            Route::post('apple_pay_get_checkout_id', 'PaymentController@get_checkout_id_apple_pay');
+            Route::post('apple_pay_check_payment_status', 'PaymentController@checkPaymentStatus_apple_pay');
         });
 
     });
 });
 
 
+Route::get('testation', function () {
 
- Route::get('testation',function(){
-            
-                 
-  
-                    
-        });
+
+});
         
