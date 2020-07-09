@@ -22,15 +22,13 @@ class PaymentController extends Controller
             return $this->returnValidationError($code, $validator);
         }
 
-
-
-        $url = env('PAY_CHECKOUTS_URL', 'https://oppwa.com/v1/checkouts');
+        $url = env('PAY_CHECKOUTS_URL', 'https://test.oppwa.com/v1/checkouts');
         $data =
             "entityId=" . env('PAY_ENTITYID', '8ac7a4ca6d0680f7016d14c5bbb716d8') .
             "&amount=" . $request->price .
             "&currency=SAR" .
             "&paymentType=DB" .
-            "&notificationUrl=https://mcallapp.com";
+            "&notificationUrl=https://mjrb.wisyst.info";
 
         try {
             $ch = curl_init();
