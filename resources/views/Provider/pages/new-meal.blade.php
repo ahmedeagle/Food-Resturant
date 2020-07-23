@@ -8,6 +8,10 @@
     {{ $class }}
 @endsection
 
+@section('main-style')
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    @stop
+
 @section("content")
     <main class="page-content py-5">
         <div class="container">
@@ -119,27 +123,45 @@
 
                             <div class="form-group">
                                 <label for="input-tags">
-                                    {{trans('site.ingredientsAR')}}
-                                    <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
+                                    {{trans('site.ingredients')}}
+
                                 </label>
-                                <input type="text"
-                                       name="ar_component"
-                                       id="input-tags" required>
+
                             </div><!-- .form-group tags -->
 
-                            <div class="form-group">
-                                <label for="input-tags">
-                                    {{trans('site.ingredientsEN')}}
-                                    <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
-                                </label>
-                                <input type="text"
-                                       name="en_component"
-                                       id="input-tags" required>
-                            </div><!-- .form-group tags -->
+                            <div class="row">
+                                <div class="col-4 ">
+                                    <p>{{trans('site.ingredientsAR')}}</p>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size1"
+                                               name="size1"
+                                               class="form-control font-body-md border-gray"
+                                               required>
+                                    </div><!-- .form-group -->
+                                </div><!-- .col -->
+
+                                <div class="col-4">
+                                    <p>{{trans('site.ingredientsEN')}}</p>
+                                    <div class="form-group">
+                                        <input type="text"
+                                               id="size1_en"
+                                               name="size1_en"
+                                               class="form-control font-body-md border-gray"
+                                               required>
+                                    </div><!-- .form-group -->
+
+                                </div><!-- .col -->
+
+                                <div class="col-4 d-flex justify-content-center  align-items-center" >
+                                     <button class="btn btn-success btn-add " type="button">
+                                        <span class="fa fa-plus"></span>
+                                    </button>
+                                 </div>
+
+
+                            </div>
+
 
                             <div class="form-group">
                                 <label for="available">{{trans('site.available_all_time')}}</label>

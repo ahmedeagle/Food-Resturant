@@ -51,9 +51,7 @@ class BaseConroller extends Controller
     function getDistance($lat1, $lon1, $lat2, $lon2, $unit) {
 
         $d_calculator = new GeoFenceCalculator();
-
         $distance = $d_calculator->CalculateDistance($lat1, $lon1, $lat2, $lon2);
-
         return $distance;
 
     }
