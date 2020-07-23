@@ -1,0 +1,45 @@
+{
+    "name": "salmanzafar/laravel-geo-fence",
+    "description": "A Laravel 5 and Laravel 6 package to calculate distance between two longitude and latitudes",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Salman Zafar",
+            "email": "salmanzafar949@gmail.com"
+        }
+    ],
+    "keywords": [
+        "laravel",
+        "laravel5",
+        "geofence-laravel",
+        "geo-fence-laravel",
+        "laravel-calculate-distance-between-two-points",
+        "laravel geofence library",
+        "laravel geo-fence library",
+        "Geo Fencing laravel"
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "laravel/framework": ">=5.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Salman\\GeoFence\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Salman\\GeoFence\\GeoFenceServiceProvider"
+            ],
+            "aliases": {
+                "Mqtt": "Salman\\GeoFence\\Facades\\GeoFence"
+            }
+        }
+    }
+}
