@@ -179,7 +179,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
         Dedicated\GoogleTranslate\GoogleTranslateProvider::class,
- 
+        Salman\GeoFence\GeoFenceServiceProvider::class,
+
+
     ],
 
     /*
@@ -232,7 +234,9 @@ return [
         'Paytabs' => Damas\Paytabs\Facades\PaytabsFacade::class,
         'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'GoogleTranslate'     => Dedicated\GoogleTranslate\Translator::class,
+        'GeoFence' => \Salman\GeoFence\Facades\GeoFence::class,
 
-     ],
+
+    ],
 
 ];
