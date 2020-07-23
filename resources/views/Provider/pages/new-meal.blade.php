@@ -130,9 +130,11 @@
                             </div><!-- .form-group tags -->
 
                             <div class="row">
+
                                 <div class="col-4 ">
-                                    <p>{{trans('site.ingredientsAR')}}</p>
+
                                     <div class="form-group">
+                                        <p>{{trans('site.ingredientsAR')}}</p>
                                         <input type="text"
                                                id="size1"
                                                name="size1"
@@ -141,9 +143,11 @@
                                     </div><!-- .form-group -->
                                 </div><!-- .col -->
 
+
                                 <div class="col-4">
-                                    <p>{{trans('site.ingredientsEN')}}</p>
+
                                     <div class="form-group">
+                                        <p>{{trans('site.ingredientsEN')}}</p>
                                         <input type="text"
                                                id="size1_en"
                                                name="size1_en"
