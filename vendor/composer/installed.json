@@ -1100,7 +1100,8 @@
                 "email": "jakub.onderka@gmail.com",
                 "homepage": "http://www.acci.cz"
             }
-        ]
+        ],
+        "abandoned": "php-parallel-lint/php-console-color"
     },
     {
         "name": "jakub-onderka/php-console-highlighter",
@@ -1146,7 +1147,8 @@
                 "email": "acci@acci.cz",
                 "homepage": "http://www.acci.cz/"
             }
-        ]
+        ],
+        "abandoned": "php-parallel-lint/php-console-highlighter"
     },
     {
         "name": "laravel/framework",
@@ -2112,7 +2114,8 @@
         "keywords": [
             "cron",
             "schedule"
-        ]
+        ],
+        "abandoned": "dragonmantank/cron-expression"
     },
     {
         "name": "myclabs/deep-copy",
@@ -3605,6 +3608,67 @@
             "RFC 6570",
             "template",
             "uri"
+        ]
+    },
+    {
+        "name": "salmanzafar/laravel-geo-fence",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/salmanzafar949/Laravel-Geo-Fence.git",
+            "reference": "821e412ef460e3cd5273f08da96a2219876cca18"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/salmanzafar949/Laravel-Geo-Fence/zipball/821e412ef460e3cd5273f08da96a2219876cca18",
+            "reference": "821e412ef460e3cd5273f08da96a2219876cca18",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "laravel/framework": ">=5.0"
+        },
+        "time": "2019-11-14T11:03:11+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Salman\\GeoFence\\GeoFenceServiceProvider"
+                ],
+                "aliases": {
+                    "Mqtt": "Salman\\GeoFence\\Facades\\GeoFence"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Salman\\GeoFence\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Salman Zafar",
+                "email": "salmanzafar949@gmail.com"
+            }
+        ],
+        "description": "A Laravel 5 and Laravel 6 package to calculate distance between two longitude and latitudes",
+        "keywords": [
+            "Geo Fencing laravel",
+            "geo-fence-laravel",
+            "geofence-laravel",
+            "laravel",
+            "laravel geo-fence library",
+            "laravel geofence library",
+            "laravel-calculate-distance-between-two-points",
+            "laravel5"
         ]
     },
     {
@@ -5563,6 +5627,7 @@
             "http",
             "psr",
             "psr-7"
-        ]
+        ],
+        "abandoned": "laminas/laminas-diactoros"
     }
 ]

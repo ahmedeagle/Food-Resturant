@@ -17,6 +17,8 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
+        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
+        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'cf97c57bfe0f23854afd2f3818abb7a0' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/create_uploaded_file.php',
         '9bf37a3d0dad93e29cb4e1b1bfab04e9' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_headers_from_sapi.php',
         'ce70dccb4bcc2efc6e94d2ee526e6972' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/marshal_method_from_sapi.php',
@@ -25,8 +27,6 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         '0b0974a5566a1077e4f2e111341112c1' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_server.php',
         '1ca3bc274755662169f9629d5412a1da' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/normalize_uploaded_files.php',
         '40360c0b9b437e69bcbb7f1349ce029e' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/functions/parse_cookie_header.php',
-        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
-        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
     );
@@ -74,6 +74,7 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
             'Stichoza\\GoogleTranslate\\' => 25,
+            'Salman\\GeoFence\\' => 16,
         ),
         'R' => 
         array (
@@ -248,6 +249,10 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'Stichoza\\GoogleTranslate\\' => 
         array (
             0 => __DIR__ . '/..' . '/stichoza/google-translate-php/src',
+        ),
+        'Salman\\GeoFence\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -512,6 +517,7 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'App\\Http\\Controllers\\Apis\\User\\OfferController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/OfferController.php',
         'App\\Http\\Controllers\\Apis\\User\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/OrderController.php',
         'App\\Http\\Controllers\\Apis\\User\\PageController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/PageController.php',
+        'App\\Http\\Controllers\\Apis\\User\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/PaymentController.php',
         'App\\Http\\Controllers\\Apis\\User\\ProviderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/ProviderController.php',
         'App\\Http\\Controllers\\Apis\\User\\PushNotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/PushNotificationController.php',
         'App\\Http\\Controllers\\Apis\\User\\RateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Apis/User/RateController.php',
@@ -620,6 +626,7 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'App\\Ticket' => __DIR__ . '/../..' . '/app/Ticket.php',
         'App\\TicketReplies' => __DIR__ . '/../..' . '/app/TicketReplies.php',
         'App\\TicketTypes' => __DIR__ . '/../..' . '/app/TicketTypes.php',
+        'App\\Traits\\GlobalTrait' => __DIR__ . '/../..' . '/app/Traits/GlobalTrait.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserMealSubcategories' => __DIR__ . '/../..' . '/app/UserMealSubcategories.php',
         'App\\Withdraw' => __DIR__ . '/../..' . '/app/Withdraw.php',
@@ -3661,6 +3668,11 @@ class ComposerStaticInit91f685a185ea24f17bb66e30e52fe1e7
         'Rize\\UriTemplate\\Operator\\UnNamed' => __DIR__ . '/..' . '/rize/uri-template/src/Rize/UriTemplate/Operator/UnNamed.php',
         'Rize\\UriTemplate\\Parser' => __DIR__ . '/..' . '/rize/uri-template/src/Rize/UriTemplate/Parser.php',
         'Rize\\UriTemplate\\UriTemplate' => __DIR__ . '/..' . '/rize/uri-template/src/Rize/UriTemplate/UriTemplate.php',
+        'Salman\\GeoFence\\Commands\\GeoFence' => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src/Commands/GeoFence.php',
+        'Salman\\GeoFence\\Facades\\GeoFence' => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src/Facade/GeoFence.php',
+        'Salman\\GeoFence\\GeoFenceServiceProvider' => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src/GeoFenceServiceProvider.php',
+        'Salman\\GeoFence\\Service\\GeoFenceCalculator' => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src/Service/GeoFenceCalculator.php',
+        'Salman\\GeoFence\\Service\\GeoFenceService' => __DIR__ . '/..' . '/salmanzafar/laravel-geo-fence/src/Service/GeoFenceService.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
