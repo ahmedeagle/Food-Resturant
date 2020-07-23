@@ -56,11 +56,11 @@ class BaseConroller extends Controller
         $unit = strtoupper($unit);
 
         if ($unit == "K") {
-            return round(($miles * 1.609344));
+            return ($miles * 1.609344);
         } else if ($unit == "N") {
-            return round(($miles * 0.8684));
+            return ($miles * 0.8684);
         } else {
-            return round($miles);
+            return $miles;
         }
         
         

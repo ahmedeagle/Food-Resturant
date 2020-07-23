@@ -54,8 +54,6 @@ class OrderController extends Controller
              ];
 
 
-
-
         if($request->input("in_future") == 1){
             $rules['order_date']  = "required";
 

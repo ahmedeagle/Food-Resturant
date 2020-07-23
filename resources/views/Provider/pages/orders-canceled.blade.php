@@ -51,7 +51,8 @@
 
                                 <p class="text-gray font-body-md mb-0">
                                     <span class="d-block">
-                                         {{trans('site.order_num')}} <span class="orders-number">{{ $orderDetails->order_code }}</span>
+                                         {{trans('site.order_num')}} <span
+                                                class="orders-number">{{ $orderDetails->order_code }}</span>
                                     </span>
                                     <span class="d-block">
                                         <span class="orders-date">
@@ -62,7 +63,8 @@
                                         </span>
                                     </span>
                                     <span class="d-block">
-                                           {{trans('site.payment_method')}}  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
+                                           {{trans('site.payment_method')}}  <span
+                                                class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
                                         {{trans('site.address')}}
@@ -87,7 +89,7 @@
                         <div class="row px-3 px-lg-0">
                             <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
                                 <h6 class="font-size-base text-lg-right text-center">
-                                   {{trans('site.details')}}
+                                    {{trans('site.details')}}
                                 </h6>
 
 
@@ -117,7 +119,7 @@
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $option->option_name }}</span>
-                                                        :  {{trans('site.added_price')}}
+                                                        : {{trans('site.added_price')}}
                                                         <span class="count"> {{ $option->added_price }} </span>
                                                         &nbsp;
                                                         <span class="currency"> {{trans('site.riyal')}} </span>
@@ -128,7 +130,7 @@
                                                 @endforeach
 
                                             @endif
-                                            <!-- end meal options -->
+                                        <!-- end meal options -->
 
                                             <!-- start meal adds -->
                                             @php
@@ -140,7 +142,7 @@
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $add->add_name }}</span>
-                                                        :  {{trans('site.added_price')}}
+                                                        : {{trans('site.added_price')}}
                                                         <span class="count"> {{ $add->added_price }} </span>
                                                         &nbsp;
                                                         <span class="currency">{{trans('site.riyal')}} </span>
@@ -148,10 +150,10 @@
                                                 @php
                                                     $adds_sum  = $adds_sum + $add->added_price;
                                                 @endphp
-                                                @endforeach
+                                            @endforeach
 
-                                            @endif
-                                            <!-- end meal adds -->
+                                        @endif
+                                        <!-- end meal adds -->
 
                                         </div>
                                         <div class="result text-primary">
@@ -174,16 +176,16 @@
                                         <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
-                                
-                                  @php
-                                             $taxData = DB::table("app_settings")
-                                            ->first();
-                                
-                                         $orderTax = $taxData->order_tax;
-                                        
-                                    @endphp   
-                                  
-        
+
+                                @php
+                                    $taxData = DB::table("app_settings")
+                                   ->first();
+
+                                $orderTax = $taxData->order_tax;
+
+                                @endphp
+
+
                                 <div class="invoice d-flex justify-content-between mt-3">
                                     <h6 class="font-size-base">{{trans('site.tax')}}: </h6>
                                     <div class="result text-primary font-body-md">
@@ -197,9 +199,39 @@
 
                     </div>
 
-                    <a href="{{ url("/restaurant/orders/list/1") }}" class="btn btn-primary px-5">{{trans('site.back')}}</a>
 
-                </div><!-- .col-* -->
+                    <a href="{{ url("/restaurant/orders/list/1") }}"
+                       class="btn btn-primary px-5">{{trans('site.back')}}</a>
+
+                    <br><br>
+                    <div class="py-2 pr-3 rounded-lg shadow-around">
+                        <h4 class="page-title"> موقع العميل </h4>
+                    </div>
+                    <div class="py-3 rounded-lg shadow-around my-4">
+
+
+                        <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style="width:100%;
+                             position:absolute;
+                             top:0;">
+
+                            <div style=" width:100%;
+                            position:absolute;
+                            top:0;
+                            padding:0;">
+                                <div id="map-user" style=" border-top:50px solid #fff;
+                            border-bottom:20px solid #fff;"></div>
+
+                            </div>
+
+
+
+                        </div><!-- .media-body -->
+
+                    </div>
+
+                </div>
+
+
             </div><!-- .row -->
 
         </div><!-- .container -->
@@ -207,3 +239,30 @@
 
 
 @endsection
+
+@section('script')
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&callback=initMap">
+    </script>
+
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+
+            var uluru = {lat: {{$orderDetails -> user_latitude }} , lng: {{$orderDetails -> user_longitude}}  };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map-user'), {zoom: 15, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
+
+
+
+@stop

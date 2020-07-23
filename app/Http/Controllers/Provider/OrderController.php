@@ -159,7 +159,10 @@ class OrderController extends Controller
                 "order_statuses." . LaravelLocalization::getCurrentLocale() . "_name AS status_name",
                 "order_statuses.id AS status_id",
                 "payment_methods.id AS payment_id",
-                "payment_methods." . LaravelLocalization::getCurrentLocale() . "_name AS payment_name"
+                "payment_methods." . LaravelLocalization::getCurrentLocale() . "_name AS payment_name",
+                "orders.is_delivery",
+                "orders.user_latitude",
+                "orders.user_longitude"
             )
             ->first();
 
