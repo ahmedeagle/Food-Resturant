@@ -43,60 +43,7 @@ class UserController extends Controller
     //get neatest providers
     public function get_nearest_providers(Request $request)
     {
-        (new BaseConroller())->setLang($request);
 
-
-        $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
-
-        $providerspag = DB::table("providers")
-            ->join("images", "images.id", "providers.image_id")
-            ->join('branches', 'branches.provider_id', '=', 'providers.id')
-            // ->where("providers.phoneactivated" , "1")
-            ->where("providers.accountactivated", "1")
-            ->where("providers.accept_order", '1')
-            ->where("branches.published", "1")
-            ->select(
-                "providers.id AS provider_id",
-                "branches.id AS id",
-                "branches.id AS id",
-                "branches.has_delivery",
-                "branches.has_booking",
-                "branches.longitude",
-                "branches.latitude",
-                "branches." . $name . "_address AS address",
-                "branches.average_price AS mealAveragePrice",
-
-                DB::raw("CONCAT(providers ." . $name . "_name,'-',branches ." . $name . "_name) AS name"),
-                DB::raw("CONCAT('" . url('/') . "','/storage/app/public/providers/', images.name) AS image_url")
-            )
-            ->paginate(10);
-
-
-        (new HomeController())->filter_providers_branches($request, $name, $providerspag);
-
-
-        $providers = $providerspag->sortBy(function ($item) {
-            return $item->distance;
-        })->values();
-
-
-        $providers = new LengthAwarePaginator(
-            $providers,
-            $providerspag->total(),
-            $providerspag->perPage(),
-            $request->input("page"),
-            ["path" => url()->current()]
-
-        );
-
-
-        // (new HomeController())->filter_providers_branches_by_distance($request,$name ,$providers);
-        return response()->json([
-            "status" => true,
-            "errNum" => 0,
-            "msg" => trans("messages.success"),
-            "providers" => $providers
-        ]);
     }
 
     public function prepare_update_user_profile(Request $request)
