@@ -87,6 +87,7 @@ class HomeController extends Controller
             ->join("branches", "providers.id", "branches.provider_id")
             ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
+            ->where("branches.published",'1')
             ->select(
                 "branches.id AS branch_id",
                 "branches.longitude",
@@ -212,7 +213,6 @@ class HomeController extends Controller
                 "branches.latitude",
                 "branches.ar_address AS address",
                 "branches.average_price AS mealAveragePrice",
-
                 DB::raw("CONCAT(providers ." . $name . "_name,'-',branches ." . $name . "_name) AS name"),
                 DB::raw("CONCAT('" . url('/') . "','/storage/app/public/providers/', images.name) AS image_url")
             )

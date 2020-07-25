@@ -289,8 +289,12 @@ return [
     "provider_type"                     => "نوع مقدم الخدمة ",
     "active_order_recieve"              =>  "أستلام طلبات ",
     "change_restaurant_logo"            => "تغيير شعار المطعم ",
-    "active"                            => "تفعيل ",
-    "inactive"                          => "لغاء تفعيل ",
+    "active"                            => "مفعل ",
+    "inactive"                          => "الغاء تفعيل ",
+
+    "_active"                            => "مفعل ",
+    "_inactive"                          => " غير مفعل",
+
     "occasion_description"              => "وصف المناسبة ",
     "confirm_reservation"               => "تأكيد  الحجز ",
     "finish_reservation"                => "أنهاء الحجز ",

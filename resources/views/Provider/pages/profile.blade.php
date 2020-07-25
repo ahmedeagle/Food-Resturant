@@ -188,10 +188,10 @@
                                 <label for="accept_order">{{trans('site.active_order_recieve')}}</label>
                                 <select class="form-control custom-select text-gray font-body-md border-gray"
                                         id="accept_order" name="accept_order">
-                                    <option value="0">{{trans('site.choose_status')}}</option>
+                                    <option value="">{{trans('site.choose_status')}}</option>
                                     
-                                        <option value="1" @if($provider->order_status == 1) selected @endif> {{trans('site.active')}}</option>
-                                        <option value="2" @if($provider->order_status ==0) selected @endif>{{trans('site.inactive')}} </option>
+                                        <option value="1" @if($provider->order_status == 1) selected @endif> {{trans('site._active')}}</option>
+                                        <option value="0" @if($provider->order_status ==0) selected @endif>{{trans('site._inactive')}} </option>
                                    
                                 </select>
 

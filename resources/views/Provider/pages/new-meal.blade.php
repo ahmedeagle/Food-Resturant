@@ -124,7 +124,6 @@
                             <div class="form-group">
                                 <label for="input-tags">
                                     {{trans('site.ingredients')}}
-
                                 </label>
 
                             </div><!-- .form-group tags -->
