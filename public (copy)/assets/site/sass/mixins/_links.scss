@@ -1,0 +1,8 @@
+@mixin link-color($color, $hover: $color) {
+  color: $color;
+  transition: color 0.2s ease-in-out;
+  &:hover,
+  &:focus {
+    color: rgba($hover, 0.7);
+  }
+}

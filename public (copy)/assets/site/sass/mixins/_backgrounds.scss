@@ -1,0 +1,15 @@
+@mixin background($color: null,$url: null,$repeat: null,$position: null,$attach: null,$size: null) {
+  background-color: $color;
+  background-image: url($url);
+  background-repeat: $repeat;
+  -webkit-background-size: $size;
+  background-size: $size;
+  background-position: $position;
+}
+@mixin background-gradient($light: null, $dark: null, $min: 0%, $max: 100%) {
+  background: $dark; /* Old browsers */
+  background: -moz-linear-gradient(top, $light $min, $dark $max); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $light $min,$dark $max); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $light $min,$dark $max); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$light}', endColorstr='#{$dark}',GradientType=0 ); /* IE6-9 */
+}

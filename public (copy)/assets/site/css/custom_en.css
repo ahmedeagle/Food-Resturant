@@ -1,0 +1,95 @@
+/*
+    Start General Styles
+
+*/
+
+.hidden-element{
+    display: none !important;
+}
+.top-margin{
+    margin-top:10px;
+}
+
+/*
+
+    Provider Registration Form
+
+*/
+.provider-uploaded-logo{
+    width:93.3px;
+    height:92.5px;
+    border:1px solid #969696;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+
+    Add Meal Section
+
+*/
+
+.add-meal-images{
+
+}
+
+
+.add-meal-images div{
+    margin-left: 10px;
+    position: relative;
+    margin-top: 10px;
+}
+.add-meal-images div img{
+    width:100px;
+    height:100px;
+    margin:4px;
+    border: 2px solid #bababa;
+    border-radius: 6px;
+}
+.add-meal-images div .delete-img{
+
+    color: #c6c6c6;
+    cursor:pointer;
+    visibility: hidden;
+    position: absolute;
+    top: -15px;
+    left: 4px;
+}
+.add-meal-images div .delete-img:hover{
+    color: #6e6e6e;
+}
+
+
+
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+    list-style-type:none;
+    padding:0;
+
+    -moz-user-select:none;
+    -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+    display:inline-block;
+
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+    font-size:2.5em; /* Change the size of the stars */
+    color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+    color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+    color:#FF912C;
+}
+
+

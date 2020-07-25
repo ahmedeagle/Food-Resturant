@@ -1,0 +1,46 @@
+body {
+    direction: $dir;
+    font-family: $font__body;
+    text-align: $global-align;
+}
+.ltr {
+  direction: ltr;
+}
+::placeholder {
+    color: $gray !important;
+}
+.bg-none {
+    background-color: transparent;
+}
+.shadow-bottom {
+    box-shadow: 0px 3px 0.5rem 0.25rem rgba($medium, 0.7);
+}
+.shadow-around {
+    box-shadow: 0 0 0.5rem 0.25rem rgba($medium, 0.7);
+}
+.shadow-around-lg {
+    box-shadow: 0 0 1rem 0.25rem rgba($medium, 0.7);
+}
+.no-decoration {
+    text-decoration: none !important;
+}
+.rounded-lg {
+    border-radius: 10px;
+}
+.rounded-top-lg {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.rounded-bottom-lg {
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.rounded-curved {
+    border-radius: 1.5rem;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.cursor {
+    cursor: pointer;
+}

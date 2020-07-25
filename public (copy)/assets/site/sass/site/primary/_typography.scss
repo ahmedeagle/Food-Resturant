@@ -1,0 +1,64 @@
+html,
+body {
+  font-size: $font__size; // 20px
+}
+.font-size-base {
+  font-size: $font__size;
+}
+h1,
+.h1 {
+  font-size: 1.7rem; // 34px
+}
+h2,
+.h2 {
+  font-size: 1.5rem; // 30px
+}
+h3,
+.h3 {
+  font-size: 1.3rem; // 26px
+}
+h4,
+.h4 {
+  font-size: 1.1rem; // 22px
+}
+h5,
+.h5 {
+  font-size: 0.9rem; // 18px
+}
+h6,
+.h6 {
+  font-size: 0.8rem; // 16px
+}
+.text-sm {
+  font-size: 0.7rem; // 14px
+}
+.font-body {
+  font-family: $font__body;
+}
+.font-body-ultra-lt {
+  font-family: $font__body-ultra-lt;
+}
+.font-body-lt {
+  font-family: $font__body-lt;
+}
+.font-body-md {
+  font-family: $font__body-md;
+}
+.font-body-bold {
+  font-family: $font__body-bold;
+}
+.font-body-black {
+  font-family: $font__body-black;
+}
+.font-body-heavy {
+  font-family: $font__body-heavy;
+}
+.font-body,
+.font-body-ultra-lt,
+.font-body-lt,
+.font-body-md,
+.font-body-bold,
+.font-body-black,
+.font-body-heavy {
+  font-weight: normal;
+}

@@ -74,7 +74,7 @@ class ProfileController extends Controller
             "en_name"         => "required",
             "country"         => "required|exists:countries,id",
             "city"            => "required|exists:cities,id",
-            "accept_order"    => "required|not_in:0",
+            "accept_order"    => "required|in:0,1",
             "ar_description"  => "required",
             "en_description"  => "required",
 
@@ -117,7 +117,7 @@ class ProfileController extends Controller
             'city_id'                   => $request->input("city"),
             'ar_description'            => $request->input("ar_description"),
             'en_description'            => $request->input("en_description"),
-            'accept_order'              => $request->input("accept_order"),
+            'accept_order'              => $request->input("accept_order") == 1 ? '1' : '0'  ,
             'category_id'               => $request->input("service-provider"),
             'online_list'               => $request->input("automatic-list"),
             'accept_online_payment'     => $request->input("accept-online-payment"),

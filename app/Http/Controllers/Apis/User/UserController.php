@@ -52,9 +52,6 @@ class UserController extends Controller
                         // ->where("providers.phoneactivated" , "1")
                         ->where("providers.accountactivated" , "1")
                         ->where("branches.published" , "1")
-                        
-                         
-                      
                         ->select(
                             "providers.id AS provider_id",
                              "branches.id AS id",
