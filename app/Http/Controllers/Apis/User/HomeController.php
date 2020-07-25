@@ -88,6 +88,7 @@ class HomeController extends Controller
             ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
             ->where("branches.published",'1')
+            ->where("providers.accept_order",'1')
             ->select(
                 "branches.id AS branch_id",
                 "branches.longitude",
@@ -193,8 +194,8 @@ class HomeController extends Controller
     function getProvidersList(Request $request, $name)
     {
 
-        $providersHasBranches = DB::table('providers')->join('branches', 'providers.id', '=', 'branches.provider_id')
-            ->where("branches.published", "1")->select('providers.id')->distinct()->get();
+       // $providersHasBranches = DB::table('providers')->join('branches', 'providers.id', '=', 'branches.provider_id')
+         //   ->where("branches.published", "1")->select('providers.id')->distinct()->get();
 
 
         $providers = DB::table("providers")
@@ -203,6 +204,7 @@ class HomeController extends Controller
             // ->where("providers.phoneactivated" , "1")
             ->where("providers.accountactivated", "1")
             ->where("branches.published", "1")
+            ->where("providers.accept_order",'1')
             ->select(
                 "providers.id AS provider_id",
                 "branches.id AS id",
