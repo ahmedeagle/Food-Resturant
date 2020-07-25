@@ -38,7 +38,6 @@ class SubcategoryController extends Controller
     // modified  get nearst branches not provider
     public function get_nearest_providers_inside_main_sub_categories(Request $request)
     {
-
         (new BaseConroller())->setLang($request);
         $name = (App()->getLocale() == 'ar') ? 'ar' : 'en';
         // type 0 -> distance , 1 -> rate
@@ -72,7 +71,8 @@ class SubcategoryController extends Controller
             // ->where("providers.phoneactivated" , "1")
             ->where("providers.accountactivated", "1")
             ->join('branches', 'branches.provider_id', '=', 'providers.id')
-            ->where('branches.published', '1')
+            ->where('branches.published', "1")
+            ->where("providers.accept_order",'1')
             ->select(
                 "branches.id AS id",
                 "providers.id AS provider_id",
