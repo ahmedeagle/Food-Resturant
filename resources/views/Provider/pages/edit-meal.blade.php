@@ -100,32 +100,78 @@
                                 </select>
                             </div><!-- .form-group available -->
 
-                            <div class="form-group">
-                                <label for="input-tags">
-                                    {{trans('site.ingredientsAR')}}
-                                    <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
-                                </label>
-                                <input type="text"
-                                       name="ar_component"
-                                       value="{{ $ar_component }}"
-                                       id="input-tags" required>
-                            </div><!-- .form-group tags -->
+                            <div class="row">
 
-                            <div class="form-group">
-                                <label for="input-tags">
-                                    {{trans('site.ingredientsEN')}}
-                                    <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
-                                </label>
-                                <input type="text"
-                                       name="en_component"
-                                       value="{{ $en_component }}"
-                                       id="input-tags" required>
-                            </div><!-- .form-group tags -->
+                            @if(isset($components) && $components -> count () >  0)
+                                @foreach($components -> reverse() as $index => $component)
+                                    <div class="col-md-4 col-lg-5 current{{$index}}">
 
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsAR')}}</p>
+                                            <input type="text"
+                                                   id="size1"
+                                                   name="ar_component[]"
+                                                   class="form-control font-body-md border-gray"
+                                                   value="{{$component -> ar_name}}"
+                                                   required>
+                                        </div><!-- .form-group -->
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-5 current{{$index}}">
+
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsEN')}}</p>
+                                            <input type="text"
+                                                   id="size1_en"
+                                                   name="en_component[]"
+                                                   class="form-control font-body-md border-gray"
+                                                   value="{{$component -> en_name}}"
+                                                   required>
+                                        </div><!-- .form-group -->
+
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center current{{$index}}">
+                                        <button class="btn btn-danger btn-remove-current" data-id="{{$index}}" type="button" style="margin-top: 25px;">
+                                            <span class="fa fa-minus"></span>
+                                        </button>
+                                    </div>
+                                @endforeach
+                            @endif
+                            </div>
+
+
+                            <div class="controls">
+                                <div class="row entry">
+
+                                    <div class="col-md-4 col-lg-5">
+
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsAR')}}</p>
+                                            <input type="text"
+                                                   id="size1"
+                                                   name="ar_component[]"
+                                                   class="form-control font-body-md border-gray"
+                                                   >
+                                        </div><!-- .form-group -->
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-5">
+
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsEN')}}</p>
+                                            <input type="text"
+                                                   id="size1_en"
+                                                   name="en_component[]"
+                                                   class="form-control font-body-md border-gray"
+                                                   >
+                                        </div><!-- .form-group -->
+
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center">
+                                        <button class="btn btn-success btn-add" type="button" style="margin-top: 25px;">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label for="available">{{trans('site.available_all_time')}}</label>
@@ -227,8 +273,8 @@
                                     @foreach($sizes as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="ar_size{{ $key + 1 }}"
-                                                   name="ar_size{{ $key + 1 }}"
+                                                   id="size{{ $key + 1 }}"
+                                                   name="size{{ $key + 1 }}"
                                                    value="{{ old("size". ($key + 1) ."", $s->ar_size_name) }}"
                                                    class="form-control font-body-md border-gray"
                                                    @if($key == 0) required @endif>
@@ -239,8 +285,8 @@
                                         @for($i=0; $i <= (5- count($sizes)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="ar_size{{ count($sizes) + $i + 1}}"
-                                                       name="ar_size{{ count($sizes) + $i + 1 }}"
+                                                       id="size{{ count($sizes) + $i + 1}}"
+                                                       name="size{{ count($sizes) + $i + 1 }}"
                                                        value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -254,8 +300,8 @@
                                     @foreach($sizes as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="en_size{{ $key + 1 }}"
-                                                   name="en_size{{ $key + 1 }}"
+                                                   id="size{{ $key + 1 }}_en"
+                                                   name="size{{ $key + 1 }}_en"
                                                    value="{{ old("size". ($key + 1) ."", $s->en_size_name) }}"
                                                    class="form-control font-body-md border-gray"
                                                    @if($key == 0) required @endif>
@@ -266,8 +312,8 @@
                                         @for($i=0; $i <= (5- count($sizes)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="en_size{{ count($sizes) + $i + 1}}"
-                                                       name="en_size{{ count($sizes) + $i + 1 }}"
+                                                       id="size{{ count($sizes) + $i + 1}}_en"
+                                                       name="size{{ count($sizes) + $i + 1 }}_en"
                                                        value="{{ old("size". (count($sizes) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -328,8 +374,8 @@
                                     @foreach($adds as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="ar_add{{ $key + 1 }}"
-                                                   name="ar_add{{ $key + 1 }}"
+                                                   id="add{{ $key + 1 }}"
+                                                   name="add{{ $key + 1 }}"
                                                    value="{{ old("add". ($key + 1) ."", $s->ar_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
@@ -339,8 +385,8 @@
                                         @for($i=0; $i <= (5- count($adds)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="ar_add{{ count($adds) + $i + 1}}"
-                                                       name="ar_add{{ count($adds) + $i + 1 }}"
+                                                       id="add{{ count($adds) + $i + 1}}"
+                                                       name="add{{ count($adds) + $i + 1 }}"
                                                        value="{{ old("add". (count($adds) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -353,8 +399,8 @@
                                     @foreach($adds as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="en_add{{ $key + 1 }}"
-                                                   name="en_add{{ $key + 1 }}"
+                                                   id="add{{ $key + 1 }}_en"
+                                                   name="add{{ $key + 1 }}_en"
                                                    value="{{ old("add". ($key + 1) ."", $s->en_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
@@ -364,8 +410,8 @@
                                         @for($i=0; $i <= (5- count($adds)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="en_add{{ count($adds) + $i + 1}}"
-                                                       name="en_add{{ count($adds) + $i + 1 }}"
+                                                       id="add{{ count($adds) + $i + 1}}_en"
+                                                       name="add{{ count($adds) + $i + 1 }}_en"
                                                        value="{{ old("add". (count($adds) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -426,8 +472,8 @@
                                     @foreach($options as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="ar_option{{ $key + 1 }}"
-                                                   name="ar_option{{ $key + 1 }}"
+                                                   id="option{{ $key + 1 }}"
+                                                   name="option{{ $key + 1 }}"
                                                    value="{{ old("option". ($key + 1) ."", $s->ar_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
@@ -437,8 +483,8 @@
                                         @for($i=0; $i <= (5- count($options)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="ar_option{{ count($options) + $i + 1}}"
-                                                       name="ar_option{{ count($options) + $i + 1 }}"
+                                                       id="option{{ count($options) + $i + 1}}"
+                                                       name="option{{ count($options) + $i + 1 }}"
                                                        value="{{ old("option". (count($options) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -451,8 +497,8 @@
                                     @foreach($options as $key => $s)
                                         <div class="form-group">
                                             <input type="text"
-                                                   id="en_option{{ $key + 1 }}"
-                                                   name="en_option{{ $key + 1 }}"
+                                                   id="option{{ $key + 1 }}_en"
+                                                   name="option{{ $key + 1 }}_en"
                                                    value="{{ old("option". ($key + 1) ."", $s->en_name) }}"
                                                    class="form-control font-body-md border-gray">
                                         </div><!-- .form-group -->
@@ -462,8 +508,8 @@
                                         @for($i=0; $i <= (5- count($options)) - 1; $i++)
                                             <div class="form-group">
                                                 <input type="text"
-                                                       id="en_option{{ count($options) + $i + 1}}"
-                                                       name="en_option{{ count($options) + $i + 1 }}"
+                                                       id="option{{ count($options) + $i + 1}}_en"
+                                                       name="option{{ count($options) + $i + 1 }}_en"
                                                        value="{{ old("option". (count($options) + $i + 1) ."") }}"
                                                        class="form-control font-body-md border-gray">
                                             </div><!-- .form-group -->
@@ -542,5 +588,38 @@
 @endsection
 
 @section("script")
+
+    <script>
+        $(function () {
+
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+
+                var controlForm = $('.controls'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="fa fa-minus"></span>');
+            }).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        });
+
+
+        $(document).on('click','.btn-remove-current',function(e){
+            e.preventDefault();
+             let id = $(this).attr('data-id');
+            $('.current'+id).remove();
+        })
+    </script>
+
     <script src="{{ asset("/assets/site/js/add-meal.js") }}"></script>
+
 @endsection

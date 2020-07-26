@@ -721,16 +721,8 @@
     <script>
         $(function () {
 
-            function getIndex(){
-
-                return  5;
-            }
-
             $(document).on('click', '.btn-add', function (e) {
                 e.preventDefault();
-
-                getIndex();
-
                 var controlForm = $('.controls'),
                     currentEntry = $(this).parents('.entry:first'),
                     newEntry = $(currentEntry.clone()).appendTo(controlForm);

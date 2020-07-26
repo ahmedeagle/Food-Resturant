@@ -10,8 +10,9 @@ class PushNotificationController extends Controller
     // set variables
  
 
-    public $server_key  = "AAAAY0P9fWY:APA91bH0yXkRUDwFGYsyIaX75n2QWAbf4YzxksxK-o3yl-euM5m1uC95XwQr0AfgJEEWqMfIGUd4dq2qmqEza2kCE907qJHbJj9sLItpFWuzLnUimxZ9ZiLxwl3qVUeinXcT_Lw6hykS";
-    
+//    public $server_key  = "AAAAY0P9fWY:APA91bH0yXkRUDwFGYsyIaX75n2QWAbf4YzxksxK-o3yl-euM5m1uC95XwQr0AfgJEEWqMfIGUd4dq2qmqEza2kCE907qJHbJj9sLItpFWuzLnUimxZ9ZiLxwl3qVUeinXcT_Lw6hykS";
+    public $server_key  = "AAAAkEJFVjk:APA91bEfgn_b2nHPJsOYwiFpUjxVfG8tRx4lFNtqFdBL8V-MzJA3F2WzoKNMBmAnSfkswiprU8m4GOqYWTswfWB9jH02rPvSi80qhLw4LOphAsWp6NnG5vij-gwl3CPFOXHZFa87gIuS";
+
        
     function send($device_token , $data) {
         
@@ -38,15 +39,15 @@ class PushNotificationController extends Controller
         return $result;
 
     }
-    
-    
-    function sendNotificationToWebBrowser($subscribeToken,$data){
-         
-                    //FCM key
-                
-                $server_key  = "AAAA6rW-n98:APA91bFE83nx5zmyzBC1y-3l7tj5EUDZe1j8PQ2eMnPr_rmcx0GLDiKwHQ7aPNs8kD64Ql37962h2JfKazeUTyns2OalDx6T7pea6KZbWb_60V_Gk1EIRob2tm89Occgaz_jZyN62ALy";
-                 
-                     $url = 'https://fcm.googleapis.com/fcm/send';
+
+
+        function sendNotificationToWebBrowser($subscribeToken,$data){
+
+            //FCM key
+
+            $server_key  = "AAAA6rW-n98:APA91bFE83nx5zmyzBC1y-3l7tj5EUDZe1j8PQ2eMnPr_rmcx0GLDiKwHQ7aPNs8kD64Ql37962h2JfKazeUTyns2OalDx6T7pea6KZbWb_60V_Gk1EIRob2tm89Occgaz_jZyN62ALy";
+
+            $url = 'https://fcm.googleapis.com/fcm/send';
                     $fields = array (
                             'to' => $subscribeToken,
                             'notification' => $data

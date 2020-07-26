@@ -6,7 +6,7 @@
 @section('style')
     <style>
 
-        .hidden-element2 {
+        .hidden-element {
 
             display: none;
         }
@@ -801,5 +801,8 @@
                 $('.spicyDiv').show();
             }
         });
+
+
+
     </script>
 @stop

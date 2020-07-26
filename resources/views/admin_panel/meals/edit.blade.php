@@ -5,14 +5,10 @@
 
 @section('style')
   <style>
-      
-       .hidden-element2{
-           
+       .hidden-element{
            display:none;
        }
-       
   </style>
-  
 @stop
 
 @section('content')
@@ -765,7 +761,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset("/assets/site/js/add-meal.js") }}"></script>
+
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -801,4 +797,6 @@
             }
         });
     </script>
+
+    <script src="{{ asset("/assets/site/js/add-meal.js") }}"></script>
 @stop

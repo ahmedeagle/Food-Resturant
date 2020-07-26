@@ -54,7 +54,7 @@ class MealController extends Controller
         // App()->setLocale("ar");
 
 
-         $rules = [
+        $rules = [
             "ar_name" => "required",
             "en_name" => "required",
             "category" => "required|exists:mealcategories,id",
@@ -177,9 +177,9 @@ class MealController extends Controller
             }
         }
 
-        $collection = collect($request -> ar_component);
-        $combined = $collection->combine($request -> en_component);
-        $components =  $combined->all();
+        $collection = collect($request->ar_component);
+        $combined = $collection->combine($request->en_component);
+        $components = $combined->all();
 
         foreach ($components as $ar => $en) {
             DB::table("meal_component")
@@ -333,7 +333,7 @@ class MealController extends Controller
                 DB::raw("CONCAT('" . url('/') . "','/storage/app/public/meals/', images.name) AS meal_image_url")
             )->get();
 
-        $data['sizes'] = DB::table("meal_sizes")
+         $data['sizes'] = DB::table("meal_sizes")
             ->where("meal_id", $id)
             ->select(
                 "id AS size_id",
@@ -357,13 +357,13 @@ class MealController extends Controller
             )
             ->get();
 
-        $component = DB::table("meal_component")
+        $data['components'] = DB::table("meal_component")
             ->where("meal_id", $id)
             ->select(
                 "ar_name", "en_name"
             )->get();
 
-        $data['adds'] = DB::table("meal_adds")
+          $data['adds'] = DB::table("meal_adds")
             ->where("meal_id", $id)
             ->select(
                 "id AS add_id",
@@ -383,15 +383,6 @@ class MealController extends Controller
             )->get();
 
 
-        $data['ar_component'] = "";
-        $data['en_component'] = "";
-
-        foreach ($component as $key => $c) {
-            $delimeter = ($key == "") ? "" : ",";
-            $data["ar_component"] .= $delimeter . $c->ar_name;
-            $data["en_component"] .= $delimeter . $c->en_name;
-        }
-
         // return edit meal view
         return view("Provider.pages.edit-meal", $data);
     }
@@ -399,7 +390,6 @@ class MealController extends Controller
     public function post_edit_meal(Request $request)
     {
         // App()->setLocale("ar");
-
 
         $rules = [
             "ar_name" => "required",
@@ -414,7 +404,7 @@ class MealController extends Controller
             "calorie" => "required|numeric",
             "ar_description" => "required",
             "en_description" => "required",
-            "ar_size1" => "required",
+            "size1" => "required",
             "price1" => "required|numeric",
             "recommended" => "required|in:0,1",
         ];
@@ -498,7 +488,6 @@ class MealController extends Controller
             ->where("meal_id", $meal)
             ->delete();
 
-        $this->storeMealData($meal, $request);
 
         // delete meal adds
         DB::table("meal_adds")
@@ -512,15 +501,28 @@ class MealController extends Controller
             ->delete();
 
 
-        $componentArr = explode(",", $request->input("ar_component"));
-        $componentEn = explode(",", $request->input("en_component"));
-        if (count($componentArr) != count($componentEn)) {
-            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
-        }
+        // delete meal  component
+        DB::table("meal_component")
+            ->where("meal_id", $meal)
+            ->delete();
 
-        $component = array_combine($componentArr, $componentEn);
 
-        foreach ($component as $ar => $en) {
+        $this->storeMealData($meal, $request);
+
+        $component_ar = array_filter($request->ar_component, function ($k) {
+            return $k !== null;
+        });
+
+        $component_en  = array_filter($request->en_component, function ($k) {
+            return $k !== null;
+        });
+
+        $components_ar_collection = collect($component_ar);
+        $components_en_collection = collect($component_en);
+        $combined = $components_ar_collection->combine($components_en_collection);
+         $components = $combined->all();
+
+        foreach ($components as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
                     "ar_name" => (string)$ar,
@@ -528,6 +530,7 @@ class MealController extends Controller
                     "meal_id" => $meal
                 ]);
         }
+
 
         $deletedImages = explode(",", $request->input("deletedId"));
         foreach ($deletedImages as $img) {
