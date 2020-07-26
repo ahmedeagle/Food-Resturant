@@ -52,6 +52,7 @@ class MealController extends Controller
     {
         // App()->setLocale("ar");
 
+        return $request;
         $rules = [
             "ar_name" => "required",
             "en_name" => "required",
