@@ -239,7 +239,16 @@
                                 </li>
 
                                 @endif
-                               
+
+                                     <li class="{{ ( Request::segment(2) == 'advantages' ) ? 'active' : ''}}">
+                                         <a href="{{ url('/admin/advantages') }}">
+                                             <span class="pcoded-micon"><i class="icofont icofont-page"></i><b></b></span>
+                                             <span class="pcoded-mtext">مميزات المطاعم</span>
+                                             <span class="pcoded-mcaret"></span>
+                                         </a>
+                                     </li>
+
+
                                 @can('categories')
                                 <li class="pcoded-hasmenu {{ (Request::segment(2) == 'mainCategories' || Request::segment(2) == 'subCategories' || Request::segment(2) == 'mealCategories' || Request::segment(2) == 'foodCategories') ? ' pcoded-trigger active' : '' }}">
                                     <a href="javascript:void(0)">

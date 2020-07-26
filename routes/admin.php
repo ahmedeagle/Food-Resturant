@@ -63,7 +63,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
         });
 
 
-     Route::group(['prefix' => 'pages', 'middleware' => 'can:pages'], function () {            
+     Route::group(['prefix' => 'pages', 'middleware' => 'can:pages'], function () {
         Route::get('/', "Admin\Pages@index");
         Route::get('/add', "Admin\Pages@get_add");
         Route::post('/store', "Admin\Pages@post_add");
@@ -71,6 +71,18 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function(){
         Route::post('/update/{id}', "Admin\Pages@post_edit");
         Route::get('/delete/{id}', "Admin\Pages@delete");
     });
+
+
+    Route::group(['prefix' => 'advantages' ], function () {
+        Route::get('/', "Admin\Advantages@index");
+        Route::get('/add', "Admin\Advantages@get_add");
+        Route::post('/store', "Admin\Advantages@post_add");
+        Route::get('/edit/{id}', "Admin\Advantages@get_edit");
+        Route::post('/update/{id}', "Admin\Advantages@post_edit");
+        Route::get('/delete/{id}', "Admin\Advantages@delete");
+    });
+
+
 
     Route::group(['prefix' => 'ticketTypes', 'middleware' => 'can:ticket_types'], function () {                 
         Route::get('/', "Admin\Tickets_types@index");
