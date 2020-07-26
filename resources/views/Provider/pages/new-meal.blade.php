@@ -9,8 +9,9 @@
 @endsection
 
 @section('main-style')
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    @stop
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+@stop
 
 @section("content")
     <main class="page-content py-5">
@@ -128,41 +129,37 @@
 
                             </div><!-- .form-group tags -->
 
-                            <div class="row">
+                            <div class="controls">
+                                <div class="row entry">
+                                    <div class="col-md-4 col-lg-5">
 
-                                <div class="col-4 ">
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsAR')}}</p>
+                                            <input type="text"
+                                                   id="size1"
+                                                   name="component[][name_ar]"
+                                                   class="form-control font-body-md border-gray"
+                                                   required>
+                                        </div><!-- .form-group -->
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-5">
 
-                                    <div class="form-group">
-                                        <p>{{trans('site.ingredientsAR')}}</p>
-                                        <input type="text"
-                                               id="size1"
-                                               name="size1"
-                                               class="form-control font-body-md border-gray"
-                                               required>
-                                    </div><!-- .form-group -->
-                                </div><!-- .col -->
+                                        <div class="form-group">
+                                            <p>{{trans('site.ingredientsEN')}}</p>
+                                            <input type="text"
+                                                   id="size1_en"
+                                                   name="component[][name_en]"
+                                                   class="form-control font-body-md border-gray"
+                                                   required>
+                                        </div><!-- .form-group -->
 
-
-                                <div class="col-4">
-
-                                    <div class="form-group">
-                                        <p>{{trans('site.ingredientsEN')}}</p>
-                                        <input type="text"
-                                               id="size1_en"
-                                               name="size1_en"
-                                               class="form-control font-body-md border-gray"
-                                               required>
-                                    </div><!-- .form-group -->
-
-                                </div><!-- .col -->
-
-                                <div class="col-4 d-flex justify-content-center  align-items-center" >
-                                     <button class="btn btn-success btn-add " type="button">
-                                        <span class="fa fa-plus"></span>
-                                    </button>
-                                 </div>
-
-
+                                    </div><!-- .col -->
+                                    <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center">
+                                        <button class="btn btn-success btn-add" type="button" style="margin-top: 25px;">
+                                            <span class="fa fa-plus"></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -720,5 +717,38 @@
 @endsection
 
 @section("script")
+
+    <script>
+        $(function () {
+
+            function getIndex(){
+
+                return  5;
+            }
+
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+
+                getIndex();
+
+                var controlForm = $('.controls'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="fa fa-minus"></span>');
+            }).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        });
+
+    </script>
+
     <script src="{{ asset("/assets/site/js/add-meal.js") }}"></script>
 @endsection
