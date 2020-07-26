@@ -7,6 +7,7 @@ use http\Env\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cookie;
 use Session;
 use Validator;
@@ -52,8 +53,8 @@ class MealController extends Controller
     {
         // App()->setLocale("ar");
 
-        return $request;
-        $rules = [
+
+         $rules = [
             "ar_name" => "required",
             "en_name" => "required",
             "category" => "required|exists:mealcategories,id",
@@ -176,14 +177,11 @@ class MealController extends Controller
             }
         }
 
-        $componentArr = explode(",", $request->input("ar_component"));
-        $componentEn = explode(",", $request->input("en_component"));
-        if (count($componentArr) != count($componentEn)) {
-            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
-        }
-        $component = array_combine($componentArr, $componentEn);
+        $collection = collect($request -> ar_component);
+        $combined = $collection->combine($request -> en_component);
+        $components =  $combined->all();
 
-        foreach ($component as $ar => $en) {
+        foreach ($components as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
                     "ar_name" => (string)$ar,

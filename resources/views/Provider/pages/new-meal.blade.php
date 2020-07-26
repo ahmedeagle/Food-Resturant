@@ -137,7 +137,7 @@
                                             <p>{{trans('site.ingredientsAR')}}</p>
                                             <input type="text"
                                                    id="size1"
-                                                   name="component[][name_ar]"
+                                                   name="ar_component[]"
                                                    class="form-control font-body-md border-gray"
                                                    required>
                                         </div><!-- .form-group -->
@@ -148,7 +148,7 @@
                                             <p>{{trans('site.ingredientsEN')}}</p>
                                             <input type="text"
                                                    id="size1_en"
-                                                   name="component[][name_en]"
+                                                   name="en_component[]"
                                                    class="form-control font-body-md border-gray"
                                                    required>
                                         </div><!-- .form-group -->

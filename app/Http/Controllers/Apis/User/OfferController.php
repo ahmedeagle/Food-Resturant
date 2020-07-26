@@ -19,6 +19,7 @@ class OfferController extends Controller
             ->join("branches", "providers.id", "branches.provider_id")
             ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
+            ->where("providers.accept_order", "1")
             ->select(
                 "offers.provider_id",
                 "branches." . $name . "_name AS title",
