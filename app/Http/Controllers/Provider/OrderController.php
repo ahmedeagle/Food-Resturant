@@ -273,7 +273,7 @@ class OrderController extends Controller
 
         $desc_ar = ($branch_namee != null) ? $branch_namee->ar_name : '---';
         $desc_en = ($branch_namee != null) ? $branch_namee->en_name : '---';
-        $push_notif_title = "  تعديل حالة الطلب-" . $id;
+        $push_notif_title = "  تعديل حالة الطلب-" . $order -> order_code;
         $post_id = $id;
         $post_title = " لقد تم قبول الطلب المقدم  من قبل  {$desc_ar} برجاء الدخول لحسابك لاستعراض تفاصيل الطلب ";
 
@@ -380,7 +380,7 @@ class OrderController extends Controller
         $desc_ar = ($branch_namee != null) ? $branch_namee->ar_name : '---';
         $desc_en = ($branch_namee != null) ? $branch_namee->en_name : '---';
 
-        $push_notif_title = "  تعديل حالة الطلب-" . $id;
+        $push_notif_title = "  تعديل حالة الطلب-" .$order -> order_code;
         $post_id = $id;
         $post_title = " لقد تم رفض الطلب المقدم, {$desc_ar}  من قبل برجاء الدخول لحسابك لاستعراض تفاصيل الطلب ";
 
@@ -445,7 +445,7 @@ class OrderController extends Controller
         // send user notification
         $desc_ar = ($branch_namee != null) ? $branch_namee->ar_name : '---';
         $desc_en = ($branch_namee != null) ? $branch_namee->en_name : '---';
-        $push_notif_title = "  تعديل حالة الطلب-" . $id;
+        $push_notif_title = "  تعديل حالة الطلب-" . $order -> order_code;
         $post_id = $id;
         $post_title = " لقد تم تجهيز الطلب المقدم,  من قبل  {$desc_ar} برجاء الدخول لحسابك لاستعراض تفاصيل الطلب ";
 
