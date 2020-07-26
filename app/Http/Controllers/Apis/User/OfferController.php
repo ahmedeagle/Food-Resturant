@@ -52,8 +52,7 @@ class OfferController extends Controller
             ->join("offers_branches", "branches.id", "offers_branches.branch_id")
             ->where("offers.approved", "1")
             ->where("providers.accept_order", "1")
-            ->where("offers.published", "1")
-            ->select(
+             ->select(
                 "branches.id AS branch_id",
                 "branches.longitude",
                 "branches.latitude",
