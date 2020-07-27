@@ -102,40 +102,41 @@
 
                             <div class="row">
 
-                            @if(isset($components) && $components -> count () >  0)
-                                @foreach($components -> reverse() as $index => $component)
-                                    <div class="col-md-4 col-lg-5 current{{$index}}">
+                                @if(isset($components) && $components -> count () >  0)
+                                    @foreach($components -> reverse() as $index => $component)
+                                        <div class="col-md-4 col-lg-5 current{{$index}}">
 
-                                        <div class="form-group">
-                                            <p>{{trans('site.ingredientsAR')}}</p>
-                                            <input type="text"
-                                                   id="size1"
-                                                   name="ar_component[]"
-                                                   class="form-control font-body-md border-gray"
-                                                   value="{{$component -> ar_name}}"
-                                                   required>
-                                        </div><!-- .form-group -->
-                                    </div><!-- .col -->
-                                    <div class="col-md-4 col-lg-5 current{{$index}}">
+                                            <div class="form-group">
+                                                <p>{{trans('site.ingredientsAR')}}</p>
+                                                <input type="text"
+                                                       id="size1"
+                                                       name="ar_component[]"
+                                                       class="form-control font-body-md border-gray"
+                                                       value="{{$component -> ar_name}}"
+                                                       required>
+                                            </div><!-- .form-group -->
+                                        </div><!-- .col -->
+                                        <div class="col-md-4 col-lg-5 current{{$index}}">
 
-                                        <div class="form-group">
-                                            <p>{{trans('site.ingredientsEN')}}</p>
-                                            <input type="text"
-                                                   id="size1_en"
-                                                   name="en_component[]"
-                                                   class="form-control font-body-md border-gray"
-                                                   value="{{$component -> en_name}}"
-                                                   required>
-                                        </div><!-- .form-group -->
+                                            <div class="form-group">
+                                                <p>{{trans('site.ingredientsEN')}}</p>
+                                                <input type="text"
+                                                       id="size1_en"
+                                                       name="en_component[]"
+                                                       class="form-control font-body-md border-gray"
+                                                       value="{{$component -> en_name}}"
+                                                       required>
+                                            </div><!-- .form-group -->
 
-                                    </div><!-- .col -->
-                                    <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center current{{$index}}">
-                                        <button class="btn btn-danger btn-remove-current" data-id="{{$index}}" type="button" style="margin-top: 25px;">
-                                            <span class="fa fa-minus"></span>
-                                        </button>
-                                    </div>
-                                @endforeach
-                            @endif
+                                        </div><!-- .col -->
+                                        <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center current{{$index}}">
+                                            <button class="btn btn-danger btn-remove-current" data-id="{{$index}}"
+                                                    type="button" style="margin-top: 25px;">
+                                                <span class="fa fa-minus"></span>
+                                            </button>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
 
 
@@ -150,7 +151,7 @@
                                                    id="size1"
                                                    name="ar_component[]"
                                                    class="form-control font-body-md border-gray"
-                                                   >
+                                            >
                                         </div><!-- .form-group -->
                                     </div><!-- .col -->
                                     <div class="col-md-4 col-lg-5">
@@ -161,7 +162,7 @@
                                                    id="size1_en"
                                                    name="en_component[]"
                                                    class="form-control font-body-md border-gray"
-                                                   >
+                                            >
                                         </div><!-- .form-group -->
 
                                     </div><!-- .col -->
@@ -613,10 +614,10 @@
         });
 
 
-        $(document).on('click','.btn-remove-current',function(e){
+        $(document).on('click', '.btn-remove-current', function (e) {
             e.preventDefault();
-             let id = $(this).attr('data-id');
-            $('.current'+id).remove();
+            let id = $(this).attr('data-id');
+            $('.current' + id).remove();
         })
     </script>
 

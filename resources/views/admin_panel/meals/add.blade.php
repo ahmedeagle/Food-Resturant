@@ -58,7 +58,8 @@
                 <h5> أضافة الوجبة </h5>
             </div>
             <div class="card-block">
-                <form   data-action="{{ url("/admin/meals/store") }}"   method="POST" id="add-meal-from"  enctype="multipart/form-data">
+                <form data-action="{{ url("/admin/meals/store") }}" method="POST" id="add-meal-from"
+                      enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="form-group">
@@ -149,35 +150,45 @@
 
 
                     <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label" for="input-tags">
-                            {{trans('site.ingredientsAR')}}
-                            <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
+                        <label class="col-sm-2 col-form-label" for="input-tags">
+ مكونات الوجبة
                         </label>
-                        <div class="col-sm-10">
-                        <input class="form-control" type="text"
-                               name="ar_component"
-                               id="input-tags" required>
+
+                        <div class="controls">
+                            <div class="row entry">
+                                <div class="col-md-4 col-lg-5">
+
+                                    <div class="form-group">
+                                        <p>{{trans('site.ingredientsAR')}}</p>
+                                        <input type="text"
+                                               id="size1"
+                                               name="ar_component[]"
+                                               class="form-control font-body-md border-gray"
+                                               required>
+                                    </div><!-- .form-group -->
+                                </div><!-- .col -->
+                                <div class="col-md-4 col-lg-5">
+
+                                    <div class="form-group">
+                                        <p>{{trans('site.ingredientsEN')}}</p>
+                                        <input type="text"
+                                               id="size1_en"
+                                               name="en_component[]"
+                                               class="form-control font-body-md border-gray"
+                                               required>
+                                    </div><!-- .form-group -->
+
+                                </div><!-- .col -->
+                                <div class="col-md-4 col-lg-2 d-flex justify-content-center  align-items-center">
+                                    <button class="btn btn-success btn-add" type="button" style="margin-top: 25px;">
+                                        <span class="fa fa-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
                     </div><!-- .form-group tags -->
 
-
-
-
-                    <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label" for="input-tags">
-                            {{trans('site.ingredientsEN')}}
-                            <span class="text-gray font-body-md">
-                                        ({{trans('site.ingredients_note')}})
-                                    </span>
-                        </label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text"
-                                   name="en_component"
-                                   id="input-tags" required>
-                        </div>
-                    </div><!-- .form-group tags -->
 
 
                     <div class="form-group row">
@@ -278,7 +289,8 @@
                             <input class="ar-details form-control font-body-md border-gray"
                                    name="ar_description"
                                    value="{{ old("ar_description") }}">
-                            <p id="ar-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}} </p>
+                            <p id="ar-details-error"
+                               class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}} </p>
                         </div>
                     </div><!-- .form-group details -->
 
@@ -292,7 +304,8 @@
                                    name="en_description"
                                    value="{{ old("en_description") }}"
                                    required>
-                            <p id="en-details-error" class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
+                            <p id="en-details-error"
+                               class="hidden-element alert alert-danger top-margin"> {{trans('site.min_5_words')}}</p>
 
                         </div>
                     </div><!-- .form-group details -->
@@ -755,7 +768,8 @@
                         </div>
                     </div><!-- .form-group gluten -->
 
-                    <button type="submit" id="add-meal-btn" class="btn   btn-md btn-success"><i class="icofont icofont-check"></i> حفظ
+                    <button type="submit" id="add-meal-btn" class="btn   btn-md btn-success"><i
+                                class="icofont icofont-check"></i> حفظ
                     </button>
                     <a href="{{ url("/admin/meals") }}" class="btn btn-md btn-danger"><i
                                 class="icofont icofont-close"></i> رجوع </a>
@@ -766,7 +780,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset("/assets/site/js/add-meal.js") }}"></script>
+    <script src="{{ asset("/assets/site/js/add-meal-admin.js") }}"></script>
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -802,6 +816,26 @@
             }
         });
 
+        $(function () {
+
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+                var controlForm = $('.controls'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="fa fa-minus"></span>');
+            }).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        });
 
 
     </script>

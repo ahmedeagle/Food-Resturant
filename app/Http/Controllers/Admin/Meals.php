@@ -292,15 +292,11 @@ class Meals extends Controller
             }
 
         }
+        $collection = collect($request->ar_component);
+        $combined = $collection->combine($request->en_component);
+        $components = $combined->all();
 
-        $componentArr = explode(",", $request->input("ar_component"));
-        $componentEn = explode(",", $request->input("en_component"));
-        if (count($componentArr) != count($componentEn)) {
-            return response()->json(["status" => false, "errNum" => 1, "msg" => 'مكونات الوجبة غير متساوية ']);
-        }
-        $component = array_combine($componentArr, $componentEn);
-
-        foreach ($component as $ar => $en) {
+        foreach ($components as $ar => $en) {
             DB::table("meal_component")
                 ->insert([
                     "ar_name" => (string)$ar,
@@ -423,9 +419,11 @@ class Meals extends Controller
             ->where("meal_id", $id)
             ->select(
                 "id AS size_id",
-                "ar_name AS size_name",
+                "ar_name AS ar_size_name",
+                "en_name AS en_size_name",
                 "price AS price"
             )->get();
+
 
 
         $data['cats'] = DB::table("mealcategories")
@@ -441,17 +439,18 @@ class Meals extends Controller
             )
             ->get();
 
-        $component = DB::table("meal_component")
+        $data['components'] = DB::table("meal_component")
             ->where("meal_id", $id)
             ->select(
-                "ar_name AS name"
+                "ar_name", "en_name"
             )->get();
 
         $data['adds'] = DB::table("meal_adds")
             ->where("meal_id", $id)
             ->select(
                 "id AS add_id",
-                "ar_name AS name",
+                "ar_name",
+                "en_name",
                 "added_price AS price"
             )->get();
 
@@ -460,16 +459,11 @@ class Meals extends Controller
             ->where("meal_id", $id)
             ->select(
                 "id AS option_id",
-                "ar_name AS name",
+                "ar_name",
+                "en_name",
                 "added_price AS price"
             )->get();
 
-        $data['component'] = "";
-        foreach ($component as $key => $c) {
-
-            $delimeter = ($key == "") ? "" : ",";
-            $data["component"] .= $delimeter . $c->name;
-        }
         $data['title'] = "تعديل الوجبة";
         return view("admin_panel.meals.edit", $data);
     }
@@ -494,6 +488,8 @@ class Meals extends Controller
             "size1" => "required",
             "price1" => "required|numeric",
             "recommended" => "required|in:0,1",
+            "ar_component" => "required",
+            "en_component" => "required",
         ];
         $messages = [
             "required" => trans("messages.required"),
@@ -503,9 +499,7 @@ class Meals extends Controller
             "price1.numeric" => trans("provider.price_numeric"),
         ];
 
-        $msg = [
 
-        ];
 
         if ($request->input("spicy") == "1") {
             $rules['spicy-degree'] = "required";

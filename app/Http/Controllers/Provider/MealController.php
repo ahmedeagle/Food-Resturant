@@ -381,11 +381,11 @@ class MealController extends Controller
                 "en_name",
                 "added_price AS price"
             )->get();
-
-
         // return edit meal view
         return view("Provider.pages.edit-meal", $data);
     }
+
+
 
     public function post_edit_meal(Request $request)
     {

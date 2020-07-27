@@ -9,8 +9,9 @@
     <meta name="keywords" content="" />
     <meta name="author" content="" />
 
-   
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="base-url" content="{{ url("/") }}">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
         
     <!-- Favicon icon -->
     <link rel="icon" href="{{ asset('/assets/admin_panel/images/favicon.ico')}}" type="image/x-icon">

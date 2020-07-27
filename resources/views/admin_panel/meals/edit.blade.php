@@ -15,14 +15,14 @@
     <!-- Page-header start -->
     <div class="page-header card">
         <div class="card-block">
-            <h5 class="m-b-10">أضافة وجبة </h5>
+            <h5 class="m-b-10">تعديل وجبة </h5>
             <ul class="breadcrumb-title b-t-default p-t-10">
                 <li class="breadcrumb-item">
                     <a href="{{ url("/admin/dashboard") }}">الرئيسية</a>
                 </li>
                 <li class="breadcrumb-item"><a href="{{ url("/admin/meals") }}">الوجبات</a>
                 </li>
-                <li class="breadcrumb-item"><a> أضافة </a>
+                <li class="breadcrumb-item"><a> تعديل </a>
                 </li>
             </ul>
         </div>
@@ -47,13 +47,12 @@
             </div>
         @endif
 
-
         <div class="card">
             <div class="card-header">
-                <h5> أضافة الوجبة </h5>
+                <h5> تعديل الوجبة </h5>
             </div>
             <div class="card-block">
-                <form   data-action="{{ url("/admin/meals/store") }}"   method="POST" id="add-meal-from"  enctype="multipart/form-data">
+                <form   data-action="{{ url("/admin/meals/ثيهف") }}"   method="POST" id="add-meal-from"  enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="form-group">
