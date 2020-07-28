@@ -322,6 +322,9 @@ return [
     "addsinenglish"                      => "التفضيلات بالانجليزية ",
     "congestion"                        => "حالة الازدحام ",
     "components"                         => "مكونات الوجبة ",
+    "status"         => "حالة الطلب",
+    "fromResturant" =>"أستلام من المطعم",
+    "delivery"   => "توصيل للعميل"
 
 
  
