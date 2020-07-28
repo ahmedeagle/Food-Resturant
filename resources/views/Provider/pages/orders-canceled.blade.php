@@ -195,6 +195,26 @@
                                     </div>
                                 </div>
 
+                                @if($orderDetails -> is_delivery)
+
+                                <div class="invoice d-flex justify-content-between mt-3">
+                                    <h6 class="font-size-base">{{trans('site.delivery_price')}}: </h6>
+                                    <div class="result text-primary font-body-md">
+                                        <span class="total">{{ $orderDetails -> delivery_price}}</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
+                                    </div>
+                                </div>
+                                    @if($orderDetails -> is_delivery)
+
+
+                                <div class="invoice d-flex justify-content-between mt-3">
+                                    <h6 class="font-size-base">{{trans('site.total_all')}}: </h6>
+                                    <div class="result text-primary font-body-md">
+                                        <span class="total">{{ $orderDetails ->  total_price}}</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

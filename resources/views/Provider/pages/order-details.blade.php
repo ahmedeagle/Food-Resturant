@@ -55,7 +55,7 @@
     <div class="row px-3 px-lg-0">
         <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
             <h6 class="font-size-base text-lg-right text-center">
-                {{trans('site.details')}}
+                 {{trans('site.details')}}
             </h6>
             @php
                 $sum = 0;
@@ -74,17 +74,19 @@
                         </div>
                     </div>
                     <div class="result text-primary">
-                        <span class="total">{{ $orderDetails -> total_price }}</span>
+                        <span class="total">{{ ((int)$meal->meal_price) * ((int)$meal->meal_qty) }}</span>
                         <span class="currency"> {{trans('site.riyal')}}</span>
                     </div>
                 </div><!-- .item -->
-
+                @php
+                    $sum = $sum + ((int)$meal->meal_price) * ((int)$meal->meal_qty);
+                @endphp
             @endforeach
 
             <div class="invoice d-flex justify-content-between mt-3">
                 <h6 class="font-size-base"> {{trans('site.total')}}</h6>
                 <div class="result text-primary font-body-md">
-                    <span class="total">{{ $orderDetails -> total_price }}</span>
+                    <span class="total">{{ $sum }}</span>
                     <span class="currency"> {{trans('site.riyal')}}</span>
                 </div>
             </div>
