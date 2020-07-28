@@ -204,7 +204,7 @@
                                         <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
-                                    @if($orderDetails -> is_delivery)
+                                  @endif
 
 
                                 <div class="invoice d-flex justify-content-between mt-3">
@@ -214,6 +214,8 @@
                                         <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
+
+
 
                             </div>
                         </div>
