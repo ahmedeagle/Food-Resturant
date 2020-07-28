@@ -230,7 +230,7 @@
 
 
                              <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 400px;">
-                                <div id="map-user"></div>
+                                <div id="map-user" style=" width: 500px; height: 400px;"></div>
                             </div><!-- .media-body -->
 
 
