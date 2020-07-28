@@ -155,7 +155,7 @@ class OrderController extends Controller
                 DB::raw("TIME(orders.order_date) AS order_time"),
                 DB::raw("DATE(orders.order_date) AS order_date"),
                 "orders.total_price",
-                "orders.tax",
+                "orders.order_tax",
                 "users.name AS username",
                 DB::raw("CONCAT('" . url('/') . "','/storage/app/public/users/', images.name) AS user_image_url"),
                 "order_statuses." . LaravelLocalization::getCurrentLocale() . "_name AS status_name",
