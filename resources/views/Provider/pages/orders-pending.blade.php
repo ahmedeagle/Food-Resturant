@@ -238,10 +238,6 @@
 
                             </div>
                         </div>
-                        <a href="{{ url("/restaurant/orders/list/1") }}"
-                           class="btn btn-primary px-5"> {{trans('site.back')}}</a>
-
-
                     </div>
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
