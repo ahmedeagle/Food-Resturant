@@ -135,6 +135,8 @@ class Notifications extends Controller {
                     "title" => $title,
                     "content" => $content,
                     "type" => $type,
+                    "created_at"  => date('Y-m-d H:i:s'),
+                    "updated_at"  => date('Y-m-d H:i:s'),
                  ]);
         }
 
@@ -146,7 +148,10 @@ class Notifications extends Controller {
                 DB::table("admin_notifications_receivers")
                     ->insert([
                         "notification_id" => $notify_id,
-                        "actor_id"   => $user->id
+                        "actor_id"   => $user->id,
+                        "created_at"  => date('Y-m-d H:i:s'),
+                        "updated_at"  => date('Y-m-d H:i:s'),
+
                     ]);
                 // push notification
 
