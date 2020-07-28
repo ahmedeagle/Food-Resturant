@@ -312,7 +312,9 @@ class OrderController extends Controller
                 "notification_type" => 1,
                 "actor_id" => $user->user_id,
                 "actor_type" => "user",
-                "action_id" => $post_id
+                "action_id" => $post_id,
+                "created_at" =>  date('Y-m-d H:i:s'),
+                "updated_at"  =>  date('Y-m-d H:i:s'),
 
             ]);
         return redirect()->back()->with("success", trans("messages.success"));
@@ -418,7 +420,9 @@ class OrderController extends Controller
                 "notification_type" => 1,
                 "actor_id" => $user->user_id,
                 "actor_type" => "user",
-                "action_id" => $post_id
+                "action_id" => $post_id,
+                 "created_at" =>  date('Y-m-d H:i:s'),
+                "updated_at"  =>  date('Y-m-d H:i:s'),
 
             ]);
         return redirect()->back()->with("success", trans("messages.success"));
@@ -485,7 +489,9 @@ class OrderController extends Controller
                 "notification_type" => 1,
                 "actor_id" => $user->user_id,
                 "actor_type" => "user",
-                "action_id" => $post_id
+                "action_id" => $post_id,
+                "created_at" =>  date('Y-m-d H:i:s'),
+                "updated_at"  =>  date('Y-m-d H:i:s'),
 
             ]);
 
