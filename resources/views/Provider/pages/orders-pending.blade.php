@@ -218,9 +218,6 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <hr class="border-light border">
-                    </div>
 
                     <div class="row px-3 px-lg-0">
                         <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
@@ -239,6 +236,12 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12">
+                        <hr class="border-light border">
+                    </div>
+
+
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
                         <h4 class="page-title"> موقع العميل </h4>
