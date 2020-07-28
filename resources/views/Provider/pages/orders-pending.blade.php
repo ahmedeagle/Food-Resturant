@@ -241,7 +241,10 @@
                         <hr class="border-light border">
                     </div>
 
+                    <a href="{{ url("/restaurant/orders/list/1") }}"
+                       class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
+                    <br><br>
 
                     <div class="py-2 pr-3 rounded-lg shadow-around">
                         <h4 class="page-title"> موقع العميل </h4>
