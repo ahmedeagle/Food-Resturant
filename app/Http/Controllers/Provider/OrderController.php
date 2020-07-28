@@ -16,6 +16,8 @@ class OrderController extends Controller
         if (!(auth("provider")->check() || auth("branch")->check())) {
             return redirect("/login");
         }
+
+        date_default_timezone_set('Asia/Riyadh');
     }
 
     public function get_orders($type)
