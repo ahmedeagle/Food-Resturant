@@ -168,34 +168,52 @@
                                 @endforeach
 
 
+
                                 <div class="invoice d-flex justify-content-between mt-3">
-                                    <h6 class="font-size-base"> {{trans('site.total')}}:</h6>
+                                    <h6 class="font-size-base">{{trans('site.total')}}:</h6>
                                     <div class="result text-primary font-body-md">
                                         <span class="total">{{ $sum }}</span>
-                                        <span class="currency"> {{trans('site.riyal')}}:</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
                                     </div>
                                 </div>
-                                
-                                
-                                  @php
-                                             $taxData = DB::table("app_settings")
-                                            ->first();
-                                
-                                         $orderTax = $taxData->order_tax;
-                                        
-                                    @endphp   
-                                  
-        
+                                @php
+                                    $taxData = DB::table("app_settings")
+                                   ->first();
+
+                                $orderTax = $taxData->order_tax;
+
+                                @endphp
+
+
                                 <div class="invoice d-flex justify-content-between mt-3">
-                                    <h6 class="font-size-base"> {{trans('site.tax')}}: </h6>
+                                    <h6 class="font-size-base">{{trans('site.tax')}}: </h6>
                                     <div class="result text-primary font-body-md">
-                                        <span class="total">{{ ($sum * $orderTax ) / 100 }}</span>
-                                        <span class="currency">  {{trans('site.riyal')}} </span>
+                                        <span class="total">{{ ($sum * $orderTax ) / 100 }} </span>
+                                        <span class="currency">{{trans('site.riyal')}} ({{$orderDetails -> order_tax}} %)</span>
                                     </div>
                                 </div>
 
+                                @if($orderDetails -> is_delivery)
+
+                                    <div class="invoice d-flex justify-content-between mt-3">
+                                        <h6 class="font-size-base">{{trans('site.delivery_price')}}: </h6>
+                                        <div class="result text-primary font-body-md">
+                                            <span class="total">{{ $orderDetails -> delivery_price}}</span>
+                                            <span class="currency">{{trans('site.riyal')}}</span>
+                                        </div>
+                                    </div>
+                                @endif
+
+
+                                <div class="invoice d-flex justify-content-between mt-3">
+                                    <h6 class="font-size-base">{{trans('site.total_all')}}: </h6>
+                                    <div class="result text-primary font-body-md">
+                                        <span class="total">{{ $orderDetails ->  total_price}}</span>
+                                        <span class="currency">{{trans('site.riyal')}}</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                         </div>
 
 
                     </div>

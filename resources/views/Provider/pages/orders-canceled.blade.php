@@ -190,8 +190,8 @@
                                 <div class="invoice d-flex justify-content-between mt-3">
                                     <h6 class="font-size-base">{{trans('site.tax')}}: </h6>
                                     <div class="result text-primary font-body-md">
-                                        <span class="total">{{ ($sum * $orderTax ) / 100 }} - ({{$orderDetails -> order_tax}} %)</span>
-                                        <span class="currency">{{trans('site.riyal')}}</span>
+                                        <span class="total">{{ ($sum * $orderTax ) / 100 }} </span>
+                                        <span class="currency">{{trans('site.riyal')}} ({{$orderDetails -> order_tax}} %)</span>
                                     </div>
                                 </div>
 
