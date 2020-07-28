@@ -223,13 +223,13 @@
                     <br><br>
 
                     @if($orderDetails -> is_delivery)
-                    <div class="py-2 pr-3 rounded-lg shadow-around">
+                    <div class="py-2 pr-3 rounded-lg">
                         <h4 class="page-title"> موقع العميل </h4>
                     </div>
                     <div class="py-3 rounded-lg shadow-around my-4">
 
                              <div class="col-12 pr-lg-0 d-flex justify-content-center">
-                                <div id="map-user" class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: inherit; height: 400px;"></div>
+                                <div id="map-user" class="col-12 pr-lg-0 " style=" width: inherit; height: 400px;"></div>
                             </div><!-- .media-body -->
 
 
