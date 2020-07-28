@@ -217,10 +217,10 @@
 
 
 
-                            </div>
-                        </div>
+                </div>
+            </div>
 
-                    </div>
+        </div>
 
 
                     <a href="{{ url("/restaurant/orders/list/1") }}"

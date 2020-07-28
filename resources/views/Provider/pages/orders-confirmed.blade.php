@@ -214,28 +214,23 @@
                                 </div>
                             </div>
 
-                            </div>
                         </div>
-
-
-                        <div class="col-12">
-                            <hr class="border-light border">
-                        </div>
-
-                        <div class="row px-3 px-lg-0">
-                            <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
-                                <div class="order-confirm text-center text-sm-right">
-                                    <a href="{{ url("/restaurant/orders/confirm-processed-order/" . $orderDetails->order_id) }}"
-                                       class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 mt-2"
-                                    >
-                                        {{trans('site.order_ready')}}
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+
+
+                    <div class="row px-3 px-lg-0">
+                        <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
+                            <div class="order-confirm text-center text-sm-right">
+                                <a href="{{ url("/restaurant/orders/confirm-processed-order/" . $orderDetails->order_id) }}"
+                                   class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 mt-2"
+                                >
+                                    {{trans('site.order_ready')}}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+
 
                     <a href="{{ url("/restaurant/orders/list/1") }}"
                        class="btn btn-primary px-5"> {{trans('site.back')}}</a>
