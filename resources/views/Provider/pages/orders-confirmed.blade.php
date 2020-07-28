@@ -204,7 +204,6 @@
                                     </div>
                                 @endif
 
-
                                 <div class="invoice d-flex justify-content-between mt-3">
                                     <h6 class="font-size-base">{{trans('site.total_all')}}: </h6>
                                     <div class="result text-primary font-body-md">
@@ -232,10 +231,16 @@
                     </div>
 
 
+                    <div class="col-12">
+                        <hr class="border-light border">
+                    </div>
+
                     <a href="{{ url("/restaurant/orders/list/1") }}"
                        class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
                     <br><br>
+
+                    @if($orderDetails -> is_delivery)
                     <div class="py-2 pr-3 rounded-lg shadow-around">
                         <h4 class="page-title"> موقع العميل </h4>
                     </div>
@@ -249,7 +254,7 @@
                         @endif
 
                     </div>
-
+                    @endif
 
                 </div><!-- .col-* -->
             </div><!-- .row -->

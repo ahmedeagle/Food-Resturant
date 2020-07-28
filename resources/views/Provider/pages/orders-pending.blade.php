@@ -259,9 +259,9 @@
 
 
                     </div>
-                </div>
-                @endif
 
+                @endif
+            </div>
             </div><!-- .row -->
 
         </div><!-- .container -->
