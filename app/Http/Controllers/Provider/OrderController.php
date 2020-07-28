@@ -130,6 +130,7 @@ class OrderController extends Controller
                 return redirect("restaurant/dashboard");
             }
         }
+
         if (auth('branch')->check()) {
 
             if ($order->branch_id != auth("branch")->id()) {

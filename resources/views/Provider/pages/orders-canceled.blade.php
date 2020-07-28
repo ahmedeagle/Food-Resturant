@@ -210,20 +210,9 @@
                     <div class="py-3 rounded-lg shadow-around my-4">
 
 
-                        <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style="width:100%;
-                             position:absolute;
-                             top:0;">
+                        <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 500px;">
 
-                            <div style=" width:100%;
-                            position:absolute;
-                            top:0;
-                            padding:0;">
-                                <div id="map-user" style=" border-top:50px solid #fff;
-                            border-bottom:20px solid #fff;"></div>
-
-                            </div>
-
-
+                                 <div id="map-user"></div>
 
                         </div><!-- .media-body -->
 
