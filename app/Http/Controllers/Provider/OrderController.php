@@ -18,7 +18,7 @@ class OrderController extends Controller
         }
 
         //
-        date_default_timezone_set('Asia/Riyadh');
+
     }
 
     public function get_orders($type)
@@ -253,7 +253,7 @@ class OrderController extends Controller
 
     public function accept_order($id)
     {
-
+        date_default_timezone_set('Asia/Riyadh');
 //        App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
@@ -321,7 +321,7 @@ class OrderController extends Controller
 
     public function decline_order($id)
     {
-
+        date_default_timezone_set('Asia/Riyadh');
 //        App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
@@ -426,6 +426,7 @@ class OrderController extends Controller
 
     public function processed_order($id)
     {
+        date_default_timezone_set('Asia/Riyadh');
         // App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
@@ -493,7 +494,7 @@ class OrderController extends Controller
 
     public function finish_order($id)
     {
-
+        date_default_timezone_set('Asia/Riyadh');
 //        App()->setLocale("ar");
         $order = DB::table("orders")
             ->where("id", $id)
