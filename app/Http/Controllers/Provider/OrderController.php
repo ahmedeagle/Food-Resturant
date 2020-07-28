@@ -163,7 +163,9 @@ class OrderController extends Controller
                 "payment_methods." . LaravelLocalization::getCurrentLocale() . "_name AS payment_name",
                 "orders.is_delivery",
                 "orders.user_latitude",
-                "orders.user_longitude"
+                "orders.user_longitude",
+                "orders.delivery_price"
+
             )
             ->first();
 
