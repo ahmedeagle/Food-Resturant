@@ -226,23 +226,18 @@
                     <a href="{{ url("/restaurant/orders/list/1") }}"
                        class="btn btn-primary px-5">{{trans('site.back')}}</a>
 
-                    <br><br>
+                    <br><br> @if($orderDetails -> is_delivery)
                     <div class="py-2 pr-3 rounded-lg shadow-around">
                         <h4 class="page-title"> موقع العميل </h4>
                     </div>
                     <div class="py-3 rounded-lg shadow-around my-4">
-
-
-                        @if($orderDetails -> is_delivery)
                             <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 400px;">
                                 <div id="map-user"></div>
                             </div><!-- .media-body -->
-                        @endif
-
                     </div>
 
                 </div>
-
+                @endif
 
             </div><!-- .row -->
 
