@@ -51,7 +51,8 @@
 
                                 <p class="text-gray font-body-md mb-0">
                                     <span class="d-block">
-                                           {{trans('site.order_num')}}: <span class="orders-number">{{ $orderDetails->order_code }}</span>
+                                           {{trans('site.order_num')}}: <span
+                                                class="orders-number">{{ $orderDetails->order_code }}</span>
                                     </span>
                                     <span class="d-block">
                                         <span class="orders-date">
@@ -62,7 +63,8 @@
                                         </span>
                                     </span>
                                     <span class="d-block">
-                                            {{trans('site.payment_method')}}:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
+                                            {{trans('site.payment_method')}}:  <span
+                                                class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
                     {{trans('site.status')}}:
@@ -88,7 +90,7 @@
                         <div class="row px-3 px-lg-0">
                             <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
                                 <h6 class="font-size-base text-lg-right text-center">
-                                   {{trans('site.details')}}:
+                                    {{trans('site.details')}}:
                                 </h6>
 
 
@@ -118,7 +120,7 @@
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $option->option_name }}</span>
-                                                          : {{trans('site.added_price')}} :
+                                                        : {{trans('site.added_price')}} :
                                                         <span class="count"> {{ $option->added_price }} </span>
                                                         &nbsp;
                                                         <span class="currency"> {{trans('site.riyal')}} </span>
@@ -129,7 +131,7 @@
                                                 @endforeach
 
                                             @endif
-                                            <!-- end meal options -->
+                                        <!-- end meal options -->
 
                                             <!-- start meal adds -->
                                             @php
@@ -141,7 +143,7 @@
 
                                                     <div class="item-body d-flex flex-row">
                                                         <span class="price">{{ $add->add_name }}</span>
-                                                           : {{trans('site.added_price')}} : 
+                                                        : {{trans('site.added_price')}} :
                                                         <span class="count"> {{ $add->added_price }} </span>
                                                         &nbsp;
                                                         <span class="currency"> {{trans('site.riyal')}} </span>
@@ -149,10 +151,10 @@
                                                 @php
                                                     $adds_sum  = $adds_sum + $add->added_price;
                                                 @endphp
-                                                @endforeach
+                                            @endforeach
 
-                                            @endif
-                                            <!-- end meal adds -->
+                                        @endif
+                                        <!-- end meal adds -->
 
                                         </div>
                                         <div class="result text-primary">
@@ -213,32 +215,32 @@
                                 </div>
                             </div>
 
-                            </div>
                         </div>
-
-                        <div class="col-12">
-                            <hr class="border-light border">
-                        </div>
-
-                        <div class="row px-3 px-lg-0">
-                            <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
-                                <div class="order-confirm text-center text-sm-right">
-                                    <a href="{{ url("/restaurant/orders/decline-order/" . $orderDetails->order_id) }}" class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 ml-0 mt-2 ml-sm-2"
-                                            >
-                                          {{trans('site.cancel_order')}}
-                                    </a>
-                                    <a href="{{ url("/restaurant/orders/accept-order/" . $orderDetails->order_id) }}" class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 mt-2"
-                                            >
-                                         {{trans('site.confirm_order')}}
-                                    </a>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <a href="{{ url("/restaurant/orders/list/1") }}" class="btn btn-primary px-5"> {{trans('site.back')}}</a>
+                    <div class="col-12">
+                        <hr class="border-light border">
+                    </div>
+
+                    <div class="row px-3 px-lg-0">
+                        <div class="col-lg-8 col-12 pr-lg-0 mx-auto">
+                            <div class="order-confirm text-center text-sm-right">
+                                <a href="{{ url("/restaurant/orders/decline-order/" . $orderDetails->order_id) }}"
+                                   class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 ml-0 mt-2 ml-sm-2"
+                                >
+                                    {{trans('site.cancel_order')}}
+                                </a>
+                                <a href="{{ url("/restaurant/orders/accept-order/" . $orderDetails->order_id) }}"
+                                   class="btn btn-primary px-xl-5 px-md-3 px-sm-5 px-5 mt-2"
+                                >
+                                    {{trans('site.confirm_order')}}
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url("/restaurant/orders/list/1") }}"
+                       class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
                     <br><br>
                     <div class="py-2 pr-3 rounded-lg shadow-around">
@@ -254,6 +256,8 @@
                         @endif
 
                     </div>
+                </div>
+
 
             </div><!-- .row -->
 
