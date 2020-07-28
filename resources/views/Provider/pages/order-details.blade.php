@@ -32,10 +32,10 @@
                     </span>
                 </span>
                 <span class="d-block">
-                    {{trans('site.address')}}:
+                    {{trans('site.status')}}:
                     <span class="orders-address">
                         
-                        {{$orderDetails -> address}}
+                        {{$orderDetails -> is_delivery  == 1 ? trans('site.delivery') : trans('site.fromResturant')}}
                       </span>
                 </span>
             </p>

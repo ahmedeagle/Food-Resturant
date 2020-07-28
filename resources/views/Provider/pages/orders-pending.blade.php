@@ -65,11 +65,12 @@
                                             {{trans('site.payment_method')}}:  <span class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
-                                        {{trans('site.address')}}:
-                                        <span class="orders-address">
-                                           {{$orderDetails -> address}}
-                                        </span>
-                                    </span>
+                    {{trans('site.status')}}:
+                    <span class="orders-address">
+
+                        {{$orderDetails -> is_delivery  == 1 ? trans('site.delivery') : trans('site.fromResturant')}}
+                      </span>
+                </span>
                                 </p>
 
                             </div><!-- .media-body -->
@@ -219,25 +220,53 @@
 
                     <a href="{{ url("/restaurant/orders/list/1") }}" class="btn btn-primary px-5"> {{trans('site.back')}}</a>
 
+                    <br><br>
+                    <div class="py-2 pr-3 rounded-lg shadow-around">
+                        <h4 class="page-title"> موقع العميل </h4>
+                    </div>
+                    <div class="py-3 rounded-lg shadow-around my-4">
+
+
+                        @if($orderDetails -> is_delivery)
+                            <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 400px;">
+                                <div id="map-user"></div>
+                            </div><!-- .media-body -->
+                        @endif
+
+                    </div>
+
+
                 </div><!-- .col-* -->
             </div><!-- .row -->
 
         </div><!-- .container -->
     </main><!-- .page-content -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @endsection
+
+
+@section('script')
+
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKZAuxH9xTzD2DLY2nKSPKrgRi2_y0ejs&callback=initMap">
+    </script>
+
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            var uluru = {lat: {{$orderDetails -> user_latitude }} , lng: {{$orderDetails -> user_longitude}}  };
+            // The map, centered at Uluru
+            var map = new google.maps.Map(
+                document.getElementById('map-user'), {zoom: 15, center: uluru});
+            // The marker, positioned at Uluru
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+            });
+        }
+    </script>
+
+
+
+@stop

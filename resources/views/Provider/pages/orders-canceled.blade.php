@@ -67,11 +67,12 @@
                                                 class="orders-payment">{{ $orderDetails->payment_name }}</span>
                                     </span>
                                     <span class="d-block">
-                                        {{trans('site.address')}}
-                                        <span class="orders-address">
-                                            {{$orderDetails -> address}}
-                                        </span>
-                                    </span>
+                    {{trans('site.status')}}:
+                    <span class="orders-address">
+
+                        {{$orderDetails -> is_delivery  == 1 ? trans('site.delivery') : trans('site.fromResturant')}}
+                      </span>
+                </span>
                                 </p>
 
                             </div><!-- .media-body -->
@@ -210,11 +211,11 @@
                     <div class="py-3 rounded-lg shadow-around my-4">
 
 
-                        <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 500px;">
-
-                                 <div id="map-user"></div>
-
-                        </div><!-- .media-body -->
+                        @if($orderDetails -> is_delivery)
+                            <div class="col-xl-7 col-lg-6 col-12 pr-lg-0 " style=" width: 500px; height: 400px;">
+                                <div id="map-user"></div>
+                            </div><!-- .media-body -->
+                        @endif
 
                     </div>
 
@@ -239,7 +240,6 @@
     <script>
         // Initialize and add the map
         function initMap() {
-
             var uluru = {lat: {{$orderDetails -> user_latitude }} , lng: {{$orderDetails -> user_longitude}}  };
             // The map, centered at Uluru
             var map = new google.maps.Map(
