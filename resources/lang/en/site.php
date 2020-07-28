@@ -326,6 +326,7 @@ return [
     "components" => "Components",
     "status" => "Status",
     "fromResturant" => "From Resturant",
-    "delivery" => "Delivery "
+    "delivery" => "Delivery ",
+    "total_all"  => "Final Total"
 
 ];

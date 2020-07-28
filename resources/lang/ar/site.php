@@ -324,7 +324,8 @@ return [
     "components"                         => "مكونات الوجبة ",
     "status"         => "حالة الطلب",
     "fromResturant" =>"أستلام من المطعم",
-    "delivery"   => "توصيل للعميل"
+    "delivery"   => "توصيل للعميل",
+    "total_all"  => "الاجمالي الكلي"
 
 
  
